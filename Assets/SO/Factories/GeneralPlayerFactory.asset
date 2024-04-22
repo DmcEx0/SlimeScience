@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209b0f3932e06ac47ae41fc6de3aa3ad, type: 3}
+  m_Name: GeneralPlayerFactory
+  m_EditorClassIdentifier: 
+  _playerConfig:
+    _baseSpeed: 10
+    _rotateSpeed: 300
+    _acceleration: 100
+    _prefab: {fileID: 381312945068917343, guid: 30f9ff69a17606446b4dff1a58bc6ed3, type: 3}
+    _rangeVacuum: 0

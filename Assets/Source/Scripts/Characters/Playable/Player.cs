@@ -1,15 +1,24 @@
 using SlimeScience.Configs;
-using SlimeScience.Input;
+using SlimeScience.Equipment.Guns;
+using SlimeScience.Saves;
+using UnityEngine;
 
 namespace SlimeScience.Characters.Playable
 {
     public class Player : MobileObject
     {
+        [SerializeField] private PullGun _pullGun;
+
         private float _rangeVacuum;
 
         private void Update()
         {
             UpdateStateMachine();
+        }
+
+        public void InitGun(GameVariables gameVariables)
+        {
+            _pullGun.Init(gameVariables);
         }
 
         protected override void Init(MobileObjectConfig config)

@@ -1,15 +1,14 @@
 using SlimeScience.Configs;
-using SlimeScience.FSM;
-using SlimeScience.FSM.States;
-using SlimeScience.FSM.States.Slimes;
-using System;
-using System.Collections.Generic;
 
 namespace SlimeScience.Characters.Slimes
 {
     public class Slime : MobileObject
     {
-        private float _distanceForFear;
+        private float _fearSpeed;
+        private float _baseSpeed;
+
+        public float BaseSpeed => _baseSpeed;
+        public float FearSpeed => _fearSpeed;
 
         private void Update()
         {
@@ -23,26 +22,8 @@ namespace SlimeScience.Characters.Slimes
 
             SlimeConfig slimeConfig = config as SlimeConfig;
 
-            _distanceForFear = slimeConfig.DistanceFofFear;
-        }
-
-        protected override Dictionary<StatesType, IBehaviour> GetBehaviours()
-        {
-            //return new Dictionary<Type, IBehaviour>()
-            //{
-            //    [typeof(FearState)] = new FearState(this),
-            //    [typeof(PatrollState)] = new PatrollState(this),
-            //};
-            return new Dictionary<StatesType, IBehaviour>()
-            {
-                //[StatesType.Fear] = new FearState(this),
-                //[StatesType.Patroll] = new PatrollState(this),
-            };
-        }
-
-        protected override IBehaviour GetStartState()
-        {
-            return new PatrollState(this);
+            _baseSpeed = slimeConfig.BaseSpeed;
+            _fearSpeed = slimeConfig.FearSpeed;
         }
     }
 }

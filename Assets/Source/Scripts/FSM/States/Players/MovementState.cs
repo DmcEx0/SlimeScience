@@ -7,9 +7,9 @@ namespace SlimeScience.FSM.States.Players
     {
         private Player _player;
 
-        public MovementState(Player _player)
+        public MovementState(Player player)
         {
-            this._player = _player;
+            _player = player;
         }
 
         public void Enter()
@@ -24,12 +24,11 @@ namespace SlimeScience.FSM.States.Players
 
         public bool IsReady()
         {
-            return _player.Movement.IsGettingNewDirection();
+            return _player.Movement.IsMoving;
         }
 
         public void Update()
         {
-            _player.Movement.IsGettingNewDirection();
             _player.Movement.Move();
         }
     }

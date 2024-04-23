@@ -1,3 +1,4 @@
+using SlimeScience.Characters.Slimes;
 using SlimeScience.Input;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,17 +11,15 @@ namespace SlimeScience.Characters
 
         private IInputRouter _inputRouter;
 
-        private Vector3 _newDirection;
-
         public bool IsMoving
         {
             get => _agent.remainingDistance > _agent.stoppingDistance;
         }
 
-        public Movement(NavMeshAgent agent, IInputRouter controller)
+        public Movement(NavMeshAgent agent, IInputRouter inputRouter)
         {
+            _inputRouter = inputRouter;
             _agent = agent;
-            _inputRouter = controller;
         }
 
         public void Enable()
@@ -33,19 +32,15 @@ namespace SlimeScience.Characters
             _inputRouter.OnDisable();
         }
 
-        public bool IsGettingNewDirection()
+        public void SetMovementSpeed(float speed)
         {
-            _newDirection = _inputRouter.GetNewDirection();
-
-            if (_newDirection == Vector3.zero)
-                return false;
-            else
-                return true;
+            _agent.speed = speed;
         }
 
         public void Move()
         {
-            _agent.SetDestination(_agent.transform.position + _newDirection);
+            Vector3 newDirection = _inputRouter.GetNewDirection();
+            _agent.SetDestination(_agent.transform.position + newDirection);
         }
     }
 }

@@ -17,24 +17,25 @@ namespace SlimeScience.Factory
             var config = GetConfig();
             Slime instance = CreateInstance(config.Prefab);
 
-            var inputRouter = new SlimeInputRouter(playerTransform, config.DistanceFofFear);
+            PlayerDetector playerDetector = new PlayerDetector(instance.transform, playerTransform, config.DistanceFofFear);
+            var inputRouter = new SlimeInputRouter(playerDetector);
 
-            instance.Init(CreateStateMachine(instance), inputRouter, config);
+            instance.Init(CreateStateMachine(instance, playerDetector), inputRouter, config);
 
             return instance;
         }
 
         protected abstract SlimeConfig GetConfig();
 
-        private StateMachine CreateStateMachine(Slime instance)
+        private StateMachine CreateStateMachine(Slime instance, IDetectable detector)
         {
             Dictionary<Type, IBehaviour> states = new Dictionary<Type, IBehaviour>()
             {
-                [typeof(PatrollState)] = new PatrollState(instance),
-                [typeof(FearState)] = new FearState(instance)
+                [typeof(PatrollState)] = new PatrollState(instance, detector),
+                [typeof(FearState)] = new FearState(instance, detector)
             };
 
-            IBehaviour startBehaviour = new PatrollState(instance);
+            IBehaviour startBehaviour = new PatrollState(instance, detector);
             return new StateMachine(startBehaviour, states);
         }
     }

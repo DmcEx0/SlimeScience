@@ -24,11 +24,12 @@ namespace SlimeScience.FSM.States.Players
 
         public bool IsReady()
         {
-            return _player.Movement.IsMoving == false && _player.Movement.IsGettingNewDirection() == false;
+            return _player.Movement.IsMoving == false;
         }
 
         public void Update()
         {
+            _player.Movement.Move();
         }
     }
 }

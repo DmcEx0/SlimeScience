@@ -1,29 +1,28 @@
+using SlimeScience.Characters.Slimes;
 using UnityEngine;
 
 namespace SlimeScience.Input
 {
-    public class SlimeInputRouter : IInputRouter, IDetectable
+    public class SlimeInputRouter : IInputRouter
     {
         private const float RangePosX = 4f;
         private const float RangePosZ = 4f;
+        private const float Step = 5f;
 
-        private Transform _playerTransform;
-        private Transform _slimeTransform;
-
-        private float _distanceForRange;
+        private PlayerDetector _detector;
 
         private Vector3 _newDirection;
 
-        public event System.Action Detected;
-
-        public SlimeInputRouter(Transform playerTransform, float distanceForRange)
+        public SlimeInputRouter(PlayerDetector detectable)
         {
-            _playerTransform = playerTransform;
-            _distanceForRange = distanceForRange;
+            _detector = detectable;
         }
 
         public Vector3 GetNewDirection()
         {
+            if (_detector.PlayerIsNear())
+                return _detector.GetDirectionFromPlayer() * Step;
+
             return _newDirection;
         }
 
@@ -38,15 +37,6 @@ namespace SlimeScience.Input
         public void OnDisable()
         {
             _newDirection = Vector3.zero;
-        }
-
-        private void CheckDistanceToPlayer()
-        {
-            float distance = (_playerTransform.position - _slimeTransform.position).magnitude;
-
-            if (distance < _distanceForRange)
-                Detected?.Invoke();
-
         }
     }
 }

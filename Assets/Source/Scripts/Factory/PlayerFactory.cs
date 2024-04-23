@@ -5,6 +5,7 @@ using SlimeScience.Configs;
 using SlimeScience.FSM;
 using SlimeScience.FSM.States.Players;
 using SlimeScience.Input;
+using UnityEngine;
 
 namespace SlimeScience.Factory
 {

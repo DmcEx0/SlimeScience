@@ -1,8 +1,5 @@
 using SlimeScience.Configs;
-using SlimeScience.FSM;
-using SlimeScience.FSM.States;
-using SlimeScience.FSM.States.Players;
-using System.Collections.Generic;
+using SlimeScience.Input;
 
 namespace SlimeScience.Characters.Playable
 {
@@ -23,25 +20,6 @@ namespace SlimeScience.Characters.Playable
             var playerConfig = config as PlayerConfig;
 
             _rangeVacuum = playerConfig.RangeVacuum;
-        }
-
-        protected override Dictionary<StatesType, IBehaviour> GetBehaviours()
-        {
-            //return new Dictionary<Type, IBehaviour>()
-            //{
-            //    [typeof(IdleState)] = new IdleState(this),
-            //    [typeof(MovementState)] = new MovementState(this)
-            //};
-            return new Dictionary<StatesType, IBehaviour>()
-            {
-                //[StatesType.Idle] = new IdleState(this),
-                //[StatesType.Movement] = new MovementState(this)
-            };
-        }
-
-        protected override IBehaviour GetStartState()
-        {
-            return new IdleState(this);
         }
     }
 }

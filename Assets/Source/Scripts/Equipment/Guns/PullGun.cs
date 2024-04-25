@@ -57,7 +57,7 @@ namespace SlimeScience.Equipment.Guns
             var slimes = _slimeFinder.GetSlimes(
                 transform,
                 _gameVariables.AbsorptionRadius,
-                _gameVariables.AbsorptionAngle);
+                _gameVariables.AbsorptionAngle);  //FixedUpdate?
 
             foreach (var slime in slimes)
             {
@@ -78,6 +78,16 @@ namespace SlimeScience.Equipment.Guns
             if (collision.gameObject.TryGetComponent(out Slime slime))
             {
                 _slimeCatcher.CatchSlime(slime, transform.position);
+            }
+        }
+
+        public void ReleaseInventory(Vector3 positionToRelease)
+        {
+            foreach (var slime in _inventory.Free())
+            {
+                slime.gameObject.SetActive(true);
+
+                slime.transform.Translate(positionToRelease * 4f * 0.02f);
             }
         }
 

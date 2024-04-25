@@ -21,6 +21,11 @@ namespace SlimeScience.Characters.Playable
             _pullGun.Init(gameVariables);
         }
 
+        public void ReleaseSlimes(Vector3 position)
+        {
+            _pullGun.ReleaseInventory(position);
+        }
+
         protected override void Init(MobileObjectConfig config)
         {
             if (config is not PlayerConfig)

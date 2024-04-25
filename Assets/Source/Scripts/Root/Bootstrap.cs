@@ -1,3 +1,4 @@
+using Cinemachine;
 using SlimeScience.Factory;
 using SlimeScience.Saves;
 using UnityEngine;
@@ -6,6 +7,7 @@ namespace SlimeScience.Root
 {
     public class Bootstrap : MonoBehaviour
     {
+        [SerializeField] private CinemachineVirtualCamera _camera;
         [SerializeField] private GeneralPlayerFactory _playerFactory;
         [SerializeField] private GeneralSlimeFactory _slimeFactory;
 
@@ -29,6 +31,9 @@ namespace SlimeScience.Root
 
             var player = _playerFactory.Get();
             player.InitGun(_gameVariables);
+
+            _camera.Follow = player.transform;
+            _camera.LookAt = player.transform;
 
             player.transform.position = Vector3.zero;
 

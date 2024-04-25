@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 7823014450149763055}
   - component: {fileID: 3741113371881914243}
   - component: {fileID: 6866744585380418959}
+  - component: {fileID: -1634130942510262545}
   m_Layer: 0
   m_Name: Slime_01_Viking
   m_TagString: Untagged
@@ -246,8 +247,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1.75}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7497110113909437751}
   - {fileID: 1347823160839969777}
@@ -267,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 3741113371881914243}
   _rb: {fileID: 6866744585380418959}
+  _rigidbody: {fileID: 6866744585380418959}
 --- !u!195 &3741113371881914243
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -316,6 +318,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!135 &-1634130942510262545
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6688149642241925542}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.30001852
+  m_Center: {x: -0.003278392, y: 0.29, z: 0}
 --- !u!1 &7588663013591350367
 GameObject:
   m_ObjectHideFlags: 0

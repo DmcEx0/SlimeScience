@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ namespace SlimeScience.InventorySystem
         {
             MaxItems = maxItems;
         }
+
+        public event Action Filled;
 
         public int MaxItems { get; private set; }
 
@@ -28,6 +31,11 @@ namespace SlimeScience.InventorySystem
             }
 
             _items.Add(item);
+
+            if (_items.Count >= MaxItems)
+            {
+                Filled?.Invoke();
+            }
         }
 
         public List<T> Free()

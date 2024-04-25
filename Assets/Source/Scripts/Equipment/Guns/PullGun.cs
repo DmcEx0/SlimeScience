@@ -11,6 +11,7 @@ namespace SlimeScience.Equipment.Guns
         [SerializeField] private LayerMask _slimeLayerMask;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private SphereCollider _collider;
+        [SerializeField] private PullZoneRenderer _pullZoneRenderer;
 
         private GameVariables _gameVariables;
         private SlimeFinder _slimeFinder;
@@ -40,7 +41,10 @@ namespace SlimeScience.Equipment.Guns
             _slimeCatcher = new SlimeCatcher();
 
             _inventory = new Inventory<Slime>(gameVariables.AbsorptionCapacity);
-
+            _pullZoneRenderer.Init(
+                _inventory,
+                gameVariables.AbsorptionRadius,
+                gameVariables.AbsorptionAngle);
             _gameVariables = gameVariables;
             _slimeCatcher.Caught += OnCatchSlime;
 

@@ -9,7 +9,6 @@ namespace SlimeScience.Equipment.Guns
     {
         private const int segments = 11;
         private const int TrianglesPerSegment = 3;
-        private const float DegreesToRadians = Mathf.PI / 180f; // Коэффициент для перевода градусов в радианы
 
         [SerializeField] private MeshFilter _meshFilter;
         [SerializeField] private MeshRenderer _meshRenderer;

@@ -46,7 +46,8 @@ GameObject:
   - component: {fileID: 1860430052470036694}
   - component: {fileID: 5833643676633526410}
   - component: {fileID: 445603550866674858}
-  m_Layer: 0
+  - component: {fileID: 706348037712136350}
+  m_Layer: 6
   m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 5833643676633526410}
-  _rb: {fileID: 445603550866674858}
+  _rigidbody: {fileID: 445603550866674858}
 --- !u!195 &5833643676633526410
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -133,6 +134,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!135 &706348037712136350
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406694227296536204}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.30001852
+  m_Center: {x: -0.003278392, y: 0.29, z: 0}
 --- !u!1 &1654917234885648681
 GameObject:
   m_ObjectHideFlags: 0

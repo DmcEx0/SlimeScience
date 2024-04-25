@@ -1,4 +1,5 @@
 using SlimeScience.Factory;
+using SlimeScience.Saves;
 using UnityEngine;
 
 namespace SlimeScience.Root
@@ -12,9 +13,23 @@ namespace SlimeScience.Root
         [SerializeField] private float _rangePosX;
         [SerializeField] private float _rangePosZ;
 
+        private GameVariables _gameVariables;
+
         private void Start()
         {
+            _gameVariables = new GameVariables();
+
+            _gameVariables.Loaded += Init;
+            _gameVariables.Load();
+        }
+
+        private void Init()
+        {
+            _gameVariables.Loaded -= Init;
+
             var player = _playerFactory.Get();
+            player.InitGun(_gameVariables);
+
             player.transform.position = Vector3.zero;
 
             for (int i = 0; i < _slimeCount; i++)

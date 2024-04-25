@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +8,13 @@ namespace SlimeScience.InventorySystem
         where T : MonoBehaviour
     {
         private List<T> _items = new List<T>();
-        
+
         public Inventory(int maxItems)
         {
             MaxItems = maxItems;
         }
+
+        public event Action Filled;
 
         public int MaxItems { get; private set; }
 
@@ -28,6 +31,11 @@ namespace SlimeScience.InventorySystem
             }
 
             _items.Add(item);
+
+            if (_items.Count >= MaxItems)
+            {
+                Filled?.Invoke();
+            }
         }
 
         public void Expand(int amount)

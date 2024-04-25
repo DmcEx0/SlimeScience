@@ -525,7 +525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerFactory: {fileID: 11400000, guid: fb25459e7542ae0488955737fad4aca3, type: 2}
   _slimeFactory: {fileID: 11400000, guid: 2f0cceb16e4e16e4994491d457f49aff, type: 2}
-  _slimeCount: 1
+  _slimeCount: 10
   _rangePosX: 20
   _rangePosZ: 20
 --- !u!1 &2098730522

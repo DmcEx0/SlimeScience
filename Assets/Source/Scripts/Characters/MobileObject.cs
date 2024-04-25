@@ -4,24 +4,24 @@ using UnityEngine.AI;
 using SlimeScience.FSM;
 using SlimeScience.Input;
 using SlimeScience.Configs;
-using SlimeScience.FSM.States;
 
 namespace SlimeScience.Characters
 {
     public abstract class MobileObject : MonoBehaviour
     {
         [SerializeField] private NavMeshAgent _agent;
+        [SerializeField] private Rigidbody _rb;
 
         private Movement _movement;
 
         private StateMachine _stateMachine;
 
-        private IInputRouter _inputRouter;
-
         public Movement Movement => _movement;
 
         public void Init(StateMachine stateMachine, IInputRouter inputRouter, MobileObjectConfig config)
         {
+            SetRigidbodySetting();
+
             _stateMachine = stateMachine;
 
             Init(config);
@@ -40,5 +40,12 @@ namespace SlimeScience.Characters
         }
 
         protected abstract void Init(MobileObjectConfig config);
+
+        private void SetRigidbodySetting()
+        {
+            _rb.useGravity = false;
+            _rb.isKinematic = false;
+            _rb.freezeRotation = true;
+        }
     }
 }

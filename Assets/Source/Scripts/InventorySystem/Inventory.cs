@@ -15,6 +15,7 @@ namespace SlimeScience.InventorySystem
         }
 
         public event Action Filled;
+        public event Action Changed;
 
         public int MaxItems { get; private set; }
 
@@ -31,6 +32,7 @@ namespace SlimeScience.InventorySystem
             }
 
             _items.Add(item);
+            Changed?.Invoke();
 
             if (_items.Count >= MaxItems)
             {

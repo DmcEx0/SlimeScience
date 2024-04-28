@@ -31,6 +31,7 @@ namespace SlimeScience.FSM.States.Slimes
 
         public void Exit()
         {
+            _slime.Movement.Enable();
         }
 
         public bool IsReady()

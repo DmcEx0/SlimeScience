@@ -44,7 +44,7 @@ namespace SlimeScience.InventorySystem
             _camera = Camera.main;
             _slimes = inventory;
             _slimes.Changed += OnInventoryChanged;
-            _slider.value = inventory.Value;
+            _slider.value = inventory.Amount;
             _slider.maxValue = inventory.MaxItems;
 
             _smoothUpdate = StartCoroutine(SmoothUpdateSliderCoroutine());
@@ -63,7 +63,7 @@ namespace SlimeScience.InventorySystem
         private IEnumerator SmoothUpdateSliderCoroutine()
         {
             var startValue = _slider.value;
-            var endValue = _slimes.Value;
+            var endValue = _slimes.Amount;
 
             var elapsedTime = 0f;
             var duration = 0.5f;

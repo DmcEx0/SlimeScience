@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blocksData:
   - _block: {fileID: 6363870786708873509, guid: 2f05319232a315748bbd8610d5db0e5e, type: 3}
-    _slimeAmount: 5
+    _slimeAmount: 1
     _neededAmountToOpen: 0
     _maxRangePosX: 20
     _maxRangePosZ: 20
   - _block: {fileID: 4260251376607788151, guid: 68731479684129241824ccab47b4425d, type: 3}
     _slimeAmount: 10
     _neededAmountToOpen: 5
+    _maxRangePosX: 20
+    _maxRangePosZ: 20
+  - _block: {fileID: 4260251376607788151, guid: 68731479684129241824ccab47b4425d, type: 3}
+    _slimeAmount: 100
+    _neededAmountToOpen: 100
     _maxRangePosX: 20
     _maxRangePosZ: 20

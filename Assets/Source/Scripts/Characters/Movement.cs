@@ -40,6 +40,7 @@ namespace SlimeScience.Characters
         public void Move()
         {
             Vector3 newDirection = _inputRouter.GetNewDirection();
+
             _agent.SetDestination(_agent.transform.position + newDirection);
         }
     }

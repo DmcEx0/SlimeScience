@@ -21,9 +21,17 @@ namespace SlimeScience.FSM
             _currentBehaviour.Enter();
         }
 
+        public void Stop()
+        {
+            Reset();
+        }
+
         public void Update()
         {
-            _currentBehaviour?.Update();
+            if (_currentBehaviour == null)
+                return;
+
+            _currentBehaviour.Update();
 
             foreach (var behaviour in _behaviours)
             {

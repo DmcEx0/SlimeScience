@@ -346,6 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 6496146121808491023}
+  _rigidbody: {fileID: -5209718949716542742}
   _pullGun: {fileID: 3909926155591071103}
 --- !u!54 &-5209718949716542742
 Rigidbody:

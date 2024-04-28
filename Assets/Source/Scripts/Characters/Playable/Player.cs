@@ -1,12 +1,15 @@
+using SlimeScience.Characters.Slimes;
 using SlimeScience.Configs;
 using SlimeScience.Equipment.Guns;
 using SlimeScience.Saves;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SlimeScience.Characters.Playable
 {
     public class Player : MobileObject
     {
+        [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private PullGun _pullGun;
 
         private float _rangeVacuum;
@@ -21,9 +24,9 @@ namespace SlimeScience.Characters.Playable
             _pullGun.Init(gameVariables);
         }
 
-        public void ReleaseSlimes(Vector3 position)
+        public List<Slime> ReleaseSlimes(Vector3 position)
         {
-            _pullGun.ReleaseInventory(position);
+            return _pullGun.ReleaseInventory(position);
         }
 
         protected override void Init(MobileObjectConfig config)
@@ -34,6 +37,8 @@ namespace SlimeScience.Characters.Playable
             var playerConfig = config as PlayerConfig;
 
             _rangeVacuum = playerConfig.RangeVacuum;
+
+            SetRigidbodySetting(_rigidbody);
         }
     }
 }

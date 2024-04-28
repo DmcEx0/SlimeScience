@@ -26,6 +26,8 @@ namespace SlimeScience.Characters.Slimes
             if (config is not SlimeConfig)
                 return;
 
+            SetRigidbodySetting(_rigidbody);
+
             SlimeConfig slimeConfig = config as SlimeConfig;
 
             _baseSpeed = slimeConfig.BaseSpeed;

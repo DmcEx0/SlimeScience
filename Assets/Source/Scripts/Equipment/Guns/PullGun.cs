@@ -1,6 +1,7 @@
 using SlimeScience.Characters.Slimes;
 using SlimeScience.InventorySystem;
 using SlimeScience.Saves;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SlimeScience.Equipment.Guns
@@ -61,7 +62,7 @@ namespace SlimeScience.Equipment.Guns
             var slimes = _slimeFinder.GetSlimes(
                 transform,
                 _gameVariables.AbsorptionRadius,
-                _gameVariables.AbsorptionAngle);  //FixedUpdate?
+                _gameVariables.AbsorptionAngle);
 
             foreach (var slime in slimes)
             {
@@ -85,18 +86,21 @@ namespace SlimeScience.Equipment.Guns
             }
         }
 
-        public void ReleaseInventory(Vector3 positionToRelease)
+        public List<Slime> ReleaseInventory(Vector3 positionToRelease)
         {
-            foreach (var slime in _inventory.Free())
-            {
-                slime.gameObject.SetActive(true);
+            List<Slime> currentSlimesInInventory = _inventory.Free();
 
-                slime.transform.Translate(positionToRelease * 4f * 0.02f);
-            }
+            //foreach (var slime in currentSlimesInInventory)
+            //{
+            //    slime.transform.Translate(positionToRelease * 4f * 0.02f);
+            //}
+
+            return currentSlimesInInventory;
         }
 
         private void OnCatchSlime(Slime slime)
         {
+            slime.Disable();
             _inventory.Add(slime);
         }
     }

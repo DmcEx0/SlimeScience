@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using SlimeScience.Characters.Slimes;
 using UnityEngine;
 
-
 namespace SlimeScience.Equipment.Guns
 {
     public class SlimeFinder

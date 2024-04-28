@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using SlimeScience.Characters.Slimes;
 using UnityEngine;
@@ -6,7 +7,11 @@ namespace SlimeScience.Equipment.Guns
 {
     public class SlimeFinder
     {
+        private const int DefaultCapacity = 10;
+
         private LayerMask _slimeLayerMask;
+        private List<Slime> _slimes = new List<Slime>();
+        private Collider[] _colliders = new Collider[DefaultCapacity];
 
         public SlimeFinder(LayerMask slimeLayerMask)
         {
@@ -15,24 +20,27 @@ namespace SlimeScience.Equipment.Guns
 
         public List<Slime> GetSlimes(Transform transform, float radius, float angle)
         {
-            List<Slime> slimes = new List<Slime>();
-            Collider[] cols = Physics.OverlapSphere(transform.position, radius, _slimeLayerMask);
+            _slimes.Clear();
 
-            foreach (Collider collider in cols)
+            int numColliders = Physics.OverlapSphereNonAlloc(transform.position, radius, _colliders, _slimeLayerMask);
+
+            for (int i = 0; i < numColliders; i++)
             {
-                Vector3 characterToCollider = (collider.transform.position - transform.position).normalized;
-                float dot = Vector3.Dot(characterToCollider, transform.forward);
+                var collider = _colliders[i];
 
-                if (dot >= Mathf.Cos(angle * Mathf.Deg2Rad))
+                Vector3 direction = collider.transform.position - transform.position;
+                if (Vector3.Angle(direction, transform.forward) < angle)
                 {
                     if (collider.TryGetComponent(out Slime slime))
                     {
-                        slimes.Add(slime);
+                        _slimes.Add(slime);
                     }
                 }
             }
 
-            return slimes;
+            Array.Clear(_colliders, 0, numColliders);
+
+            return _slimes;
         }
     }
 }

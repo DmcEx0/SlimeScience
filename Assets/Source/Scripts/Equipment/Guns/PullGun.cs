@@ -13,6 +13,7 @@ namespace SlimeScience.Equipment.Guns
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private SphereCollider _collider;
         [SerializeField] private PullZoneRenderer _pullZoneRenderer;
+        [SerializeField] private SlimeInventoryRenderer _inventoryRenderer;
 
         private GameVariables _gameVariables;
         private SlimeFinder _slimeFinder;
@@ -49,10 +50,12 @@ namespace SlimeScience.Equipment.Guns
             _gameVariables = gameVariables;
             _slimeCatcher.Caught += OnCatchSlime;
 
+            _inventoryRenderer.Init(_inventory);
+
             _isInitialized = true;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (_isInitialized == false || _inventory.IsFull)
             {

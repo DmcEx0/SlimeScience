@@ -12,9 +12,18 @@ namespace SlimeScience.Characters.Slimes
 
         private float _fearSpeed;
         private float _baseSpeed;
+        private Coroutine _resetVelocityCoroutine;
 
         public float BaseSpeed => _baseSpeed;
         public float FearSpeed => _fearSpeed;
+
+        private void OnDisable()
+        {
+            if (_resetVelocityCoroutine != null)
+            {
+                StopCoroutine(_resetVelocityCoroutine);
+            }
+        }
 
         private void Update()
         {
@@ -37,7 +46,13 @@ namespace SlimeScience.Characters.Slimes
         public void AddForce(Vector3 force)
         {
             _rigidbody.AddForce(force);
-            StartCoroutine(ResetVelocity());
+
+            if (_resetVelocityCoroutine != null)
+            {
+                StopCoroutine(_resetVelocityCoroutine);
+            }
+
+            _resetVelocityCoroutine = StartCoroutine(ResetVelocity());
         }
 
         private IEnumerator ResetVelocity()

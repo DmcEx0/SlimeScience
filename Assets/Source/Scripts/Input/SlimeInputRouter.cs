@@ -24,7 +24,6 @@ namespace SlimeScience.Input
         {
             if (_isEnabled == false)
                 return Vector3.zero;
-            Debug.Log(_detector.PlayerIsNear());
 
             if (_detector.PlayerIsNear())
             {

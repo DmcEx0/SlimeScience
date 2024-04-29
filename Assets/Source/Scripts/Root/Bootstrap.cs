@@ -6,6 +6,8 @@ namespace SlimeScience.Root
 {
     public class Bootstrap : MonoBehaviour
     {
+        [SerializeField] private UIRoot _uiRoot;
+
         [SerializeField] private GeneralPlayerFactory _playerFactory;
         [SerializeField] private GeneralSlimeFactory _slimeFactory;
 
@@ -25,6 +27,8 @@ namespace SlimeScience.Root
 
         private void Init()
         {
+            _uiRoot.Init();
+
             _gameVariables.Loaded -= Init;
 
             var player = _playerFactory.Get();

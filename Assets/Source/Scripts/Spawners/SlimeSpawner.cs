@@ -1,27 +1,38 @@
+using SlimeScience.Configs;
 using SlimeScience.Factory;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 namespace SlimeScience.Spawners
 {
-    public class SlimeSpawner : MonoBehaviour
+    public class SlimeSpawner
     {
-        [SerializeField] private GeneralSlimeFactory _slimeFactory;
+        private GeneralSlimeFactory _slimeFactory;
 
-        [SerializeField] private int _slimeCount;
-        [SerializeField] private float _rangePosX;
-        [SerializeField] private float _rangePosZ;
+        private Transform _playerTransform;
 
-        private void Start()
+        public SlimeSpawner(GeneralSlimeFactory slimeFactory)
         {
-            //for (int i = 0; i < _slimeCount; i++)
-            //{
-            //    float randomPosX = Random.Range(-_rangePosX, _rangePosX);
-            //    float randomPosZ = Random.Range(-_rangePosZ, _rangePosZ);
-            //    Vector3 newPos = new Vector3(randomPosX, 0, randomPosZ);
+            _slimeFactory = slimeFactory;
+        }
 
-            //    var newSlime = _slimeFactory.Get();
-            //    newSlime.transform.position = newPos;
-            //}
+        public void Init(Transform playerTransform)
+        {
+            _playerTransform = playerTransform;
+        }
+
+        public void Spawn(BlockData blockData)
+        {
+            for (int i = 0; i < blockData.SlimeAmount; i++)
+            {
+                float randomPosX = Random.Range(-blockData.MaxRangePosX, blockData.MaxRangePosX);
+                float randomPosZ = Random.Range(-blockData.MaxRangePosZ, blockData.MaxRangePosZ);
+
+                Vector3 newPos = new Vector3(randomPosX, 0, randomPosZ) + blockData.Block.transform.position;
+
+                var newSlime = _slimeFactory.Get(_playerTransform);
+                newSlime.transform.position = newPos;
+            }
         }
     }
 }

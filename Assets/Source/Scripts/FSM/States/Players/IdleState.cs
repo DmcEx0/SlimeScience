@@ -15,7 +15,6 @@ namespace SlimeScience.FSM.States.Players
         public void Enter()
         {
             _player.Movement.Enable();
-            Debug.Log("Idle");
         }
 
         public void Exit()

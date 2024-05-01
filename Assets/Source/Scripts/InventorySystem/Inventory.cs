@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SlimeScience.InventorySystem
 {
-    public class Inventory<T> 
+    public class Inventory<T>
         where T : MonoBehaviour
     {
         private List<T> _items = new List<T>();
@@ -19,7 +19,7 @@ namespace SlimeScience.InventorySystem
 
         public int MaxItems { get; private set; }
 
-        public int Value => _items.Count;
+        public int Amount => _items.Count;
 
         public bool IsFull => _items.Count >= MaxItems;
 
@@ -38,6 +38,14 @@ namespace SlimeScience.InventorySystem
             {
                 Filled?.Invoke();
             }
+        }
+
+        public List<T> Free()
+        {
+            var items = new List<T>(_items);
+            _items.Clear();
+
+            return items;
         }
 
         public void Expand(int amount)

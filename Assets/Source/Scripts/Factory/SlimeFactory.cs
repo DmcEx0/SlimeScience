@@ -15,7 +15,7 @@ namespace SlimeScience.Factory
         public MobileObject Get(Transform playerTransform)
         {
             var config = GetConfig();
-            Slime instance = CreateInstance(config.Prefab);
+            Slime instance = CreateInstance(config.BuildData.GetRandomPrefab);
 
             PlayerDetector playerDetector = new PlayerDetector(instance.transform, playerTransform, config.DistanceFofFear);
             var inputRouter = new SlimeInputRouter(playerDetector);
@@ -37,6 +37,16 @@ namespace SlimeScience.Factory
 
             IBehaviour startBehaviour = new PatrollState(instance, detector);
             return new StateMachine(startBehaviour, states);
+        }
+
+        private void BuildSlime(Slime instance, SlimeBuildData buildData)
+        {
+            SkinnedMeshRenderer skinnedMeshRenderer = instance.GetComponentInChildren<SkinnedMeshRenderer>();
+
+            Material[] oldMaterials = skinnedMeshRenderer.materials;
+            oldMaterials[0] = buildData.GetRandomBodyMaterial;
+            oldMaterials[1] = buildData.GetRandomFaceMaterial;
+            skinnedMeshRenderer.materials = oldMaterials;
         }
     }
 }

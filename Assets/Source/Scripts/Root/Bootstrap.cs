@@ -1,5 +1,8 @@
+using Cinemachine;
+using SlimeScience.Configs;
 using SlimeScience.Factory;
 using SlimeScience.Saves;
+using SlimeScience.Spawners;
 using UnityEngine;
 
 namespace SlimeScience.Root
@@ -8,14 +11,23 @@ namespace SlimeScience.Root
     {
         [SerializeField] private UIRoot _uiRoot;
 
+        [SerializeField] private CinemachineVirtualCamera _camera;
+        [SerializeField] private ReleaseZone _releaseZone;
         [SerializeField] private GeneralPlayerFactory _playerFactory;
         [SerializeField] private GeneralSlimeFactory _slimeFactory;
 
-        [SerializeField] private int _slimeCount;
-        [SerializeField] private float _rangePosX;
-        [SerializeField] private float _rangePosZ;
-
+        private SlimeSpawner _slimeSpawner;
         private GameVariables _gameVariables;
+
+        private void OnDisable()
+        {
+            _releaseZone.OpenedNextBlock -= OnNextBlockOpened;
+        }
+
+        private void Awake()
+        {
+            _slimeSpawner = new SlimeSpawner(_slimeFactory);
+        }
 
         private void Start()
         {
@@ -32,19 +44,23 @@ namespace SlimeScience.Root
             _gameVariables.Loaded -= Init;
 
             var player = _playerFactory.Get();
+
             player.InitGun(_gameVariables);
+
+            _slimeSpawner.Init(player.transform);
+
+            _camera.Follow = player.transform;
+            _camera.LookAt = player.transform;
 
             player.transform.position = Vector3.zero;
 
-            for (int i = 0; i < _slimeCount; i++)
-            {
-                float randomPosX = Random.Range(-_rangePosX, _rangePosX);
-                float randomPosZ = Random.Range(-_rangePosZ, _rangePosZ);
-                Vector3 newPos = new Vector3(randomPosX, 0, randomPosZ);
+            _releaseZone.OpenedNextBlock += OnNextBlockOpened;
+            _releaseZone.Init();
+        }
 
-                var newSlime = _slimeFactory.Get(player.transform);
-                newSlime.transform.position = newPos;
-            }
+        private void OnNextBlockOpened(BlockData blockData)
+        {
+            _slimeSpawner.Spawn(blockData);
         }
     }
 }

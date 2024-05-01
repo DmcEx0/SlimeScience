@@ -9,9 +9,11 @@ namespace SlimeScience.Input
         private const float RangePosZ = 4f;
         private const float Step = 5f;
 
-        private PlayerDetector _detector;
+        private readonly PlayerDetector _detector;
 
         private Vector3 _newDirection;
+
+        private bool _isEnabled = false;
 
         public SlimeInputRouter(PlayerDetector detectable)
         {
@@ -20,14 +22,22 @@ namespace SlimeScience.Input
 
         public Vector3 GetNewDirection()
         {
+            if (_isEnabled == false)
+                return Vector3.zero;
+            Debug.Log(_detector.PlayerIsNear());
+
             if (_detector.PlayerIsNear())
+            {
                 return _detector.GetDirectionFromPlayer() * Step;
+            }
 
             return _newDirection;
         }
 
         public void OnEnable()
         {
+            _isEnabled = true;
+
             float randomPosX = Random.Range(-RangePosX, RangePosX);
             float randomPosZ = Random.Range(-RangePosZ, RangePosZ);
 
@@ -36,6 +46,8 @@ namespace SlimeScience.Input
 
         public void OnDisable()
         {
+            _isEnabled = false;
+
             _newDirection = Vector3.zero;
         }
     }

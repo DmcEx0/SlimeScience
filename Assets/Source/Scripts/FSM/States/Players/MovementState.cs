@@ -14,7 +14,6 @@ namespace SlimeScience.FSM.States.Players
 
         public void Enter()
         {
-            Debug.Log("Moving");
         }
 
         public void Exit()

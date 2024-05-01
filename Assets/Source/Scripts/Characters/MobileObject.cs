@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using SlimeScience.FSM;
 using SlimeScience.Input;
 using SlimeScience.Configs;
-using SlimeScience.FSM.States;
 
 namespace SlimeScience.Characters
 {
@@ -15,8 +13,6 @@ namespace SlimeScience.Characters
         private Movement _movement;
 
         private StateMachine _stateMachine;
-
-        private IInputRouter _inputRouter;
 
         public Movement Movement => _movement;
 
@@ -34,11 +30,25 @@ namespace SlimeScience.Characters
             _stateMachine.Start();
         }
 
+        public void Disable()
+        {
+            _stateMachine.Stop();
+            _movement.Disable();
+            _agent.enabled = false;
+        }
+
         protected void UpdateStateMachine()
         {
             _stateMachine?.Update();
         }
 
         protected abstract void Init(MobileObjectConfig config);
+
+        protected void SetRigidbodySetting(Rigidbody rigidbody)
+        {
+            rigidbody.useGravity = false;
+            rigidbody.isKinematic = false;
+            rigidbody.freezeRotation = true;
+        }
     }
 }

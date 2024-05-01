@@ -16,7 +16,6 @@ namespace SlimeScience.FSM.States.Slimes
 
         public void Enter()
         {
-            UnityEngine.Debug.Log("Fear");
             _slime.Movement.SetMovementSpeed(_slime.FearSpeed);
         }
 

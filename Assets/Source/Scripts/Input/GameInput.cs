@@ -676,6 +676,65 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Joystick"",
+            ""id"": ""a350f8c6-2dcc-4a2b-8058-4ef31e5b176e"",
+            ""actions"": [
+                {
+                    ""name"": ""Position"",
+                    ""type"": ""Value"",
+                    ""id"": ""54f1f353-43c6-4db0-9e77-f932421193cb"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""3f9d20d2-70bf-4707-9625-cf43843a3dbb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""309bd766-644c-40c1-8724-ba7e1704a879"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7fe98828-6e29-4a3d-9b4e-3431c2ade206"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16ca3f95-7272-45b5-bb8e-a635345e4a5b"",
+                    ""path"": ""<Pointer>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -695,6 +754,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Joystick
+        m_Joystick = asset.FindActionMap("Joystick", throwIfNotFound: true);
+        m_Joystick_Position = m_Joystick.FindAction("Position", throwIfNotFound: true);
+        m_Joystick_Click = m_Joystick.FindAction("Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -916,6 +979,60 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Joystick
+    private readonly InputActionMap m_Joystick;
+    private List<IJoystickActions> m_JoystickActionsCallbackInterfaces = new List<IJoystickActions>();
+    private readonly InputAction m_Joystick_Position;
+    private readonly InputAction m_Joystick_Click;
+    public struct JoystickActions
+    {
+        private @GameInput m_Wrapper;
+        public JoystickActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Position => m_Wrapper.m_Joystick_Position;
+        public InputAction @Click => m_Wrapper.m_Joystick_Click;
+        public InputActionMap Get() { return m_Wrapper.m_Joystick; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(JoystickActions set) { return set.Get(); }
+        public void AddCallbacks(IJoystickActions instance)
+        {
+            if (instance == null || m_Wrapper.m_JoystickActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_JoystickActionsCallbackInterfaces.Add(instance);
+            @Position.started += instance.OnPosition;
+            @Position.performed += instance.OnPosition;
+            @Position.canceled += instance.OnPosition;
+            @Click.started += instance.OnClick;
+            @Click.performed += instance.OnClick;
+            @Click.canceled += instance.OnClick;
+        }
+
+        private void UnregisterCallbacks(IJoystickActions instance)
+        {
+            @Position.started -= instance.OnPosition;
+            @Position.performed -= instance.OnPosition;
+            @Position.canceled -= instance.OnPosition;
+            @Click.started -= instance.OnClick;
+            @Click.performed -= instance.OnClick;
+            @Click.canceled -= instance.OnClick;
+        }
+
+        public void RemoveCallbacks(IJoystickActions instance)
+        {
+            if (m_Wrapper.m_JoystickActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IJoystickActions instance)
+        {
+            foreach (var item in m_Wrapper.m_JoystickActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_JoystickActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public JoystickActions @Joystick => new JoystickActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -932,5 +1049,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IJoystickActions
+    {
+        void OnPosition(InputAction.CallbackContext context);
+        void OnClick(InputAction.CallbackContext context);
     }
 }

@@ -1,43 +1,37 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.OnScreen;
-using UnityEngine.UIElements;
 
-namespace SlimeScience
+namespace SlimeScience.Input
 {
-    public class FloatingJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class FloatingJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [SerializeField] private RectTransform _handler;
-        [SerializeField] private RectTransform _knob;
-        [SerializeField] private OnScreenStick _onScreenStick;
-
-        private Vector2 _startPosition;
+        [SerializeField] private OnScreenStick _screenStick;
+        [SerializeField] private Vector2 _knobOffset;
 
         public void Init()
         {
-            _onScreenStick.movementRange = _handler.rect.width / 2;
-            _handler.gameObject.SetActive(false);
+            _handler.anchoredPosition = _knobOffset;
+            _screenStick.movementRange = _handler.rect.size.x / 2;
+        }
 
+        public void OnDrag(PointerEventData eventData)
+        {
+            ExecuteEvents.dragHandler(_screenStick, eventData);
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            Debug.Log("OnPointerDown");
-            Vector2 position = eventData.position;
-
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_handler, position, null, out Vector2 localPoint))
-            {
-                _handler.gameObject.SetActive(true);
-                _handler.position = _handler.TransformPoint(localPoint);
-                _knob.position = _handler.position;
-            }
+            _handler.position = eventData.position;
+            ExecuteEvents.pointerDownHandler(_screenStick, eventData);
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            Debug.Log("OnPointerUp");
-            _knob.position = _handler.position;
-            // _handler.gameObject.SetActive(false);
+            ExecuteEvents.pointerUpHandler(_screenStick, eventData);
+            _handler.anchoredPosition = _knobOffset;
         }
     }
 }

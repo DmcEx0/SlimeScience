@@ -654,6 +654,65 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Joystick",
+            "id": "a350f8c6-2dcc-4a2b-8058-4ef31e5b176e",
+            "actions": [
+                {
+                    "name": "Position",
+                    "type": "Value",
+                    "id": "54f1f353-43c6-4db0-9e77-f932421193cb",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "3f9d20d2-70bf-4707-9625-cf43843a3dbb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "309bd766-644c-40c1-8724-ba7e1704a879",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7fe98828-6e29-4a3d-9b4e-3431c2ade206",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "16ca3f95-7272-45b5-bb8e-a635345e4a5b",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

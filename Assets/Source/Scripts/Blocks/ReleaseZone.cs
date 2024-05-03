@@ -15,7 +15,7 @@ namespace SlimeScience
         private int _indexCurrentBlock = 0;
         private Inventory<Slime> _inventory;
 
-        public event Action<BlockData> OpenedNextBlock;
+        public event Action<BlockData, int> OpenedNextBlock;
 
         public void Init()
         {
@@ -40,7 +40,7 @@ namespace SlimeScience
 
         private void OpenNextBlock()
         {
-            OpenedNextBlock?.Invoke(_blocksConfig.BlocksData[_indexCurrentBlock]);
+            OpenedNextBlock?.Invoke(_blocksConfig.BlocksData[_indexCurrentBlock], _indexCurrentBlock);
 
             _indexCurrentBlock++;
             _inventory.Expand((_blocksConfig.BlocksData[_indexCurrentBlock].NeededAmountToOpen));

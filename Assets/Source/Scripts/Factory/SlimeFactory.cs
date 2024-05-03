@@ -12,10 +12,10 @@ namespace SlimeScience.Factory
 {
     public abstract class SlimeFactory : GameObjectFactory
     {
-        public MobileObject Get(Transform playerTransform)
+        public MobileObject Get(Transform playerTransform, Vector3 position)
         {
             var config = GetConfig();
-            Slime instance = CreateInstance(config.BuildData.GetRandomPrefab);
+            Slime instance = CreateInstance(config.BuildData.GetRandomPrefab, position);
 
             PlayerDetector playerDetector = new PlayerDetector(instance.transform, playerTransform, config.DistanceFofFear);
             var inputRouter = new SlimeInputRouter(playerDetector);

@@ -13,23 +13,15 @@ MonoBehaviour:
   m_Name: BlocksConfig
   m_EditorClassIdentifier: 
   _blocksData:
-  - _block: {fileID: 1393811400620020758, guid: 47b87a2be2601ef4fb6d46bdc0ababee, type: 3}
-    _slimeAmount: 55
+  - _slimeAmount: 10
     _neededAmountToOpen: 0
-    _maxRangePosX: 50
-    _maxRangePosZ: 50
-  - _block: {fileID: 4260251376607788151, guid: 68731479684129241824ccab47b4425d, type: 3}
-    _slimeAmount: 10
-    _neededAmountToOpen: 5
     _maxRangePosX: 20
     _maxRangePosZ: 20
-  - _block: {fileID: 4260251376607788151, guid: 68731479684129241824ccab47b4425d, type: 3}
-    _slimeAmount: 100
-    _neededAmountToOpen: 100
-    _maxRangePosX: 20
-    _maxRangePosZ: 20
-  - _block: {fileID: 4260251376607788151, guid: 68731479684129241824ccab47b4425d, type: 3}
-    _slimeAmount: 100
+  - _slimeAmount: 10
+    _neededAmountToOpen: 1
+    _maxRangePosX: 15
+    _maxRangePosZ: 15
+  - _slimeAmount: 100
     _neededAmountToOpen: 100
     _maxRangePosX: 20
     _maxRangePosZ: 20

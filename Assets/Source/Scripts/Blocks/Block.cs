@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SlimeScience
+namespace SlimeScience.Blocks
 {
     public class Block : MonoBehaviour
     {

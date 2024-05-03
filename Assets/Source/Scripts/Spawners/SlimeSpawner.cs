@@ -1,6 +1,6 @@
+using SlimeScience.Blocks;
 using SlimeScience.Configs;
 using SlimeScience.Factory;
-using Unity.AI.Navigation;
 using UnityEngine;
 
 namespace SlimeScience.Spawners

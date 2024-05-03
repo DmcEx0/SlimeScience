@@ -5,7 +5,7 @@ using SlimeScience.InventorySystem;
 using System;
 using UnityEngine;
 
-namespace SlimeScience
+namespace SlimeScience.Blocks
 {
     public class ReleaseZone : MonoBehaviour
     {

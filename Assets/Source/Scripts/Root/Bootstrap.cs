@@ -34,7 +34,7 @@ namespace SlimeScience.Root
             _gameVariables = new GameVariables();
 
             _gameVariables.Loaded += Init;
-            _gameVariables.Load();
+            _gameVariables.Load(this);
         }
 
         private void Init()
@@ -56,6 +56,10 @@ namespace SlimeScience.Root
 
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
             _releaseZone.Init();
+
+#if UNITY_EDITOR == false
+            Agava.YandexGames.YandexGamesSdk.GameReady();
+#endif
         }
 
         private void OnNextBlockOpened(BlockData blockData)

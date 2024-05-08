@@ -42,7 +42,7 @@ namespace SlimeScience.Root
 
         private void Init()
         {
-            _uiRoot.Init();
+            //_uiRoot.Init();
 
             _gameVariables.Loaded -= Init;
 

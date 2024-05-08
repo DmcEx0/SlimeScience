@@ -1,5 +1,6 @@
 
 using System;
+using UnityEngine;
 
 namespace SlimeScience.Saves
 {
@@ -17,7 +18,7 @@ namespace SlimeScience.Saves
 
         public event Action Loaded;
 
-        public void Load()
+        public void Load(MonoBehaviour obj)
         {
             AbsorptionModel = new AbsorptionModel();
 

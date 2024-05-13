@@ -20,6 +20,8 @@ namespace SlimeScience.Factory
             PlayerDetector playerDetector = new PlayerDetector(instance.transform, playerTransform, config.DistanceFofFear);
             var inputRouter = new SlimeInputRouter(playerDetector);
 
+            BuildSlime(instance, config.BuildData);
+
             instance.Init(CreateStateMachine(instance, playerDetector), inputRouter, config);
 
             return instance;

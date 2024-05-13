@@ -16,7 +16,6 @@ namespace SlimeScience.Root
         private const string _sceneName = "SampleScene";
 
         [SerializeField] private Slider _loader;
-        [SerializeField] private Lean.Localization.LeanLocalization _localization;
         [SerializeField] private TMP_Text _percentText;
 
         private GameVariables _saveObject;

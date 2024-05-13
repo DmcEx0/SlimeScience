@@ -51,7 +51,28 @@ MonoBehaviour:
   detectLanguage: 0
   defaultLanguage: Russian
   saveLoad: 1
-  prefabs: []
+  prefabs:
+  - Root: {fileID: 9066149373650644875, guid: 96c471cb215eb6f4488620db8151845f, type: 3}
+    sources:
+    - {fileID: 1785557399647816090, guid: 96c471cb215eb6f4488620db8151845f, type: 3}
+  - Root: {fileID: 3083877611270612547, guid: 9cd2e61ff9d1b324e89309dfcbc4bc39, type: 3}
+    sources:
+    - {fileID: 5621669816970329044, guid: 9cd2e61ff9d1b324e89309dfcbc4bc39, type: 3}
+  - Root: {fileID: 718554876836589959, guid: c0c0ee22a92a23f42b5137ae955695ba, type: 3}
+    sources:
+    - {fileID: 3841750155881371725, guid: c0c0ee22a92a23f42b5137ae955695ba, type: 3}
+  - Root: {fileID: 3350467633328241470, guid: 21aa94bb03d9959418d8d230f10f35e3, type: 3}
+    sources:
+    - {fileID: 5728139351348253310, guid: 21aa94bb03d9959418d8d230f10f35e3, type: 3}
+  - Root: {fileID: 3586608986532071835, guid: d8db3177e3831c44498ce7bea4edc214, type: 3}
+    sources:
+    - {fileID: 8828762611938829579, guid: d8db3177e3831c44498ce7bea4edc214, type: 3}
+  - Root: {fileID: 6991743832667944915, guid: 1def5d7f0c5b89b43a54bdd9abf5fdbe, type: 3}
+    sources:
+    - {fileID: 3088961732452472115, guid: 1def5d7f0c5b89b43a54bdd9abf5fdbe, type: 3}
+  - Root: {fileID: 7066419918997451598, guid: b03ec999ddcabc34c9c5ebc599bb68eb, type: 3}
+    sources:
+    - {fileID: 6379104247915029982, guid: b03ec999ddcabc34c9c5ebc599bb68eb, type: 3}
 --- !u!1001 &2899797273002076507
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,6 +11,8 @@ namespace SlimeScience.Characters
 
         private IInputRouter _inputRouter;
 
+        private bool _isEnabled = false;
+
         public bool IsMoving
         {
             get => _agent.remainingDistance > _agent.stoppingDistance;
@@ -24,11 +26,13 @@ namespace SlimeScience.Characters
 
         public void Enable()
         {
+            _isEnabled = true;
             _inputRouter.OnEnable();
         }
 
         public void Disable()
         {
+            _isEnabled = false;
             _inputRouter.OnDisable();
         }
 
@@ -39,6 +43,11 @@ namespace SlimeScience.Characters
 
         public void Move()
         {
+            if (_isEnabled == false || _agent.isOnNavMesh == false)
+            {
+                return;
+            }
+
             Vector3 newDirection = _inputRouter.GetNewDirection();
 
             _agent.SetDestination(_agent.transform.position + newDirection);

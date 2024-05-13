@@ -30,10 +30,17 @@ namespace SlimeScience.Characters
             _stateMachine.Start();
         }
 
+        public void Enable()
+        {
+            _agent.enabled = true;
+            _movement.Enable();
+            _stateMachine.Start();
+        }
+
         public void Disable()
         {
-            _stateMachine.Stop();
             _movement.Disable();
+            _stateMachine.Stop();
             _agent.enabled = false;
         }
 
@@ -44,10 +51,10 @@ namespace SlimeScience.Characters
 
         protected abstract void Init(MobileObjectConfig config);
 
-        protected void SetRigidbodySetting(Rigidbody rigidbody)
+        protected virtual void SetRigidbodySetting(Rigidbody rigidbody)
         {
+            rigidbody.interpolation = RigidbodyInterpolation.None;
             rigidbody.useGravity = false;
-            rigidbody.isKinematic = false;
             rigidbody.freezeRotation = true;
         }
     }

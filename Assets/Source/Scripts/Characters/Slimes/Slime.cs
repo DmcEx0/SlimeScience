@@ -43,8 +43,18 @@ namespace SlimeScience.Characters.Slimes
             _fearSpeed = slimeConfig.FearSpeed;
         }
 
+        protected override void SetRigidbodySetting(Rigidbody rigidbody)
+        {
+            base.SetRigidbodySetting(rigidbody);
+
+            rigidbody.isKinematic = false;
+        }
+
         public void AddForce(Vector3 force)
         {
+            Disable();
+            _rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+
             _rigidbody.AddForce(force);
 
             if (_resetVelocityCoroutine != null)
@@ -58,7 +68,11 @@ namespace SlimeScience.Characters.Slimes
         private IEnumerator ResetVelocity()
         {
             yield return new WaitForSeconds(ResetVelocityTime);
+
             _rigidbody.velocity = Vector3.zero;
+
+            Enable();
+            _rigidbody.interpolation = RigidbodyInterpolation.None;
         }
     }
 }

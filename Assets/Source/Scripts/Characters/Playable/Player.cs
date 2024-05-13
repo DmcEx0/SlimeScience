@@ -40,5 +40,12 @@ namespace SlimeScience.Characters.Playable
 
             SetRigidbodySetting(_rigidbody);
         }
+
+        protected override void SetRigidbodySetting(Rigidbody rigidbody)
+        {
+            base.SetRigidbodySetting(rigidbody);
+
+            rigidbody.isKinematic = true;
+        }
     }
 }

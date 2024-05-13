@@ -11,7 +11,9 @@ namespace SlimeScience.Equipment.Guns
         public void AbsorbSlime(Slime slime, Vector3 catchPoint, float force)
         {
             var forceDirection = (catchPoint - slime.transform.position).normalized;
-            slime.AddForce(forceDirection * force);
+            var correctDirection = new Vector3(forceDirection.x, 0, forceDirection.z);
+
+            slime.AddForce(correctDirection * force);
         }
 
         public void CatchSlime(Slime slime, Vector3 catchPoint)

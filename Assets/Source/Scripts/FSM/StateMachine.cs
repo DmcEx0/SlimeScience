@@ -23,7 +23,7 @@ namespace SlimeScience.FSM
 
         public void Stop()
         {
-            Reset();
+            _currentBehaviour.Exit();
         }
 
         public void Update()

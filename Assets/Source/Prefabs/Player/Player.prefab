@@ -743,12 +743,12 @@ NavMeshAgent:
   m_AngularSpeed: 10
   m_StoppingDistance: 0.7
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 3
 --- !u!114 &381312945068917343
 MonoBehaviour:
   m_ObjectHideFlags: 0

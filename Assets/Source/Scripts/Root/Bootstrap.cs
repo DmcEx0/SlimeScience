@@ -1,8 +1,10 @@
 using Cinemachine;
+using SlimeScience.Blocks;
 using SlimeScience.Configs;
 using SlimeScience.Factory;
 using SlimeScience.Saves;
 using SlimeScience.Spawners;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SlimeScience.Root
@@ -15,6 +17,7 @@ namespace SlimeScience.Root
         [SerializeField] private ReleaseZone _releaseZone;
         [SerializeField] private GeneralPlayerFactory _playerFactory;
         [SerializeField] private GeneralSlimeFactory _slimeFactory;
+        [SerializeField] private List<Block> _blocks;
 
         private SlimeSpawner _slimeSpawner;
         private GameVariables _gameVariables;
@@ -39,7 +42,7 @@ namespace SlimeScience.Root
 
         private void Init()
         {
-            _uiRoot.Init();
+            //_uiRoot.Init();
 
             _gameVariables.Loaded -= Init;
 
@@ -62,9 +65,12 @@ namespace SlimeScience.Root
 #endif
         }
 
-        private void OnNextBlockOpened(BlockData blockData)
+        private void OnNextBlockOpened(BlockData blockData, int index)
         {
-            _slimeSpawner.Spawn(blockData);
+            Block currentBlock = _blocks[index];
+
+            currentBlock.OpenDoor();
+            _slimeSpawner.Spawn(blockData, currentBlock);
         }
     }
 }

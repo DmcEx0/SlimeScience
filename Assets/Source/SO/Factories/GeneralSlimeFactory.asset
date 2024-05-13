@@ -20,8 +20,18 @@ MonoBehaviour:
     _fearSpeed: 8
     _buildData:
       _prefabs:
-      - {fileID: 7823014450149763055, guid: 11eed2dfd1329ab4db9e7f27b8e628b7, type: 3}
-      - {fileID: 1860430052470036694, guid: 7a1ef113ee9a7874690eddc3ee76edf2, type: 3}
+      - {fileID: 6037890778631035633, guid: 6950d7a2d96876641a9bf7313048bee0, type: 3}
+      - {fileID: 7555953376310881813, guid: 7a5e760b7b6051945b691d220742228a, type: 3}
+      - {fileID: -6807647956982269471, guid: c4cda3624eff9c44fb29025714b43bff, type: 3}
       _hats: []
-      _bodyMaterials: []
-      _faceMaterials: []
+      _bodyMaterials:
+      - {fileID: 2100000, guid: c6978f3e6aa302f4c8666c3c2e5ddbc5, type: 2}
+      - {fileID: 2100000, guid: 103779421e8d5954b911ece73f1d7064, type: 2}
+      - {fileID: 2100000, guid: 689067fc283501d4c9d52368f9b3676a, type: 2}
+      - {fileID: 2100000, guid: f706c66a6f2b7234d8bca02ec3457d67, type: 2}
+      - {fileID: 2100000, guid: 159c3914f20b23e4f8a83847944d3855, type: 2}
+      - {fileID: 2100000, guid: 84379245c1f98944e8d36fcf1141c517, type: 2}
+      _faceMaterials:
+      - {fileID: 2100000, guid: f2203f80845a66e4ab859ec6b767fcde, type: 2}
+      - {fileID: 2100000, guid: 4d0ca150427ac2f41b5cd8b25e023e6d, type: 2}
+      - {fileID: 2100000, guid: 5b87a972518a3154aa254612d431fa98, type: 2}

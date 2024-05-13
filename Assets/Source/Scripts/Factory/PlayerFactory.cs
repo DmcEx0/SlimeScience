@@ -5,6 +5,7 @@ using SlimeScience.Configs;
 using SlimeScience.FSM;
 using SlimeScience.FSM.States.Players;
 using SlimeScience.Input;
+using UnityEngine;
 
 namespace SlimeScience.Factory
 {
@@ -13,7 +14,7 @@ namespace SlimeScience.Factory
         public Player Get()
         {
             var config = GetConfig();
-            Player instance = CreateInstance(config.Prefab);
+            Player instance = CreateInstance(config.Prefab, Vector3.zero);
 
             IInputRouter inputRouter = new PlayerInputRouter();
 

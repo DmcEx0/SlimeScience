@@ -1,5 +1,6 @@
-using SlimeScience.Characters.Slimes;
 using System.Collections;
+using SlimeScience.Characters.Slimes;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,25 +8,30 @@ namespace SlimeScience.InventorySystem
 {
     public class SlimeInventoryRenderer : MonoBehaviour
     {
-        [SerializeField] private Slider _slider;
+        private const string AmountTextFormat = "{0}/{1}";
 
-        private Inventory<Slime> _slimes;
+        [SerializeField] private Slider _slider;
+        [SerializeField] private TMP_Text _amountText;
+
+        private Inventory<Slime> _inventory;
         private Camera _camera;
         private Coroutine _smoothUpdate;
 
         private void OnEnable()
         {
-            if (_slimes != null)
+            if (_inventory != null)
             {
-                _slimes.Changed += OnInventoryChanged;
+                _inventory.Changed += OnInventoryChanged;
+                _inventory.Expanded += OnInventoryExpanded;
             }
         }
 
         private void OnDisable()
         {
-            if (_slimes != null)
+            if (_inventory != null)
             {
-                _slimes.Changed -= OnInventoryChanged;
+                _inventory.Changed -= OnInventoryChanged;
+                _inventory.Expanded -= OnInventoryExpanded;
             }
         }
 
@@ -42,28 +48,46 @@ namespace SlimeScience.InventorySystem
         public void Init(Inventory<Slime> inventory)
         {
             _camera = Camera.main;
-            _slimes = inventory;
-            _slimes.Changed += OnInventoryChanged;
+            _inventory = inventory;
+            _inventory.Changed += OnInventoryChanged;
             _slider.value = inventory.Amount;
             _slider.maxValue = inventory.MaxItems;
 
-            _smoothUpdate = StartCoroutine(SmoothUpdateSliderCoroutine());
+            _inventory.Expanded += OnInventoryExpanded;
+
+            Render();
         }
 
-        private void OnInventoryChanged()
+        public void Render()
         {
             if (_smoothUpdate != null)
             {
                 StopCoroutine(_smoothUpdate);
             }
 
+            if (_amountText != null)
+            {
+                _amountText.text = string.Format(AmountTextFormat, _inventory.Amount, _inventory.MaxItems);
+            }
+
             _smoothUpdate = StartCoroutine(SmoothUpdateSliderCoroutine());
+        }
+
+        private void OnInventoryExpanded()
+        {
+            _slider.maxValue = _inventory.MaxItems;
+            Render();
+        }
+
+        private void OnInventoryChanged()
+        {
+            Render();
         }
 
         private IEnumerator SmoothUpdateSliderCoroutine()
         {
             var startValue = _slider.value;
-            var endValue = _slimes.Amount;
+            var endValue = _inventory.Amount;
 
             var elapsedTime = 0f;
             var duration = 0.5f;

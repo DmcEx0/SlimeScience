@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1663371253027608199}
   - component: {fileID: 8828762611938829579}
   m_Layer: 0
-  m_Name: gun_distance
+  m_Name: gun_angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,11 +47,11 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: English
-    Text: Distance
+    Text: Angle
     Object: {fileID: 0}
   - Language: Russian
-    Text: "\u0414\u0430\u043B\u044C\u043D\u043E\u0441\u0442\u044C"
+    Text: "\u0423\u0433\u043E\u043B"
     Object: {fileID: 0}
   - Language: Turkish
-    Text: Mesafe
+    Text: "A\xE7\u0131"
     Object: {fileID: 0}

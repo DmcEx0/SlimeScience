@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eefb500a181f03542959150f2ad39e15, type: 3}
-  m_Name: DistanceUpgrades
+  m_Script: {fileID: 11500000, guid: 7cec75b0c4d81c041bba4264ecbc11ad, type: 3}
+  m_Name: AbsorptionUpgrades
   m_EditorClassIdentifier: 
-  _values: 0000000000000000000000000000000000000000
+  _values:
+  - _cost: 1
+    _value: 50
+  - _cost: 2
+    _value: 1000

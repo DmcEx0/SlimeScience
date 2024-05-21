@@ -7,7 +7,7 @@ namespace SlimeScience.Equipment.Guns
 {
     public class SlimeFinder
     {
-        private const int DefaultCapacity = 10;
+        private const int DefaultCapacity = 50;
 
         private LayerMask _slimeLayerMask;
         private List<Slime> _slimes = new List<Slime>();

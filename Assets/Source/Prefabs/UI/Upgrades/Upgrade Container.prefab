@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 116697532889236876}
   - component: {fileID: 116697532889236877}
   - component: {fileID: 116697532889236878}
+  - component: {fileID: 1124890254030988591}
   m_Layer: 0
   m_Name: Upgrade Container
   m_TagString: Untagged
@@ -362,6 +363,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.2901961}
   m_EffectDistance: {x: 0, y: -5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1124890254030988591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116697532889236872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 346e23d3a2822cb43a3ee6eb7446e53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lvlNumber: {fileID: 1230686125752844899}
+  _cost: {fileID: 116697532575621523}
+  _upgradeButton: {fileID: 116697532943648151}
 --- !u!1 &116697532943648145
 GameObject:
   m_ObjectHideFlags: 0

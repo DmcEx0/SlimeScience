@@ -29,6 +29,11 @@ namespace SlimeScience.Characters.Playable
             return _pullGun.ReleaseInventory(position);
         }
 
+        public void RenderInventory()
+        {
+            _pullGun.RenderInventory();
+        }
+
         protected override void Init(MobileObjectConfig config)
         {
             if (config is not PlayerConfig)

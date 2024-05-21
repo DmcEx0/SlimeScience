@@ -4490,6 +4490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrades
       objectReference: {fileID: 0}
+    - target: {fileID: 1665755904225684268, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2617451296708500016, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_text
       value: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"
@@ -4497,6 +4501,10 @@ PrefabInstance:
     - target: {fileID: 2617451296708500016, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_fontSize
       value: 83.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341304201846811597, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3670693948702221489, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_text

@@ -1,6 +1,7 @@
+using System;
+using DG.Tweening;
 using SlimeScience.Money;
 using SlimeScience.Saves;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +9,18 @@ namespace SlimeScience.Upgrades
 {
     public class UpgradesCanvas : MonoBehaviour
     {
+        private const float OpenDuration = 0.35f;
+        private const float CloseDuration = 0.35f;
+
         [SerializeField] private Button[] _closeButtons;
+        [SerializeField] private RectTransform _upgradesView;
 
         [SerializeField] private UpgradeButton _forceUpgradeButton;
         [SerializeField] private UpgradeButton _radiusUpgradeButton;
         [SerializeField] private UpgradeButton _angleUpgradeButton;
         [SerializeField] private UpgradeButton _capacityUpgradeButton;
 
+        private Tweener _closeTweener;
 
         private Wallet _wallet;
 
@@ -137,10 +143,30 @@ namespace SlimeScience.Upgrades
             MakeUpgradeAccessible(_capacityUpgradeButton, _capacityUpgradeButton.Cost);
         }
 
+        public void Show()
+        {
+            gameObject.SetActive(true);
+            _upgradesView.gameObject.SetActive(true);
+
+            _upgradesView.transform.localScale = Vector3.zero;
+
+            _upgradesView.transform
+                .DOScale(Vector3.one, OpenDuration)
+                .SetEase(Ease.OutBack);
+        }
+
         private void OnCloseClicked()
         {
-            gameObject.SetActive(false);
-            Closed?.Invoke();
+            _closeTweener?.Kill();
+
+            _closeTweener = _upgradesView.transform
+                .DOScale(Vector3.zero, CloseDuration)
+                .SetEase(Ease.InBack)
+                .OnComplete(() =>
+                {
+                    _upgradesView.gameObject.SetActive(false);
+                    Closed?.Invoke();
+                });
         }
 
         private void OnForceUpgraded(UpgradeButton upgradeButton, int cost)

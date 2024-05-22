@@ -506,6 +506,7 @@ MonoBehaviour:
   _closeButtons:
   - {fileID: 7593813094088290146}
   - {fileID: 2685584342181832118}
+  _upgradesView: {fileID: 8752264896450597519}
   _forceUpgradeButton: {fileID: 3587155248847612256}
   _radiusUpgradeButton: {fileID: 8178558915683186994}
   _angleUpgradeButton: {fileID: 692906282737114280}
@@ -596,7 +597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8752264896450597519}
   m_Layer: 0
-  m_Name: Leaderbord
+  m_Name: Upgrades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

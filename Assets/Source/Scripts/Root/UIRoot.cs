@@ -34,6 +34,11 @@ namespace SlimeScience.Root
             {
                 _openLeaderbordCanvas.onClick.AddListener(OnOpendLeaderbord);
             }
+
+            if (_leaderbordCanvas != null)
+            {
+                _leaderbordCanvas.Closed += OnLeaderbordClosed;
+            }
         }
 
         private void OnDisable()
@@ -52,6 +57,11 @@ namespace SlimeScience.Root
             {
                 _openLeaderbordCanvas.onClick.RemoveListener(OnOpendLeaderbord);
             }
+
+            if (_leaderbordCanvas != null)
+            {
+                _leaderbordCanvas.Closed -= OnLeaderbordClosed;
+            }
         }
 
         public void Init(Wallet wallet, GameVariables gameVariables)
@@ -61,26 +71,32 @@ namespace SlimeScience.Root
             _upgradesCanvas.Init(wallet, gameVariables);
             _leaderbordCanvas.Init();
 
-            //_openUpgradesCanvas.onClick.AddListener(OnOpenUpgradesClicked);
+            // _openUpgradesCanvas.onClick.AddListener(OnOpenUpgradesClicked);
             //_upgradesCanvas.Closed += OnOpenUpgradesClosed;
         }
 
         private void OnOpenUpgradesClicked()
         {
             _openUpgradesCanvas.gameObject.SetActive(false);
-            _upgradesCanvas.gameObject.SetActive(true);
-        }
-
-        private void OnOpendLeaderbord()
-        {
-            _openLeaderbordCanvas.gameObject.SetActive(false);
-            _leaderbordCanvas.gameObject.SetActive(true);
+            _upgradesCanvas.Show();
         }
 
         private void OnOpenUpgradesClosed()
         {
             _openUpgradesCanvas.gameObject.SetActive(true);
             _upgradesCanvas.gameObject.SetActive(false);
+        }
+
+        private void OnOpendLeaderbord()
+        {
+            _openLeaderbordCanvas.gameObject.SetActive(false);
+            _leaderbordCanvas.Open();
+        }
+
+        private void OnLeaderbordClosed()
+        {
+            _openLeaderbordCanvas.gameObject.SetActive(true);
+            _leaderbordCanvas.gameObject.SetActive(false);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Agava.YandexGames;
 using DG.Tweening;
@@ -16,7 +17,6 @@ namespace SlimeScience.Leaderbords
         private const float CloseDuration = 0.35f;
         private const int PlayersCount = 10;
 
-        [SerializeField] private Button _openView;
         [SerializeField] private Button[] _closeButtons;
 
         [SerializeField] private Canvas _leaderbord;
@@ -30,6 +30,8 @@ namespace SlimeScience.Leaderbords
         private Tweener _closeTweener;
 
         private ObjectPool<LBPlayerContainer> _playerContainerPool;
+
+        public event Action Closed;
 
         private void OnEnable()
         {
@@ -47,11 +49,6 @@ namespace SlimeScience.Leaderbords
             }
         }
 
-        private void OnDestroy()
-        {
-            _openView.onClick.RemoveListener(OnOpenButtonClicked);
-        }
-
         public void Init()
         {
             _playerContainerPool = new ObjectPool<LBPlayerContainer>(
@@ -59,15 +56,13 @@ namespace SlimeScience.Leaderbords
                 PlayersCount,
                 _content);
 
-            _openView.onClick.AddListener(OnOpenButtonClicked);
-
             RenderView();
 
             _authView.transform.localScale = Vector3.zero;
             _nonAuthView.transform.localScale = Vector3.zero;
         }
 
-        private void OnOpenButtonClicked()
+        public void Open()
         {
             _leaderbord.gameObject.SetActive(true);
 
@@ -78,8 +73,6 @@ namespace SlimeScience.Leaderbords
             _openTweener = activeView.transform
                 .DOScale(Vector3.one, OpenDuration)
                 .SetEase(Ease.OutBack);
-
-            _openView.gameObject.SetActive(false);
         }
 
         private void OnCloseCanvasButtonClicked()
@@ -95,9 +88,8 @@ namespace SlimeScience.Leaderbords
                     {
                         _leaderbord.gameObject.SetActive(false);
                         activeView.gameObject.SetActive(false);
+                        Closed?.Invoke();
                     });
-
-            _openView.gameObject.SetActive(true);
         }
 
         private void GetLeaderbordData()

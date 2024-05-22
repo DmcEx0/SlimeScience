@@ -14,8 +14,18 @@ namespace SlimeScience.InventorySystem
             MaxItems = maxItems;
         }
 
+        public Inventory(float maxItems)
+        {
+            MaxItems = (int)maxItems;
+        }
+
         public event Action Filled;
+
         public event Action Changed;
+        
+        public event Action Released;
+        
+        public event Action Expanded;
 
         public int MaxItems { get; private set; }
 
@@ -45,6 +55,8 @@ namespace SlimeScience.InventorySystem
             var items = new List<T>(_items);
             _items.Clear();
 
+            Released?.Invoke();
+
             return items;
         }
 
@@ -56,6 +68,7 @@ namespace SlimeScience.InventorySystem
             }
 
             MaxItems += amount;
+            Expanded?.Invoke();
         }
     }
 }

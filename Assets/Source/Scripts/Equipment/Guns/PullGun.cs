@@ -29,28 +29,44 @@ namespace SlimeScience.Equipment.Guns
                 return;
             }
 
+            if (_gameVariables != null)
+            {
+                _gameVariables.CapacityUpgraded += OnCapacityUpgraded;
+            }
+
             _slimeCatcher.Caught += OnCatchSlime;
         }
 
         private void OnDisable()
         {
+            if (_gameVariables != null)
+            {
+                _gameVariables.CapacityUpgraded -= OnCapacityUpgraded;
+            }
+
             _slimeCatcher.Caught -= OnCatchSlime;
         }
 
         public void Init(GameVariables gameVariables)
         {
+            _gameVariables = gameVariables;
+
             _slimeFinder = new SlimeFinder(_slimeLayerMask);
             _slimeCatcher = new SlimeCatcher();
 
             _inventory = new Inventory<Slime>(gameVariables.AbsorptionCapacity);
+
             _pullZoneRenderer.Init(
+                _gameVariables,
                 _inventory,
-                gameVariables.AbsorptionRadius,
-                gameVariables.AbsorptionAngle);
-            _gameVariables = gameVariables;
+                _gameVariables.AbsorptionRadius,
+                _gameVariables.AbsorptionAngle);
+
             _slimeCatcher.Caught += OnCatchSlime;
 
             _inventoryRenderer.Init(_inventory);
+
+            _gameVariables.CapacityUpgraded += OnCapacityUpgraded;
 
             _isInitialized = true;
         }
@@ -101,10 +117,21 @@ namespace SlimeScience.Equipment.Guns
             return currentSlimesInInventory;
         }
 
+        public void RenderInventory()
+        {
+            _inventoryRenderer.Render();
+        }
+
         private void OnCatchSlime(Slime slime)
         {
             slime.Disable();
             _inventory.Add(slime);
+        }
+
+        private void OnCapacityUpgraded(float newCapacity)
+        {
+            _inventory.Expand((int)newCapacity - _inventory.MaxItems);
+            RenderInventory();
         }
     }
 }

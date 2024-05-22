@@ -2,6 +2,7 @@ using Cinemachine;
 using SlimeScience.Blocks;
 using SlimeScience.Configs;
 using SlimeScience.Factory;
+using SlimeScience.Money;
 using SlimeScience.Saves;
 using SlimeScience.Spawners;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace SlimeScience.Root
 
         private SlimeSpawner _slimeSpawner;
         private GameVariables _gameVariables;
+        private Wallet _wallet;
 
         private void OnDisable()
         {
@@ -42,9 +44,10 @@ namespace SlimeScience.Root
 
         private void Init()
         {
-            //_uiRoot.Init();
-
             _gameVariables.Loaded -= Init;
+
+            _wallet = new Wallet(_gameVariables);
+            _uiRoot.Init(_wallet, _gameVariables);
 
             var player = _playerFactory.Get();
 
@@ -58,7 +61,7 @@ namespace SlimeScience.Root
             player.transform.position = Vector3.zero;
 
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
-            _releaseZone.Init();
+            _releaseZone.Init(_wallet);
 
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();

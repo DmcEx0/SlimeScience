@@ -1,43 +1,9 @@
 fileFormatVersion: 2
-guid: eb340672e17c0af4089e561b61cdc548
+guid: a334f117329a93945b248feaf0535e8d
 ModelImporter:
   serializedVersion: 22200
-  internalIDToNameTable:
-  - first:
-      74: -3510217540682870009
-    second: Attack
-  - first:
-      74: -2247782043861000306
-    second: Damage_00
-  - first:
-      74: 8425185202455632357
-    second: Damage_01
-  - first:
-      74: 3450929205030471022
-    second: Damage_02
-  - first:
-      74: -150089887294474680
-    second: Jump
-  - first:
-      74: 6209278205495687636
-    second: Idle
-  - first:
-      74: -694698267659698274
-    second: Walk
-  - first:
-      74: 192038563593961148
-    second: Rig|Slime_Walk_02
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Face
-    second: {fileID: 2100000, guid: f2203f80845a66e4ab859ec6b767fcde, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Slime_02
-    second: {fileID: 2100000, guid: c0fa344633747f9439041f9b0cc322de, type: 2}
+  internalIDToNameTable: []
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -67,10 +33,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Attack
+      name: Rig|Attack
       takeName: Rig|Attack
-      internalID: 0
-      firstFrame: 1
+      internalID: -3510217540682870009
+      firstFrame: 0
       lastFrame: 19
       wrapMode: 0
       orientationOffsetY: 0
@@ -81,7 +47,7 @@ ModelImporter:
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 1
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
@@ -96,10 +62,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Damage_00
+      name: Rig|Damage
       takeName: Rig|Damage
-      internalID: 0
-      firstFrame: 1
+      internalID: -2247782043861000306
+      firstFrame: 0
       lastFrame: 14
       wrapMode: 0
       orientationOffsetY: 0
@@ -110,7 +76,7 @@ ModelImporter:
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 1
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
@@ -125,10 +91,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Damage_01
+      name: Rig|Damage_02
       takeName: Rig|Damage_02
-      internalID: 0
-      firstFrame: 1
+      internalID: 8425185202455632357
+      firstFrame: 0
       lastFrame: 17
       wrapMode: 0
       orientationOffsetY: 0
@@ -139,7 +105,7 @@ ModelImporter:
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 1
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
@@ -154,10 +120,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Damage_02
+      name: Rig|Damage_03
       takeName: Rig|Damage_03
-      internalID: 0
-      firstFrame: 1
+      internalID: 3450929205030471022
+      firstFrame: 0
       lastFrame: 33
       wrapMode: 0
       orientationOffsetY: 0
@@ -168,7 +134,7 @@ ModelImporter:
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 1
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
@@ -183,10 +149,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Jump
+      name: Rig|jump
       takeName: Rig|jump
-      internalID: 0
-      firstFrame: 1
+      internalID: -150089887294474680
+      firstFrame: 0
       lastFrame: 25
       wrapMode: 0
       orientationOffsetY: 0
@@ -197,11 +163,11 @@ ModelImporter:
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 1
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
-      keepOriginalPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
@@ -212,9 +178,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle
+      name: Rig|Slime_Idle
       takeName: Rig|Slime_Idle
-      internalID: 0
+      internalID: 6209278205495687636
       firstFrame: 1
       lastFrame: 30
       wrapMode: 0
@@ -241,9 +207,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Walk
+      name: Rig|Slime_Walk
       takeName: Rig|Slime_Walk
-      internalID: 0
+      internalID: -694698267659698274
       firstFrame: 1
       lastFrame: 20
       wrapMode: 0
@@ -252,7 +218,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 1
@@ -282,7 +248,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
-    nodeNameCollisionStrategy: 0
+    nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -330,7 +296,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: Bone
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
@@ -338,8 +304,8 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  importBlendShapeDeformPercent: 0
-  remapMaterialsIfMaterialImportModeIsNone: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

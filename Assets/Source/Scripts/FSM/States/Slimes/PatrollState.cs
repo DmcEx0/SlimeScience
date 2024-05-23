@@ -1,5 +1,6 @@
 using SlimeScience.Characters.Slimes;
 using SlimeScience.Input;
+using SlimeScience.Utils;
 using UnityEngine;
 
 namespace SlimeScience.FSM.States.Slimes
@@ -23,10 +24,9 @@ namespace SlimeScience.FSM.States.Slimes
 
         public void Enter()
         {
-            DefineRandomDelay();
-            _accelerationTime = _currentDelay;
+            _slime.ChangeAnimationState(AnimationHashNames.Speed, 0f);
 
-            _slime.Movement.SetMovementSpeed(_slime.BaseSpeed);
+            DefineRandomDelay();
         }
 
         public void Exit()
@@ -41,16 +41,24 @@ namespace SlimeScience.FSM.States.Slimes
 
         public void Update()
         {
-            _slime.Movement.Disable();
-
             _accelerationTime += Time.deltaTime;
 
             if (_accelerationTime >= _currentDelay)
             {
+                Debug.Log("!!!");
+                _slime.ChangeAnimationState(AnimationHashNames.Speed, _slime.Movement.AgentSpeed);
+
                 _slime.Movement.Enable();
                 _slime.Movement.Move();
                 _accelerationTime = 0;
                 DefineRandomDelay();
+            }
+            
+            if (_slime.Movement.IsPlaceable && _slime.Movement.IsMoving == false)
+            {
+                Debug.Log("Disable");
+                _slime.ChangeAnimationState(AnimationHashNames.Speed, 0f);
+                _slime.Movement.Disable();
             }
         }
 

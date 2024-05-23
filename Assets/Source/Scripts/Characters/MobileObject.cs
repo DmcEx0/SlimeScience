@@ -1,15 +1,18 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using SlimeScience.FSM;
 using SlimeScience.Input;
 using SlimeScience.Configs;
+using SlimeScience.Utils;
 
 namespace SlimeScience.Characters
 {
     public abstract class MobileObject : MonoBehaviour
     {
         [SerializeField] private NavMeshAgent _agent;
-
+        [SerializeField] private Animator _animator;
+        
         private Movement _movement;
 
         private StateMachine _stateMachine;
@@ -55,7 +58,24 @@ namespace SlimeScience.Characters
         {
             rigidbody.interpolation = RigidbodyInterpolation.None;
             rigidbody.useGravity = false;
-            rigidbody.freezeRotation = true;
+            
+            rigidbody.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
+        }
+        
+        public void ChangeAnimationState<T>(int hashName, T value)
+        {
+            switch (value)
+            {
+                case float f:
+                    _animator.SetFloat(hashName, f);
+                    break;
+                case int i:
+                    _animator.SetInteger(hashName, i);
+                    break;
+                case bool b:
+                    _animator.SetBool(hashName, b);
+                    break;
+            }
         }
     }
 }

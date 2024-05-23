@@ -818,6 +818,7 @@ GameObject:
   - component: {fileID: 6496146121808491023}
   - component: {fileID: 381312945068917343}
   - component: {fileID: -5209718949716542742}
+  - component: {fileID: -7238551893809541427}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -950,6 +951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 6496146121808491023}
+  _animator: {fileID: -7238551893809541427}
   _rigidbody: {fileID: -5209718949716542742}
   _pullGun: {fileID: 3909926155591071103}
 --- !u!54 &-5209718949716542742
@@ -979,6 +981,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!95 &-7238551893809541427
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424713433293058434}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8597055488454073912
 GameObject:
   m_ObjectHideFlags: 0

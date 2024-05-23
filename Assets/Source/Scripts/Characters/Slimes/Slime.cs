@@ -9,13 +9,11 @@ namespace SlimeScience.Characters.Slimes
         private const float ResetVelocityTime = 1f;
 
         [SerializeField] private Rigidbody _rigidbody;
-
-        private float _fearSpeed;
-        private float _baseSpeed;
+        
         private Coroutine _resetVelocityCoroutine;
-
-        public float BaseSpeed => _baseSpeed;
-        public float FearSpeed => _fearSpeed;
+        
+        public float FearSpeed { get; private set; }
+        public float BaseSpeed{ get; private set; }
 
         private void OnDisable()
         {
@@ -39,8 +37,8 @@ namespace SlimeScience.Characters.Slimes
 
             SlimeConfig slimeConfig = config as SlimeConfig;
 
-            _baseSpeed = slimeConfig.BaseSpeed;
-            _fearSpeed = slimeConfig.FearSpeed;
+            BaseSpeed = slimeConfig.BaseSpeed;
+            FearSpeed = slimeConfig.FearSpeed;
         }
 
         protected override void SetRigidbodySetting(Rigidbody rigidbody)

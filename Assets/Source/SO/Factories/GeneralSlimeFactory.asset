@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: GeneralSlimeFactory
   m_EditorClassIdentifier: 
   _slimeConfig:
-    _baseSpeed: 4
+    _baseSpeed: 1
     _rotateSpeed: 200
-    _acceleration: 100
+    _acceleration: 20
     _distanceFofFear: 10
-    _fearSpeed: 8
+    _fearSpeed: 3
     _buildData:
       _prefabs:
       - {fileID: 6037890778631035633, guid: 6950d7a2d96876641a9bf7313048bee0, type: 3}

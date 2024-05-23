@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: -2680092504741794528}
   - component: {fileID: -6016411368270625345}
   - component: {fileID: -3264987895599093530}
+  - component: {fileID: -4307594872806122792}
   m_Layer: 6
   m_Name: Slime_01
   m_TagString: Untagged
@@ -298,6 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: -6016411368270625345}
+  _animator: {fileID: -4307594872806122792}
   _rigidbody: {fileID: -2680092504741794528}
 --- !u!54 &-2680092504741794528
 Rigidbody:
@@ -324,7 +326,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!195 &-6016411368270625345
 NavMeshAgent:
@@ -336,8 +338,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 8
-  m_Acceleration: 8
+  m_Speed: 3
+  m_Acceleration: 20
   avoidancePriority: 51
   m_AngularSpeed: 200
   m_StoppingDistance: 0.5
@@ -369,6 +371,27 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.261302
   m_Center: {x: 0, y: 0.25928885, z: 0}
+--- !u!95 &-4307594872806122792
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6634696804151833243}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: a334f117329a93945b248feaf0535e8d, type: 3}
+  m_Controller: {fileID: 9100000, guid: eae9ae4fca8d343449f8276eb54abd71, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7966681656521098771
 GameObject:
   m_ObjectHideFlags: 0

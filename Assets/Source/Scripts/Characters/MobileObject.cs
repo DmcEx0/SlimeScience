@@ -1,10 +1,8 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 using SlimeScience.FSM;
 using SlimeScience.Input;
 using SlimeScience.Configs;
-using SlimeScience.Utils;
 
 namespace SlimeScience.Characters
 {
@@ -30,7 +28,7 @@ namespace SlimeScience.Characters
 
             _agent.angularSpeed = config.AngularSpeed;
 
-            _stateMachine.Start();
+            Enable();
         }
 
         public void Enable()
@@ -42,9 +40,9 @@ namespace SlimeScience.Characters
 
         public void Disable()
         {
+            _agent.enabled = false;
             _movement.Disable();
             _stateMachine.Stop();
-            _agent.enabled = false;
         }
 
         protected void UpdateStateMachine()

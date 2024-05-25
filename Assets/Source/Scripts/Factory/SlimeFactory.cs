@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using SlimeScience.Input;
 using UnityEngine;
 using SlimeScience.FSM;
+using SlimeScience.FSM.States;
 using SlimeScience.FSM.States.Slimes;
 
 namespace SlimeScience.Factory
@@ -31,14 +32,19 @@ namespace SlimeScience.Factory
 
         private StateMachine CreateStateMachine(Slime instance, IDetectable detector)
         {
-            Dictionary<Type, IBehaviour> states = new Dictionary<Type, IBehaviour>()
+            StateMachine stateMachine = new StateMachine();
+            Action<StatesType> changeStateAction = stateMachine.ChangeState;
+            
+            Dictionary<StatesType, IState> states = new Dictionary<StatesType, IState>()
             {
-                [typeof(PatrollState)] = new PatrollState(instance, detector),
-                [typeof(FearState)] = new FearState(instance, detector)
+                [StatesType.Patrol] = new PatrolState(changeStateAction, instance, detector),
+                [StatesType.Fear] = new FearState(changeStateAction, instance, detector),
+                [StatesType.SlimeIdle] = new SlimeIdleState(changeStateAction, instance, detector)
             };
-
-            IBehaviour startBehaviour = new PatrollState(instance, detector);
-            return new StateMachine(startBehaviour, states);
+            
+            stateMachine.SetStates(StatesType.SlimeIdle, states);
+            
+            return stateMachine;
         }
 
         private void BuildSlime(Slime instance, SlimeBuildData buildData)

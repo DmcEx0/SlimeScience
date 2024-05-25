@@ -2,9 +2,11 @@ namespace SlimeScience.FSM.States
 {
     public enum StatesType
     {
-        Idle = 0,
-        Movement = 1,
-        Patroll = 2,
-        Fear = 3
+        None = 0,
+        PlayerIdle = 1,
+        SlimeIdle = 2,
+        Movement = 3,
+        Patrol = 4,
+        Fear = 5
     }
 }

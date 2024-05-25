@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SlimeScience.Utils
+namespace SlimeScience.Util
 {
     public static class AnimationHashNames
     {

@@ -1,35 +1,44 @@
+using System;
 using SlimeScience.Characters.Slimes;
 using SlimeScience.Input;
+using SlimeScience.Util;
 
 namespace SlimeScience.FSM.States.Slimes
 {
-    public class FearState : IBehaviour
+    public class FearState : IState
     {
         private Slime _slime;
         IDetectable _detector;
 
-        public FearState(Slime slime, IDetectable detector)
+        private Action<StatesType> _changeState;
+        
+        public FearState(Action<StatesType> changeState, Slime slime, IDetectable detector)
         {
+            _changeState = changeState;
             _slime = slime;
             _detector = detector;
         }
 
         public void Enter()
         {
+            _slime.Movement.Enable();
             _slime.Movement.SetMovementSpeed(_slime.FearSpeed);
         }
 
         public void Exit()
         {
-        }
-
-        public bool IsReady()
-        {
-            return _detector.PlayerIsNear();
+            _slime.Movement.Disable();
         }
 
         public void Update()
         {
+            _slime.ChangeAnimationState(AnimationHashNames.Speed, _slime.Movement.AgentSpeed);
+
+            if(_detector.GetPlayerIsNearStatus() == false)
+            {
+                _changeState?.Invoke(StatesType.SlimeIdle);
+            }
+            
             _slime.Movement.Move();
         }
     }

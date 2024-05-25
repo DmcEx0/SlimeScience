@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SlimeScience.Characters.Playable;
 using SlimeScience.Configs;
 using SlimeScience.FSM;
+using SlimeScience.FSM.States;
 using SlimeScience.FSM.States.Players;
 using SlimeScience.Input;
 using UnityEngine;
@@ -27,14 +28,18 @@ namespace SlimeScience.Factory
 
         private StateMachine CreateStateMachine(Player instance)
         {
-            Dictionary<Type, IBehaviour> states = new Dictionary<Type, IBehaviour>()
+            StateMachine stateMachine = new StateMachine();
+            Action<StatesType> changeStateAction = stateMachine.ChangeState;
+            
+            Dictionary<StatesType, IState> states = new Dictionary<StatesType, IState>()
             {
-                [typeof(IdleState)] = new IdleState(instance),
-                [typeof(MovementState)] = new MovementState(instance)
+                [StatesType.PlayerIdle] = new PlayerIdleState(changeStateAction, instance),
+                [StatesType.Movement] = new MovementState(changeStateAction, instance)
             };
 
-            IBehaviour startBehaviour = new IdleState(instance);
-            return new StateMachine(startBehaviour, states);
+            stateMachine.SetStates(StatesType.PlayerIdle ,states);
+            
+            return stateMachine;
         }
     }
 }

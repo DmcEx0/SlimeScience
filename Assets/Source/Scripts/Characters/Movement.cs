@@ -28,12 +28,24 @@ namespace SlimeScience.Characters
         {
             _isEnabled = true;
             _inputRouter.OnEnable();
+            
+            if(_agent.enabled == true)
+            {
+                _agent.isStopped = false;
+                _agent.updateRotation = true;
+            }
         }
 
         public void Disable()
         {
             _isEnabled = false;
             _inputRouter.OnDisable();
+            
+            if(_agent.enabled == true)
+            {
+                _agent.isStopped = true;
+                _agent.updateRotation = false;
+            }
         }
 
         public void SetMovementSpeed(float speed)
@@ -47,15 +59,6 @@ namespace SlimeScience.Characters
             {
                 return;
             }
-            
-            if(IsMoving == false)
-            {
-                _agent.isStopped = true;
-                _agent.updateRotation = false;
-            }
-            
-            _agent.isStopped = false;
-            _agent.updateRotation = true;
 
             Vector3 newDirection = _inputRouter.GetNewDirection();
 

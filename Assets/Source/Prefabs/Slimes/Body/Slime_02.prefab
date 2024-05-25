@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 6934965462943481700}
   - component: {fileID: 2828247807248364521}
   - component: {fileID: -8723978110534301659}
+  - component: {fileID: 8161257645317694763}
   m_Layer: 6
   m_Name: Slime_02
   m_TagString: Untagged
@@ -374,7 +375,7 @@ NavMeshAgent:
   m_Acceleration: 20
   avoidancePriority: 51
   m_AngularSpeed: 120
-  m_StoppingDistance: 0.5
+  m_StoppingDistance: 0.3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -424,3 +425,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8161257645317694763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682155371216616126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5dada90e0165614aa519bac8948dce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: -8723978110534301659}
+  _agent: {fileID: 6934965462943481700}

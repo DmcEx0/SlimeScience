@@ -25,7 +25,7 @@ namespace SlimeScience.Input
             if (_isEnabled == false)
                 return Vector3.zero;
 
-            if (_detector.PlayerIsNear())
+            if (_detector.GetPlayerIsNearStatus())
             {
                 return _detector.GetDirectionFromPlayer() * Step;
             }

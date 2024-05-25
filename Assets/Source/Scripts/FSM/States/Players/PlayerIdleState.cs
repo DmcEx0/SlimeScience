@@ -1,15 +1,19 @@
+using System;
 using UnityEngine;
 using SlimeScience.Characters.Playable;
 
 namespace SlimeScience.FSM.States.Players
 {
-    public class IdleState : IBehaviour
+    public class PlayerIdleState : IState
     {
         private Player _player;
 
-        public IdleState(Player player)
+        private Action<StatesType> _changeState;
+
+        public PlayerIdleState(Action<StatesType> changeState, Player player)
         {
             _player = player;
+            _changeState = changeState;
         }
 
         public void Enter()
@@ -21,14 +25,14 @@ namespace SlimeScience.FSM.States.Players
         {
         }
 
-        public bool IsReady()
-        {
-            return _player.Movement.IsMoving == false;
-        }
-
         public void Update()
         {
             _player.Movement.Move();
+            
+            if(_player.Movement.IsMoving)
+            {
+                _changeState?.Invoke(StatesType.Movement);
+            }
         }
     }
 }

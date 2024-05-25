@@ -16,7 +16,7 @@ namespace SlimeScience.Characters.Slimes
             _distanceForFear = distanceForFear;
         }
 
-        public bool PlayerIsNear()
+        public bool GetPlayerIsNearStatus()
         {
             float distance = (_playerTransform.position - _slimeTransform.position).magnitude;
 

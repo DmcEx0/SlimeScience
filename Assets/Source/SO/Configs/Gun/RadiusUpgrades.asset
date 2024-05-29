@@ -16,10 +16,10 @@ MonoBehaviour:
   - _cost: 0
     _value: 5
   - _cost: 0
-    _value: 10
+    _value: 5.5
   - _cost: 0
-    _value: 15
+    _value: 5.8
   - _cost: 0
-    _value: 20
+    _value: 6.2
   - _cost: 0
-    _value: 25
+    _value: 6.5

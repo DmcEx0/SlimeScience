@@ -8,7 +8,7 @@ namespace SlimeScience.FSM.States.Slimes
     public class FearState : IState
     {
         private Slime _slime;
-        IDetectable _detector;
+        private IDetectable _detector;
 
         private Action<StatesType> _changeState;
         

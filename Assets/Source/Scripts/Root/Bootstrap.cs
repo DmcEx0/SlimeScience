@@ -6,7 +6,9 @@ using SlimeScience.Money;
 using SlimeScience.Saves;
 using SlimeScience.Spawners;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace SlimeScience.Root
 {
@@ -19,6 +21,7 @@ namespace SlimeScience.Root
         [SerializeField] private GeneralPlayerFactory _playerFactory;
         [SerializeField] private GeneralSlimeFactory _slimeFactory;
         [SerializeField] private List<Block> _blocks;
+        [SerializeField] private NavMeshSurface _navMeshSurface;
 
         private SlimeSpawner _slimeSpawner;
         private GameVariables _gameVariables;
@@ -36,6 +39,7 @@ namespace SlimeScience.Root
 
         private void Start()
         {
+            _navMeshSurface.BuildNavMesh();
             _gameVariables = new GameVariables();
 
             _gameVariables.Loaded += Init;
@@ -74,6 +78,8 @@ namespace SlimeScience.Root
 
             currentBlock.OpenDoor();
             _slimeSpawner.Spawn(blockData, currentBlock);
+
+            _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
         }
     }
 }

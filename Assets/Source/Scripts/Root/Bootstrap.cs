@@ -1,8 +1,11 @@
+using Agava.WebUtility;
 using Cinemachine;
+using SlimeScience.Ad;
 using SlimeScience.Blocks;
 using SlimeScience.Configs;
 using SlimeScience.Factory;
 using SlimeScience.Money;
+using SlimeScience.PauseSystem;
 using SlimeScience.Saves;
 using SlimeScience.Spawners;
 using System.Collections.Generic;
@@ -13,6 +16,7 @@ namespace SlimeScience.Root
     public class Bootstrap : MonoBehaviour
     {
         [SerializeField] private UIRoot _uiRoot;
+        [SerializeField] private PauseRoot _pauseRoot;
 
         [SerializeField] private CinemachineVirtualCamera _camera;
         [SerializeField] private ReleaseZone _releaseZone;
@@ -23,10 +27,31 @@ namespace SlimeScience.Root
         private SlimeSpawner _slimeSpawner;
         private GameVariables _gameVariables;
         private Wallet _wallet;
+        private Advertisment _advertisment;
+
+        private PauseHandler _adPause = new PauseHandler();
+        private PauseHandler _systemPause = new PauseHandler();
+
+        private void OnEnable()
+        {
+            WebApplication.InBackgroundChangeEvent += OnBackgroundChange;
+
+            if (_advertisment != null)
+            {
+                _advertisment.StartIntervalShow();
+            }
+        }
 
         private void OnDisable()
         {
+            WebApplication.InBackgroundChangeEvent -= OnBackgroundChange;
+
             _releaseZone.OpenedNextBlock -= OnNextBlockOpened;
+            
+            if (_advertisment != null)
+            {
+                _advertisment.StopIntervalShow();
+            }
         }
 
         private void Awake()
@@ -63,6 +88,11 @@ namespace SlimeScience.Root
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
             _releaseZone.Init(_wallet);
 
+            _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
+
+            _advertisment = new Advertisment(this, _adPause);
+            _advertisment.StartIntervalShow();
+
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();
 #endif
@@ -74,6 +104,20 @@ namespace SlimeScience.Root
 
             currentBlock.OpenDoor();
             _slimeSpawner.Spawn(blockData, currentBlock);
+        }
+
+        private void OnBackgroundChange(bool isInBackground)
+        {
+            Debug.Log("Background change");
+
+            if (isInBackground)
+            {
+                _systemPause.Pause();
+            }
+            else
+            {
+                _systemPause.Unpause();
+            }
         }
     }
 }

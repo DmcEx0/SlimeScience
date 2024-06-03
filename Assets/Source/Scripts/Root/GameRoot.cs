@@ -1,6 +1,7 @@
 using System.Collections;
 using Agava.YandexGames;
 using SlimeScience.Saves;
+using SlimeScience.Util;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,8 +25,7 @@ namespace SlimeScience.Root
 
         private IEnumerator Start()
         {
-#if UNITY_EDITOR == false
-
+#if UNITY_WEBGL && !UNITY_EDITOR
             yield return YandexGamesSdk.Initialize();
 
             Lean.Localization.LeanLocalization.SetCurrentLanguageAll(

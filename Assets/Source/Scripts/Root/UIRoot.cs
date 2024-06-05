@@ -70,9 +70,6 @@ namespace SlimeScience.Root
             _walletRenderer.Init(wallet);
             _upgradesCanvas.Init(wallet, gameVariables);
             _leaderbordCanvas.Init();
-
-            // _openUpgradesCanvas.onClick.AddListener(OnOpenUpgradesClicked);
-            //_upgradesCanvas.Closed += OnOpenUpgradesClosed;
         }
 
         private void OnOpenUpgradesClicked()

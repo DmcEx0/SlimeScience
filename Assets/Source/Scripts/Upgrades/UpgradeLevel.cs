@@ -8,10 +8,10 @@ namespace SlimeScience.Upgrades
     {
         [SerializeField] private int _cost;
 
-        [SerializeField] private int _value;
+        [SerializeField] private float _value;
 
         public int Cost => _cost;
 
-        public int Value => _value;
+        public float Value => _value;
     }
 }

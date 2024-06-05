@@ -56,8 +56,8 @@ namespace SlimeScience.Characters
         {
             rigidbody.interpolation = RigidbodyInterpolation.None;
             rigidbody.useGravity = false;
-            
-            rigidbody.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
+
+            rigidbody.freezeRotation = true;
         }
         
         public void ChangeAnimationState<T>(int hashName, T value)

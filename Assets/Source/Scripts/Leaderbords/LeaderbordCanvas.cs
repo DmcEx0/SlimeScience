@@ -11,7 +11,7 @@ namespace SlimeScience.Leaderbords
 {
     public class LeaderbordCanvas : MonoBehaviour
     {
-        private const string LeaderbordName = "total_slimes";
+        private const string LeaderbordName = "TotalSlimes";
 
         private const float OpenDuration = 0.35f;
         private const float CloseDuration = 0.35f;
@@ -56,10 +56,10 @@ namespace SlimeScience.Leaderbords
                 PlayersCount,
                 _content);
 
-            RenderView();
-
             _authView.transform.localScale = Vector3.zero;
             _nonAuthView.transform.localScale = Vector3.zero;
+
+            RenderView();
         }
 
         public void Open()
@@ -68,6 +68,8 @@ namespace SlimeScience.Leaderbords
 
             var activeView = GetActiveView();
             activeView.gameObject.SetActive(true);
+
+            RenderView();
 
             _openTweener?.Kill();
             _openTweener = activeView.transform
@@ -103,6 +105,7 @@ namespace SlimeScience.Leaderbords
 
            Leaderboard.GetEntries(LeaderbordName, (result) =>
            {
+              Debug.Log("Leaderboard.GetEntries: " + result);
               int length = result.entries.Length > PlayersCount ? PlayersCount : result.entries.Length;
 
               if (length == 0)
@@ -152,7 +155,7 @@ namespace SlimeScience.Leaderbords
         {
 #if UNITY_EDITOR
             RenderNonAuthView();
-#else
+#elif UNITY_WEBGL && !UNITY_EDITOR
             if (PlayerAccount.IsAuthorized)
             {
                 RenderAuthView();

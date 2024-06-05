@@ -33,7 +33,7 @@ namespace SlimeScience.Saves
 
         public void SetForce(float force)
         {
-            if (force < 0 || Force < force)
+            if (force < 0 || force < Force)
             {
                 return;
             }
@@ -63,7 +63,7 @@ namespace SlimeScience.Saves
 
         public void SetCapacity(float capacity)
         {
-            if (capacity < 0 || Capacity < capacity)
+            if (capacity < 0 || capacity < Capacity)
             {
                 return;
             }

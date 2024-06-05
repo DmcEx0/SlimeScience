@@ -31,25 +31,8 @@ namespace SlimeScience.Root
             Lean.Localization.LeanLocalization.SetCurrentLanguageAll(
                 LocalizationUtil.Languages[YandexGamesSdk.Environment.i18n.lang]);
 #endif
-            _saveObject = new GameVariables();
-            _saveObject.Loaded += OnLevelLoaded;
-
-            _saveObject.Load(this);
-
-            yield return StartCoroutine(GetDataAndLoadScene());
-        }
-
-        private IEnumerator GetDataAndLoadScene()
-        {
-            yield return new WaitUntil(() => _dataReceived);
 
             yield return StartCoroutine(LoadSceneWithProgressBar());
-        }
-
-        private void OnLevelLoaded()
-        {
-            _dataReceived = true;
-            _saveObject.Loaded -= OnLevelLoaded;
         }
 
         private IEnumerator LoadSceneWithProgressBar()

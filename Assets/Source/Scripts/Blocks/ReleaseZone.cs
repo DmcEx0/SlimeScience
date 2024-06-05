@@ -3,6 +3,7 @@ using SlimeScience.Characters.Slimes;
 using SlimeScience.Configs;
 using SlimeScience.InventorySystem;
 using SlimeScience.Money;
+using SlimeScience.Saves;
 using System;
 using UnityEngine;
 
@@ -16,25 +17,28 @@ namespace SlimeScience.Blocks
         private int _indexCurrentBlock = 0;
         private Inventory<Slime> _inventory;
         private Wallet _wallet;
+        private GameVariables _gameVariables;
 
         public event Action<BlockData, int> OpenedNextBlock;
 
-        public void Init(Wallet wallet)
+        public void Init(Wallet wallet, GameVariables gameVariables)
         {
-            _inventory = new(0);
             _wallet = wallet;
+            _gameVariables = gameVariables;
+            _inventory = new(0);
 
             OpenNextBlock();
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<Player>(out Player player))
+            if (other.TryGetComponent(out Player player))
             {
                 foreach (var item in player.ReleaseSlimes(_replasePos.position))
                 {
                     _inventory.Add(item);
                     _wallet.Add(1); // TODO: Add slime price and will use "item.PlaceCost"
+                    _gameVariables.AddSlimes(1);
                 }
 
                 player.RenderInventory();

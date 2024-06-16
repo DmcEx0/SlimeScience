@@ -1,5 +1,7 @@
 using System;
 using SlimeScience.Characters.Playable;
+using SlimeScience.Characters.Slimes;
+using SlimeScience.Util;
 
 namespace SlimeScience.FSM.States.Players
 {
@@ -27,7 +29,9 @@ namespace SlimeScience.FSM.States.Players
 
         public void Update()
         {
-            if(_player.Movement.IsMoving == false)
+            _player.ChangeAnimationState(AnimationHashNames.Speed, _player.Movement.AgentSpeed);
+
+            if (_player.Movement.IsMoving == false)
             {
                 _changeState.Invoke(StatesType.PlayerIdle);
             }

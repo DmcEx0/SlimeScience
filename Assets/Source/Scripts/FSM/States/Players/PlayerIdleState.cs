@@ -1,6 +1,6 @@
 using System;
-using UnityEngine;
 using SlimeScience.Characters.Playable;
+using SlimeScience.Util;
 
 namespace SlimeScience.FSM.States.Players
 {
@@ -27,6 +27,8 @@ namespace SlimeScience.FSM.States.Players
 
         public void Update()
         {
+            _player.ChangeAnimationState(AnimationHashNames.Speed, 0f);
+
             _player.Movement.Move();
             
             if(_player.Movement.IsMoving)

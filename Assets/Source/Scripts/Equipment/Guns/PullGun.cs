@@ -6,12 +6,10 @@ using UnityEngine;
 
 namespace SlimeScience.Equipment.Guns
 {
-    [RequireComponent(typeof(SphereCollider), typeof(Rigidbody))]
+    [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class PullGun : MonoBehaviour
     {
         [SerializeField] private LayerMask _slimeLayerMask;
-        [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private SphereCollider _collider;
         [SerializeField] private PullZoneRenderer _pullZoneRenderer;
         [SerializeField] private SlimeInventoryRenderer _inventoryRenderer;
 

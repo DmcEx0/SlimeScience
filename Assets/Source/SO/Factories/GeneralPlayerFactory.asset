@@ -16,5 +16,5 @@ MonoBehaviour:
     _baseSpeed: 10
     _rotateSpeed: 300
     _acceleration: 100
-    _prefab: {fileID: 381312945068917343, guid: 30f9ff69a17606446b4dff1a58bc6ed3, type: 3}
+    _prefab: {fileID: 381312945068917343, guid: a120c46144e773849a56bf37fb2ea494, type: 3}
     _rangeVacuum: 0

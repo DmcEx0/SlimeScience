@@ -1,8 +1,8 @@
+using System.Collections.Generic;
 using SlimeScience.Characters.Slimes;
 using SlimeScience.Configs;
 using SlimeScience.Equipment.Guns;
 using SlimeScience.Saves;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SlimeScience.Characters.Playable

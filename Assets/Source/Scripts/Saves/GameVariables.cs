@@ -1,4 +1,5 @@
 
+using SlimeScience.Effects;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -11,12 +12,13 @@ namespace SlimeScience.Saves
 
         private AbsorptionModel _absorptionModel = new AbsorptionModel();
         private ProgressModel _progressModel = new ProgressModel();
+        private EffectsModel _effectsModel = new EffectsModel();
 
-        public float AbsorptionForce => _absorptionModel.Force;
+        public float AbsorptionForce => _absorptionModel.Force * _effectsModel.ForceModifier;
 
-        public float AbsorptionRadius => _absorptionModel.Radius;
+        public float AbsorptionRadius => _absorptionModel.Radius * _effectsModel.RadiusModifier;
 
-        public float AbsorptionAngle => _absorptionModel.Angle;
+        public float AbsorptionAngle => _absorptionModel.Angle * _effectsModel.AngleModifier;
 
         public float AbsorptionCapacity => _absorptionModel.Capacity;
 
@@ -116,6 +118,21 @@ namespace SlimeScience.Saves
         {
             _absorptionModel.SetCapacity(capacity);
             CapacityUpgraded?.Invoke(capacity);
+        }
+
+        public void AddModifier(EffectModifiers effect, float percent)
+        {
+            _effectsModel.AddModifier(effect, percent);
+        }
+
+        public void ResetModifier(EffectModifiers effect)
+        {
+            _effectsModel.ResetModifier(effect);
+        }   
+
+        public void RemoveModifier(EffectModifiers effect, float percent)
+        {
+            _effectsModel.RemoveModifier(effect, percent);
         }
 
         private IEnumerator SimulateInit()

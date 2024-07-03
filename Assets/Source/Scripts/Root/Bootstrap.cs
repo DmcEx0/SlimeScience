@@ -83,7 +83,7 @@ namespace SlimeScience.Root
 
         private void Start()
         {
-            _navMeshSurface.BuildNavMesh();
+            // _navMeshSurface.BuildNavMesh();
             _gameVariables = new GameVariables();
 
             _gameVariables.Loaded += Init;
@@ -129,8 +129,6 @@ namespace SlimeScience.Root
 
             currentBlock.OpenDoor();
             _slimeSpawner.Spawn(blockData, currentBlock);
-
-            _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
         }
 
         private void OnBackgroundChange(bool isInBackground)

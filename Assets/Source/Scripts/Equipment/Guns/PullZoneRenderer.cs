@@ -72,6 +72,15 @@ namespace SlimeScience.Equipment.Guns
             UpdateConeSettings(radius, angle);
         }
 
+        public void UpdateConeSettings()
+        {
+            _material.SetFloat("_Angle", _gameVariables.AbsorptionAngle);
+            _meshRenderer.gameObject.transform.localScale = new Vector3(
+                _gameVariables.AbsorptionRadius,
+                _gameVariables.AbsorptionRadius, 
+                _gameVariables.AbsorptionRadius) * ScaleCoof;
+        }
+
         private void UpdateConeSettings(float newRadius, float newAngle)
         {
             _material.SetFloat("_Angle", newAngle);

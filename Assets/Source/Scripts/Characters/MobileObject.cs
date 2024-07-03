@@ -56,6 +56,7 @@ namespace SlimeScience.Characters
         {
             rigidbody.interpolation = RigidbodyInterpolation.None;
             rigidbody.useGravity = false;
+
             rigidbody.freezeRotation = true;
         }
         

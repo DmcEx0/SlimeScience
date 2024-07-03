@@ -41,6 +41,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ColorMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -61,6 +65,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Masks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -73,10 +81,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _AllowAlphaOverflow: 0
     - _AlphaClip: 0
+    - _Angle: 9.6
     - _Blend: 0
     - _BumpScale: 1
     - _CameraDistanceFadeClose: 0
@@ -89,6 +102,7 @@ Material:
     - _Depth: 100
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
+    - _EmissionFactor: 1
     - _FlatRimEdgeSmoothness: 0.5
     - _FlatRimLightAlign: 0
     - _FlatRimSize: 0.5
@@ -136,6 +150,8 @@ Material:
     - _VertexColorsEnabled: 0
     - _ZWrite: 0
     m_Colors:
+    - _AreaColor: {r: 0.6792453, g: 0.553649, b: 0.553649, a: 0.5}
+    - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
     - _Color: {r: 0.9622641, g: 0.18650672, b: 0.10348859, a: 0.39215687}
     - _ColorDim: {r: 1, g: 1, b: 1, a: 1}
     - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
@@ -146,6 +162,10 @@ Material:
     - _FlatRimColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
+    - _LineColor: {r: 0, g: 0, b: 0, a: 0.5}
+    - _MaskedColorA: {r: 1, g: 0, b: 0, a: 1}
+    - _MaskedColorB: {r: 0, g: 1, b: 0, a: 1}
+    - _MaskedColorC: {r: 0, g: 0, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _UnityShadowColor: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
   m_BuildTextureStacks: []

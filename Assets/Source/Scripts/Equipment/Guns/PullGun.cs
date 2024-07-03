@@ -1,17 +1,17 @@
 using SlimeScience.Characters.Slimes;
+using SlimeScience.Effects;
 using SlimeScience.InventorySystem;
 using SlimeScience.Saves;
+using SlimeScience.Traps;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace SlimeScience.Equipment.Guns
 {
-    [RequireComponent(typeof(SphereCollider), typeof(Rigidbody))]
+    [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class PullGun : MonoBehaviour
     {
         [SerializeField] private LayerMask _slimeLayerMask;
-        [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private SphereCollider _collider;
         [SerializeField] private PullZoneRenderer _pullZoneRenderer;
         [SerializeField] private SlimeInventoryRenderer _inventoryRenderer;
 
@@ -19,6 +19,7 @@ namespace SlimeScience.Equipment.Guns
         private SlimeFinder _slimeFinder;
         private SlimeCatcher _slimeCatcher;
         private Inventory<Slime> _inventory;
+        private EffectSystem _effectSystem;
 
         private bool _isInitialized = false;
 
@@ -34,6 +35,12 @@ namespace SlimeScience.Equipment.Guns
                 _gameVariables.CapacityUpgraded += OnCapacityUpgraded;
             }
 
+            if (_effectSystem != null)
+            {
+                _effectSystem.EffectApplied+= OnEffectChanged;
+                _effectSystem.EffectEnded+= OnEffectChanged;
+            }
+
             _slimeCatcher.Caught += OnCatchSlime;
         }
 
@@ -44,12 +51,19 @@ namespace SlimeScience.Equipment.Guns
                 _gameVariables.CapacityUpgraded -= OnCapacityUpgraded;
             }
 
+            if (_effectSystem != null)
+            {
+                _effectSystem.EffectApplied -= OnEffectChanged;
+                _effectSystem.EffectEnded -= OnEffectChanged;
+            }
+
             _slimeCatcher.Caught -= OnCatchSlime;
         }
 
         public void Init(GameVariables gameVariables)
         {
             _gameVariables = gameVariables;
+            _effectSystem = new EffectSystem(this, gameVariables);
 
             _slimeFinder = new SlimeFinder(_slimeLayerMask);
             _slimeCatcher = new SlimeCatcher();
@@ -67,6 +81,9 @@ namespace SlimeScience.Equipment.Guns
             _inventoryRenderer.Init(_inventory);
 
             _gameVariables.CapacityUpgraded += OnCapacityUpgraded;
+
+            _effectSystem.EffectApplied += OnEffectChanged;
+            _effectSystem.EffectEnded += OnEffectChanged;
 
             _isInitialized = true;
         }
@@ -105,6 +122,19 @@ namespace SlimeScience.Equipment.Guns
             }
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out Trap trap))
+            {
+                _effectSystem.ApplyEffect(
+                    trap.Modifier,
+                    trap.ModifierPercent, 
+                    trap.DurationInSeconds);
+
+                trap.gameObject.SetActive(false);
+            }
+        }
+
         public List<Slime> ReleaseInventory(Vector3 positionToRelease)
         {
             List<Slime> currentSlimesInInventory = _inventory.Free();
@@ -132,6 +162,11 @@ namespace SlimeScience.Equipment.Guns
         {
             _inventory.Expand((int)newCapacity - _inventory.MaxItems);
             RenderInventory();
+        }
+
+        private void OnEffectChanged()
+        {
+           _pullZoneRenderer.UpdateConeSettings();
         }
     }
 }

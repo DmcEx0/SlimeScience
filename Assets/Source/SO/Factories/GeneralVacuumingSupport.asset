@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: GeneralVacuumingSupport
   m_EditorClassIdentifier: 
   _config:
-    _baseSpeed: 1
+    _baseSpeed: 2
     _rotateSpeed: 120
     _acceleration: 20
     _prefab: {fileID: 3460607539453472805, guid: 8707c75fec46321469ae22e5a71a675a, type: 3}
-    _distanceFofIncreaseSpeed: 15
-    _detectedSpeed: 10
+    _distanceFofIncreaseSpeed: 10
+    _detectedSpeed: 3.5
     _inventoryCapacity: 3

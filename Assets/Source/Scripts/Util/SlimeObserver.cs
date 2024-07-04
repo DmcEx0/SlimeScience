@@ -20,7 +20,7 @@ namespace SlimeScience.Util
             _slimes = new Collider[MaxNumberOfSlimes];
         }
 
-        public void ChangeNewSlime(TargetDetector targetDetector)
+        public bool TryGetNewSlime(TargetDetector targetDetector)
         {
             if (_slimes.Length != 0)
             {
@@ -34,9 +34,11 @@ namespace SlimeScience.Util
             if(currentSlime == null)
             {
                 Debug.LogError("Slime not found!");
+                return false;
             }
             
             targetDetector.SetTargetTransform(currentSlime.transform);
+            return true;
         }
     }
 }

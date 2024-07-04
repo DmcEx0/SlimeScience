@@ -65,7 +65,7 @@ namespace SlimeScience.Util
                 return false;
             }
 
-            if (_targetTransform == null)
+            if (_targetTransform == null || _targetTransform.gameObject.activeInHierarchy == false)
             {
                 Debug.LogWarning("Has not target transform");
                 return false;

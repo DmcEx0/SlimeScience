@@ -75,6 +75,11 @@ namespace SlimeScience.FSM.States.Slimes
                 _changeState?.Invoke(StatesType.Hunting);
             }
             
+            if (_mobileObject.Movement.IsMoving() == false)
+            {
+                _changeState?.Invoke(StatesType.Unloading);
+            }
+            
             _mobileObject.Movement.Move();
         }
     }

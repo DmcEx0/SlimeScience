@@ -36,6 +36,11 @@ namespace SlimeScience.FSM.States
             {
                 _changeState?.Invoke(StatesType.Unloading);
             }
+            
+            if (_vacuumingSupport.Movement.IsMoving() == false)
+            {
+                _changeState?.Invoke(StatesType.Unloading);
+            }
 
             _vacuumingSupport.Movement.Move();
         }

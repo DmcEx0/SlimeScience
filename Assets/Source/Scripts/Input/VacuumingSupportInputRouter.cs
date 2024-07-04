@@ -5,7 +5,7 @@ namespace SlimeScience.Input
 {
     public class VacuumingSupportInputRouter : IInputRouter
     {
-        private const float Step = 1f;
+        private const float Step = 5f;
 
         private readonly TargetDetector _targetDetector;
         private readonly SlimeObserver _slimeObserver;
@@ -31,7 +31,7 @@ namespace SlimeScience.Input
         public void OnEnable()
         {
             _isEnabled = true;
-            _slimeObserver.ChangeNewSlime(_targetDetector);
+            _slimeObserver.TryGetNewSlime(_targetDetector); //TODO: добавить обработчик при NewSlime == NULL
         }
 
         public void OnDisable()

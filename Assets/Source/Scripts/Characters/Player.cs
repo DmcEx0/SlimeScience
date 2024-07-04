@@ -1,13 +1,12 @@
 using System.Collections.Generic;
-using SlimeScience.Characters.Slimes;
 using SlimeScience.Configs;
 using SlimeScience.Equipment.Guns;
 using SlimeScience.Saves;
 using UnityEngine;
 
-namespace SlimeScience.Characters.Playable
+namespace SlimeScience.Characters
 {
-    public class Player : MobileObject
+    public class Player : MobileObject, ISeekable
     {
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private PullGun _pullGun;
@@ -24,9 +23,12 @@ namespace SlimeScience.Characters.Playable
             _pullGun.Init(gameVariables);
         }
 
-        public List<Slime> ReleaseSlimes(Vector3 position)
+        public List<Slime> ReleaseSlimes()
         {
-            return _pullGun.ReleaseInventory(position);
+            List<Slime> releaseSlimes =  new List<Slime>(_pullGun.ReleaseInventory());
+            _pullGun.RenderInventory();
+
+            return releaseSlimes;
         }
 
         public void RenderInventory()

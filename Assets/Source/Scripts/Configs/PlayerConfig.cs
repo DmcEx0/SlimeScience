@@ -1,5 +1,5 @@
 using System;
-using SlimeScience.Characters.Playable;
+using SlimeScience.Characters;
 using UnityEngine;
 
 namespace SlimeScience.Configs

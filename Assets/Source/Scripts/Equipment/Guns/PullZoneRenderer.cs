@@ -1,4 +1,4 @@
-using SlimeScience.Characters.Slimes;
+using SlimeScience.Characters;
 using SlimeScience.InventorySystem;
 using SlimeScience.Saves;
 using UnityEngine;

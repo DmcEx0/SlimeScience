@@ -11,11 +11,9 @@ namespace SlimeScience.Characters
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private Animator _animator;
         
-        private Movement _movement;
-
         private StateMachine _stateMachine;
 
-        public Movement Movement => _movement;
+        public Movement Movement { get; private set; }
 
         public void Init(StateMachine stateMachine, IInputRouter inputRouter, MobileObjectConfig config)
         {
@@ -23,8 +21,8 @@ namespace SlimeScience.Characters
 
             Init(config);
 
-            _movement = new(_agent, inputRouter);
-            _movement.SetMovementSpeed(config.BaseSpeed);
+            Movement = new(_agent, inputRouter);
+            Movement.SetMovementSpeed(config.BaseSpeed);
 
             _agent.angularSpeed = config.AngularSpeed;
 
@@ -34,15 +32,15 @@ namespace SlimeScience.Characters
         public void Enable()
         {
             _agent.enabled = true;
-            _movement.Enable();
+            Movement.Enable();
             _stateMachine.Start();
         }
 
         public void Disable()
         {
-            _agent.enabled = false;
-            _movement.Disable();
             _stateMachine.Stop();
+            _agent.enabled = false;
+            Movement.Disable();
         }
 
         protected void UpdateStateMachine()

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using SlimeScience.Characters.Playable;
+using SlimeScience.Characters;
 using SlimeScience.Configs;
 using SlimeScience.FSM;
 using SlimeScience.FSM.States;

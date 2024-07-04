@@ -2,7 +2,7 @@ using UnityEngine;
 using SlimeScience.Configs;
 using System.Collections;
 
-namespace SlimeScience.Characters.Slimes
+namespace SlimeScience.Characters
 {
     public class Slime : MobileObject
     {

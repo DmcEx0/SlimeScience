@@ -1,5 +1,4 @@
 using SlimeScience.Characters;
-using SlimeScience.Characters.Slimes;
 using SlimeScience.Configs;
 using System;
 using System.Collections.Generic;
@@ -8,6 +7,7 @@ using UnityEngine;
 using SlimeScience.FSM;
 using SlimeScience.FSM.States;
 using SlimeScience.FSM.States.Slimes;
+using SlimeScience.Util;
 
 namespace SlimeScience.Factory
 {
@@ -18,12 +18,15 @@ namespace SlimeScience.Factory
             var config = GetConfig();
             Slime instance = CreateInstance(config.BuildData.GetRandomPrefab, position);
 
-            PlayerDetector playerDetector = new PlayerDetector(instance.transform, playerTransform, config.DistanceFofFear);
-            var inputRouter = new SlimeInputRouter(playerDetector);
+            TargetDetector targetDetector = new TargetDetector(config.DistanceFofFear);
+            targetDetector.SetParentTransforms(instance.transform);
+            targetDetector.SetTargetTransform(playerTransform);
+            
+            var inputRouter = new SlimeInputRouter(targetDetector);
 
             BuildSlime(instance, config.BuildData);
 
-            instance.Init(CreateStateMachine(instance, playerDetector), inputRouter, config);
+            instance.Init(CreateStateMachine(instance, targetDetector), inputRouter, config);
 
             return instance;
         }

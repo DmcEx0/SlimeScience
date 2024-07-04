@@ -1,5 +1,5 @@
 using System;
-using SlimeScience.Characters.Slimes;
+using SlimeScience.Characters;
 using SlimeScience.Input;
 using SlimeScience.Util;
 using UnityEngine;
@@ -43,8 +43,7 @@ namespace SlimeScience.FSM.States
         {
             _slime.ChangeAnimationState(AnimationHashNames.Speed, 0f);
             
-            
-            if(_detector.GetPlayerIsNearStatus())
+            if(_detector.GetTargetIsNearStatus())
             {
                 _changeState?.Invoke(StatesType.Fear);
             }

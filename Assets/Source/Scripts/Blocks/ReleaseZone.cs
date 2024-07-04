@@ -1,5 +1,4 @@
-using SlimeScience.Characters.Playable;
-using SlimeScience.Characters.Slimes;
+using SlimeScience.Characters;
 using SlimeScience.Configs;
 using SlimeScience.InventorySystem;
 using SlimeScience.Money;
@@ -11,7 +10,6 @@ namespace SlimeScience.Blocks
 {
     public class ReleaseZone : MonoBehaviour
     {
-        [SerializeField] private Transform _replasePos;
         [SerializeField] private BlocksConfig _blocksConfig;
 
         private int _indexCurrentBlock = 0;
@@ -32,16 +30,14 @@ namespace SlimeScience.Blocks
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Player player))
+            if (other.TryGetComponent(out ISeekable seeker))
             {
-                foreach (var item in player.ReleaseSlimes(_replasePos.position))
+                foreach (var item in seeker.ReleaseSlimes())
                 {
                     _inventory.Add(item);
                     _wallet.Add(1); // TODO: Add slime price and will use "item.PlaceCost"
                     _gameVariables.AddSlimes(1);
                 }
-
-                player.RenderInventory();
             }
 
             if (_inventory.IsFull)

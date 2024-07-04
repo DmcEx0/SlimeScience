@@ -12,7 +12,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace SlimeScience.Root
 {
@@ -27,6 +26,7 @@ namespace SlimeScience.Root
         [SerializeField] private ReleaseZone _releaseZone;
         [SerializeField] private GeneralPlayerFactory _playerFactory;
         [SerializeField] private GeneralSlimeFactory _slimeFactory;
+        [SerializeField] private GeneralVacuumingSupportFactory _vacuumingSupportFactory;
         [SerializeField] private List<Block> _blocks;
         [SerializeField] private NavMeshSurface _navMeshSurface;
 
@@ -98,15 +98,12 @@ namespace SlimeScience.Root
             _uiRoot.Init(_wallet, _gameVariables);
 
             var player = _playerFactory.Get();
-
             player.InitGun(_gameVariables);
-
-            _slimeSpawner.Init(player.transform);
-
             _camera.Follow = player.transform;
             _camera.LookAt = player.transform;
-
             player.transform.position = Vector3.zero;
+            
+            _slimeSpawner.Init(player.transform);
 
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
             _releaseZone.Init(_wallet, _gameVariables);
@@ -117,6 +114,10 @@ namespace SlimeScience.Root
             _advertisment.StartIntervalShow();
 
             _intervalSave = StartCoroutine(IntervalSave());
+            
+            var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero);
+            vacuumingSupport.InitGun(_gameVariables);
+            vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
 
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();

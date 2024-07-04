@@ -8483,7 +8483,7 @@ Transform:
   m_GameObject: {fileID: 184014886}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.5, y: 0, z: -15.5}
+  m_LocalPosition: {x: -0.96, y: 0, z: -11.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8502,7 +8502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d6763080cc57344b066c92d85db4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _replasePos: {fileID: 1434073922}
   _blocksConfig: {fileID: 11400000, guid: ab55d82d8a41e0c46a03ec86f24a461b, type: 2}
 --- !u!65 &184014894
 BoxCollider:
@@ -8523,8 +8522,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9, y: 2.5227046, z: 6.3479795}
-  m_Center: {x: 4.5, y: 1.2613513, z: 0.8260102}
+  m_Size: {x: 8.269141, y: 2.5227046, z: 7.3934393}
+  m_Center: {x: -0.5995097, y: 1.2613513, z: -3.3715224}
 --- !u!114 &270984257 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8810712699265177579, guid: 5b0cc893762811d42a8408aa09dd5f1c, type: 3}
@@ -9997,6 +9996,7 @@ MonoBehaviour:
   _releaseZone: {fileID: 184014893}
   _playerFactory: {fileID: 11400000, guid: fb25459e7542ae0488955737fad4aca3, type: 2}
   _slimeFactory: {fileID: 11400000, guid: 2f0cceb16e4e16e4994491d457f49aff, type: 2}
+  _vacuumingSupportFactory: {fileID: 11400000, guid: f2c6e534a080528428b8c2125908cec3, type: 2}
   _blocks:
   - {fileID: 1596417805}
   - {fileID: 25240956}

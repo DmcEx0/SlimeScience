@@ -18,8 +18,8 @@ namespace SlimeScience.Equipment.Guns
         [SerializeField] private EffectRenderer _effectRenderer;
 
         private GameVariables _gameVariables;
-        private SlimeFinder _slimeFinder;
-        private SlimeCatcher _slimeCatcher;
+        private Finder _slimeFinder;
+        private Catcher _slimeCatcher;
         private Inventory<Slime> _inventory;
         private EffectSystem _effectSystem;
 
@@ -47,7 +47,7 @@ namespace SlimeScience.Equipment.Guns
                 _effectSystem.EffectEnded += OnEffectChanged;
             }
 
-            _slimeCatcher.Caught += OnCatchSlime;
+            _slimeCatcher.Caught += OnCatch;
         }
 
         private void OnDisable()
@@ -63,7 +63,7 @@ namespace SlimeScience.Equipment.Guns
                 _effectSystem.EffectEnded -= OnEffectChanged;
             }
 
-            _slimeCatcher.Caught -= OnCatchSlime;
+            _slimeCatcher.Caught -= OnCatch;
         }
         
         private void FixedUpdate()
@@ -73,14 +73,14 @@ namespace SlimeScience.Equipment.Guns
                 return;
             }
 
-            var slimes = _slimeFinder.GetSlimes(
+            var slimes = _slimeFinder.GetPullables(
                 transform,
                 _gameVariables.AbsorptionRadius,
                 _gameVariables.AbsorptionAngle);
 
             foreach (var slime in slimes)
             {
-                _slimeCatcher.AbsorbSlime(
+                _slimeCatcher.Absorb(
                     slime,
                     transform.position,
                     _gameVariables.AbsorptionForce);
@@ -96,7 +96,13 @@ namespace SlimeScience.Equipment.Guns
 
             if (collision.gameObject.TryGetComponent(out Slime slime))
             {
-                _slimeCatcher.CatchSlime(slime, transform.position);
+                _slimeCatcher.Catch(slime, transform.position);
+            }
+
+            if (collision.gameObject.TryGetComponent(out Bomb bomb))
+            {
+                bomb.Explode();
+                _inventory.Reset();
             }
         }
 
@@ -117,9 +123,10 @@ namespace SlimeScience.Equipment.Guns
         {
             _gameVariables = gameVariables;
             _effectSystem = new EffectSystem(this, gameVariables);
+            _effectRenderer.Init(_effectSystem);
 
-            _slimeFinder = new SlimeFinder(_slimeLayerMask);
-            _slimeCatcher = new SlimeCatcher();
+            _slimeFinder = new Finder(_slimeLayerMask);
+            _slimeCatcher = new Catcher();
 
             _inventory = new Inventory<Slime>(gameVariables.AbsorptionCapacity);
 
@@ -129,7 +136,7 @@ namespace SlimeScience.Equipment.Guns
                 _gameVariables.AbsorptionRadius,
                 _gameVariables.AbsorptionAngle);
 
-            _slimeCatcher.Caught += OnCatchSlime;
+            _slimeCatcher.Caught += OnCatch;
 
             _inventoryRenderer.Init(_inventory);
 
@@ -145,13 +152,14 @@ namespace SlimeScience.Equipment.Guns
         {
             _gameVariables = gameVariables;
             _effectSystem = new EffectSystem(this, gameVariables);
+            _effectRenderer.Init(_effectSystem);
 
-            _slimeFinder = new SlimeFinder(_slimeLayerMask);
-            _slimeCatcher = new SlimeCatcher();
+            _slimeFinder = new Finder(_slimeLayerMask);
+            _slimeCatcher = new Catcher();
 
             _inventory = new Inventory<Slime>(inventoryCapacity);
 
-            _slimeCatcher.Caught += OnCatchSlime;
+            _slimeCatcher.Caught += OnCatch;
             _gameVariables.CapacityUpgraded += OnCapacityUpgraded;
 
             _isInitialized = true;
@@ -172,8 +180,15 @@ namespace SlimeScience.Equipment.Guns
             }
         }
 
-        private void OnCatchSlime(Slime slime)
+        private void OnCatch(IPullable pullable)
         {
+            if (pullable is not Slime)
+            {
+                return;
+            }
+
+            Slime slime = pullable as Slime;
+
             slime.Disable();
             _inventory.Add(slime);
             Catched?.Invoke();
@@ -188,6 +203,7 @@ namespace SlimeScience.Equipment.Guns
         private void OnEffectChanged()
         {
            _pullZoneRenderer.UpdateConeSettings();
+           _effectRenderer.Render();
         }
     }
 }

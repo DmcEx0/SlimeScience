@@ -27,10 +27,12 @@ namespace SlimeScience.Root
         [SerializeField] private GeneralPlayerFactory _playerFactory;
         [SerializeField] private GeneralSlimeFactory _slimeFactory;
         [SerializeField] private GeneralVacuumingSupportFactory _vacuumingSupportFactory;
+        [SerializeField] private GeneralBombFactory _bombFactory;
         [SerializeField] private List<Block> _blocks;
         [SerializeField] private NavMeshSurface _navMeshSurface;
 
         private SlimeSpawner _slimeSpawner;
+        private BombSpawner _bombSpawner;
         private GameVariables _gameVariables;
         private Wallet _wallet;
         private Advertisment _advertisment;
@@ -76,11 +78,6 @@ namespace SlimeScience.Root
             }
         }
 
-        private void Awake()
-        {
-            _slimeSpawner = new SlimeSpawner(_slimeFactory);
-        }
-
         private void Start()
         {
             // _navMeshSurface.BuildNavMesh();
@@ -94,7 +91,10 @@ namespace SlimeScience.Root
         {
             _gameVariables.Loaded -= Init;
 
+            _slimeSpawner = new SlimeSpawner(_slimeFactory);
+            _bombSpawner = new BombSpawner(_bombFactory);
             _wallet = new Wallet(_gameVariables);
+
             _uiRoot.Init(_wallet, _gameVariables);
 
             var player = _playerFactory.Get();
@@ -102,7 +102,7 @@ namespace SlimeScience.Root
             _camera.Follow = player.transform;
             _camera.LookAt = player.transform;
             player.transform.position = Vector3.zero;
-            
+
             _slimeSpawner.Init(player.transform);
 
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
@@ -118,7 +118,6 @@ namespace SlimeScience.Root
             var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero);
             vacuumingSupport.InitGun(_gameVariables);
             vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
-
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();
 #endif
@@ -130,6 +129,7 @@ namespace SlimeScience.Root
 
             currentBlock.OpenDoor();
             _slimeSpawner.Spawn(blockData, currentBlock);
+            _bombSpawner.Spawn(blockData, currentBlock);
         }
 
         private void OnBackgroundChange(bool isInBackground)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.2066109, g: 0.12658736, b: 0.1585471, a: 1}
+  m_IndirectSpecularColor: {r: 0.20624694, g: 0.12681435, b: 0.15901247, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9997,6 +9997,7 @@ MonoBehaviour:
   _playerFactory: {fileID: 11400000, guid: fb25459e7542ae0488955737fad4aca3, type: 2}
   _slimeFactory: {fileID: 11400000, guid: 2f0cceb16e4e16e4994491d457f49aff, type: 2}
   _vacuumingSupportFactory: {fileID: 11400000, guid: f2c6e534a080528428b8c2125908cec3, type: 2}
+  _bombFactory: {fileID: 11400000, guid: 97fe8eb5ed76d804a8a14a727b5da16d, type: 2}
   _blocks:
   - {fileID: 1596417805}
   - {fileID: 25240956}

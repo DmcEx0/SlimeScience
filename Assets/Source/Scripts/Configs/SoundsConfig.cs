@@ -8,5 +8,6 @@ namespace SlimeScience.Configs
         [field:SerializeField] public AudioClip TapUIClickSound { get; private set; }
         [field:SerializeField] public AudioClip SlimesCatchSound { get; private set; }
         [field:SerializeField] public AudioClip BackgroundMusic { get; private set; }
+        [field:SerializeField] public AudioClip UnloadSlime { get; private set; }
     }
 }

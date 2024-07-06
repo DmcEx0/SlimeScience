@@ -15,3 +15,4 @@ MonoBehaviour:
   <TapUIClickSound>k__BackingField: {fileID: 8300000, guid: 033380bcdc599e04c9a130443fc55300, type: 3}
   <SlimesCatchSound>k__BackingField: {fileID: 8300000, guid: f18ed366dad936c468a929044d2709fb, type: 3}
   <BackgroundMusic>k__BackingField: {fileID: 8300000, guid: aa0e84c3acd16c143ba90c1a6e0f64f4, type: 3}
+  <UnloadSlime>k__BackingField: {fileID: 8300000, guid: beda3db818081474480885ac0bad609c, type: 3}

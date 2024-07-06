@@ -4,6 +4,7 @@ using SlimeScience.InventorySystem;
 using SlimeScience.Money;
 using SlimeScience.Saves;
 using System;
+using SlimeScience.Util;
 using UnityEngine;
 
 namespace SlimeScience.Blocks
@@ -32,6 +33,11 @@ namespace SlimeScience.Blocks
         {
             if (other.TryGetComponent(out ISeekable seeker))
             {
+                if(seeker is Player)
+                {
+                    SoundsManager.PlayUnloadSlime();
+                }
+                
                 foreach (var item in seeker.ReleaseSlimes())
                 {
                     _inventory.Add(item);

@@ -24,8 +24,14 @@ namespace SlimeScience.Util
              s_audioSource.PlayOneShot(s_config.SlimesCatchSound);
          }
          
+         public static void PlayUnloadSlime()
+         {
+             s_audioSource.PlayOneShot(s_config.UnloadSlime);
+         }
+         
          public static void PlayBgMusic()
          {
+             s_audioSource.clip = s_config.BackgroundMusic;
              s_audioSource.loop = true;
              s_audioSource.Play();
          }

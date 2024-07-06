@@ -16,6 +16,7 @@ namespace SlimeScience.Equipment.Guns
         [SerializeField] private LayerMask _slimeLayerMask;
         [SerializeField] private PullZoneRenderer _pullZoneRenderer;
         [SerializeField] private SlimeInventoryRenderer _inventoryRenderer;
+        [SerializeField] private EffectRenderer _effectRenderer;
 
         private GameVariables _gameVariables;
         private SlimeFinder _slimeFinder;
@@ -189,11 +190,7 @@ namespace SlimeScience.Equipment.Guns
 
         private void OnEffectChanged()
         {
-            if (_pullZoneRenderer != null)
-            {
-                _pullZoneRenderer.UpdateConeSettings();
-            }
+           _pullZoneRenderer.UpdateConeSettings();
         }
-
     }
 }

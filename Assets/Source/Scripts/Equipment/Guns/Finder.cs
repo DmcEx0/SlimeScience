@@ -5,20 +5,20 @@ using UnityEngine;
 
 namespace SlimeScience.Equipment.Guns
 {
-    public class SlimeFinder
+    public class Finder
     {
         private const int DefaultCapacity = 50;
 
         private LayerMask _slimeLayerMask;
-        private List<Slime> _slimes = new List<Slime>();
+        private List<IPullable> _slimes = new List<IPullable>();
         private Collider[] _colliders = new Collider[DefaultCapacity];
 
-        public SlimeFinder(LayerMask slimeLayerMask)
+        public Finder(LayerMask slimeLayerMask)
         {
             _slimeLayerMask = slimeLayerMask;
         }
 
-        public List<Slime> GetSlimes(Transform transform, float radius, float angle)
+        public List<IPullable> GetPullables(Transform transform, float radius, float angle)
         {
             _slimes.Clear();
 
@@ -29,11 +29,12 @@ namespace SlimeScience.Equipment.Guns
                 var collider = _colliders[i];
 
                 Vector3 direction = collider.transform.position - transform.position;
+
                 if (Vector3.Angle(direction, transform.forward) < angle)
                 {
-                    if (collider.TryGetComponent(out Slime slime))
+                    if (collider.TryGetComponent(out IPullable pullable))
                     {
-                        _slimes.Add(slime);
+                        _slimes.Add(pullable);
                     }
                 }
             }

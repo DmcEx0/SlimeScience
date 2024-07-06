@@ -5,6 +5,7 @@ using SlimeScience.InventorySystem;
 using SlimeScience.Saves;
 using SlimeScience.Traps;
 using System.Collections.Generic;
+using SlimeScience.Util;
 using UnityEngine;
 
 namespace SlimeScience.Equipment.Guns
@@ -176,6 +177,8 @@ namespace SlimeScience.Equipment.Guns
             slime.Disable();
             _inventory.Add(slime);
             Catched?.Invoke();
+            
+            SoundsHandler.PlaySlimeCatch();
         }
 
         private void OnCapacityUpgraded(float newCapacity)

@@ -10,7 +10,7 @@ using SlimeScience.Saves;
 using SlimeScience.Spawners;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.AI.Navigation;
+using SlimeScience.Util;
 using UnityEngine;
 
 namespace SlimeScience.Root
@@ -28,7 +28,9 @@ namespace SlimeScience.Root
         [SerializeField] private GeneralSlimeFactory _slimeFactory;
         [SerializeField] private GeneralVacuumingSupportFactory _vacuumingSupportFactory;
         [SerializeField] private List<Block> _blocks;
-        [SerializeField] private NavMeshSurface _navMeshSurface;
+
+        [SerializeField] private SoundsConfig _soundsConfig;
+        [SerializeField] private AudioSource _audioSource;
 
         private SlimeSpawner _slimeSpawner;
         private GameVariables _gameVariables;
@@ -79,11 +81,11 @@ namespace SlimeScience.Root
         private void Awake()
         {
             _slimeSpawner = new SlimeSpawner(_slimeFactory);
+            SoundsHandler.Initialize(_soundsConfig, _audioSource);
         }
 
         private void Start()
         {
-            // _navMeshSurface.BuildNavMesh();
             _gameVariables = new GameVariables();
 
             _gameVariables.Loaded += Init;

@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using SlimeScience.Money;
 using SlimeScience.Saves;
+using SlimeScience.Util;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -167,6 +168,8 @@ namespace SlimeScience.Upgrades
                     _upgradesView.gameObject.SetActive(false);
                     Closed?.Invoke();
                 });
+            
+            SoundsHandler.PlayTapUI();
         }
 
         private void OnForceUpgraded(UpgradeButton upgradeButton, int cost)
@@ -175,6 +178,8 @@ namespace SlimeScience.Upgrades
                 _gameVariables.UpgradeForce,
                 upgradeButton,
                 cost);
+            
+            SoundsHandler.PlayTapUI();
         }
 
         private void OnRadiusUpgraded(UpgradeButton upgradeButton, int cost)
@@ -183,6 +188,8 @@ namespace SlimeScience.Upgrades
                 _gameVariables.UpgradeRadius,
                 upgradeButton,
                 cost);
+            
+            SoundsHandler.PlayTapUI();
         }
 
         private void OnAngleUpgraded(UpgradeButton upgradeButton, int cost)
@@ -191,6 +198,8 @@ namespace SlimeScience.Upgrades
                 _gameVariables.UpgradeAngle,
                 upgradeButton,
                 cost);
+            
+            SoundsHandler.PlayTapUI();
         }
 
         private void OnCapacityUpgraded(UpgradeButton upgradeButton, int cost)
@@ -199,6 +208,8 @@ namespace SlimeScience.Upgrades
                 _gameVariables.UpgradeCapacity,
                 upgradeButton,
                 cost);
+            
+            SoundsHandler.PlayTapUI();
         }
 
         private void UpgradeClick(Action<float> upgradeCallback, UpgradeButton upgradeButton, int cost)
@@ -211,6 +222,8 @@ namespace SlimeScience.Upgrades
             }
 
             UpdateUI();
+            
+            SoundsHandler.PlayTapUI();
         }
     }
 }

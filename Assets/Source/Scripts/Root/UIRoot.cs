@@ -3,6 +3,7 @@ using SlimeScience.Leaderbords;
 using SlimeScience.Money;
 using SlimeScience.Saves;
 using SlimeScience.Upgrades;
+using SlimeScience.Util;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -76,6 +77,7 @@ namespace SlimeScience.Root
         {
             _openUpgradesCanvas.gameObject.SetActive(false);
             _upgradesCanvas.Show();
+            SoundsHandler.PlayTapUI();
         }
 
         private void OnOpenUpgradesClosed()
@@ -88,6 +90,7 @@ namespace SlimeScience.Root
         {
             _openLeaderbordCanvas.gameObject.SetActive(false);
             _leaderbordCanvas.Open();
+            SoundsHandler.PlayTapUI();
         }
 
         private void OnLeaderbordClosed()

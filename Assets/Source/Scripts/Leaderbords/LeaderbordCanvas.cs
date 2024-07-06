@@ -4,6 +4,7 @@ using Agava.YandexGames;
 using DG.Tweening;
 using Lean.Localization;
 using SlimeScience.Pool;
+using SlimeScience.Util;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -92,6 +93,8 @@ namespace SlimeScience.Leaderbords
                         activeView.gameObject.SetActive(false);
                         Closed?.Invoke();
                     });
+            
+            SoundsHandler.PlayTapUI();
         }
 
         private void GetLeaderbordData()

@@ -111,6 +111,8 @@ namespace SlimeScience.Equipment.Guns
                     trap.DurationInSeconds);
 
                 trap.gameObject.SetActive(false);
+                
+                SoundsManager.PlayTrap();
             }
         }
 

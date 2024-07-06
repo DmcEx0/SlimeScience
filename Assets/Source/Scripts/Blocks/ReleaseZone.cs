@@ -4,6 +4,7 @@ using SlimeScience.InventorySystem;
 using SlimeScience.Money;
 using SlimeScience.Saves;
 using System;
+using System.Collections.Generic;
 using SlimeScience.Util;
 using UnityEngine;
 
@@ -33,16 +34,21 @@ namespace SlimeScience.Blocks
         {
             if (other.TryGetComponent(out ISeekable seeker))
             {
-                if(seeker is Player)
-                {
-                    SoundsManager.PlayUnloadSlime();
-                }
+                List<Slime> releaseSimes = seeker.ReleaseSlimes();
                 
-                foreach (var item in seeker.ReleaseSlimes())
+                if(releaseSimes.Count != 0)
                 {
-                    _inventory.Add(item);
-                    _wallet.Add(1); // TODO: Add slime price and will use "item.PlaceCost"
-                    _gameVariables.AddSlimes(1);
+                    if(seeker is Player)
+                    {
+                        SoundsManager.PlayUnloadSlime();
+                    }
+                
+                    foreach (var item in releaseSimes)
+                    {
+                        _inventory.Add(item);
+                        _wallet.Add(1); // TODO: Add slime price and will use "item.PlaceCost"
+                        _gameVariables.AddSlimes(1);
+                    }
                 }
             }
 
@@ -52,6 +58,14 @@ namespace SlimeScience.Blocks
 
         private void OpenNextBlock()
         {
+            if(_indexCurrentBlock != 0)
+                SoundsManager.PlayLevelOpened();
+            
+            if(_indexCurrentBlock + 1 >=_blocksConfig.BlocksData.Count)
+            {
+                return;
+            }
+            
             OpenedNextBlock?.Invoke(_blocksConfig.BlocksData[_indexCurrentBlock], _indexCurrentBlock);
 
             _indexCurrentBlock++;

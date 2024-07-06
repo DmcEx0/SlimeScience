@@ -39,8 +39,8 @@ namespace SlimeScience.Characters
         public void Disable()
         {
             _stateMachine.Stop();
-            _agent.enabled = false;
             Movement.Disable();
+            _agent.enabled = false;
         }
 
         protected void UpdateStateMachine()

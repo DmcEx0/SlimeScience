@@ -66,17 +66,12 @@ namespace SlimeScience.Characters
 
         public bool IsEnabled()
         {
-            return _agent.isOnNavMesh || _isEnabled;
+            return _agent.isOnNavMesh || _isEnabled || _agent.isActiveAndEnabled;
         }
 
         public bool IsMoving()
         {
-            if (_agent.isActiveAndEnabled)
-            {
-                return _agent.remainingDistance > _agent.stoppingDistance;
-            }
-
-            return false;
+            return _agent.remainingDistance > _agent.stoppingDistance;
         }
     }
 }

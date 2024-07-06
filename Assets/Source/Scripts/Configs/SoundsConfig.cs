@@ -9,5 +9,7 @@ namespace SlimeScience.Configs
         [field:SerializeField] public AudioClip SlimesCatchSound { get; private set; }
         [field:SerializeField] public AudioClip BackgroundMusic { get; private set; }
         [field:SerializeField] public AudioClip UnloadSlime { get; private set; }
+        [field:SerializeField] public AudioClip Trap { get; private set; }
+        [field:SerializeField] public AudioClip LevelOpened { get; private set; }
     }
 }

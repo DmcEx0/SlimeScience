@@ -28,6 +28,14 @@ namespace SlimeScience.Util
          {
              s_audioSource.PlayOneShot(s_config.UnloadSlime);
          }
+         public static void PlayTrap()
+         {
+             s_audioSource.PlayOneShot(s_config.Trap);
+         }      
+         public static void PlayLevelOpened()
+         {
+             s_audioSource.PlayOneShot(s_config.LevelOpened);
+         }
          
          public static void PlayBgMusic()
          {

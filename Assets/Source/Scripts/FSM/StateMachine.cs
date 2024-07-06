@@ -10,6 +10,8 @@ namespace SlimeScience.FSM
         private IState _currentState;
         private StatesType _startState;
 
+        private bool _isStoped;
+
         public void SetStates(StatesType startState, Dictionary<StatesType, IState> states)
         {
             _states = states;
@@ -21,15 +23,22 @@ namespace SlimeScience.FSM
         public void Start()
         {
             _currentState.Enter();
+            _isStoped = false;
         }
 
         public void Stop()
         {
             _currentState.Exit();
+            _isStoped = true;
         }
 
         public void Update()
         {
+            if(_isStoped)
+            {
+                return;
+            }
+            
             _currentState?.Update();
         }
 

@@ -25,10 +25,7 @@ namespace SlimeScience.FSM.States.Slimes
         {
             _mobileObject.Movement.Enable();
 
-            if (_mobileObject.Movement.IsMoving() == false)
-            {
-                _mobileObject.Movement.Move();
-            }
+            _mobileObject.Movement.Move();
 
             if (_mobileObject is VacuumingSupport)
             {
@@ -56,7 +53,7 @@ namespace SlimeScience.FSM.States.Slimes
         {
             _mobileObject.ChangeAnimationState(AnimationHashNames.Speed,
                 _mobileObject.Movement.AgentSpeed);
-            
+
             if (_detector.GetTargetIsNearStatus())
             {
                 _changeState?.Invoke(StatesType.Fear);
@@ -74,12 +71,12 @@ namespace SlimeScience.FSM.States.Slimes
             {
                 _changeState?.Invoke(StatesType.Hunting);
             }
-            
+
             if (_mobileObject.Movement.IsMoving() == false)
             {
                 _changeState?.Invoke(StatesType.Unloading);
             }
-            
+
             _mobileObject.Movement.Move();
         }
     }

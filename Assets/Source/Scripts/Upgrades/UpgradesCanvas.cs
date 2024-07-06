@@ -169,7 +169,7 @@ namespace SlimeScience.Upgrades
                     Closed?.Invoke();
                 });
             
-            SoundsHandler.PlayTapUI();
+            SoundsManager.PlayTapUI();
         }
 
         private void OnForceUpgraded(UpgradeButton upgradeButton, int cost)
@@ -179,7 +179,7 @@ namespace SlimeScience.Upgrades
                 upgradeButton,
                 cost);
             
-            SoundsHandler.PlayTapUI();
+            SoundsManager.PlayTapUI();
         }
 
         private void OnRadiusUpgraded(UpgradeButton upgradeButton, int cost)
@@ -189,7 +189,7 @@ namespace SlimeScience.Upgrades
                 upgradeButton,
                 cost);
             
-            SoundsHandler.PlayTapUI();
+            SoundsManager.PlayTapUI();
         }
 
         private void OnAngleUpgraded(UpgradeButton upgradeButton, int cost)
@@ -199,7 +199,7 @@ namespace SlimeScience.Upgrades
                 upgradeButton,
                 cost);
             
-            SoundsHandler.PlayTapUI();
+            SoundsManager.PlayTapUI();
         }
 
         private void OnCapacityUpgraded(UpgradeButton upgradeButton, int cost)
@@ -209,7 +209,7 @@ namespace SlimeScience.Upgrades
                 upgradeButton,
                 cost);
             
-            SoundsHandler.PlayTapUI();
+            SoundsManager.PlayTapUI();
         }
 
         private void UpgradeClick(Action<float> upgradeCallback, UpgradeButton upgradeButton, int cost)
@@ -223,7 +223,7 @@ namespace SlimeScience.Upgrades
 
             UpdateUI();
             
-            SoundsHandler.PlayTapUI();
+            SoundsManager.PlayTapUI();
         }
     }
 }

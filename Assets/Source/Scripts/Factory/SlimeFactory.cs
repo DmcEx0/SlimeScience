@@ -45,7 +45,7 @@ namespace SlimeScience.Factory
                 [StatesType.SlimeIdle] = new SlimeIdleState(changeStateAction, instance, detector)
             };
             
-            stateMachine.SetStates(StatesType.SlimeIdle, states);
+            stateMachine.SetStates(StatesType.Patrol, states);
             
             return stateMachine;
         }

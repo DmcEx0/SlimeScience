@@ -1,4 +1,5 @@
 using SlimeScience.PauseSystem;
+using SlimeScience.Util;
 using UnityEngine;
 
 namespace SlimeScience.Root
@@ -54,6 +55,8 @@ namespace SlimeScience.Root
                     return;
                 }
             }
+            
+            SoundsManager.PauseBgMusic();
         }
 
         private void Unpause()
@@ -66,6 +69,7 @@ namespace SlimeScience.Root
                 }
             }
 
+            SoundsManager.PlayBgMusic();
             Time.timeScale = UnpauseTimeScale;
         }
 

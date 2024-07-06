@@ -29,15 +29,15 @@ namespace SlimeScience.Util
 
             int numberOfSlimes = Physics.OverlapSphereNonAlloc(_vacuumingTransform.position, Radius, _slimes, 1 << SlimeLayer);
 
-            Collider currentSlime = _slimes[Random.Range(0, numberOfSlimes)];
+            Collider newSlime = _slimes[Random.Range(0, numberOfSlimes)];
             
-            if(currentSlime == null)
+            if(newSlime == null)
             {
                 Debug.LogError("Slime not found!");
                 return false;
             }
             
-            targetDetector.SetTargetTransform(currentSlime.transform);
+            targetDetector.SetTargetTransform(newSlime.transform);
             return true;
         }
     }

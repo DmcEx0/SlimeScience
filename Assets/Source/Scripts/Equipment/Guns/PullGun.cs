@@ -178,7 +178,7 @@ namespace SlimeScience.Equipment.Guns
             _inventory.Add(slime);
             Catched?.Invoke();
             
-            SoundsHandler.PlaySlimeCatch();
+            SoundsManager.PlaySlimeCatch();
         }
 
         private void OnCapacityUpgraded(float newCapacity)

@@ -77,7 +77,7 @@ namespace SlimeScience.Root
         {
             _openUpgradesCanvas.gameObject.SetActive(false);
             _upgradesCanvas.Show();
-            SoundsHandler.PlayTapUI();
+            SoundsManager.PlayTapUI();
         }
 
         private void OnOpenUpgradesClosed()
@@ -90,7 +90,7 @@ namespace SlimeScience.Root
         {
             _openLeaderbordCanvas.gameObject.SetActive(false);
             _leaderbordCanvas.Open();
-            SoundsHandler.PlayTapUI();
+            SoundsManager.PlayTapUI();
         }
 
         private void OnLeaderbordClosed()

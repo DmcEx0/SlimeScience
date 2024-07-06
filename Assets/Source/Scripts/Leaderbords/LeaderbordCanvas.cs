@@ -94,7 +94,7 @@ namespace SlimeScience.Leaderbords
                         Closed?.Invoke();
                     });
             
-            SoundsHandler.PlayTapUI();
+            SoundsManager.PlayTapUI();
         }
 
         private void GetLeaderbordData()

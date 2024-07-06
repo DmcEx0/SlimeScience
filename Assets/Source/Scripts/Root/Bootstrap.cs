@@ -81,7 +81,7 @@ namespace SlimeScience.Root
         private void Awake()
         {
             _slimeSpawner = new SlimeSpawner(_slimeFactory);
-            SoundsHandler.Initialize(_soundsConfig, _audioSource);
+            SoundsManager.Initialize(_soundsConfig, _audioSource);
         }
 
         private void Start()
@@ -90,6 +90,8 @@ namespace SlimeScience.Root
 
             _gameVariables.Loaded += Init;
             _gameVariables.Load(this);
+            
+            SoundsManager.PlayBgMusic();
         }
 
         private void Init()

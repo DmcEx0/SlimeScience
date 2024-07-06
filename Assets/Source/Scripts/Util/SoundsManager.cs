@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SlimeScience.Util
 {
-    public static class SoundsHandler
+    public static class SoundsManager
     {
          private static SoundsConfig s_config;
          private static AudioSource s_audioSource;
@@ -22,6 +22,17 @@ namespace SlimeScience.Util
          public static void PlaySlimeCatch()
          {
              s_audioSource.PlayOneShot(s_config.SlimesCatchSound);
+         }
+         
+         public static void PlayBgMusic()
+         {
+             s_audioSource.loop = true;
+             s_audioSource.Play();
+         }
+         
+         public static void PauseBgMusic()
+         {
+             s_audioSource.Pause();
          }
     }
 }

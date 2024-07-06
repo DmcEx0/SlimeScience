@@ -2,6 +2,7 @@ using System;
 using SlimeScience.Characters;
 using SlimeScience.Input;
 using SlimeScience.Util;
+using UnityEngine;
 
 namespace SlimeScience.FSM.States.Slimes
 {
@@ -39,7 +40,7 @@ namespace SlimeScience.FSM.States.Slimes
                 _changeState?.Invoke(StatesType.SlimeIdle);
             }
             
-            if(_slime.Movement.IsMoving())
+            if( _slime.Movement.IsEnabled())
             {
                 _slime.Movement.Move();
             }

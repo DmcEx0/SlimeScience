@@ -57,9 +57,16 @@ namespace SlimeScience.FSM.States.Slimes
             if (_detector.GetTargetIsNearStatus())
             {
                 _changeState?.Invoke(StatesType.Fear);
+                return;
             }
 
-            if (_mobileObject.Movement.IsMoving() == false)
+            if (_mobileObject.Movement.IsEnabled() == false)
+            {
+                _changeState?.Invoke(StatesType.SlimeIdle);
+                return;
+            }
+            
+            if(_mobileObject.Movement.IsMoving() == false)
             {
                 _changeState?.Invoke(StatesType.SlimeIdle);
             }
@@ -70,11 +77,13 @@ namespace SlimeScience.FSM.States.Slimes
             if (_detector.GetTargetIsNearStatus())
             {
                 _changeState?.Invoke(StatesType.Hunting);
+                return;
             }
 
             if (_mobileObject.Movement.IsMoving() == false)
             {
                 _changeState?.Invoke(StatesType.Unloading);
+                return;
             }
 
             _mobileObject.Movement.Move();

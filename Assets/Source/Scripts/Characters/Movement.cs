@@ -11,7 +11,7 @@ namespace SlimeScience.Characters
         private IInputRouter _inputRouter;
 
         private bool _isEnabled;
-        
+
         public float AgentSpeed => _agent.velocity.magnitude;
 
         public Movement(NavMeshAgent agent, IInputRouter inputRouter)
@@ -53,7 +53,10 @@ namespace SlimeScience.Characters
         {
             Vector3 newDirection = _inputRouter.GetNewDirection();
 
-            _agent.SetDestination(_agent.transform.position + newDirection);
+            if (_agent.isOnNavMesh)
+            {
+                _agent.SetDestination(_agent.transform.position + newDirection);
+            }
         }
 
         public void Move(Vector3 endPosition)
@@ -61,14 +64,19 @@ namespace SlimeScience.Characters
             _agent.SetDestination(endPosition);
         }
 
+        public bool IsEnabled()
+        {
+            return _agent.isOnNavMesh || _isEnabled;
+        }
+
         public bool IsMoving()
         {
-            if (_agent.isOnNavMesh == false || _isEnabled == false)
+            if (_agent.isActiveAndEnabled)
             {
-                return false;
+                return _agent.remainingDistance > _agent.stoppingDistance;
             }
-            
-            return _agent.remainingDistance > _agent.stoppingDistance;
+
+            return false;
         }
     }
 }

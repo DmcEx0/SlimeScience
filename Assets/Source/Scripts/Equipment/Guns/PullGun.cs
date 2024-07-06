@@ -1,4 +1,5 @@
-using SlimeScience.Characters.Slimes;
+using System;
+using SlimeScience.Characters;
 using SlimeScience.Effects;
 using SlimeScience.InventorySystem;
 using SlimeScience.Saves;
@@ -24,6 +25,10 @@ namespace SlimeScience.Equipment.Guns
 
         private bool _isInitialized = false;
 
+        public event Action Catched;
+
+        public bool InventoryIsFull => _inventory.IsFull;
+
         private void OnEnable()
         {
             if (_isInitialized == false)
@@ -38,8 +43,8 @@ namespace SlimeScience.Equipment.Guns
 
             if (_effectSystem != null)
             {
-                _effectSystem.EffectApplied+= OnEffectChanged;
-                _effectSystem.EffectEnded+= OnEffectChanged;
+                _effectSystem.EffectApplied += OnEffectChanged;
+                _effectSystem.EffectEnded += OnEffectChanged;
             }
 
             _slimeCatcher.Caught += OnCatchSlime;
@@ -60,37 +65,7 @@ namespace SlimeScience.Equipment.Guns
 
             _slimeCatcher.Caught -= OnCatchSlime;
         }
-
-        public void Init(GameVariables gameVariables)
-        {
-            _gameVariables = gameVariables;
-
-            _effectSystem = new EffectSystem(this, gameVariables);
-            _effectRenderer.Init(_effectSystem);
-
-            _slimeFinder = new SlimeFinder(_slimeLayerMask);
-            _slimeCatcher = new SlimeCatcher();
-
-            _inventory = new Inventory<Slime>(gameVariables.AbsorptionCapacity);
-
-            _pullZoneRenderer.Init(
-                _gameVariables,
-                _inventory,
-                _gameVariables.AbsorptionRadius,
-                _gameVariables.AbsorptionAngle);
-
-            _slimeCatcher.Caught += OnCatchSlime;
-
-            _inventoryRenderer.Init(_inventory);
-
-            _gameVariables.CapacityUpgraded += OnCapacityUpgraded;
-
-            _effectSystem.EffectApplied += OnEffectChanged;
-            _effectSystem.EffectEnded += OnEffectChanged;
-
-            _isInitialized = true;
-        }
-
+        
         private void FixedUpdate()
         {
             if (_isInitialized == false || _inventory.IsFull)
@@ -131,34 +106,77 @@ namespace SlimeScience.Equipment.Guns
             {
                 _effectSystem.ApplyEffect(
                     trap.Modifier,
-                    trap.ModifierPercent, 
+                    trap.ModifierPercent,
                     trap.DurationInSeconds);
 
                 trap.gameObject.SetActive(false);
             }
         }
 
-        public List<Slime> ReleaseInventory(Vector3 positionToRelease)
+        public void Init(GameVariables gameVariables)
+        {
+            _gameVariables = gameVariables;
+            _effectSystem = new EffectSystem(this, gameVariables);
+
+            _slimeFinder = new SlimeFinder(_slimeLayerMask);
+            _slimeCatcher = new SlimeCatcher();
+
+            _inventory = new Inventory<Slime>(gameVariables.AbsorptionCapacity);
+
+            _pullZoneRenderer.Init(
+                _gameVariables,
+                _inventory,
+                _gameVariables.AbsorptionRadius,
+                _gameVariables.AbsorptionAngle);
+
+            _slimeCatcher.Caught += OnCatchSlime;
+
+            _inventoryRenderer.Init(_inventory);
+
+            _gameVariables.CapacityUpgraded += OnCapacityUpgraded;
+
+            _effectSystem.EffectApplied += OnEffectChanged;
+            _effectSystem.EffectEnded += OnEffectChanged;
+
+            _isInitialized = true;
+        }
+
+        public void Init(GameVariables gameVariables, int inventoryCapacity)
+        {
+            _gameVariables = gameVariables;
+            _effectSystem = new EffectSystem(this, gameVariables);
+
+            _slimeFinder = new SlimeFinder(_slimeLayerMask);
+            _slimeCatcher = new SlimeCatcher();
+
+            _inventory = new Inventory<Slime>(inventoryCapacity);
+
+            _slimeCatcher.Caught += OnCatchSlime;
+            _gameVariables.CapacityUpgraded += OnCapacityUpgraded;
+
+            _isInitialized = true;
+        }
+
+        public List<Slime> ReleaseInventory()
         {
             List<Slime> currentSlimesInInventory = _inventory.Free();
-
-            //foreach (var slime in currentSlimesInInventory)
-            //{
-            //    slime.transform.Translate(positionToRelease * 4f * 0.02f);
-            //}
 
             return currentSlimesInInventory;
         }
 
         public void RenderInventory()
         {
-            _inventoryRenderer.Render();
+            if (_inventoryRenderer != null)
+            {
+                _inventoryRenderer.Render();
+            }
         }
 
         private void OnCatchSlime(Slime slime)
         {
             slime.Disable();
             _inventory.Add(slime);
+            Catched?.Invoke();
         }
 
         private void OnCapacityUpgraded(float newCapacity)
@@ -170,7 +188,6 @@ namespace SlimeScience.Equipment.Guns
         private void OnEffectChanged()
         {
            _pullZoneRenderer.UpdateConeSettings();
-            _effectRenderer.Render();
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SlimeScience.Factory
 {
-    [CreateAssetMenu(fileName = "GeneralSlimeFactory", menuName = "Factories/Slime/General")]
+    [CreateAssetMenu(fileName = "GeneralSlimeFactory", menuName = "Factories/General/Slime")]
     public class GeneralSlimeFactory : SlimeFactory
     {
         [SerializeField] private SlimeConfig _slimeConfig;

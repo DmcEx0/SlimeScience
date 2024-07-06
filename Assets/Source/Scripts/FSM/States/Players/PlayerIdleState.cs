@@ -1,5 +1,5 @@
 using System;
-using SlimeScience.Characters.Playable;
+using SlimeScience.Characters;
 using SlimeScience.Util;
 
 namespace SlimeScience.FSM.States.Players
@@ -31,7 +31,7 @@ namespace SlimeScience.FSM.States.Players
 
             _player.Movement.Move();
             
-            if(_player.Movement.IsMoving)
+            if(_player.Movement.IsMoving())
             {
                 _changeState?.Invoke(StatesType.Movement);
             }

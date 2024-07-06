@@ -1,4 +1,3 @@
-using SlimeScience.Characters.Slimes;
 using SlimeScience.Input;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,11 +10,8 @@ namespace SlimeScience.Characters
 
         private IInputRouter _inputRouter;
 
-        private bool _isEnabled = false;
-
-        public bool IsPlaceable => _agent.isOnNavMesh || _isEnabled;
-        public bool IsMoving => _agent.remainingDistance > _agent.stoppingDistance;
-
+        private bool _isEnabled;
+        
         public float AgentSpeed => _agent.velocity.magnitude;
 
         public Movement(NavMeshAgent agent, IInputRouter inputRouter)
@@ -28,8 +24,8 @@ namespace SlimeScience.Characters
         {
             _isEnabled = true;
             _inputRouter.OnEnable();
-            
-            if(_agent.enabled == true)
+
+            if (_agent.enabled)
             {
                 _agent.isStopped = false;
                 _agent.updateRotation = true;
@@ -40,8 +36,8 @@ namespace SlimeScience.Characters
         {
             _isEnabled = false;
             _inputRouter.OnDisable();
-            
-            if(_agent.enabled == true)
+
+            if (_agent.enabled)
             {
                 _agent.isStopped = true;
                 _agent.updateRotation = false;
@@ -55,14 +51,24 @@ namespace SlimeScience.Characters
 
         public void Move()
         {
-            if (IsPlaceable == false)
-            {
-                return;
-            }
-
             Vector3 newDirection = _inputRouter.GetNewDirection();
 
             _agent.SetDestination(_agent.transform.position + newDirection);
+        }
+
+        public void Move(Vector3 endPosition)
+        {
+            _agent.SetDestination(endPosition);
+        }
+
+        public bool IsMoving()
+        {
+            if (_agent.isOnNavMesh == false || _isEnabled == false)
+            {
+                return false;
+            }
+            
+            return _agent.remainingDistance > _agent.stoppingDistance;
         }
     }
 }

@@ -1,4 +1,4 @@
-using SlimeScience.Characters.Slimes;
+using SlimeScience.Util;
 using UnityEngine;
 
 namespace SlimeScience.Input
@@ -9,13 +9,13 @@ namespace SlimeScience.Input
         private const float RangePosZ = 4f;
         private const float Step = 5f;
 
-        private readonly PlayerDetector _detector;
+        private readonly TargetDetector _detector;
 
         private Vector3 _newDirection;
 
         private bool _isEnabled = false;
 
-        public SlimeInputRouter(PlayerDetector detectable)
+        public SlimeInputRouter(TargetDetector detectable)
         {
             _detector = detectable;
         }
@@ -25,9 +25,9 @@ namespace SlimeScience.Input
             if (_isEnabled == false)
                 return Vector3.zero;
 
-            if (_detector.GetPlayerIsNearStatus())
+            if (_detector.GetTargetIsNearStatus())
             {
-                return _detector.GetDirectionFromPlayer() * Step;
+                return _detector.GetDirectionFromToTarget(true) * Step;
             }
 
             return _newDirection;

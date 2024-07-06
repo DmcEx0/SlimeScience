@@ -7,6 +7,8 @@ namespace SlimeScience.FSM.States
         SlimeIdle = 2,
         Movement = 3,
         Patrol = 4,
-        Fear = 5
+        Fear = 5,
+        Hunting = 6,
+        Unloading = 7
     }
 }

@@ -1,5 +1,5 @@
 using System.Collections;
-using SlimeScience.Characters.Slimes;
+using SlimeScience.Characters;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

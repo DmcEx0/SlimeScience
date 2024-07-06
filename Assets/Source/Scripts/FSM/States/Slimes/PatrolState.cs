@@ -1,5 +1,5 @@
 using System;
-using SlimeScience.Characters.Slimes;
+using SlimeScience.Characters;
 using SlimeScience.Input;
 using SlimeScience.Util;
 using UnityEngine;
@@ -8,43 +8,74 @@ namespace SlimeScience.FSM.States.Slimes
 {
     public class PatrolState : IState
     {
-        private readonly Slime _slime;
+        private readonly MobileObject _mobileObject;
         private readonly IDetectable _detector;
 
         private Action<StatesType> _changeState;
 
-        public PatrolState(Action<StatesType> changeState, Slime slime, IDetectable detector)
+        public PatrolState(Action<StatesType> changeState, MobileObject mobileObject, IDetectable detector)
         {
-            _slime = slime;
+            _mobileObject = mobileObject;
             _detector = detector;
 
             _changeState = changeState;
         }
 
         public void Enter()
-        { 
-            _slime.Movement.Enable();
-            _slime.Movement.Move();
+        {
+            _mobileObject.Movement.Enable();
+
+            if (_mobileObject.Movement.IsMoving() == false)
+            {
+                _mobileObject.Movement.Move();
+            }
+
+            if (_mobileObject is VacuumingSupport)
+            {
+                Debug.Log("State = PATROL");
+            }
         }
 
         public void Exit()
         {
-            _slime.Movement.Disable();
         }
 
         public void Update()
         {
-            _slime.ChangeAnimationState(AnimationHashNames.Speed, _slime.Movement.AgentSpeed); // хз, почему, но работает ток в апдейте
+            if (_mobileObject is Slime)
+            {
+                UpdateSlime();
+            }
+            else if (_mobileObject is VacuumingSupport)
+            {
+                UpdateVacuumingSupport();
+            }
+        }
+
+        private void UpdateSlime()
+        {
+            _mobileObject.ChangeAnimationState(AnimationHashNames.Speed,
+                _mobileObject.Movement.AgentSpeed);
             
-            if(_detector.GetPlayerIsNearStatus())
+            if (_detector.GetTargetIsNearStatus())
             {
                 _changeState?.Invoke(StatesType.Fear);
             }
-            
-            if (_slime.Movement.IsPlaceable && _slime.Movement.IsMoving == false)
+
+            if (_mobileObject.Movement.IsMoving() == false)
             {
-               _changeState?.Invoke(StatesType.SlimeIdle);
+                _changeState?.Invoke(StatesType.SlimeIdle);
             }
+        }
+
+        private void UpdateVacuumingSupport()
+        {
+            if (_detector.GetTargetIsNearStatus())
+            {
+                _changeState?.Invoke(StatesType.Hunting);
+            }
+            
+            _mobileObject.Movement.Move();
         }
     }
 }

@@ -27,7 +27,7 @@ namespace SlimeScience.Equipment.Guns
 
         public event Action Catched;
 
-        public bool InventoryIsFull => _inventory.IsFull;
+        public bool InventoryIsFull =>_inventory != null ? _inventory.IsFull : false ;
 
         private void OnEnable()
         {

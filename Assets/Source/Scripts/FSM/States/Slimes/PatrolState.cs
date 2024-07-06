@@ -27,8 +27,12 @@ namespace SlimeScience.FSM.States.Slimes
 
             _mobileObject.Movement.Move();
 
-            if (_mobileObject is VacuumingSupport)
+            if (_mobileObject is VacuumingSupport support)
             {
+                if(support.PullGun.InventoryIsFull)
+                {
+                    _changeState?.Invoke(StatesType.Unloading);
+                }
                 Debug.Log("State = PATROL");
             }
         }

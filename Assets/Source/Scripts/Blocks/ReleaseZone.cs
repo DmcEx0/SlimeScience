@@ -18,6 +18,7 @@ namespace SlimeScience.Blocks
         private GameVariables _gameVariables;
 
         public event Action<BlockData, int> OpenedNextBlock;
+        public event Action Released;
 
         public void Init(Wallet wallet, GameVariables gameVariables)
         {
@@ -38,6 +39,9 @@ namespace SlimeScience.Blocks
                     _wallet.Add(1); // TODO: Add slime price and will use "item.PlaceCost"
                     _gameVariables.AddSlimes(1);
                 }
+
+
+                Released?.Invoke();
             }
 
             if (_inventory.IsFull)

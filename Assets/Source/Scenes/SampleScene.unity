@@ -9658,6 +9658,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1896696351471858745, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2617451296708500016, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_text
       value: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"

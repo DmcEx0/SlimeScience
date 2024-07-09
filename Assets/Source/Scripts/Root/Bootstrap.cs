@@ -45,11 +45,6 @@ namespace SlimeScience.Root
         {
             WebApplication.InBackgroundChangeEvent += OnBackgroundChange;
 
-            if (_advertisment != null)
-            {
-                _advertisment.StartIntervalShow();
-            }
-
             if (_intervalSave != null)
             {
                 StopCoroutine(_intervalSave);
@@ -59,6 +54,8 @@ namespace SlimeScience.Root
             {
                 _intervalSave = StartCoroutine(IntervalSave());
             }
+
+            _releaseZone.Released += OnReleased;
         }
 
         private void OnDisable()
@@ -67,15 +64,12 @@ namespace SlimeScience.Root
 
             _releaseZone.OpenedNextBlock -= OnNextBlockOpened;
 
-            if (_advertisment != null)
-            {
-                _advertisment.StopIntervalShow();
-            }
-
             if (_intervalSave != null)
             {
                 StopCoroutine(_intervalSave);
             }
+
+            _releaseZone.Released -= OnReleased;
         }
 
         private void Start()
@@ -91,11 +85,12 @@ namespace SlimeScience.Root
         {
             _gameVariables.Loaded -= Init;
 
+            _advertisment = new Advertisment(this, _adPause);
             _slimeSpawner = new SlimeSpawner(_slimeFactory);
             _bombSpawner = new BombSpawner(_bombFactory);
             _wallet = new Wallet(_gameVariables);
 
-            _uiRoot.Init(_wallet, _gameVariables);
+            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause);
 
             var player = _playerFactory.Get();
             player.InitGun(_gameVariables);
@@ -110,11 +105,8 @@ namespace SlimeScience.Root
 
             _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
 
-            _advertisment = new Advertisment(this, _adPause);
-            _advertisment.StartIntervalShow();
-
             _intervalSave = StartCoroutine(IntervalSave());
-            
+
             var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero);
             vacuumingSupport.InitGun(_gameVariables);
             vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
@@ -153,6 +145,11 @@ namespace SlimeScience.Root
                 yield return delay;
                 _gameVariables.Save();
             }
+        }
+
+        private void OnReleased()
+        {
+            _uiRoot.ShowInterstitial();
         }
     }
 }

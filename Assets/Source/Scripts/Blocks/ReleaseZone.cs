@@ -12,7 +12,7 @@ namespace SlimeScience.Blocks
 {
     public class ReleaseZone : MonoBehaviour
     {
-        [SerializeField] private BlocksConfig _blocksConfig;
+        private BlocksConfig _blocksConfig;
 
         private int _indexCurrentBlock = 0;
         private Inventory<Slime> _inventory;
@@ -21,11 +21,12 @@ namespace SlimeScience.Blocks
 
         public event Action<BlockData, int> OpenedNextBlock;
 
-        public void Init(Wallet wallet, GameVariables gameVariables)
+        public void Init(Wallet wallet, GameVariables gameVariables, BlocksConfig blocksConfig)
         {
             _wallet = wallet;
             _gameVariables = gameVariables;
             _inventory = new(0);
+            _blocksConfig = blocksConfig;
 
             OpenNextBlock();
         }

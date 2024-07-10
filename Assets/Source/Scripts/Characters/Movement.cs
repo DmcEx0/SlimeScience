@@ -25,7 +25,7 @@ namespace SlimeScience.Characters
             _isEnabled = true;
             _inputRouter.OnEnable();
 
-            if (_agent.enabled)
+            if (_agent.gameObject.activeSelf && _agent.enabled)
             {
                 _agent.isStopped = false;
                 _agent.updateRotation = true;

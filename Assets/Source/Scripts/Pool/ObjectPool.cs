@@ -20,6 +20,12 @@ namespace SlimeScience.Pool
             _pool = InitializePool();
         }
 
+        public ObjectPool(Transform parent)
+        {
+            _parent = parent;
+            _pool = new List<T>();
+        }
+
         public int ActiveCount => _pool.FindAll(x => x.gameObject.activeSelf).Count;
 
         public T GetAvailable()
@@ -43,6 +49,12 @@ namespace SlimeScience.Pool
             {
                 instance.gameObject.SetActive(false);
             }
+        }
+        
+        public void InitializePool(T gameObject)
+        {
+            _pool.Add(gameObject);
+            gameObject.gameObject.SetActive(false);
         }
 
         private List<T> InitializePool()

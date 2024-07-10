@@ -28,6 +28,7 @@ namespace SlimeScience.Root
         [SerializeField] private GeneralSlimeFactory _slimeFactory;
         [SerializeField] private GeneralVacuumingSupportFactory _vacuumingSupportFactory;
         [SerializeField] private List<Block> _blocks;
+        [SerializeField] private BlocksConfig _blocksConfig;
 
         [SerializeField] private SoundsConfig _soundsConfig;
         [SerializeField] private AudioSource _audioSource;
@@ -107,10 +108,10 @@ namespace SlimeScience.Root
             _camera.LookAt = player.transform;
             player.transform.position = Vector3.zero;
             
-            _slimeSpawner.Init(player.transform);
+            _slimeSpawner.Init(player.transform, transform, GetAllSlimeCount());
 
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
-            _releaseZone.Init(_wallet, _gameVariables);
+            _releaseZone.Init(_wallet, _gameVariables, _blocksConfig);
 
             _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
 
@@ -157,6 +158,18 @@ namespace SlimeScience.Root
                 yield return delay;
                 _gameVariables.Save();
             }
+        }
+
+        private int GetAllSlimeCount()
+        {
+            int count = 0;
+
+            foreach (var block in _blocksConfig.BlocksData)
+            {
+                count += block.SlimeAmount;
+            }
+
+            return count;
         }
     }
 }

@@ -7,28 +7,44 @@ using UnityEngine;
 using SlimeScience.FSM;
 using SlimeScience.FSM.States;
 using SlimeScience.FSM.States.Slimes;
+using SlimeScience.Pool;
 using SlimeScience.Util;
 
 namespace SlimeScience.Factory
 {
     public abstract class SlimeFactory : GameObjectFactory
     {
+        private ObjectPool<Slime> _pool;
+        private SlimeConfig _config;
+
+        public void CreatePool(int poolSize, Transform parent)
+        {
+            _pool = new ObjectPool<Slime>(parent);
+            _config = GetConfig();
+
+            for (int i = 0; i < poolSize; i++)
+            {
+                var slime = CreateInstance(_config.BuildData.GetRandomPrefab, parent.transform.position);
+                BuildSlime(slime, _config.BuildData);
+                
+                _pool.InitializePool(slime);
+            }
+        }
+
         public MobileObject Get(Transform playerTransform, Vector3 position)
         {
-            var config = GetConfig();
-            Slime instance = CreateInstance(config.BuildData.GetRandomPrefab, position);
-
-            TargetDetector targetDetector = new TargetDetector(config.DistanceFofFear);
-            targetDetector.SetParentTransforms(instance.transform);
+            var slime = _pool.GetAvailable();
+            TargetDetector targetDetector = new TargetDetector(_config.DistanceFofFear);
+            targetDetector.SetParentTransforms(slime.transform);
             targetDetector.SetTargetTransform(playerTransform);
-            
+
             var inputRouter = new SlimeInputRouter(targetDetector);
 
-            BuildSlime(instance, config.BuildData);
+            slime.Init(CreateStateMachine(slime, targetDetector), inputRouter, _config);
+            slime.transform.position = position;
+            slime.gameObject.SetActive(true);
 
-            instance.Init(CreateStateMachine(instance, targetDetector), inputRouter, config);
-
-            return instance;
+            return slime;
         }
 
         protected abstract SlimeConfig GetConfig();
@@ -37,16 +53,16 @@ namespace SlimeScience.Factory
         {
             StateMachine stateMachine = new StateMachine();
             Action<StatesType> changeStateAction = stateMachine.ChangeState;
-            
+
             Dictionary<StatesType, IState> states = new Dictionary<StatesType, IState>()
             {
                 [StatesType.Patrol] = new PatrolState(changeStateAction, instance, detector),
                 [StatesType.Fear] = new FearState(changeStateAction, instance, detector),
                 [StatesType.SlimeIdle] = new SlimeIdleState(changeStateAction, instance, detector)
             };
-            
+
             stateMachine.SetStates(StatesType.Patrol, states);
-            
+
             return stateMachine;
         }
 

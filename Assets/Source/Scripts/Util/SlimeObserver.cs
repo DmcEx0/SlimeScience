@@ -7,7 +7,7 @@ namespace SlimeScience.Util
     public class SlimeObserver
     {
         private const int MaxNumberOfSlimes = 20;
-        private const float Radius = 50f;
+        private const float Radius = 100f;
 
         private const int SlimeLayer = 6;
 

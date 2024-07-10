@@ -7,7 +7,7 @@ namespace SlimeScience.Spawners
 {
     public class SlimeSpawner
     {
-        private GeneralSlimeFactory _slimeFactory;
+        private readonly GeneralSlimeFactory _slimeFactory;
 
         private Transform _playerTransform;
 
@@ -16,9 +16,10 @@ namespace SlimeScience.Spawners
             _slimeFactory = slimeFactory;
         }
 
-        public void Init(Transform playerTransform)
+        public void Init(Transform playerTransform, Transform poolParent, int poolSize)
         {
             _playerTransform = playerTransform;
+            _slimeFactory.CreatePool(poolSize, poolParent);
         }
 
         public void Spawn(BlockData blockData, Block block)
@@ -30,9 +31,7 @@ namespace SlimeScience.Spawners
 
                 Vector3 newPos = new Vector3(randomPosX, 0, randomPosZ) + block.Centre.position;
 
-                var newSlime = _slimeFactory.Get(_playerTransform, newPos);
-
-                //newSlime.transform.position = newPos;
+                _slimeFactory.Get(_playerTransform, newPos);
             }
         }
     }

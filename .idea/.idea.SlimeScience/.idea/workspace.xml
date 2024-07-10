@@ -6,14 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="55c8682e-9460-4605-89d8-b09e169f6c0d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow1_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow1_ADD.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Combat/Explosions/BulletExplosion/BulletExplosionGreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Combat/Explosions/BulletExplosion/BulletExplosionGreen.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Blocks/ReleaseZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Blocks/ReleaseZone.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/SlimeFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/SlimeFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/BlockData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/BlockData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Equipment/Guns/PullGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Equipment/Guns/PullGun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/BombFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/BombFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Pool/ObjectPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Pool/ObjectPool.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Root/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Root/Bootstrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Spawners/SlimeSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Spawners/SlimeSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Util/SlimeObserver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Util/SlimeObserver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Spawners/BombSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Spawners/BombSpawner.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4ec1bdeda24e4d98947b67a5ac2c0f47d400/bb/40e1a57e/NavMeshAgent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65b2129559af45d98b49ecf0effb76f91fe00/0e/418aa4e1/Rigidbody.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65b2129559af45d98b49ecf0effb76f91fe00/7a/b66dbf97/Physics.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e97d84204f8d4aef92b538c5bab948f1172800/51/b49df779/ObjectPool`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Characters/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Characters/VacuumingSupport.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Configs/VacuumingSupportConfig.cs" root0="FORCE_HIGHLIGHTING" />
@@ -119,7 +120,7 @@
       <workItem from="1720106909487" duration="8673000" />
       <workItem from="1720260878718" duration="17055000" />
       <workItem from="1720360572260" duration="4710000" />
-      <workItem from="1720629962420" duration="1146000" />
+      <workItem from="1720629962420" duration="3497000" />
     </task>
     <servers />
   </component>

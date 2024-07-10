@@ -53,6 +53,7 @@ namespace SlimeScience.Pool
         
         public void InitializePool(T gameObject)
         {
+            gameObject.transform.parent = _parent;
             _pool.Add(gameObject);
             gameObject.gameObject.SetActive(false);
         }

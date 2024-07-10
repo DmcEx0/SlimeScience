@@ -155,7 +155,7 @@ namespace SlimeScience.Equipment.Guns
         {
             _gameVariables = gameVariables;
             _effectSystem = new EffectSystem(this, gameVariables);
-            _effectRenderer.Init(_effectSystem);
+            // _effectRenderer.Init(_effectSystem); TODO: fix NULL
 
             _slimeFinder = new Finder(_slimeLayerMask);
             _slimeCatcher = new Catcher();

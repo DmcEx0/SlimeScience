@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.20624694, g: 0.12681435, b: 0.15901247, a: 1}
+  m_IndirectSpecularColor: {r: 0.2066109, g: 0.12658736, b: 0.1585471, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8634,7 +8634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d6763080cc57344b066c92d85db4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blocksConfig: {fileID: 11400000, guid: ab55d82d8a41e0c46a03ec86f24a461b, type: 2}
 --- !u!65 &184014894
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10178,6 +10177,7 @@ MonoBehaviour:
   - {fileID: 25240956}
   - {fileID: 25240955}
   - {fileID: 25240954}
+  _blocksConfig: {fileID: 11400000, guid: ab55d82d8a41e0c46a03ec86f24a461b, type: 2}
   _soundsConfig: {fileID: 11400000, guid: 332ae4bde71b4a442a969a644cfe7769, type: 2}
   _audioSource: {fileID: 3736569}
 --- !u!1 &1998480396

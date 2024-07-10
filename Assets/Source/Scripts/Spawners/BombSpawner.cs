@@ -13,9 +13,10 @@ namespace SlimeScience
 
         private Transform _playerTransform;
 
-        public BombSpawner(GeneralBombFactory bombFactory)
+        public BombSpawner(GeneralBombFactory bombFactory, Transform parent, int maxBombCount)
         {
             _bombFactory = bombFactory;
+            _bombFactory.CreatePool(maxBombCount, parent);
         }
 
         public void Spawn(BlockData blockData, Block block)

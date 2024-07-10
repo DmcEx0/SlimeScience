@@ -27,6 +27,7 @@ namespace SlimeScience.Root
         [SerializeField] private GeneralPlayerFactory _playerFactory;
         [SerializeField] private GeneralSlimeFactory _slimeFactory;
         [SerializeField] private GeneralVacuumingSupportFactory _vacuumingSupportFactory;
+        [SerializeField] private GeneralBombFactory _bombFactory;
         [SerializeField] private List<Block> _blocks;
         [SerializeField] private BlocksConfig _blocksConfig;
 
@@ -34,6 +35,7 @@ namespace SlimeScience.Root
         [SerializeField] private AudioSource _audioSource;
 
         private SlimeSpawner _slimeSpawner;
+        private BombSpawner _bombSpawner;
         private GameVariables _gameVariables;
         private Wallet _wallet;
         private Advertisment _advertisment;
@@ -46,11 +48,6 @@ namespace SlimeScience.Root
         {
             WebApplication.InBackgroundChangeEvent += OnBackgroundChange;
 
-            if (_advertisment != null)
-            {
-                _advertisment.StartIntervalShow();
-            }
-
             if (_intervalSave != null)
             {
                 StopCoroutine(_intervalSave);
@@ -60,6 +57,8 @@ namespace SlimeScience.Root
             {
                 _intervalSave = StartCoroutine(IntervalSave());
             }
+
+            _releaseZone.Released += OnReleased;
         }
 
         private void OnDisable()
@@ -68,15 +67,12 @@ namespace SlimeScience.Root
 
             _releaseZone.OpenedNextBlock -= OnNextBlockOpened;
 
-            if (_advertisment != null)
-            {
-                _advertisment.StopIntervalShow();
-            }
-
             if (_intervalSave != null)
             {
                 StopCoroutine(_intervalSave);
             }
+            
+            _releaseZone.Released -= OnReleased;
         }
 
         private void Awake()
@@ -91,7 +87,7 @@ namespace SlimeScience.Root
 
             _gameVariables.Loaded += Init;
             _gameVariables.Load(this);
-            
+
             SoundsManager.PlayBgMusic();
         }
 
@@ -99,27 +95,28 @@ namespace SlimeScience.Root
         {
             _gameVariables.Loaded -= Init;
 
+            _advertisment = new Advertisment(this, _adPause);
+            _slimeSpawner = new SlimeSpawner(_slimeFactory);
+            _bombSpawner = new BombSpawner(_bombFactory, transform, GetAllBombsCount());
             _wallet = new Wallet(_gameVariables);
-            _uiRoot.Init(_wallet, _gameVariables);
+
+            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause);
 
             var player = _playerFactory.Get();
             player.InitGun(_gameVariables);
             _camera.Follow = player.transform;
             _camera.LookAt = player.transform;
             player.transform.position = Vector3.zero;
-            
-            _slimeSpawner.Init(player.transform, transform, GetAllSlimeCount());
+
+            _slimeSpawner.Init(player.transform, transform, GetAllSlimesCount());
 
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
             _releaseZone.Init(_wallet, _gameVariables, _blocksConfig);
 
             _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
 
-            _advertisment = new Advertisment(this, _adPause);
-            _advertisment.StartIntervalShow();
-
             _intervalSave = StartCoroutine(IntervalSave());
-            
+
             var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero);
             vacuumingSupport.InitGun(_gameVariables);
             vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
@@ -135,6 +132,7 @@ namespace SlimeScience.Root
 
             currentBlock.OpenDoor();
             _slimeSpawner.Spawn(blockData, currentBlock);
+            _bombSpawner.Spawn(blockData, currentBlock);
         }
 
         private void OnBackgroundChange(bool isInBackground)
@@ -160,13 +158,30 @@ namespace SlimeScience.Root
             }
         }
 
-        private int GetAllSlimeCount()
+        private void OnReleased()
+        {
+            _uiRoot.ShowInterstitial();
+        }
+
+        private int GetAllSlimesCount() //TODO: remove code dubbing
         {
             int count = 0;
 
             foreach (var block in _blocksConfig.BlocksData)
             {
                 count += block.SlimeAmount;
+            }
+
+            return count;
+        }
+
+        private int GetAllBombsCount() //TODO: remove code dubbing
+        {
+            int count = 0;
+
+            foreach (var block in _blocksConfig.BlocksData)
+            {
+                count += block.BombAmount;
             }
 
             return count;

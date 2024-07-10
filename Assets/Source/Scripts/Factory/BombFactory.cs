@@ -20,6 +20,7 @@ namespace SlimeScience.Factory
         {
             var bomb = _pool.GetAvailable();
             bomb.transform.position = position;
+            bomb.gameObject.SetActive(true);
             
             return bomb;
         }

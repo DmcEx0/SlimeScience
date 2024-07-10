@@ -23,7 +23,7 @@ namespace SlimeScience
         {
             Debug.Log("Bomb spawner called");
 
-            for (int i = 0; i < blockData.SlimeAmount; i++)
+            for (int i = 0; i < blockData.BombAmount; i++)
             {
                 float randomPosX = Random.Range(-blockData.MaxRangePosX, blockData.MaxRangePosX);
                 float randomPosZ = Random.Range(-blockData.MaxRangePosZ, blockData.MaxRangePosZ);
@@ -32,7 +32,7 @@ namespace SlimeScience
 
                 Debug.Log("Bomb spawned at " + newPos);
 
-                var newSlime = _bombFactory.Get(newPos);
+                _bombFactory.Get(newPos);
             }
         }
     }

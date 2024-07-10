@@ -70,5 +70,11 @@ namespace SlimeScience.InventorySystem
             MaxItems += amount;
             Expanded?.Invoke();
         }
+
+        public void Reset()
+        {
+            _items.Clear();
+            Changed?.Invoke();
+        }
     }
 }

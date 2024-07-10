@@ -1,59 +1,46 @@
-using UnityEngine;
-using SlimeScience.Configs;
-using System.Collections;
 using SlimeScience.Equipment.Guns;
+using System.Collections;
+using UnityEngine;
 
-namespace SlimeScience.Characters
+namespace SlimeScience.Traps
 {
-    public class Slime : MobileObject, IPullable
+    public class Bomb : MonoBehaviour, IPullable
     {
         private const float ResetVelocityTime = 1f;
 
+        [SerializeField] private ParticleSystem _explosionEffect;
+        [SerializeField] private AudioSource _explosionSound;
         [SerializeField] private Rigidbody _rigidbody;
-        
+        [SerializeField] private GameObject _bomb;
+
         private Coroutine _resetVelocityCoroutine;
-        
-        public float FearSpeed { get; private set; }
-        public float BaseSpeed{ get; private set; }
+        private Coroutine _turnOffCoroutine;
 
         public Vector3 Position => transform.position;
 
-        private void OnDisable()
+        private void OnEnable()
         {
-            if (_resetVelocityCoroutine != null)
+            _explosionEffect.Stop();
+            _explosionSound.Stop();
+        }
+
+
+        public void Explode()
+        {
+            _bomb.SetActive(false);
+            _explosionEffect.Play();
+            _explosionSound.Play();
+
+            if (_turnOffCoroutine != null)
             {
-                StopCoroutine(_resetVelocityCoroutine);
+                StopCoroutine(_turnOffCoroutine);
             }
-        }
 
-        private void Update()
-        {
-            UpdateStateMachine();
-        }
-
-        protected override void Init(MobileObjectConfig config)
-        {
-            if (config is not SlimeConfig)
-                return;
-
-            SetRigidbodySetting(_rigidbody);
-
-            SlimeConfig slimeConfig = config as SlimeConfig;
-
-            BaseSpeed = slimeConfig.BaseSpeed;
-            FearSpeed = slimeConfig.FearSpeed;
-        }
-
-        protected override void SetRigidbodySetting(Rigidbody rigidbody)
-        {
-            base.SetRigidbodySetting(rigidbody);
-
-            rigidbody.isKinematic = false;
+            _turnOffCoroutine = StartCoroutine(TurnOff());
         }
 
         public void AddForce(Vector3 force)
         {
-            Disable();
             _rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
 
             _rigidbody.AddForce(force);
@@ -82,8 +69,17 @@ namespace SlimeScience.Characters
 
             _rigidbody.velocity = Vector3.zero;
 
-            Enable();
             _rigidbody.interpolation = RigidbodyInterpolation.None;
+        }
+
+        private IEnumerator TurnOff()
+        {
+            while (_explosionEffect.isPlaying)
+            {
+                yield return null;
+            }
+
+            gameObject.SetActive(false);
         }
     }
 }

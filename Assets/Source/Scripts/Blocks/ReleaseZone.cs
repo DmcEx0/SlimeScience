@@ -20,6 +20,7 @@ namespace SlimeScience.Blocks
         private GameVariables _gameVariables;
 
         public event Action<BlockData, int> OpenedNextBlock;
+        public event Action Released;
 
         public void Init(Wallet wallet, GameVariables gameVariables, BlocksConfig blocksConfig)
         {
@@ -51,6 +52,9 @@ namespace SlimeScience.Blocks
                         _gameVariables.AddSlimes(1);
                     }
                 }
+
+
+                Released?.Invoke();
             }
 
             if (_inventory.IsFull)

@@ -84,12 +84,6 @@ namespace SlimeScience.FSM.States.Slimes
                 return;
             }
 
-            if (_mobileObject.Movement.IsMoving() == false)
-            {
-                _changeState?.Invoke(StatesType.Unloading);
-                return;
-            }
-
             _mobileObject.Movement.Move();
         }
     }

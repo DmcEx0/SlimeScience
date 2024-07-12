@@ -22,14 +22,9 @@ namespace SlimeScience.Blocks
         public event Action<BlockData, int> OpenedNextBlock;
         public event Action Released;
 
-        public void Init(Wallet wallet, GameVariables gameVariables, BlocksConfig blocksConfig)
+        private void Awake()
         {
-            _wallet = wallet;
-            _gameVariables = gameVariables;
-            _inventory = new(0);
-            _blocksConfig = blocksConfig;
-
-            OpenNextBlock();
+            
         }
 
         private void OnTriggerEnter(Collider other)
@@ -61,6 +56,16 @@ namespace SlimeScience.Blocks
                 OpenNextBlock();
         }
 
+        public void Init(Wallet wallet, GameVariables gameVariables, BlocksConfig blocksConfig)
+        {
+            _wallet = wallet;
+            _gameVariables = gameVariables;
+            _inventory = new(0);
+            _blocksConfig = blocksConfig;
+
+            OpenNextBlock();
+        }
+        
         private void OpenNextBlock()
         {
             if(_indexCurrentBlock != 0)

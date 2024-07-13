@@ -48,6 +48,11 @@ namespace SlimeScience.Characters
         {
             _agent.speed = speed;
         }
+        
+        public void SetRotateSpeed(float speed)
+        {
+            _agent.angularSpeed = speed;
+        }
 
         public void Move()
         {

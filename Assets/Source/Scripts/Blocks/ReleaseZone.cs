@@ -22,11 +22,6 @@ namespace SlimeScience.Blocks
         public event Action<BlockData, int> OpenedNextBlock;
         public event Action Released;
 
-        private void Awake()
-        {
-            
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out ISeekable seeker))

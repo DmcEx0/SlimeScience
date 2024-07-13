@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data;
 using SlimeScience.Configs;
 using SlimeScience.Equipment.Guns;
 using SlimeScience.Saves;
@@ -10,6 +11,8 @@ namespace SlimeScience.Characters
     {
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private PullGun _pullGun;
+
+        private PlayerConfig _config;
 
         private float _rangeVacuum;
 
@@ -31,19 +34,32 @@ namespace SlimeScience.Characters
             return releaseSlimes;
         }
 
-        public void RenderInventory()
+        public void TranslateToShip(Transform shipPlaceForPlayer, float moveSpeed, float rotateSpeed)
         {
-            _pullGun.RenderInventory();
+            Movement.SetMovementSpeed(moveSpeed);
+            Movement.SetRotateSpeed(rotateSpeed);
+            
+            transform.position = shipPlaceForPlayer.position;
+            transform.rotation = shipPlaceForPlayer.rotation;
+            shipPlaceForPlayer.SetParent(transform);
+        }
+
+        public void LeaveShip(Transform shipTransform)
+        {
+            shipTransform.SetParent(null);
+            
+            Movement.SetMovementSpeed(_config.BaseSpeed);
+            Movement.SetRotateSpeed(_config.AngularSpeed);
         }
 
         protected override void Init(MobileObjectConfig config)
         {
-            if (config is not PlayerConfig)
+            if (config is not PlayerConfig playerConfig)
                 return;
 
-            var playerConfig = config as PlayerConfig;
+            _config = playerConfig;
 
-            _rangeVacuum = playerConfig.RangeVacuum;
+            _rangeVacuum = _config.RangeVacuum;
 
             SetRigidbodySetting(_rigidbody);
         }

@@ -17,7 +17,7 @@ Material:
   - DR_RIM_ON
   - DR_SPECULAR_ON
   - DR_VERTEX_COLORS_ON
-  - _CELPRIMARYMODE_NONE
+  - _CELPRIMARYMODE_SINGLE
   - _MK_SURFACE_TYPE_TRANSPARENT
   - _TEXTUREBLENDINGMODE_MULTIPLY
   - _UNITYSHADOWMODE_NONE
@@ -112,16 +112,16 @@ Material:
     - _BlendSrcAlpha: 1
     - _Brightness: 1.03
     - _BumpScale: 1
-    - _CameraDistanceFadeClose: 0
+    - _CameraDistanceFadeClose: 20
     - _CameraDistanceFadeFar: 10
     - _CelExtraEnabled: 0
     - _CelNumSteps: 6
-    - _CelPrimaryMode: 0
+    - _CelPrimaryMode: 1
     - _ColorGrading: 0
     - _Contrast: 1.35
     - _Cull: 2
     - _Cutoff: 1
-    - _Depth: 182
+    - _Depth: 155
     - _DetailNormalMapScale: 1
     - _Dissolve: 0
     - _DissolveAmount: 0.5
@@ -162,7 +162,7 @@ Material:
     - _Rim: 1
     - _RimEnabled: 1
     - _Saturation: 1.06
-    - _SelfShadingSize: 0.3
+    - _SelfShadingSize: 0.38
     - _SelfShadingSizeExtra: 0.6
     - _ShadowEdgeSize: 0.023
     - _ShadowEdgeSizeExtra: 0.05
@@ -197,11 +197,11 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _AlbedoColor: {r: 0, g: 1, b: 0.051712856, a: 0.1764706}
-    - _Color: {r: 0, g: 2.9960787, b: 0.15493567, a: 1}
+    - _Color: {r: 0, g: 0.28382537, b: 0.014677406, a: 0.49803922}
     - _Color0: {r: 1, g: 0, b: 0, a: 1}
     - _Color1: {r: 1, g: 0.5, b: 0.5, a: 1}
     - _Color2: {r: 0.5, g: 0.5, b: 1, a: 1}
-    - _ColorDim: {r: 0.24957958, g: 1, b: 0, a: 0}
+    - _ColorDim: {r: 0.24957955, g: 1, b: 0, a: 0}
     - _ColorDimCurve: {r: 0, g: 0.7490197, b: 0.03873392, a: 0.25490198}
     - _ColorDimExtra: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
     - _ColorDimSteps: {r: 0, g: 0.7490197, b: 0.038733914, a: 0.38431373}

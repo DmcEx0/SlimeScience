@@ -41,13 +41,10 @@ namespace SlimeScience.Characters
             
             transform.position = shipPlaceForPlayer.position;
             transform.rotation = shipPlaceForPlayer.rotation;
-            shipPlaceForPlayer.SetParent(transform);
         }
 
-        public void LeaveShip(Transform shipTransform)
+        public void LeaveShip()
         {
-            shipTransform.SetParent(null);
-            
             Movement.SetMovementSpeed(_config.BaseSpeed);
             Movement.SetRotateSpeed(_config.AngularSpeed);
         }

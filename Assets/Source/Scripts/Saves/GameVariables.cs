@@ -57,7 +57,7 @@ namespace SlimeScience.Saves
                     json.AbsorptionRadius,
                     json.AbsorptionAngle,
                     json.AbsorptionCapacity,
-                    jsom.AbsorptionAssistant);
+                    json.AssistantCount);
 
                 _progressModel = new ProgressModel(
                     json.Money,

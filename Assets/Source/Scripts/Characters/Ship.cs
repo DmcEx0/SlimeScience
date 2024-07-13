@@ -1,4 +1,5 @@
 using System;
+using SlimeScience.Configs;
 using UnityEngine;
 
 namespace SlimeScience.Characters
@@ -9,9 +10,8 @@ namespace SlimeScience.Characters
         [SerializeField] private Transform _childShip;
         [SerializeField] private float _time;
 
-        [Space]
-        [SerializeField] private float _moveSpeed;
-        [SerializeField] private float _rotateSpeed;
+        [Space] 
+        [SerializeField] private ShipConfig _config;
 
         private Player _player;
 
@@ -43,7 +43,7 @@ namespace SlimeScience.Characters
             if (other.TryGetComponent(out Player player) && _isEnabled == false)
             {
                 _player = player;
-                _player.TranslateToShip(transform, _moveSpeed, _rotateSpeed);
+                _player.TranslateToShip(transform, _config);
                 _childShip.SetParent(player.transform);
                 
                 _isEnabled = true;

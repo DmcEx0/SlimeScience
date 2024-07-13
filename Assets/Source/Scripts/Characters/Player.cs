@@ -34,10 +34,9 @@ namespace SlimeScience.Characters
             return releaseSlimes;
         }
 
-        public void TranslateToShip(Transform shipPlaceForPlayer, float moveSpeed, float rotateSpeed)
+        public void TranslateToShip(Transform shipPlaceForPlayer, ShipConfig shipConfig)
         {
-            Movement.SetMovementSpeed(moveSpeed);
-            Movement.SetRotateSpeed(rotateSpeed);
+            SetMovementStats(shipConfig);
             
             transform.position = shipPlaceForPlayer.position;
             transform.rotation = shipPlaceForPlayer.rotation;
@@ -45,8 +44,7 @@ namespace SlimeScience.Characters
 
         public void LeaveShip()
         {
-            Movement.SetMovementSpeed(_config.BaseSpeed);
-            Movement.SetRotateSpeed(_config.AngularSpeed);
+            SetMovementStats(_config);
         }
 
         protected override void Init(MobileObjectConfig config)

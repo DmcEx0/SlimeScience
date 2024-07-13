@@ -43,6 +43,11 @@ namespace SlimeScience.Characters
                 _agent.updateRotation = false;
             }
         }
+        
+        public void SetAcceleration(float accel)
+        {
+            _agent.acceleration = accel;
+        }
 
         public void SetMovementSpeed(float speed)
         {

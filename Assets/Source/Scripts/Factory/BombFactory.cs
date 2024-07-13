@@ -8,12 +8,10 @@ namespace SlimeScience.Factory
     public abstract class BombFactory : GameObjectFactory
     {
         private ObjectPool<Bomb> _pool;
-        private BombConfig _config;
 
         public void CreatePool(int allBobmsCount, Transform parent)
         {
-            _config = GetConfig();
-            _pool= new ObjectPool<Bomb>(_config.Prefab, allBobmsCount, parent);
+            _pool= new ObjectPool<Bomb>(GetConfig().Prefab, allBobmsCount, parent);
         }
         
         public Bomb Get(Vector3 position)

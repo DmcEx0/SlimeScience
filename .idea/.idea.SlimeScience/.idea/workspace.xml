@@ -6,9 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="55c8682e-9460-4605-89d8-b09e169f6c0d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/SO/Factories/GeneralPlayerFactory.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/SO/Factories/GeneralPlayerFactory.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/MobileObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/MobileObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Movement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Ship.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Ship.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/MobileObjectConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/MobileObjectConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/BombFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/BombFactory.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +30,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e97d84204f8d4aef92b538c5bab948f1172800/51/b49df779/ObjectPool`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Characters/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Characters/VacuumingSupport.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Configs/ShipConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Configs/VacuumingSupportConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/FSM/States/HuntingState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Factory/GeneralVacuumingSupportFactory.cs" root0="FORCE_HIGHLIGHTING" />

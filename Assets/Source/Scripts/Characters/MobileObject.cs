@@ -22,9 +22,8 @@ namespace SlimeScience.Characters
             Init(config);
 
             Movement = new(_agent, inputRouter);
-            Movement.SetMovementSpeed(config.BaseSpeed);
 
-            _agent.angularSpeed = config.AngularSpeed;
+            SetMovementStats(config);
 
             Enable();
         }
@@ -41,6 +40,13 @@ namespace SlimeScience.Characters
             _stateMachine.Stop();
             Movement.Disable();
             _agent.enabled = false;
+        }
+        
+        public void SetMovementStats(MobileObjectConfig config)
+        {
+            Movement.SetMovementSpeed(config.BaseSpeed);
+            Movement.SetRotateSpeed(config.AngularSpeed);
+            Movement.SetAcceleration(config.Acceleration);
         }
 
         protected void UpdateStateMachine()

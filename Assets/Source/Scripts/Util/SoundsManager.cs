@@ -23,6 +23,11 @@ namespace SlimeScience.Util
          {
              s_audioSource.PlayOneShot(s_config.SlimesCatchSound);
          }
+
+        public static void PlayExplode()
+        {
+            s_audioSource.PlayOneShot(s_config.Explode);
+        }
          
          public static void PlayUnloadSlime()
          {
@@ -48,5 +53,15 @@ namespace SlimeScience.Util
          {
              s_audioSource.Pause();
          }
+
+        public static void PauseAll()
+        {
+            s_audioSource.Pause();
+        }
+
+        public static void UnpauseAll()
+        {
+            s_audioSource.UnPause();
+        }
     }
 }

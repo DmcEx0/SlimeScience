@@ -20,7 +20,7 @@ namespace SlimeScience.Blocks
         private GameVariables _gameVariables;
 
         public event Action<BlockData, int> OpenedNextBlock;
-        public event Action Released;
+        public event Action PlayerReleased;
 
         public void Init(Wallet wallet, GameVariables gameVariables, BlocksConfig blocksConfig)
         {
@@ -40,21 +40,19 @@ namespace SlimeScience.Blocks
                 
                 if(releaseSimes.Count != 0)
                 {
-                    if(seeker is Player)
-                    {
-                        SoundsManager.PlayUnloadSlime();
-                    }
-                
                     foreach (var item in releaseSimes)
                     {
                         _inventory.Add(item);
                         _wallet.Add(1); // TODO: Add slime price and will use "item.PlaceCost"
                         _gameVariables.AddSlimes(1);
                     }
+
+                    if (seeker is Player)
+                    {
+                        SoundsManager.PlayUnloadSlime();
+                        PlayerReleased?.Invoke();
+                    }
                 }
-
-
-                Released?.Invoke();
             }
 
             if (_inventory.IsFull)

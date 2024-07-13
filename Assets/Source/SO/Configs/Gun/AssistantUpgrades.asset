@@ -10,18 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cec75b0c4d81c041bba4264ecbc11ad, type: 3}
-  m_Name: AbsorptionUpgrades
+  m_Name: AssistantUpgrades
   m_EditorClassIdentifier: 
   _values:
-  - _cost: 1
-    _value: 50
-  - _cost: 2
-    _value: 60
-  - _cost: 2
-    _value: 70
-  - _cost: 2
-    _value: 80
-  - _cost: 2
-    _value: 90
-  - _cost: 2
-    _value: 100
+  - _cost: 0
+    _value: 0
+  - _cost: 5
+    _value: 1

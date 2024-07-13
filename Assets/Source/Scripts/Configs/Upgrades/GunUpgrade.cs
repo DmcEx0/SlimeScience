@@ -1,9 +1,9 @@
 using SlimeScience.Upgrades;
 using UnityEngine;
 
-namespace SlimeScience.Configs.Gun
+namespace SlimeScience.Configs.Upgrades
 {
-    [CreateAssetMenu(fileName = "AbsorbtionUpgrades", menuName = "Configs/Gun/AbsorbtionUpgrades")]
+    [CreateAssetMenu(fileName = "AbsorbtionUpgrades", menuName = "Configs/Upgrades/GunUpgrade")]
     public class GunUpgrade : ScriptableObject
     {
         private const int DefaultLevel = 0;

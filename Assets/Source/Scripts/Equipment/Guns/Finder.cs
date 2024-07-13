@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using SlimeScience.Characters;
 using UnityEngine;
 
 namespace SlimeScience.Equipment.Guns

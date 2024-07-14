@@ -8,19 +8,19 @@ namespace SlimeScience.Equipment.Guns
     {
         public Action<IPullable> Caught;
 
-        public void Absorb(IPullable slime, Vector3 catchPoint, float force)
+        public void Absorb(IPullable pullable, Vector3 catchPoint, float force)
         {
-            var forceDirection = (catchPoint - slime.Position).normalized;
+            var forceDirection = (catchPoint - pullable.Position).normalized;
             var correctDirection = new Vector3(forceDirection.x, 0, forceDirection.z);
 
-            slime.AddForce(correctDirection * force);
+            pullable.AddForce(correctDirection * force);
         }
 
-        public void Catch(IPullable slime, Vector3 catchPoint)
+        public void Catch(IPullable pullable, Vector3 catchPoint)
         {
-            Caught?.Invoke(slime);
-            slime.SetActive(false);
-            slime.SetPosition(catchPoint);
+            Caught?.Invoke(pullable);
+            pullable.SetActive(false);
+            pullable.SetPosition(catchPoint);
         }
     }
 }

@@ -33,7 +33,6 @@ namespace SlimeScience.InventorySystem
 
         public bool IsFull => _items.Count >= MaxItems;
 
-
         public void Add(T item)
         {
             if (_items.Count >= MaxItems)
@@ -71,10 +70,19 @@ namespace SlimeScience.InventorySystem
             Expanded?.Invoke();
         }
 
-        public void Reset()
+        public T GetItem(int index)
         {
-            _items.Clear();
+            if (index < 0 || index >= _items.Count)
+            {
+                return null;
+            }
+
+            var item = _items[index];
+            
+            _items.RemoveAt(index);
             Changed?.Invoke();
+
+            return item;
         }
     }
 }

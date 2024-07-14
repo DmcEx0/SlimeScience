@@ -56,9 +56,10 @@ namespace SlimeScience.Root
             if (_gameVariables != null)
             {
                 _intervalSave = StartCoroutine(IntervalSave());
+                _gameVariables.AssistantUpgraded += OnAssistantUpgraded;
             }
 
-            _releaseZone.Released += OnReleased;
+            _releaseZone.PlayerReleased += OnReleased;
         }
 
         private void OnDisable()
@@ -71,8 +72,13 @@ namespace SlimeScience.Root
             {
                 StopCoroutine(_intervalSave);
             }
+
+            if (_gameVariables != null)
+            {
+                _gameVariables.AssistantUpgraded -= OnAssistantUpgraded;
+            }
             
-            _releaseZone.Released -= OnReleased;
+            _releaseZone.PlayerReleased -= OnReleased;
         }
 
         private void Awake()
@@ -117,9 +123,14 @@ namespace SlimeScience.Root
 
             _intervalSave = StartCoroutine(IntervalSave());
 
-            var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero);
-            vacuumingSupport.InitGun(_gameVariables);
-            vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
+            for (int i = 0; i < _gameVariables.AbsorptionAssistantCount; i++)
+            {
+                var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero);
+                vacuumingSupport.InitGun(_gameVariables);
+                vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
+            }
+
+            _gameVariables.AssistantUpgraded += OnAssistantUpgraded;
 
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();
@@ -158,11 +169,6 @@ namespace SlimeScience.Root
             }
         }
 
-        private void OnReleased()
-        {
-            _uiRoot.ShowInterstitial();
-        }
-
         private int GetAllSlimesCount() //TODO: remove code dubbing
         {
             int count = 0;
@@ -185,6 +191,19 @@ namespace SlimeScience.Root
             }
 
             return count;
+        }
+
+        private void OnReleased()
+        {
+            _uiRoot.ShowInterstitial();
+        }
+
+        private void OnAssistantUpgraded(float count)
+        {
+            Debug.Log("Assistant upgraded");
+            var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero);
+            vacuumingSupport.InitGun(_gameVariables);
+            vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
         }
     }
 }

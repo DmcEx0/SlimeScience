@@ -7,7 +7,7 @@ namespace SlimeScience.Characters
 {
     public class Slime : MobileObject, IPullable
     {
-        private const float ResetVelocityTime = 1f;
+        private const float ResetVelocityTime = 0.1f;
 
         [SerializeField] private Rigidbody _rigidbody;
         
@@ -53,8 +53,8 @@ namespace SlimeScience.Characters
 
         public void AddForce(Vector3 force)
         {
-            Disable();
             _rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+            Disable();
 
             _rigidbody.AddForce(force);
 
@@ -81,7 +81,6 @@ namespace SlimeScience.Characters
             yield return new WaitForSeconds(ResetVelocityTime);
 
             _rigidbody.velocity = Vector3.zero;
-
             Enable();
             _rigidbody.interpolation = RigidbodyInterpolation.None;
         }

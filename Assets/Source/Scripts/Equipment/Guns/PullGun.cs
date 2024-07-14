@@ -1,11 +1,11 @@
-using System;
 using SlimeScience.Characters;
 using SlimeScience.Effects;
 using SlimeScience.InventorySystem;
 using SlimeScience.Saves;
 using SlimeScience.Traps;
-using System.Collections.Generic;
 using SlimeScience.Util;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SlimeScience.Equipment.Guns
@@ -13,6 +13,8 @@ namespace SlimeScience.Equipment.Guns
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class PullGun : MonoBehaviour
     {
+        private const float SpreadDistance = 3f;
+
         [SerializeField] private LayerMask _slimeLayerMask;
         [SerializeField] private PullZoneRenderer _pullZoneRenderer;
         [SerializeField] private SlimeInventoryRenderer _inventoryRenderer;
@@ -28,7 +30,7 @@ namespace SlimeScience.Equipment.Guns
 
         public event Action Catched;
 
-        public bool InventoryIsFull =>_inventory != null ? _inventory.IsFull : false ;
+        public bool InventoryIsFull => _inventory != null ? _inventory.IsFull : false;
 
         private void OnEnable()
         {
@@ -66,23 +68,36 @@ namespace SlimeScience.Equipment.Guns
 
             _slimeCatcher.Caught -= OnCatch;
         }
-        
+
         private void FixedUpdate()
         {
             if (_isInitialized == false || _inventory.IsFull)
             {
+                _effectRenderer?.StopVacuumEffect();
                 return;
             }
 
-            var slimes = _slimeFinder.GetPullables(
+            var pullables = _slimeFinder.GetPullables(
                 transform,
                 _gameVariables.AbsorptionRadius,
                 _gameVariables.AbsorptionAngle);
 
-            foreach (var slime in slimes)
+            if (_effectRenderer != null)
+            {
+                if (pullables.Count > 0)
+                {
+                    _effectRenderer.PlayVacuumEffect();
+                }
+                else
+                {
+                    _effectRenderer.StopVacuumEffect();
+                }
+            }
+
+            foreach (var pullable in pullables)
             {
                 _slimeCatcher.Absorb(
-                    slime,
+                    pullable,
                     transform.position,
                     _gameVariables.AbsorptionForce);
             }
@@ -98,12 +113,15 @@ namespace SlimeScience.Equipment.Guns
             if (collision.gameObject.TryGetComponent(out Slime slime))
             {
                 _slimeCatcher.Catch(slime, transform.position);
+                _effectRenderer.PlayCatchSlimeEffect();
             }
 
             if (collision.gameObject.TryGetComponent(out Bomb bomb))
             {
                 bomb.Explode();
-                _inventory.Reset();
+                _effectRenderer.PlayExplodeEffect();
+                SoundsManager.PlayExplode();
+                FreeSlimes();
             }
         }
 
@@ -117,7 +135,7 @@ namespace SlimeScience.Equipment.Guns
                     trap.DurationInSeconds);
 
                 trap.gameObject.SetActive(false);
-                
+
                 SoundsManager.PlayTrap();
             }
         }
@@ -127,6 +145,7 @@ namespace SlimeScience.Equipment.Guns
             _gameVariables = gameVariables;
             _effectSystem = new EffectSystem(this, gameVariables);
             _effectRenderer.Init(_effectSystem);
+            _effectRenderer.StopVacuumEffect();
 
             _slimeFinder = new Finder(_slimeLayerMask);
             _slimeCatcher = new Catcher();
@@ -155,7 +174,7 @@ namespace SlimeScience.Equipment.Guns
         {
             _gameVariables = gameVariables;
             _effectSystem = new EffectSystem(this, gameVariables);
-            // _effectRenderer.Init(_effectSystem); TODO: fix NULL
+            _effectRenderer?.Init(_effectSystem);
 
             _slimeFinder = new Finder(_slimeLayerMask);
             _slimeCatcher = new Catcher();
@@ -195,7 +214,7 @@ namespace SlimeScience.Equipment.Guns
             slime.Disable();
             _inventory.Add(slime);
             Catched?.Invoke();
-            
+
             SoundsManager.PlaySlimeCatch();
         }
 
@@ -207,8 +226,19 @@ namespace SlimeScience.Equipment.Guns
 
         private void OnEffectChanged()
         {
-           _pullZoneRenderer.UpdateConeSettings();
-           _effectRenderer.Render();
+            _pullZoneRenderer.UpdateConeSettings();
+            _effectRenderer.RenderStatuses();
+        }
+
+        private void FreeSlimes()
+        {
+            for (int i = _inventory.Amount - 1; i >= 0; i--)
+            {
+                Slime slime = _inventory.GetItem(i);
+                slime.SetActive(true);
+                slime.Enable();
+                slime.SetPosition(transform.position - transform.forward * SpreadDistance);
+            }
         }
     }
 }

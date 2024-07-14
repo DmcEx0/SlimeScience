@@ -16,10 +16,11 @@ namespace SlimeScience.Upgrades
         [SerializeField] private Button[] _closeButtons;
         [SerializeField] private RectTransform _upgradesView;
 
-        [SerializeField] private UpgradeButton _forceUpgradeButton;
-        [SerializeField] private UpgradeButton _radiusUpgradeButton;
-        [SerializeField] private UpgradeButton _angleUpgradeButton;
-        [SerializeField] private UpgradeButton _capacityUpgradeButton;
+        [SerializeField] private UpgradeButton _force;
+        [SerializeField] private UpgradeButton _radius;
+        [SerializeField] private UpgradeButton _angle;
+        [SerializeField] private UpgradeButton _capacity;
+        [SerializeField] private UpgradeButton _assistant;
 
         private Tweener _closeTweener;
 
@@ -36,29 +37,34 @@ namespace SlimeScience.Upgrades
                 closeButton.onClick.AddListener(OnCloseClicked);
             }
 
-            if (_forceUpgradeButton != null)
+            if (_force != null)
             {
-                _forceUpgradeButton.Clicked += OnForceUpgraded;
+                _force.Clicked += OnForceUpgraded;
             }
 
-            if (_radiusUpgradeButton != null)
+            if (_radius != null)
             {
-                _radiusUpgradeButton.Clicked += OnRadiusUpgraded;
+                _radius.Clicked += OnRadiusUpgraded;
             }
 
-            if (_angleUpgradeButton != null)
+            if (_angle != null)
             {
-                _angleUpgradeButton.Clicked += OnAngleUpgraded;
+                _angle.Clicked += OnAngleUpgraded;
             }
 
-            if (_capacityUpgradeButton != null)
+            if (_capacity != null)
             {
-                _capacityUpgradeButton.Clicked += OnCapacityUpgraded;
+                _capacity.Clicked += OnCapacityUpgraded;
             }
 
             if (_wallet != null)
             {
                 _wallet.MoneyChanged += UpdateUI;
+            }
+
+            if (_assistant != null)
+            {
+                _assistant.Clicked += OnAssistantUpgraded;
             }
 
             UpdateUI();
@@ -71,29 +77,34 @@ namespace SlimeScience.Upgrades
                 closeButton.onClick.RemoveListener(OnCloseClicked);
             }
 
-            if (_forceUpgradeButton != null)
+            if (_force != null)
             {
-                _forceUpgradeButton.Clicked -= OnForceUpgraded;
+                _force.Clicked -= OnForceUpgraded;
             }
 
-            if (_radiusUpgradeButton != null)
+            if (_radius != null)
             {
-                _radiusUpgradeButton.Clicked -= OnRadiusUpgraded;
+                _radius.Clicked -= OnRadiusUpgraded;
             }
 
-            if (_angleUpgradeButton != null)
+            if (_angle != null)
             {
-                _angleUpgradeButton.Clicked -= OnAngleUpgraded;
+                _angle.Clicked -= OnAngleUpgraded;
             }
 
-            if (_capacityUpgradeButton != null)
+            if (_capacity != null)
             {
-                _capacityUpgradeButton.Clicked -= OnCapacityUpgraded;
+                _capacity.Clicked -= OnCapacityUpgraded;
             }
 
             if (_wallet != null)
             {
                 _wallet.MoneyChanged -= UpdateUI;
+            }
+
+            if (_assistant != null)
+            {
+                _assistant.Clicked -= OnAssistantUpgraded;
             }
         }
 
@@ -107,10 +118,11 @@ namespace SlimeScience.Upgrades
                 closeButton.onClick.AddListener(OnCloseClicked);
             }
 
-            _forceUpgradeButton.Init(_gameVariables.AbsorptionForce);
-            _radiusUpgradeButton.Init(_gameVariables.AbsorptionRadius);
-            _angleUpgradeButton.Init(_gameVariables.AbsorptionAngle);
-            _capacityUpgradeButton.Init(_gameVariables.AbsorptionCapacity);
+            _force.Init(_gameVariables.AbsorptionForce);
+            _radius.Init(_gameVariables.AbsorptionRadius);
+            _angle.Init(_gameVariables.AbsorptionAngle);
+            _capacity.Init(_gameVariables.AbsorptionCapacity);
+            _assistant.Init(_gameVariables.AbsorptionAssistantCount);
 
             wallet.MoneyChanged += UpdateUI;
 
@@ -133,15 +145,17 @@ namespace SlimeScience.Upgrades
 
         private void UpdateUI()
         {
-            _forceUpgradeButton.Render();
-            _radiusUpgradeButton.Render();
-            _angleUpgradeButton.Render();
-            _capacityUpgradeButton.Render();
+            _force.Render();
+            _radius.Render();
+            _angle.Render();
+            _capacity.Render();
+            _assistant.Render();
 
-            MakeUpgradeAccessible(_forceUpgradeButton, _forceUpgradeButton.Cost);
-            MakeUpgradeAccessible(_radiusUpgradeButton, _radiusUpgradeButton.Cost);
-            MakeUpgradeAccessible(_angleUpgradeButton, _angleUpgradeButton.Cost);
-            MakeUpgradeAccessible(_capacityUpgradeButton, _capacityUpgradeButton.Cost);
+            MakeUpgradeAccessible(_force, _force.Cost);
+            MakeUpgradeAccessible(_radius, _radius.Cost);
+            MakeUpgradeAccessible(_angle, _angle.Cost);
+            MakeUpgradeAccessible(_capacity, _capacity.Cost);
+            MakeUpgradeAccessible(_assistant, _assistant.Cost);
         }
 
         public void Show()
@@ -206,6 +220,16 @@ namespace SlimeScience.Upgrades
         {
             UpgradeClick(
                 _gameVariables.UpgradeCapacity,
+                upgradeButton,
+                cost);
+            
+            SoundsManager.PlayTapUI();
+        }
+
+        private void OnAssistantUpgraded(UpgradeButton upgradeButton, int cost)
+        {
+            UpgradeClick(
+                _gameVariables.UpgradeAssistant,
                 upgradeButton,
                 cost);
             

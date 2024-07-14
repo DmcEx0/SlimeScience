@@ -152,7 +152,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9873,6 +9873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvases
       objectReference: {fileID: 0}
+    - target: {fileID: 4052343684524104584, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4596729091866659264, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9908,6 +9912,10 @@ PrefabInstance:
     - target: {fileID: 6566095680188123407, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_text
       value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u044F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585614469386392629, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9188163957338249618, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_AnchorMax.y

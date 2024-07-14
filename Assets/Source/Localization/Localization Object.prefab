@@ -91,6 +91,12 @@ MonoBehaviour:
   - Root: {fileID: 5742945241142656938, guid: c3c63e37175c9474897d1b623660a876, type: 3}
     sources:
     - {fileID: 5484146290228724088, guid: c3c63e37175c9474897d1b623660a876, type: 3}
+  - Root: {fileID: 8305060885095963703, guid: cc7960388d5862648bbf6dbc0bb19795, type: 3}
+    sources:
+    - {fileID: 8689006706102248913, guid: cc7960388d5862648bbf6dbc0bb19795, type: 3}
+  - Root: {fileID: 1996598108393628012, guid: 2810d5f04dedd104ab8be3b22bf35d89, type: 3}
+    sources:
+    - {fileID: 7017278277106066344, guid: 2810d5f04dedd104ab8be3b22bf35d89, type: 3}
 --- !u!1001 &2899797273002076507
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -22,6 +22,8 @@ namespace SlimeScience.Saves
 
         public float AbsorptionCapacity => _absorptionModel.Capacity;
 
+        public float AbsorptionAssistantCount => _absorptionModel.AssistantCount;
+
         public int Money => _progressModel.Money;
 
         public event Action Loaded;
@@ -31,6 +33,8 @@ namespace SlimeScience.Saves
         public event Action<float> AngleUpgraded;
 
         public event Action<float> CapacityUpgraded;
+
+        public event Action<float> AssistantUpgraded;
 
         public void Load(MonoBehaviour obj)
         {
@@ -52,7 +56,8 @@ namespace SlimeScience.Saves
                     json.AbsorptionForce,
                     json.AbsorptionRadius,
                     json.AbsorptionAngle,
-                    json.AbsorptionCapacity);
+                    json.AbsorptionCapacity,
+                    json.AssistantCount);
 
                 _progressModel = new ProgressModel(
                     json.Money,
@@ -74,7 +79,8 @@ namespace SlimeScience.Saves
                 _absorptionModel.Force,
                 _absorptionModel.Radius,
                 _absorptionModel.Angle,
-                _absorptionModel.Capacity
+                _absorptionModel.Capacity,
+                _absorptionModel.AssistantCount
                 );
 
             Agava.YandexGames.PlayerAccount.SetCloudSaveData(JsonUtility.ToJson(saves));
@@ -106,6 +112,12 @@ namespace SlimeScience.Saves
         {
             _absorptionModel.SetRadius(radius);
             RadiusUpgraded?.Invoke(radius);
+        }
+
+        public void UpgradeAssistant(float assistantCount)
+        {
+            _absorptionModel.SetAssistant(assistantCount);
+            AssistantUpgraded?.Invoke(assistantCount);
         }
 
         public void UpgradeAngle(float angle)

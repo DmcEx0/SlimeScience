@@ -18,3 +18,4 @@ MonoBehaviour:
   <UnloadSlime>k__BackingField: {fileID: 8300000, guid: beda3db818081474480885ac0bad609c, type: 3}
   <Trap>k__BackingField: {fileID: 8300000, guid: 4e9bff56ee93c6f42b214141e44e763d, type: 3}
   <LevelOpened>k__BackingField: {fileID: 8300000, guid: 0bc53a44a475a7a4eb9ebc1829994a86, type: 3}
+  <Explode>k__BackingField: {fileID: 8300000, guid: 8dfcae34791b3a447b81d6653208f596, type: 3}

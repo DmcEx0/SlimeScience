@@ -83,7 +83,6 @@ namespace SlimeScience.Root
 
         private void Awake()
         {
-            _slimeSpawner = new SlimeSpawner(_slimeFactory);
             SoundsManager.Initialize(_soundsConfig, _audioSource);
         }
 
@@ -102,7 +101,7 @@ namespace SlimeScience.Root
             _gameVariables.Loaded -= Init;
 
             _advertisment = new Advertisment(this, _adPause);
-            _slimeSpawner = new SlimeSpawner(_slimeFactory);
+            _slimeSpawner = new SlimeSpawner(_slimeFactory, _gameVariables);
             _bombSpawner = new BombSpawner(_bombFactory, transform, GetAllBombsCount());
             _wallet = new Wallet(_gameVariables);
 
@@ -141,7 +140,14 @@ namespace SlimeScience.Root
         {
             Block currentBlock = _blocks[index];
 
-            currentBlock.OpenDoor();
+            for (int i = 0; i <= index; i++)
+            {
+                if (_blocks[i].IsOpened == false)
+                {
+                    _blocks[i].OpenDoor();
+                }
+            }
+
             _slimeSpawner.Spawn(blockData, currentBlock);
             _bombSpawner.Spawn(blockData, currentBlock);
         }
@@ -200,7 +206,6 @@ namespace SlimeScience.Root
 
         private void OnAssistantUpgraded(float count)
         {
-            Debug.Log("Assistant upgraded");
             var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero);
             vacuumingSupport.InitGun(_gameVariables);
             vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);

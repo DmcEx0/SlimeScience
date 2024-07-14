@@ -9,10 +9,15 @@ namespace SlimeScience.Blocks
 
         public Transform Centre => _centre;
 
+        public bool IsOpened { get; private set; }
+
         public void OpenDoor()
         {
             if (_door != null)
+            {
                 _door.gameObject.SetActive(false);
+                IsOpened = true;
+            }
         }
     }
 }

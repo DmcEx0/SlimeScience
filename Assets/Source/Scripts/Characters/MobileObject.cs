@@ -38,7 +38,6 @@ namespace SlimeScience.Characters
 
         public void Disable()
         {
-            Movement.SetMovementSpeed(0);
             _stateMachine.Stop();
             Movement.Disable();
             _agent.enabled = false;

@@ -13,6 +13,8 @@ namespace SlimeScience.Equipment.Guns
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class PullGun : MonoBehaviour
     {
+        private const float SpreadDistance = 3f;
+
         [SerializeField] private LayerMask _slimeLayerMask;
         [SerializeField] private PullZoneRenderer _pullZoneRenderer;
         [SerializeField] private SlimeInventoryRenderer _inventoryRenderer;
@@ -119,7 +121,7 @@ namespace SlimeScience.Equipment.Guns
                 bomb.Explode();
                 _effectRenderer.PlayExplodeEffect();
                 SoundsManager.PlayExplode();
-                _inventory.Reset();
+                FreeSlimes();
             }
         }
 
@@ -172,7 +174,7 @@ namespace SlimeScience.Equipment.Guns
         {
             _gameVariables = gameVariables;
             _effectSystem = new EffectSystem(this, gameVariables);
-            // _effectRenderer.Init(_effectSystem); TODO: fix NULL
+            _effectRenderer?.Init(_effectSystem);
 
             _slimeFinder = new Finder(_slimeLayerMask);
             _slimeCatcher = new Catcher();
@@ -226,6 +228,17 @@ namespace SlimeScience.Equipment.Guns
         {
             _pullZoneRenderer.UpdateConeSettings();
             _effectRenderer.RenderStatuses();
+        }
+
+        private void FreeSlimes()
+        {
+            for (int i = _inventory.Amount - 1; i >= 0; i--)
+            {
+                Slime slime = _inventory.GetItem(i);
+                slime.SetActive(true);
+                slime.Enable();
+                slime.SetPosition(transform.position - transform.forward * SpreadDistance);
+            }
         }
     }
 }

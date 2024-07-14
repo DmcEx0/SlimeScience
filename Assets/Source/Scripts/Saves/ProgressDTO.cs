@@ -8,14 +8,21 @@ namespace SlimeScience.Saves
         public ProgressDTO(
             int money,
             int slimes,
+            int roomIndex,
+            int collectedSlimes,
+            int slimesGoal,
             float absorptionForce,
             float absorptionRadius,
             float absorptionAngle,
             float absorptionCapacity,
-            float assistantCount)
+            float assistantCount
+            )
         {
             Money = money;
             Slimes = slimes;
+            RoomIndex = roomIndex;
+            CollectedSlimes = collectedSlimes;
+            SlimesGoal = slimesGoal;
             AbsorptionForce = absorptionForce;
             AbsorptionRadius = absorptionRadius;
             AbsorptionAngle = absorptionAngle;
@@ -26,6 +33,12 @@ namespace SlimeScience.Saves
         public int Money;
 
         public int Slimes;
+
+        public int RoomIndex;
+
+        public int CollectedSlimes;
+
+        public int SlimesGoal;
 
         public float AbsorptionForce;
 

@@ -9817,6 +9817,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u0423\u0433\u043E\u043B"
       objectReference: {fileID: 0}
+    - target: {fileID: 791139270211663476, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 791139270211663476, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 797824427569024583, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_IsActive
       value: 0

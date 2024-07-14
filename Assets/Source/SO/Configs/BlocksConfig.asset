@@ -28,3 +28,8 @@ MonoBehaviour:
     _neededAmountToOpen: 100
     _maxRangePosX: 20
     _maxRangePosZ: 20
+  - _bombAmount: 20
+    _slimeAmount: 100
+    _neededAmountToOpen: 100
+    _maxRangePosX: 20
+    _maxRangePosZ: 20

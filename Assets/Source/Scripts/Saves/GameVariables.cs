@@ -26,6 +26,13 @@ namespace SlimeScience.Saves
 
         public int Money => _progressModel.Money;
 
+        public int RoomIndex => _progressModel.RoomIndex;
+
+        public int CollectedSlimes => _progressModel.CollectedSlimes;
+
+        public int SlimesGoal => _progressModel.SlimesGoal;
+
+
         public event Action Loaded;
 
         public event Action<float> RadiusUpgraded;
@@ -35,6 +42,14 @@ namespace SlimeScience.Saves
         public event Action<float> CapacityUpgraded;
 
         public event Action<float> AssistantUpgraded;
+
+        public event Action<int> IncreasedRoomIndex;
+
+        public event Action<int> SlimeCollected;
+
+        public event Action SlimeCollectedReset;
+
+        public event Action<int> SlimeGoalChanged;
 
         public void Load(MonoBehaviour obj)
         {
@@ -61,7 +76,10 @@ namespace SlimeScience.Saves
 
                 _progressModel = new ProgressModel(
                     json.Money,
-                    json.Slimes);
+                    json.Slimes,
+                    json.RoomIndex,
+                    json.CollectedSlimes,
+                    json.SlimesGoal);
 
                 Loaded?.Invoke();
             });
@@ -76,6 +94,9 @@ namespace SlimeScience.Saves
             ProgressDTO saves = new ProgressDTO (
                 _progressModel.Money,
                 _progressModel.Slimes,
+                _progressModel.RoomIndex,
+                _progressModel.CollectedSlimes,
+                _progressModel.SlimesGoal,
                 _absorptionModel.Force,
                 _absorptionModel.Radius,
                 _absorptionModel.Angle,
@@ -145,6 +166,30 @@ namespace SlimeScience.Saves
         public void RemoveModifier(EffectModifiers effect, float percent)
         {
             _effectsModel.RemoveModifier(effect, percent);
+        }
+
+        public void AddCollectedSlimes(int slimes)
+        {
+            _progressModel.AddCollectedSlimes(slimes);
+            SlimeCollected?.Invoke(_progressModel.CollectedSlimes);
+        }
+
+        public void ResetCollectSlimes()
+        {
+            _progressModel.ResetCollectedSlimes();
+            SlimeCollectedReset?.Invoke();
+        }
+
+        public void IncreaseRoomIndex()
+        {
+            _progressModel.IncreaseRoomIndex();
+            IncreasedRoomIndex?.Invoke(_progressModel.RoomIndex);
+        }
+
+        public void SetSlimesGoal(int goal)
+        {
+            _progressModel.SetSlimesGoal(goal);
+            SlimeGoalChanged?.Invoke(goal);
         }
 
         private IEnumerator SimulateInit()

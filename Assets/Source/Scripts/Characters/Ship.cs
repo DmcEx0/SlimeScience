@@ -44,6 +44,7 @@ namespace SlimeScience.Characters
             {
                 _player = player;
                 _player.TranslateToShip(transform, _moveSpeed, _rotateSpeed);
+
                 _childShip.SetParent(player.transform);
                 
                 _isEnabled = true;

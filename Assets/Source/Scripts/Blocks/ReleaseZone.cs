@@ -35,6 +35,7 @@ namespace SlimeScience.Blocks
                         _inventory.Add(item);
                         _wallet.Add(1); // TODO: Add slime price and will use "item.PlaceCost"
                         _gameVariables.AddSlimes(1);
+                        _gameVariables.AddCollectedSlimes(1);
                     }
 
                     if (seeker is Player)
@@ -46,22 +47,27 @@ namespace SlimeScience.Blocks
             }
 
             if (_inventory.IsFull)
+            {
                 OpenNextBlock();
+                _gameVariables.IncreaseRoomIndex();
+                _gameVariables.ResetCollectSlimes();
+            }
         }
 
         public void Init(Wallet wallet, GameVariables gameVariables, BlocksConfig blocksConfig)
         {
             _wallet = wallet;
             _gameVariables = gameVariables;
+            _indexCurrentBlock = gameVariables.RoomIndex;
             _inventory = new(0);
             _blocksConfig = blocksConfig;
 
-            OpenNextBlock();
+            OpenNextBlock(true);
         }
         
-        private void OpenNextBlock()
+        private void OpenNextBlock(bool isFirstLaunch = false)
         {
-            if(_indexCurrentBlock != 0)
+            if (_indexCurrentBlock != 0 && isFirstLaunch == false)
                 SoundsManager.PlayLevelOpened();
             
             if(_indexCurrentBlock + 1 >=_blocksConfig.BlocksData.Count)
@@ -73,6 +79,8 @@ namespace SlimeScience.Blocks
 
             _indexCurrentBlock++;
             _inventory.Expand((_blocksConfig.BlocksData[_indexCurrentBlock].NeededAmountToOpen));
+
+            _gameVariables.SetSlimesGoal(_inventory.MaxItems);
         }
     }
 }

@@ -22,7 +22,10 @@ namespace SlimeScience
 
         private void OnDisable()
         {
-            _wallet.MoneyChanged -= Render;
+            if (_wallet != null)
+            {
+                _wallet.MoneyChanged -= Render;
+            }
         }
 
         public void Init(Wallet wallet)

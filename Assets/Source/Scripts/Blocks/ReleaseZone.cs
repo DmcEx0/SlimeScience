@@ -12,6 +12,8 @@ namespace SlimeScience.Blocks
 {
     public class ReleaseZone : MonoBehaviour
     {
+        [SerializeField] private Collider _collider;
+        
         private BlocksConfig _blocksConfig;
 
         private int _indexCurrentBlock = 0;
@@ -21,6 +23,8 @@ namespace SlimeScience.Blocks
 
         public event Action<BlockData, int> OpenedNextBlock;
         public event Action Released;
+
+        public Collider Collider => _collider;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -46,7 +50,7 @@ namespace SlimeScience.Blocks
 
                 Released?.Invoke();
             }
-
+            
             if (_inventory.IsFull)
                 OpenNextBlock();
         }
@@ -62,19 +66,22 @@ namespace SlimeScience.Blocks
         }
         
         private void OpenNextBlock()
-        {
-            if(_indexCurrentBlock != 0)
-                SoundsManager.PlayLevelOpened();
-            
-            if(_indexCurrentBlock + 1 >=_blocksConfig.BlocksData.Count)
+        { 
+            if(_indexCurrentBlock > _blocksConfig.BlocksData.Count - 1)
             {
                 return;
             }
             
+            if(_indexCurrentBlock != 0)
+            {
+                SoundsManager.PlayLevelOpened();
+            }
+            
             OpenedNextBlock?.Invoke(_blocksConfig.BlocksData[_indexCurrentBlock], _indexCurrentBlock);
 
-            _indexCurrentBlock++;
             _inventory.Expand((_blocksConfig.BlocksData[_indexCurrentBlock].NeededAmountToOpen));
+            
+            _indexCurrentBlock++;
         }
     }
 }

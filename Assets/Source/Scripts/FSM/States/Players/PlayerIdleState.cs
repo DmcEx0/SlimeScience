@@ -18,7 +18,7 @@ namespace SlimeScience.FSM.States.Players
 
         public void Enter()
         {
-            _player.Movement.Enable();
+            // _player.Movement.Enable(); 
         }
 
         public void Exit()

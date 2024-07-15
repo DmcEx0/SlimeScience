@@ -1,4 +1,3 @@
-
 using SlimeScience.Effects;
 using System;
 using System.Collections;
@@ -9,6 +8,8 @@ namespace SlimeScience.Saves
     public class GameVariables
     {
         private const string LeaderbordName = "TotalSlimes";
+
+        public static GameVariables s_Instance;
 
         private AbsorptionModel _absorptionModel = new AbsorptionModel();
         private ProgressModel _progressModel = new ProgressModel();
@@ -31,6 +32,11 @@ namespace SlimeScience.Saves
         public event Action<float> AngleUpgraded;
 
         public event Action<float> CapacityUpgraded;
+
+        public GameVariables()
+        {
+            s_Instance = this;
+        }
 
         public void Load(MonoBehaviour obj)
         {
@@ -128,7 +134,7 @@ namespace SlimeScience.Saves
         public void ResetModifier(EffectModifiers effect)
         {
             _effectsModel.ResetModifier(effect);
-        }   
+        }
 
         public void RemoveModifier(EffectModifiers effect, float percent)
         {

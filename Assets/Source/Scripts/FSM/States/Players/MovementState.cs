@@ -23,7 +23,7 @@ namespace SlimeScience.FSM.States.Players
 
         public void Exit()
         {
-            _player.Movement.Disable();
+            // _player.Movement.Disable();
         }
 
         public void Update()

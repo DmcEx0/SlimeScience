@@ -16,6 +16,8 @@ namespace SlimeScience.Characters
 
         private float _rangeVacuum;
 
+        public PullGun PullGun => _pullGun;
+
         private void Update()
         {
             UpdateStateMachine();

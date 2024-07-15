@@ -100,7 +100,7 @@ namespace SlimeScience.Root
             _bombSpawner = new BombSpawner(_bombFactory, transform, GetAllBombsCount());
             _wallet = new Wallet(_gameVariables);
 
-            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause);
+            _uiRoot?.Init(_wallet, _gameVariables, _advertisment, _adPause);
 
             var player = _playerFactory.Get();
             player.InitGun(_gameVariables);
@@ -160,7 +160,7 @@ namespace SlimeScience.Root
 
         private void OnReleased()
         {
-            _uiRoot.ShowInterstitial();
+            _uiRoot?.ShowInterstitial();
         }
 
         private int GetAllSlimesCount() //TODO: remove code dubbing

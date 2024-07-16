@@ -71,7 +71,6 @@ namespace SlimeScience.Tutorial
 
         private void Awake()
         {
-            _slimeSpawner = new SlimeSpawner(_slimeFactory);
             SoundsManager.Initialize(_soundsConfig, _audioSource);
         }
 
@@ -89,7 +88,7 @@ namespace SlimeScience.Tutorial
         {
             _gameVariables.Loaded -= Init;
 
-            _slimeSpawner = new SlimeSpawner(_slimeFactory);
+            _slimeSpawner = new SlimeSpawner(_slimeFactory, _gameVariables);
             _bombSpawner = new BombSpawner(_bombFactory, transform, GetAllBombsCount());
             _wallet = new Wallet(_gameVariables);
 
@@ -99,7 +98,7 @@ namespace SlimeScience.Tutorial
             _camera.LookAt = player.transform;
             player.transform.position = Vector3.zero;
 
-            _tutorialManger.Init(player);
+            _tutorialManger.Init(player, _gameVariables);
             
             _slimeSpawner.Init(player.transform, transform, GetAllSlimesCount());
 

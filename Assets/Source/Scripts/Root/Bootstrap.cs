@@ -59,7 +59,7 @@ namespace SlimeScience.Root
                 _gameVariables.AssistantUpgraded += OnAssistantUpgraded;
             }
 
-            _releaseZone.PlayerReleased += OnReleased;
+            _releaseZone.Released += OnReleased;
         }
 
         private void OnDisable()
@@ -78,7 +78,7 @@ namespace SlimeScience.Root
                 _gameVariables.AssistantUpgraded -= OnAssistantUpgraded;
             }
             
-            _releaseZone.PlayerReleased -= OnReleased;
+            _releaseZone.Released -= OnReleased;
         }
 
         private void Awake()

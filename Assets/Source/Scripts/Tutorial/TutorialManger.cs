@@ -24,6 +24,7 @@ namespace SlimeScience.Tutorial
         [Space, Header("Triggers")]
         [SerializeField] private Collider _trigger1;
 
+        private GameVariables _gameVariables;
         private Player _player;
         private int _currentSlimesAmount;
 
@@ -46,7 +47,7 @@ namespace SlimeScience.Tutorial
             _upgradePopup.PopupClosed -= CloseFadeScreen;
         }
 
-        public void Init(Player player)
+        public void Init(Player player, GameVariables gameVariables)
         {
             _player = player;
             _player.PullGun.Catched += ShowReleasePopup;
@@ -72,7 +73,7 @@ namespace SlimeScience.Tutorial
         {
             _currentSlimesAmount++;
             
-            if(_currentSlimesAmount == (int)GameVariables.s_Instance.AbsorptionCapacity)
+            if(_currentSlimesAmount == (int)_gameVariables.AbsorptionCapacity)
             {
                 OpenFadeScreen();
                 _releaseSlimesPopup.gameObject.SetActive(true);

@@ -32,7 +32,6 @@ namespace SlimeScience.Saves
 
         public int SlimesGoal => _progressModel.SlimesGoal;
 
-
         public event Action Loaded;
 
         public event Action<float> RadiusUpgraded;

@@ -73,9 +73,6 @@ namespace SlimeScience.Tutorial
         private void ShowReleasePopup()
         {
             _currentSlimesAmount++;
-
-            Debug.Log(_currentSlimesAmount);
-            Debug.Log(_gameVariables.AbsorptionCapacity);
             
             if(_currentSlimesAmount == (int)_gameVariables.AbsorptionCapacity)
             {

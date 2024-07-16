@@ -10,7 +10,8 @@ namespace SlimeScience.Saves
     {
         private const string PercentText = "{0}%";
         private const float SmoothTime = 1f;
-        private const string PharseKey = "room_number";
+        private const string RoomPharseKey = "room_number";
+        private const string LastRoomPharseKey = "last_room_number";
 
         [SerializeField] private TMP_Text _roomNumber;
         [SerializeField] private TMP_Text _percentText;
@@ -62,9 +63,16 @@ namespace SlimeScience.Saves
 
         private void SetRoomNumber(int number)
         {
-            string text = LeanLocalization.GetTranslationText(PharseKey);
+            string text = LeanLocalization.GetTranslationText(RoomPharseKey);
 
-            _roomNumber.text = string.Format(text, number + 1);
+            if (number == -1)
+            {
+
+                _roomNumber.text = string.Format(text, LeanLocalization.GetTranslationText(LastRoomPharseKey));
+                return;
+            }
+
+            _roomNumber.text = string.Format(text, number);
         }
 
         private void OnSlimeCollected(int count)

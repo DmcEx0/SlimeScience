@@ -56,9 +56,10 @@ namespace SlimeScience.Root
             if (_gameVariables != null)
             {
                 _intervalSave = StartCoroutine(IntervalSave());
+                _gameVariables.AssistantUpgraded += OnAssistantUpgraded;
             }
 
-            _releaseZone.Released += OnReleased;
+            _releaseZone.PlayerReleased += OnReleased;
         }
 
         private void OnDisable()
@@ -71,13 +72,17 @@ namespace SlimeScience.Root
             {
                 StopCoroutine(_intervalSave);
             }
+
+            if (_gameVariables != null)
+            {
+                _gameVariables.AssistantUpgraded -= OnAssistantUpgraded;
+            }
             
-            _releaseZone.Released -= OnReleased;
+            _releaseZone.PlayerReleased -= OnReleased;
         }
 
         private void Awake()
         {
-            _slimeSpawner = new SlimeSpawner(_slimeFactory);
             SoundsManager.Initialize(_soundsConfig, _audioSource);
         }
 
@@ -96,11 +101,11 @@ namespace SlimeScience.Root
             _gameVariables.Loaded -= Init;
 
             _advertisment = new Advertisment(this, _adPause);
-            _slimeSpawner = new SlimeSpawner(_slimeFactory);
+            _slimeSpawner = new SlimeSpawner(_slimeFactory, _gameVariables);
             _bombSpawner = new BombSpawner(_bombFactory, transform, GetAllBombsCount());
             _wallet = new Wallet(_gameVariables);
 
-            _uiRoot?.Init(_wallet, _gameVariables, _advertisment, _adPause);
+            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause);
 
             var player = _playerFactory.Get();
             player.InitGun(_gameVariables);
@@ -117,9 +122,14 @@ namespace SlimeScience.Root
 
             _intervalSave = StartCoroutine(IntervalSave());
 
-            var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero);
-            vacuumingSupport.InitGun(_gameVariables);
-            vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
+            for (int i = 0; i < _gameVariables.AbsorptionAssistantCount; i++)
+            {
+                var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero);
+                vacuumingSupport.InitGun(_gameVariables);
+                vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
+            }
+
+            _gameVariables.AssistantUpgraded += OnAssistantUpgraded;
 
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();
@@ -130,7 +140,14 @@ namespace SlimeScience.Root
         {
             Block currentBlock = _blocks[index];
 
-            currentBlock.OpenDoor();
+            for (int i = 0; i <= index; i++)
+            {
+                if (_blocks[i].IsOpened == false)
+                {
+                    _blocks[i].OpenDoor();
+                }
+            }
+
             _slimeSpawner.Spawn(blockData, currentBlock);
             _bombSpawner.Spawn(blockData, currentBlock);
         }
@@ -158,11 +175,6 @@ namespace SlimeScience.Root
             }
         }
 
-        private void OnReleased()
-        {
-            _uiRoot?.ShowInterstitial();
-        }
-
         private int GetAllSlimesCount() //TODO: remove code dubbing
         {
             int count = 0;
@@ -185,6 +197,18 @@ namespace SlimeScience.Root
             }
 
             return count;
+        }
+
+        private void OnReleased()
+        {
+            _uiRoot.ShowInterstitial();
+        }
+
+        private void OnAssistantUpgraded(float count)
+        {
+            var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero);
+            vacuumingSupport.InitGun(_gameVariables);
+            vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
         }
     }
 }

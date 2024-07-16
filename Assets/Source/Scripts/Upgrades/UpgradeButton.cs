@@ -1,6 +1,6 @@
 using System;
 using Lean.Localization;
-using SlimeScience.Configs.Gun;
+using SlimeScience.Configs.Upgrades;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

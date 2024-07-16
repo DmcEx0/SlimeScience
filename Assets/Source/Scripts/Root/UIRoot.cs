@@ -1,4 +1,5 @@
 using SlimeScience.Ad;
+using SlimeScience.Audio;
 using SlimeScience.Input;
 using SlimeScience.Leaderbords;
 using SlimeScience.Money;
@@ -18,6 +19,8 @@ namespace SlimeScience.Root
         [SerializeField] private UpgradesCanvas _upgradesCanvas;
         [SerializeField] private LeaderbordCanvas _leaderbordCanvas;
         [SerializeField] private AdvertismentCanvas _advertismentCanvas;
+        [SerializeField] private AudioChanger _audioChanger;
+        [SerializeField] private ProgressRenderer _progressRenderer;
 
         [SerializeField] private Button _openUpgradesCanvas;
         [SerializeField] private Button _openLeaderbordCanvas;
@@ -93,6 +96,8 @@ namespace SlimeScience.Root
             _walletRenderer.Init(wallet);
             _upgradesCanvas.Init(wallet, gameVariables);
             _leaderbordCanvas.Init();
+            _audioChanger.Init();
+            _progressRenderer.Init(gameVariables);
         }
 
         public void ShowInterstitial()

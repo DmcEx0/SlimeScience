@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Data;
 using SlimeScience.Configs;
 using SlimeScience.Equipment.Guns;
 using SlimeScience.Saves;

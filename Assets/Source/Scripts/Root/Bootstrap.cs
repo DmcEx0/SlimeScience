@@ -116,8 +116,6 @@ namespace SlimeScience.Root
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
             _releaseZone.Init(_wallet, _gameVariables, _blocksConfig);
 
-            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause);
-
             _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
 
             _intervalSave = StartCoroutine(IntervalSave());
@@ -130,6 +128,7 @@ namespace SlimeScience.Root
             }
 
             _gameVariables.AssistantUpgraded += OnAssistantUpgraded;
+            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause);
 
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();

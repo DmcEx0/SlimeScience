@@ -11,10 +11,12 @@ namespace SlimeScience.Root
 {
     public class GameRoot : MonoBehaviour
     {
+        private const string TutorialCompleted = "Tutorial";
+        private const string TutorialSceneName = "Tutorial";
+        private const string GameSceneName = "SampleScene";
         private const string _percentTemplate = "{0}%";
         private const float _loadingSpeed = 1.0f;
         private const float _progressThreshold = 0.85f;
-        private const string _sceneName = "SampleScene";
 
         [SerializeField] private Slider _loader;
         [SerializeField] private TMP_Text _percentText;
@@ -23,8 +25,14 @@ namespace SlimeScience.Root
         private bool _dataReceived = false;
         private bool _dataProcessed = false;
 
+        private string _sceneName = "SampleScene";
+
         private IEnumerator Start()
         {
+            _sceneName = PlayerPrefs.GetInt(TutorialCompleted, 0) == 1
+                ? GameSceneName
+                : TutorialSceneName;
+
 #if UNITY_WEBGL && !UNITY_EDITOR
             yield return YandexGamesSdk.Initialize();
 

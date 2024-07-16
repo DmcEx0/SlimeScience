@@ -22,7 +22,7 @@ namespace SlimeScience.Blocks
         private GameVariables _gameVariables;
 
         public event Action<BlockData, int> OpenedNextBlock;
-        public event Action Released;
+        public event Action PlayerReleased;
 
         public Collider Collider => _collider;
 
@@ -37,6 +37,7 @@ namespace SlimeScience.Blocks
                     if(seeker is Player)
                     {
                         SoundsManager.PlayUnloadSlime();
+                        PlayerReleased?.Invoke();
                     }
                 
                     foreach (var item in releaseSimes)
@@ -44,35 +45,38 @@ namespace SlimeScience.Blocks
                         _inventory.Add(item);
                         _wallet.Add(1); // TODO: Add slime price and will use "item.PlaceCost"
                         _gameVariables.AddSlimes(1);
+                        _gameVariables.AddCollectedSlimes(1);
                     }
                 }
-
-
-                Released?.Invoke();
             }
             
             if (_inventory.IsFull)
+            {
                 OpenNextBlock();
+                _gameVariables.IncreaseRoomIndex();
+                _gameVariables.ResetCollectSlimes();
+            }
         }
 
         public void Init(Wallet wallet, GameVariables gameVariables, BlocksConfig blocksConfig)
         {
             _wallet = wallet;
             _gameVariables = gameVariables;
+            _indexCurrentBlock = gameVariables.RoomIndex;
             _inventory = new(0);
             _blocksConfig = blocksConfig;
 
-            OpenNextBlock();
+            OpenNextBlock(true);
         }
         
-        private void OpenNextBlock()
+        private void OpenNextBlock(bool isFirstLaunch = false)
         { 
             if(_indexCurrentBlock > _blocksConfig.BlocksData.Count - 1)
             {
                 return;
             }
             
-            if(_indexCurrentBlock != 0)
+            if(_indexCurrentBlock != 0 && isFirstLaunch == false)
             {
                 SoundsManager.PlayLevelOpened();
             }
@@ -82,6 +86,7 @@ namespace SlimeScience.Blocks
             _inventory.Expand((_blocksConfig.BlocksData[_indexCurrentBlock].NeededAmountToOpen));
             
             _indexCurrentBlock++;
+            _gameVariables.SetSlimesGoal(_inventory.MaxItems);
         }
     }
 }

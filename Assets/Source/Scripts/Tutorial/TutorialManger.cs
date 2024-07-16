@@ -49,9 +49,10 @@ namespace SlimeScience.Tutorial
 
         public void Init(Player player, GameVariables gameVariables)
         {
+            _gameVariables = gameVariables;
             _player = player;
             _player.PullGun.Catched += ShowReleasePopup;
-            _releaseZone.Released += ShowUpgradePopup;
+            _releaseZone.PlayerReleased += ShowUpgradePopup;
             
             OpenFadeScreen();
             _welcomePopup.gameObject.SetActive(true);
@@ -72,6 +73,9 @@ namespace SlimeScience.Tutorial
         private void ShowReleasePopup()
         {
             _currentSlimesAmount++;
+
+            Debug.Log(_currentSlimesAmount);
+            Debug.Log(_gameVariables.AbsorptionCapacity);
             
             if(_currentSlimesAmount == (int)_gameVariables.AbsorptionCapacity)
             {
@@ -89,7 +93,7 @@ namespace SlimeScience.Tutorial
             OpenFadeScreen();
             _upgradePopup.gameObject.SetActive(true);
             
-            _releaseZone.Released -= ShowUpgradePopup;
+            _releaseZone.PlayerReleased -= ShowUpgradePopup;
             _releaseZone.OpenedNextBlock += ShowOpenNextBlockPopup;
         }
 

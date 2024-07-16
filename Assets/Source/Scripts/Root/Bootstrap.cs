@@ -59,7 +59,7 @@ namespace SlimeScience.Root
                 _gameVariables.AssistantUpgraded += OnAssistantUpgraded;
             }
 
-            _releaseZone.Released += OnReleased;
+            _releaseZone.PlayerReleased += OnReleased;
         }
 
         private void OnDisable()
@@ -78,7 +78,7 @@ namespace SlimeScience.Root
                 _gameVariables.AssistantUpgraded -= OnAssistantUpgraded;
             }
             
-            _releaseZone.Released -= OnReleased;
+            _releaseZone.PlayerReleased -= OnReleased;
         }
 
         private void Awake()
@@ -105,8 +105,6 @@ namespace SlimeScience.Root
             _bombSpawner = new BombSpawner(_bombFactory, transform, GetAllBombsCount());
             _wallet = new Wallet(_gameVariables);
 
-            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause);
-
             var player = _playerFactory.Get();
             player.InitGun(_gameVariables);
             _camera.Follow = player.transform;
@@ -117,6 +115,8 @@ namespace SlimeScience.Root
 
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
             _releaseZone.Init(_wallet, _gameVariables, _blocksConfig);
+
+            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause);
 
             _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
 

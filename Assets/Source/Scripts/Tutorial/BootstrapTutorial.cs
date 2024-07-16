@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Agava.WebUtility;
 using Cinemachine;
 using SlimeScience.Blocks;
@@ -11,17 +9,20 @@ using SlimeScience.Root;
 using SlimeScience.Saves;
 using SlimeScience.Spawners;
 using SlimeScience.Util;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SlimeScience.Tutorial
 {
     public class BootstrapTutorial : MonoBehaviour
     {
-       private const float IntervalSaveTime = 30f;
+        private const float IntervalSaveTime = 30f;
 
-       [SerializeField] private TutorialManger _tutorialManger;
+        [SerializeField] private TutorialManger _tutorialManger;
         [SerializeField] private PauseRoot _pauseRoot;
 
+        [SerializeField] private UIRoot _uIRoot;
         [SerializeField] private CinemachineVirtualCamera _camera;
         [SerializeField] private ReleaseZone _releaseZone;
         [SerializeField] private GeneralPlayerFactory _playerFactory;
@@ -99,7 +100,7 @@ namespace SlimeScience.Tutorial
             player.transform.position = Vector3.zero;
 
             _tutorialManger.Init(player, _gameVariables);
-            
+
             _slimeSpawner.Init(player.transform, transform, GetAllSlimesCount());
 
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
@@ -107,7 +108,7 @@ namespace SlimeScience.Tutorial
 
             _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
 
-            _intervalSave = StartCoroutine(IntervalSave());
+            _uIRoot.Init(_wallet, _gameVariables, null, _adPause);
 
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();
@@ -170,4 +171,4 @@ namespace SlimeScience.Tutorial
             return count;
         }
     }
-    }
+}

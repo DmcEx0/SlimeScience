@@ -1,13 +1,15 @@
 using System;
 using SlimeScience.Configs;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SlimeScience.Characters
 {
     [RequireComponent(typeof(Collider))]
     public class Ship : MonoBehaviour
     {
-        [SerializeField] private ParticleSystem[] _particles;
+        [SerializeField] private ParticleSystem[] _particlesShip;
+        [SerializeField] private ParticleSystem _zoneParticle;
         [SerializeField] private Transform _childShip;
         [SerializeField] private float _time;
 
@@ -18,6 +20,11 @@ namespace SlimeScience.Characters
 
         private float _accumulatedTime;
         private bool _isEnabled;
+
+        private void Start()
+        {
+            SetParticlesState(false);
+        }
 
         private void Update()
         {
@@ -56,18 +63,22 @@ namespace SlimeScience.Characters
         {
             if(state)
             {
-                foreach (var particle in _particles)
+                foreach (var particle in _particlesShip)
                 {
                     particle.Play();
                 }
                 
+                _zoneParticle.Stop();
+
                 return;
             }
             
-            foreach (var particle in _particles)
+            foreach (var particle in _particlesShip)
             {
                 particle.Stop();
             }
+            
+            _zoneParticle.Play();
         }
     }
 }

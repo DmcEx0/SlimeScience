@@ -7,6 +7,7 @@ namespace SlimeScience.Characters
     [RequireComponent(typeof(Collider))]
     public class Ship : MonoBehaviour
     {
+        [SerializeField] private ParticleSystem[] _particles;
         [SerializeField] private Transform _childShip;
         [SerializeField] private float _time;
 
@@ -31,6 +32,7 @@ namespace SlimeScience.Characters
             {
                 _accumulatedTime = 0f;
                 _isEnabled = false;
+                SetParticlesState(false);
                 _player.LeaveShip();
                 _childShip.transform.position = transform.position;
                 _childShip.transform.rotation = transform.rotation;
@@ -45,8 +47,26 @@ namespace SlimeScience.Characters
                 _player = player;
                 _player.TranslateToShip(transform, _config);
                 _childShip.SetParent(player.transform);
-                
+                SetParticlesState(true);
                 _isEnabled = true;
+            }
+        }
+        
+        private void SetParticlesState(bool state)
+        {
+            if(state)
+            {
+                foreach (var particle in _particles)
+                {
+                    particle.Play();
+                }
+                
+                return;
+            }
+            
+            foreach (var particle in _particles)
+            {
+                particle.Stop();
             }
         }
     }

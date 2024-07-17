@@ -6,7 +6,7 @@ namespace SlimeScience.Saves
         private const int DefaultSlimes = 0;
         private const int DefaultRoomIndex = 0;
         private const int DefaultCollectedSlimes = 0;
-        private const int DefaultSlimesGoal = 0;
+        private const int DefaultSlimesGoal = 1;
         
         public ProgressModel()
         {

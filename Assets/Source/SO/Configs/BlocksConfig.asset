@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlocksConfig
   m_EditorClassIdentifier: 
   _blocksData:
-  - _bombAmount: 10
+  - _bombAmount: 0
     _slimeAmount: 50
     _neededAmountToOpen: 50
     _maxRangePosX: 25

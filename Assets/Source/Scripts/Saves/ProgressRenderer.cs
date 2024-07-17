@@ -72,7 +72,7 @@ namespace SlimeScience.Saves
                 return;
             }
 
-            _roomNumber.text = string.Format(text, number);
+            _roomNumber.text = string.Format(text, number + 1);
         }
 
         private void OnSlimeCollected(int count)

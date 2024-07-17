@@ -3289,6 +3289,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2153394832599835207, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: _resetSave
+      value: 
+      objectReference: {fileID: 1029763782}
     - target: {fileID: 2617451296708500016, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_text
       value: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"

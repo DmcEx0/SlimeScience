@@ -1910,7 +1910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3974119958387944999, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_text
-      value: 'Room: {0}'
+      value: "\u041A\u043E\u043C\u043D\u0430\u0442\u0430: {0}"
       objectReference: {fileID: 0}
     - target: {fileID: 4052343684524104584, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1918,7 +1918,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4646942491058632166, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_text
-      value: TEXT
+      value: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430\u0447\u043D\u0435\u0442\u0441\u044F
+        \u0447\u0435\u0440\u0435\u0437 {0} \u0441\u0435\u043A\u0443\u043D\u0434"
       objectReference: {fileID: 0}
     - target: {fileID: 6312527605926370991, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_SizeDelta.y

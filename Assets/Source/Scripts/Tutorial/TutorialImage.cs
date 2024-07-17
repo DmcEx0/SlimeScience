@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,8 @@ namespace SlimeScience.Tutorial
 {
     public class TutorialImage : MonoBehaviour
     {
+        private const float OpenDuration = 0.35f;
+        private const float CloseDuration = 0.35f;
         private const int MinCurrentNumber = 0;
         
         [SerializeField] private Button _nextTutorialButton;
@@ -13,6 +16,9 @@ namespace SlimeScience.Tutorial
         [SerializeField] private Button _readyButton;
         
         [SerializeField] private Image[] _tutorials;
+
+        private Tweener _openTweener;
+        private Tweener _closeTweener;
 
         private Image _currentTutorial;
         private int _currentImageNumber = 0;
@@ -45,10 +51,28 @@ namespace SlimeScience.Tutorial
             _readyButton.onClick.RemoveListener(Close);
         }
 
+        public void Show()
+        {
+            gameObject.SetActive(true);
+            
+            _openTweener?.Kill();
+            _openTweener = transform
+                .DOScale(Vector3.one, OpenDuration)
+                .SetEase(Ease.OutBack);
+        }
+
         private void Close()
         {
-            gameObject.SetActive(false);
-            PopupClosed?.Invoke();
+            _closeTweener?.Kill();
+
+            _closeTweener = transform
+                .DOScale(Vector3.zero, CloseDuration)
+                .SetEase(Ease.InBack)
+                .OnComplete(() =>
+                {
+                    gameObject.SetActive(false);
+                    PopupClosed?.Invoke();
+                });
         }
         
         private void ShowNextTutorial()

@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55c8682e-9460-4605-89d8-b09e169f6c0d" name="Changes" comment="" />
+    <list default="true" id="55c8682e-9460-4605-89d8-b09e169f6c0d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Sprites/Tutorial/ProgressBarEmpty.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Sprites/Tutorial/ProgressBarEmpty.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Sprites/Tutorial/ProgressBarFull.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Sprites/Tutorial/ProgressBarFull.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Tutorial/TutorialImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Tutorial/TutorialImage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Tutorial/TutorialManger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Tutorial/TutorialManger.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,6 +131,7 @@
       <workItem from="1720960195923" duration="8167000" />
       <workItem from="1720980961016" duration="2326000" />
       <workItem from="1721029271385" duration="2861000" />
+      <workItem from="1721231841118" duration="706000" />
     </task>
     <servers />
   </component>
@@ -138,24 +147,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Source/Scripts/Blocks/ReleaseZone.cs</url>
-          <line>69</line>
-          <properties documentPath="D:\Programms\Unity\Repository\SlimeScience\Assets\Source\Scripts\Blocks\ReleaseZone.cs" containingFunctionPresentation="Method 'OpenNextBlock'">
-            <startOffsets>
-              <option value="2007" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2066" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

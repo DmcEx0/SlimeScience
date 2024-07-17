@@ -21,7 +21,8 @@ namespace SlimeScience.Root
         [SerializeField] private AdvertismentCanvas _advertismentCanvas;
         [SerializeField] private AudioChanger _audioChanger;
         [SerializeField] private ProgressRenderer _progressRenderer;
-
+        [SerializeField] private ShipPopup _shipPopup;
+        
         [SerializeField] private Button _openUpgradesCanvas;
         [SerializeField] private Button _openLeaderbordCanvas;
 
@@ -62,6 +63,8 @@ namespace SlimeScience.Root
             {
                 _resetSave.onClick.AddListener(OnResetSaves);
             }
+
+            _shipPopup.AdShowing += OnAdPopupEnded;
         }
 
         private void OnDisable()
@@ -95,6 +98,8 @@ namespace SlimeScience.Root
             {
                 _resetSave.onClick.RemoveListener(OnResetSaves);
             }
+            
+            _shipPopup.AdShowing -= OnAdPopupEnded;
         }
 
         public void Init(

@@ -1,13 +1,14 @@
 using System;
 using SlimeScience.Configs;
+using SlimeScience.Tutorial;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace SlimeScience.Characters
 {
     [RequireComponent(typeof(Collider))]
     public class Ship : MonoBehaviour
     {
+        [SerializeField] private ShipPopup _shipPopup;
         [SerializeField] private ParticleSystem[] _particlesShip;
         [SerializeField] private ParticleSystem _zoneParticle;
         [SerializeField] private Transform _childShip;
@@ -24,6 +25,12 @@ namespace SlimeScience.Characters
         private void Start()
         {
             SetParticlesState(false);
+            _shipPopup.AdShowing += Used;
+        }
+
+        private void OnDestroy()
+        {
+            _shipPopup.AdShowing -= Used;
         }
 
         private void Update()
@@ -52,11 +59,16 @@ namespace SlimeScience.Characters
             if (other.TryGetComponent(out Player player) && _isEnabled == false)
             {
                 _player = player;
-                _player.TranslateToShip(transform, _config);
-                _childShip.SetParent(player.transform);
-                SetParticlesState(true);
-                _isEnabled = true;
+                _shipPopup.Show();
             }
+        }
+
+        private void Used()
+        {
+            _player.TranslateToShip(transform, _config);
+            _childShip.SetParent(_player.transform);
+            SetParticlesState(true);
+            _isEnabled = true;
         }
         
         private void SetParticlesState(bool state)

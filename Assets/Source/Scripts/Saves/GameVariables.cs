@@ -108,6 +108,14 @@ namespace SlimeScience.Saves
 #endif
         }
 
+        public void ResetSave()
+        {
+            _progressModel = new ProgressModel();
+            _absorptionModel = new AbsorptionModel();
+            _effectsModel = new EffectsModel();
+
+            Save();
+        }
         public void AddMoney(int amount)
         {
             _progressModel.AddMoney(amount);

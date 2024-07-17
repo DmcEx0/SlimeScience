@@ -84,13 +84,9 @@ namespace SlimeScience.Blocks
             _inventory.Expand((_blocksConfig.BlocksData[_indexCurrentBlock].NeededAmountToOpen));
             
             _indexCurrentBlock++;
-
-            if (_indexCurrentBlock >= _blocksConfig.BlocksData.Count - 2)
-            {
-                _gameVariables.SetSlimesGoal(_inventory.MaxItems);
-                _gameVariables.IncreaseRoomIndex();
-                _gameVariables.ResetCollectSlimes();
-            }
+            _gameVariables.IncreaseRoomIndex();
+            _gameVariables.SetSlimesGoal(_inventory.MaxItems);
+            _gameVariables.ResetCollectSlimes();
         }
     }
 }

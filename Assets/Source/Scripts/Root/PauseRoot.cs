@@ -47,13 +47,10 @@ namespace SlimeScience.Root
 
         private void Pause()
         {
-            Debug.Log("Pause");
-
             foreach (var pause in _pauseSources)
             {
                 if (pause.IsPaused)
                 {
-                    Debug.Log("Pause already");
                     Time.timeScale = PauseTimeScale;
                     SoundsManager.PauseAll();
                     return;

@@ -13,7 +13,7 @@ namespace SlimeScience.Root
     {
         private const string TutorialCompleted = "Tutorial";
         private const string TutorialSceneName = "Tutorial";
-        private const string GameSceneName = "SampleScene";
+        private const string GameSceneName = "Game";
         private const string _percentTemplate = "{0}%";
         private const float _loadingSpeed = 1.0f;
         private const float _progressThreshold = 0.85f;
@@ -25,7 +25,7 @@ namespace SlimeScience.Root
         private bool _dataReceived = false;
         private bool _dataProcessed = false;
 
-        private string _sceneName = "SampleScene";
+        private string _sceneName = "Game";
 
         private IEnumerator Start()
         {

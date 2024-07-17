@@ -25,8 +25,11 @@ namespace SlimeScience.Root
         [SerializeField] private Button _openUpgradesCanvas;
         [SerializeField] private Button _openLeaderbordCanvas;
 
+        [SerializeField] private Button _resetSave;
+
         private Advertisment _advertisment;
         private PauseHandler _adPause;
+        private GameVariables _gameVariables;
 
         private void OnEnable()
         {
@@ -53,6 +56,11 @@ namespace SlimeScience.Root
             if (_advertismentCanvas != null)
             {
                 _advertismentCanvas.Ended += OnAdPopupEnded;
+            }
+
+            if (_resetSave != null)
+            {
+                _resetSave.onClick.AddListener(OnResetSaves);
             }
         }
 
@@ -82,6 +90,11 @@ namespace SlimeScience.Root
             {
                 _advertismentCanvas.Ended -= OnAdPopupEnded;
             }
+
+            if (_resetSave != null)
+            {
+                _resetSave.onClick.RemoveListener(OnResetSaves);
+            }
         }
 
         public void Init(
@@ -90,6 +103,8 @@ namespace SlimeScience.Root
             Advertisment advertisment,
             PauseHandler adPause)
         {
+            _gameVariables = gameVariables;
+
             _advertisment = advertisment;
             _adPause = adPause;
             _floatingJoystick.Init();
@@ -140,6 +155,11 @@ namespace SlimeScience.Root
         private void OnAdPopupEnded()
         {
             _advertisment.Show();
+        }
+
+        private void OnResetSaves()
+        {
+            _gameVariables.ResetSave();
         }
     }
 }

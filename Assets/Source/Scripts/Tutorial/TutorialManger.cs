@@ -55,7 +55,7 @@ namespace SlimeScience.Tutorial
             _gameVariables = gameVariables;
             _player = player;
             _player.PullGun.Catched += ShowReleasePopup;
-            _releaseZone.Released += ShowUpgradePopup;
+            _releaseZone.PlayerReleased += ShowUpgradePopup;
             
             OpenFadeScreen();
             _welcomePopup.Show();
@@ -93,7 +93,7 @@ namespace SlimeScience.Tutorial
             OpenFadeScreen();
             _upgradePopup.Show();
             
-            _releaseZone.Released -= ShowUpgradePopup;
+            _releaseZone.PlayerReleased -= ShowUpgradePopup;
             _releaseZone.OpenedNextBlock += ShowOpenNextBlockPopup;
         }
 

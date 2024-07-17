@@ -4,8 +4,8 @@ namespace SlimeScience.Saves
     {
         private const float DefaultForce = 50f;
         private const float DefaultRadius = 5.0f;
-        private const float DefaultAngle = 55f;
-        private const float DefaultCapacity = 3;
+        private const float DefaultAngle = 35f;
+        private const float DefaultCapacity = 1;
         private const float DefaultAssistantCount = 0;
 
         public AbsorptionModel()

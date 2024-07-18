@@ -92,8 +92,11 @@ namespace SlimeScience.Saves
 
         private void OnSlimeGoalChanged(int value)
         {
+            int minValue = 0;
+
+            SetPercent(minValue);
+            _slider.value = minValue;
             SetSliderMaxValue(value);
-            SetPercent(0);
         }
 
         private void SetSmoothSliderValue(float value)

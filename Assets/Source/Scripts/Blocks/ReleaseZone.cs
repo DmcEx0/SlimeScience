@@ -52,9 +52,9 @@ namespace SlimeScience.Blocks
             
             if (_inventory.IsFull)
             {
-                OpenNextBlock();
-                _gameVariables.IncreaseRoomIndex();
                 _gameVariables.ResetCollectSlimes();
+                _gameVariables.IncreaseRoomIndex();
+                OpenNextBlock();
             }
         }
 

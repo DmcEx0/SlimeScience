@@ -422,18 +422,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -546,7 +534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7695801088110337055, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_fontSize
-      value: 13.2
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 7695801088110337055, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_fontSizeMin
@@ -555,7 +543,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5738484595112450666, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1995767383}
   m_SourcePrefab: {fileID: 100100000, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
 --- !u!224 &7287743 stripped
 RectTransform:
@@ -4108,6 +4099,7 @@ GameObject:
   - component: {fileID: 466524422}
   - component: {fileID: 466524424}
   - component: {fileID: 466524423}
+  - component: {fileID: 466524425}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4182,7 +4174,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.1
+  m_fontSize: 72
   m_fontSizeBase: 14.6
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4232,6 +4224,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466524421}
   m_CullTransparentMesh: 1
+--- !u!114 &466524425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466524421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: tutorial_upgrade 3
+  FallbackText: "\u041F\u043E\u0439\u043C\u0430\u0439 \u043E\u0441\u0442\u0430\u0432\u0448\u0438\u0445\u0441\u044F
+    \u0441\u043B\u0430\u0439\u043C\u043E\u0432 \u0432 \u0431\u043B\u043E\u043A\u0435"
 --- !u!1 &472022459
 GameObject:
   m_ObjectHideFlags: 0
@@ -4325,7 +4332,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1069394583712774678, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_fontSize
-      value: 15
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_Pivot.x
@@ -4357,18 +4364,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
@@ -4421,7 +4416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2169345283255832149, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_fontSize
-      value: 15
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 4108180549278649357, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_Name
@@ -4461,7 +4456,7 @@ PrefabInstance:
       objectReference: {fileID: 1549233893}
     - target: {fileID: 7033935868175326658, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_fontSize
-      value: 13.95
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 7695801088110337055, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_fontSize
@@ -6040,18 +6035,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -6518,6 +6501,7 @@ GameObject:
   - component: {fileID: 694239239}
   - component: {fileID: 694239241}
   - component: {fileID: 694239240}
+  - component: {fileID: 694239242}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -6644,6 +6628,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694239238}
   m_CullTransparentMesh: 1
+--- !u!114 &694239242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694239238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: tutorial_upgrade 1
+  FallbackText: "\u0423\u043B\u0443\u0447\u0448\u0430\u0439 \u0441\u0432\u043E\u0438
+    \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438,
+    \u0447\u0442\u043E\u0431\u044B \u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C
+    \u044D\u0444\u0444\u0435\u043A\u0442\u0438\u0432\u043D\u0435\u0435\n\u0414\u043B\u044F
+    \u044D\u0442\u043E\u0433\u043E \u043D\u0430\u0436\u043C\u0438 \u043D\u0430 \u0438\u043A\u043E\u043D\u043A\u0443"
 --- !u!1 &708777729
 GameObject:
   m_ObjectHideFlags: 0
@@ -7996,18 +7998,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -8107,7 +8097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7695801088110337055, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_fontSize
-      value: 14.65
+      value: 58
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -8119,7 +8109,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1642130478}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5738484595112450666, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 854109421}
   m_SourcePrefab: {fileID: 100100000, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
 --- !u!224 &820545244 stripped
 RectTransform:
@@ -8673,6 +8666,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853445698}
   m_Mesh: {fileID: 4300000, guid: 66ac04f2e92f23a49984c3c27f62ce49, type: 3}
+--- !u!1 &854109417 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5738484595112450666, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
+  m_PrefabInstance: {fileID: 820545243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &854109421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854109417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: tutorial_opened_block
+  FallbackText: "\u0413\u0443\u0434 \u0436\u043E\u043F!\n\u0422\u0435\u043F\u0435\u0440\u044C
+    \u0442\u0435\u0431\u0435 \u043E\u0442\u043A\u0440\u044B\u0442 \u043D\u043E\u0432\u044B\u0439
+    \u0431\u043B\u043E\u043A!\n\u0418\u0434\u0438 \u0442\u0443\u0434\u0430"
 --- !u!1 &854591118
 GameObject:
   m_ObjectHideFlags: 0
@@ -12395,6 +12409,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337945775}
   m_Mesh: {fileID: 4300000, guid: 3bcb72037929b13488a449d57bec8b02, type: 3}
+--- !u!1 &1340622989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5738484595112450666, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
+  m_PrefabInstance: {fileID: 8240845743608621351}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1340622993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340622989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: tutorial_welcome
+  FallbackText: 
 --- !u!1 &1365621826
 GameObject:
   m_ObjectHideFlags: 0
@@ -14297,6 +14330,7 @@ GameObject:
   - component: {fileID: 1624994476}
   - component: {fileID: 1624994478}
   - component: {fileID: 1624994477}
+  - component: {fileID: 1624994479}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -14422,6 +14456,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624994475}
   m_CullTransparentMesh: 1
+--- !u!114 &1624994479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624994475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: tutorial_upgrade 2
+  FallbackText: "\u041D\u0430\u0436\u043C\u0438 \u043D\u0430 \u043A\u043D\u043E\u043F\u043A\u0443
+    \u043F\u043E\u043A\u0443\u043F\u043A\u0438 \u0443 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0439
+    \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438"
 --- !u!1 &1633919554
 GameObject:
   m_ObjectHideFlags: 0
@@ -15154,6 +15204,7 @@ GameObject:
   - component: {fileID: 1773049115}
   - component: {fileID: 1773049117}
   - component: {fileID: 1773049116}
+  - component: {fileID: 1773049118}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -15200,8 +15251,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0417\u0430\u0431\u0435\u0439 \u0438\u043D\u0432\u0435\u043D\u0442\u0430\u0440\u044C
-    \u0441\u043B\u0430\u0439\u043C\u0430\u043C\u0438"
+  m_text: "\u0417\u0430\u043F\u043E\u043B\u043D\u0438 \u0438\u043D\u0432\u0435\u043D\u0442\u0430\u0440\u044C
+    \u0441\u043B\u0438\u0437\u043D\u044F\u043C\u0438"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 646bf4940d4a36945bcd082d75b2c322, type: 2}
   m_sharedMaterial: {fileID: -7692767154032471040, guid: 646bf4940d4a36945bcd082d75b2c322, type: 2}
@@ -15278,6 +15329,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773049114}
   m_CullTransparentMesh: 1
+--- !u!114 &1773049118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773049114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: tutorial_find_slimes_1
+  FallbackText: "\u0417\u0430\u0431\u0435\u0439 \u0438\u043D\u0432\u0435\u043D\u0442\u0430\u0440\u044C
+    \u0441\u043B\u0430\u0439\u043C\u0430\u043C\u0438"
 --- !u!1 &1792450296
 GameObject:
   m_ObjectHideFlags: 0
@@ -16593,6 +16659,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983724547}
   m_Mesh: {fileID: 4300000, guid: e07bb89ded5091347a5225895f1f0a9d, type: 3}
+--- !u!1 &1995767379 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5738484595112450666, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
+  m_PrefabInstance: {fileID: 7287742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1995767383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995767379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: tutorial_release_slimes
+  FallbackText: "\u0412\u044B\u0433\u0440\u0443\u0437\u0438 \u043F\u043E\u0439\u043C\u0430\u043D\u043D\u044B\u0445
+    \u0441\u043B\u0430\u0439\u043C\u043E\u0432 \u0432 \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u044C\u043D\u043E\u0439
+    \u043E\u0431\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u043D\u043E\u0439 \u0437\u043E\u043D\u0435"
 --- !u!1 &1997616467
 GameObject:
   m_ObjectHideFlags: 0
@@ -17210,6 +17297,7 @@ GameObject:
   - component: {fileID: 2066203955}
   - component: {fileID: 2066203957}
   - component: {fileID: 2066203956}
+  - component: {fileID: 2066203958}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -17334,6 +17422,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066203954}
   m_CullTransparentMesh: 1
+--- !u!114 &2066203958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066203954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: tutorial_find_slimes_2
+  FallbackText: "\u041E\u0441\u0442\u0435\u0440\u0435\u0433\u0430\u0439\u0441\u044F
+    \u043B\u043E\u0432\u0443\u0448\u0435\u043A \u0438 \u0431\u043E\u043C\u0431"
 --- !u!1 &2074928740
 GameObject:
   m_ObjectHideFlags: 0
@@ -20313,18 +20416,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172591318996877161, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -20413,10 +20504,17 @@ PrefabInstance:
       value: "Welcome!\n\u041F\u043E\u0439\u043C\u0430\u0439 \u0432\u0441\u0435\u0445
         \u0441\u043B\u0430\u0439\u043C\u043E\u0432 \u0432 \u0431\u043B\u043E\u043A\u0435"
       objectReference: {fileID: 0}
+    - target: {fileID: 7695801088110337055, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5738484595112450666, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1340622993}
     - targetCorrespondingSourceObject: {fileID: 8450942135830673872, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1216052424}

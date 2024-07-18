@@ -70,6 +70,7 @@ namespace SlimeScience.Tutorial
 
         public void GoToGameScene()
         {
+            _gameVariables.Save();
             SceneManager.LoadScene(GameSceneName);
         }
         

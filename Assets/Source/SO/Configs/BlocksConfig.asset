@@ -19,23 +19,23 @@ MonoBehaviour:
     _maxRangePosX: 25
     _maxRangePosZ: 25
   - _bombAmount: 6
-    _slimeAmount: 15
-    _neededAmountToOpen: 16
+    _slimeAmount: 11
+    _neededAmountToOpen: 10
     _maxRangePosX: 20
     _maxRangePosZ: 20
   - _bombAmount: 6
-    _slimeAmount: 70
-    _neededAmountToOpen: 71
+    _slimeAmount: 71
+    _neededAmountToOpen: 70
     _maxRangePosX: 20
     _maxRangePosZ: 20
   - _bombAmount: 6
-    _slimeAmount: 75
+    _slimeAmount: 77
     _neededAmountToOpen: 76
     _maxRangePosX: 20
     _maxRangePosZ: 20
-  - _bombAmount: 20
-    _slimeAmount: 30
-    _neededAmountToOpen: 1
+  - _bombAmount: 6
+    _slimeAmount: 81
+    _neededAmountToOpen: 80
     _maxRangePosX: 20
     _maxRangePosZ: 20
   - _bombAmount: 24

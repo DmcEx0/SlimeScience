@@ -7492,7 +7492,8 @@ MonoBehaviour:
   - {fileID: 1032252718}
   _zoneParticle: {fileID: 1925462887}
   _childShip: {fileID: 5783687667307397702}
-  _time: 10
+  _timeToUsed: 30
+  _timeToRepeat: 180
   _config:
     _baseSpeed: 15
     _rotateSpeed: 80

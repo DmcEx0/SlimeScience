@@ -1,6 +1,5 @@
-using System;
+using System.Collections;
 using SlimeScience.Configs;
-using SlimeScience.Tutorial;
 using UnityEngine;
 
 namespace SlimeScience.Characters
@@ -12,20 +11,23 @@ namespace SlimeScience.Characters
         [SerializeField] private ParticleSystem[] _particlesShip;
         [SerializeField] private ParticleSystem _zoneParticle;
         [SerializeField] private Transform _childShip;
-        [SerializeField] private float _time;
+        [SerializeField] private float _timeToUsed;
+        [SerializeField] private int _timeToRepeat;
 
-        [Space] 
-        [SerializeField] private ShipConfig _config;
+        [Space] [SerializeField] private ShipConfig _config;
 
         private Player _player;
 
         private float _accumulatedTime;
         private bool _isEnabled;
+        private bool _isCanUsed;
+        private Coroutine _coroutine;
 
         private void Start()
         {
             SetParticlesState(false);
             _shipPopup.AdShowing += Used;
+            _isCanUsed = true;
         }
 
         private void OnDestroy()
@@ -42,8 +44,9 @@ namespace SlimeScience.Characters
 
             _accumulatedTime += Time.deltaTime;
 
-            if (_accumulatedTime >= _time)
+            if (_accumulatedTime >= _timeToUsed)
             {
+                StartCoroutine(Timer());
                 _accumulatedTime = 0f;
                 _isEnabled = false;
                 SetParticlesState(false);
@@ -56,7 +59,7 @@ namespace SlimeScience.Characters
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Player player) && _isEnabled == false)
+            if (other.TryGetComponent(out Player player) && _isEnabled == false && _isCanUsed)
             {
                 _player = player;
                 _shipPopup.Show();
@@ -70,27 +73,36 @@ namespace SlimeScience.Characters
             SetParticlesState(true);
             _isEnabled = true;
         }
-        
+
         private void SetParticlesState(bool state)
         {
-            if(state)
+            if (state)
             {
                 foreach (var particle in _particlesShip)
                 {
                     particle.Play();
                 }
-                
+
                 _zoneParticle.Stop();
 
                 return;
             }
-            
+
             foreach (var particle in _particlesShip)
             {
                 particle.Stop();
             }
-            
+
             _zoneParticle.Play();
+        }
+
+        private IEnumerator Timer()
+        {
+            _isCanUsed = false;
+
+            yield return new WaitForSeconds(_timeToRepeat);
+
+            _isCanUsed = true;
         }
     }
 }

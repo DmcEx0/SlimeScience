@@ -47,6 +47,7 @@ namespace SlimeScience.Characters
             if (_accumulatedTime >= _timeToUsed)
             {
                 StartCoroutine(Timer());
+                _zoneParticle.Stop();
                 _accumulatedTime = 0f;
                 _isEnabled = false;
                 SetParticlesState(false);
@@ -103,6 +104,7 @@ namespace SlimeScience.Characters
             yield return new WaitForSeconds(_timeToRepeat);
 
             _isCanUsed = true;
+            _zoneParticle.Play();
         }
     }
 }

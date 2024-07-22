@@ -2,7 +2,6 @@ using System;
 using SlimeScience.Characters;
 using SlimeScience.Input;
 using SlimeScience.Util;
-using UnityEngine;
 
 namespace SlimeScience.FSM.States.Slimes
 {

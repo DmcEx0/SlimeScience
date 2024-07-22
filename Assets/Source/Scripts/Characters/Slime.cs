@@ -63,26 +63,32 @@ namespace SlimeScience.Characters
                 StopCoroutine(_resetVelocityCoroutine);
             }
 
-            _resetVelocityCoroutine = StartCoroutine(ResetVelocity());
+            _resetVelocityCoroutine = StartCoroutine(ResetVelocityCoroutine());
         }
 
         public void SetPosition(Vector3 position)
         {
             transform.position = position;
         }
-
+        
         public void SetActive(bool active)
         {
             gameObject.SetActive(active);
         }
 
-        private IEnumerator ResetVelocity()
+        public void ResetVelocity()
+        {
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.interpolation = RigidbodyInterpolation.None;
+            
+            Enable();
+        }
+
+        private IEnumerator ResetVelocityCoroutine()
         {
             yield return new WaitForSeconds(ResetVelocityTime);
 
-            _rigidbody.velocity = Vector3.zero;
-            Enable();
-            _rigidbody.interpolation = RigidbodyInterpolation.None;
+            ResetVelocity();
         }
     }
 }

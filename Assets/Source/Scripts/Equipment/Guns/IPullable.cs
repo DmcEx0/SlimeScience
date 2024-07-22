@@ -11,5 +11,7 @@ namespace SlimeScience.Equipment.Guns
         public void SetPosition(Vector3 position);
 
         public void SetActive(bool active);
+
+        public void ResetVelocity();
     }
 }

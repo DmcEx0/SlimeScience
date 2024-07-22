@@ -1064,7 +1064,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1029763783}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7893844280636713203}
+        m_TargetAssemblyTypeName: SlimeScience.Root.Bootstrap, SlimeScience
+        m_MethodName: ResetSaves
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1029763783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6765,6 +6777,10 @@ PrefabInstance:
       value: Localization Object
       objectReference: {fileID: 0}
     - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
+      propertyPath: currentLanguage
+      value: Russian
+      objectReference: {fileID: 0}
+    - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
       propertyPath: prefabs.Array.size
       value: 22
       objectReference: {fileID: 0}
@@ -8381,6 +8397,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b970c75631e996f4294776a59d9cc4fd, type: 3}
+--- !u!114 &7893844280636713203 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2891136989045097036, guid: b970c75631e996f4294776a59d9cc4fd, type: 3}
+  m_PrefabInstance: {fileID: 7893844280636713202}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6020f802fadedc846b00b5b3e9e8f3e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7909273333958851357
 Transform:
   m_ObjectHideFlags: 0

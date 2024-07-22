@@ -59,7 +59,6 @@ namespace SlimeScience.Ad
             var delay = new WaitForSecondsRealtime(TimerTick);
             int ticks = 0;
 
-
             while (ticks < TimerTicksCount)
             {
                 Render(TimerTicksCount - ticks);

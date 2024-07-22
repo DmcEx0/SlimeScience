@@ -1,3 +1,4 @@
+using System;
 using SlimeScience.PauseSystem;
 using UnityEngine;
 
@@ -11,12 +12,27 @@ namespace SlimeScience.Ad
 
         private bool _isActive = false;
 
+        public event Action RewardClaimed;
+
         public Advertisment(
             MonoBehaviour coroutineObject,
             PauseHandler systemPause)
         {
             _systemPause = systemPause;
             _coroutineObject = coroutineObject;
+        }
+
+        public void ShowReward()
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            Agava.YandexGames.VideoAd.Show(
+                onOpenCallback: OnOpenedCallback,
+                onRewardedCallback: OnRewardCallback,
+                onCloseCallback: OnClosedCallback,
+                onErrorCallback: OnErrorCallback);
+#else
+            _systemPause.Unpause();
+#endif
         }
 
         public void Show()
@@ -42,6 +58,11 @@ namespace SlimeScience.Ad
             _systemPause.Unpause();
         }
 
+        private void OnClosedCallback()
+        {
+            _systemPause.Unpause();
+        }
+
         private void OnErrorCallback(string error)
         {
             Debug.LogError($"Ad error: {error}");
@@ -51,6 +72,12 @@ namespace SlimeScience.Ad
         private void OnOfflineCallback()
         {
             _systemPause.Unpause();
+        }
+
+        private void OnRewardCallback()
+        {
+            _systemPause.Unpause();
+            RewardClaimed?.Invoke();
         }
     }
 }

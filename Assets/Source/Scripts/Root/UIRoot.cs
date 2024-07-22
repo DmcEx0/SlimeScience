@@ -1,5 +1,6 @@
 using SlimeScience.Ad;
 using SlimeScience.Audio;
+using SlimeScience.Characters;
 using SlimeScience.Input;
 using SlimeScience.Leaderbords;
 using SlimeScience.Money;
@@ -14,6 +15,7 @@ namespace SlimeScience.Root
 {
     public class UIRoot : MonoBehaviour
     {
+        [SerializeField] private Ship _ship;
         [SerializeField] private FloatingJoystick _floatingJoystick;
         [SerializeField] private WalletRenderer _walletRenderer;
         [SerializeField] private UpgradesCanvas _upgradesCanvas;
@@ -24,7 +26,7 @@ namespace SlimeScience.Root
         [SerializeField] private ShipPopup _shipPopup;
 
         [SerializeField] private Button _openUpgradesCanvas;
-        [SerializeField] private Button _openLeaderbordCanvas;
+        [SerializeField] private Button _openLeaderboardCanvas;
 
         [SerializeField] private Button _resetSave;
 
@@ -44,9 +46,9 @@ namespace SlimeScience.Root
                 _upgradesCanvas.Closed += OnOpenUpgradesClosed;
             }
 
-            if (_openLeaderbordCanvas != null)
+            if (_openLeaderboardCanvas != null)
             {
-                _openLeaderbordCanvas.onClick.AddListener(OnOpendLeaderbord);
+                _openLeaderboardCanvas.onClick.AddListener(OnOpendLeaderbord);
             }
 
             if (_leaderbordCanvas != null)
@@ -66,7 +68,7 @@ namespace SlimeScience.Root
 
             if (_shipPopup != null)
             {
-                _shipPopup.AdShowing += OnAdPopupEnded;
+                _shipPopup.AdShowing += OnShowReward;
             }
         }
 
@@ -82,9 +84,9 @@ namespace SlimeScience.Root
                 _upgradesCanvas.Closed -= OnOpenUpgradesClosed;
             }
 
-            if (_openLeaderbordCanvas != null)
+            if (_openLeaderboardCanvas != null)
             {
-                _openLeaderbordCanvas.onClick.RemoveListener(OnOpendLeaderbord);
+                _openLeaderboardCanvas.onClick.RemoveListener(OnOpendLeaderbord);
             }
 
             if (_leaderbordCanvas != null)
@@ -104,8 +106,10 @@ namespace SlimeScience.Root
 
             if (_shipPopup != null)
             {
-                _shipPopup.AdShowing -= OnAdPopupEnded;
+                _shipPopup.AdShowing -= OnShowReward;
             }
+            
+            _advertisment.RewardClaimed -= OnRewardClaimed;
         }
 
         public void Init(
@@ -117,6 +121,7 @@ namespace SlimeScience.Root
             _gameVariables = gameVariables;
 
             _advertisment = advertisment;
+            _advertisment.RewardClaimed += OnRewardClaimed;
             _adPause = adPause;
             _floatingJoystick.Init();
             _walletRenderer.Init(wallet);
@@ -152,14 +157,14 @@ namespace SlimeScience.Root
 
         private void OnOpendLeaderbord()
         {
-            _openLeaderbordCanvas.gameObject.SetActive(false);
+            _openLeaderboardCanvas.gameObject.SetActive(false);
             _leaderbordCanvas.Open();
             SoundsManager.PlayTapUI();
         }
 
         private void OnLeaderbordClosed()
         {
-            _openLeaderbordCanvas.gameObject.SetActive(true);
+            _openLeaderboardCanvas.gameObject.SetActive(true);
             _leaderbordCanvas.gameObject.SetActive(false);
         }
 
@@ -167,10 +172,20 @@ namespace SlimeScience.Root
         {
             _advertisment.Show();
         }
+        
+        private void OnShowReward()
+        {
+            _advertisment.ShowReward();
+        }
 
         private void OnResetSaves()
         {
             _gameVariables.ResetSave();
+        }
+
+        private void OnRewardClaimed()
+        {
+            _ship.Used();
         }
     }
 }

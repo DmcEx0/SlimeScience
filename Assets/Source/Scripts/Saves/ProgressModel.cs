@@ -2,7 +2,7 @@ namespace SlimeScience.Saves
 {
     public class ProgressModel
     {
-        private const int DefaultMoney = 10000;
+        private const int DefaultMoney = 0;
         private const int DefaultSlimes = 0;
         private const int DefaultRoomIndex = 0;
         private const int DefaultCollectedSlimes = 0;

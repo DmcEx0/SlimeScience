@@ -26,13 +26,7 @@ namespace SlimeScience.Characters
         private void Start()
         {
             SetParticlesState(false);
-            _shipPopup.AdShowing += Used;
             _isCanUsed = true;
-        }
-
-        private void OnDestroy()
-        {
-            _shipPopup.AdShowing -= Used;
         }
 
         private void Update()
@@ -66,8 +60,8 @@ namespace SlimeScience.Characters
                 _shipPopup.Show();
             }
         }
-
-        private void Used()
+        
+        public void Used()
         {
             _player.TranslateToShip(transform, _config);
             _childShip.SetParent(_player.transform);

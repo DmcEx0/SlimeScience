@@ -88,7 +88,7 @@ Material:
     m_Floats:
     - _AllowAlphaOverflow: 0
     - _AlphaClip: 0
-    - _Angle: 90
+    - _Angle: 35
     - _Blend: 0
     - _BumpScale: 1
     - _CameraDistanceFadeClose: 0

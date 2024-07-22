@@ -29,9 +29,7 @@ namespace SlimeScience.Root
 
         private IEnumerator Start()
         {
-            _sceneName = PlayerPrefs.GetInt(TutorialCompleted, 0) == 1
-                ? GameSceneName
-                : TutorialSceneName;
+            _saveObject = new GameVariables();
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             yield return YandexGamesSdk.Initialize();
@@ -40,7 +38,19 @@ namespace SlimeScience.Root
                 LocalizationUtil.Languages[YandexGamesSdk.Environment.i18n.lang]);
 #endif
 
-            yield return StartCoroutine(LoadSceneWithProgressBar());
+            _saveObject.Loaded += OnDataLoaded;
+            _saveObject.Load(this);
+
+            yield return null;
+        }
+
+        private void OnDataLoaded()
+        {
+            _saveObject.Loaded -= OnDataLoaded;
+
+            _sceneName = _saveObject.TutorialPassed ? GameSceneName : TutorialSceneName;
+
+            StartCoroutine(LoadSceneWithProgressBar());
         }
 
         private IEnumerator LoadSceneWithProgressBar()

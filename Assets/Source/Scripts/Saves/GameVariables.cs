@@ -1,4 +1,5 @@
 
+using Agava.YandexGames;
 using SlimeScience.Effects;
 using System;
 using System.Collections;
@@ -31,6 +32,8 @@ namespace SlimeScience.Saves
         public int CollectedSlimes => _progressModel.CollectedSlimes;
 
         public int SlimesGoal => _progressModel.SlimesGoal;
+
+        public bool TutorialPassed => _progressModel.TutorialPassed;
 
         public event Action Loaded;
 
@@ -78,7 +81,8 @@ namespace SlimeScience.Saves
                     json.Slimes,
                     json.RoomIndex,
                     json.CollectedSlimes,
-                    json.SlimesGoal);
+                    json.SlimesGoal,
+                    json.TutorialPassed);
 
                 Loaded?.Invoke();
             });
@@ -96,6 +100,7 @@ namespace SlimeScience.Saves
                 _progressModel.RoomIndex,
                 _progressModel.CollectedSlimes,
                 _progressModel.SlimesGoal,
+                _progressModel.TutorialPassed,
                 _absorptionModel.Force,
                 _absorptionModel.Radius,
                 _absorptionModel.Angle,
@@ -197,6 +202,11 @@ namespace SlimeScience.Saves
         {
             _progressModel.SetSlimesGoal(goal);
             SlimeGoalChanged?.Invoke(goal);
+        }
+        
+        public void SetTutorialPassed()
+        {
+            _progressModel.SetTutorialPassed();
         }
 
         private IEnumerator SimulateInit()

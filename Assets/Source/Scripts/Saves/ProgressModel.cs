@@ -7,6 +7,7 @@ namespace SlimeScience.Saves
         private const int DefaultRoomIndex = 0;
         private const int DefaultCollectedSlimes = 0;
         private const int DefaultSlimesGoal = 1;
+        private const bool DefaultTutorialPassed = false;
         
         public ProgressModel()
         {
@@ -15,6 +16,7 @@ namespace SlimeScience.Saves
             RoomIndex = DefaultRoomIndex;
             CollectedSlimes = DefaultCollectedSlimes;
             SlimesGoal = DefaultSlimesGoal;
+            TutorialPassed = DefaultTutorialPassed;
         }
 
         public ProgressModel(
@@ -22,13 +24,15 @@ namespace SlimeScience.Saves
             int slimes,
             int roomIndex,
             int collectedSlimes,
-            int slimesGoal)
+            int slimesGoal,
+            bool tutorialPassed)
         {
             Money = money;
             Slimes = slimes;
             RoomIndex = roomIndex;
             CollectedSlimes = collectedSlimes;
             SlimesGoal = slimesGoal;
+            TutorialPassed = tutorialPassed;
         }
 
         public int Money { get; private set; }
@@ -40,6 +44,8 @@ namespace SlimeScience.Saves
         public int CollectedSlimes { get; private set; }
 
         public int SlimesGoal { get; private set; }
+
+        public bool TutorialPassed { get; private set; }
 
         public void AddMoney(int amount)
         {
@@ -99,6 +105,11 @@ namespace SlimeScience.Saves
             }
 
             SlimesGoal = goal;
+        }
+
+        public void SetTutorialPassed()
+        {
+            TutorialPassed = true;
         }
 
         private bool IsEnoughMoney(int money)

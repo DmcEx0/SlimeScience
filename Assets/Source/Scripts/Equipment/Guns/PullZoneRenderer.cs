@@ -88,6 +88,9 @@ namespace SlimeScience.Equipment.Guns
                 newRadius, 
                 newRadius, 
                 newRadius) * ScaleCoof;
+
+            _radius = newRadius;
+            _angle = newAngle;
         }
 
         private void OnInventoryFilled()

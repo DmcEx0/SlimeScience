@@ -11,6 +11,7 @@ namespace SlimeScience.Saves
             int roomIndex,
             int collectedSlimes,
             int slimesGoal,
+            bool tutorialPassed,
             float absorptionForce,
             float absorptionRadius,
             float absorptionAngle,
@@ -23,6 +24,7 @@ namespace SlimeScience.Saves
             RoomIndex = roomIndex;
             CollectedSlimes = collectedSlimes;
             SlimesGoal = slimesGoal;
+            TutorialPassed = tutorialPassed;
             AbsorptionForce = absorptionForce;
             AbsorptionRadius = absorptionRadius;
             AbsorptionAngle = absorptionAngle;
@@ -39,6 +41,8 @@ namespace SlimeScience.Saves
         public int CollectedSlimes;
 
         public int SlimesGoal;
+
+        public bool TutorialPassed;
 
         public float AbsorptionForce;
 

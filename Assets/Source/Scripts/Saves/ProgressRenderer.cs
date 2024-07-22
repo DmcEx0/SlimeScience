@@ -20,6 +20,8 @@ namespace SlimeScience.Saves
         private Coroutine _smoothSlider;
         private GameVariables _gameVariables;
 
+        private float _slimePercent => _gameVariables.CollectedSlimes / _gameVariables.SlimesGoal * 100;
+
         private void OnEnable()
         {
             if (_gameVariables != null)
@@ -45,6 +47,7 @@ namespace SlimeScience.Saves
         public void Init(GameVariables gameVariables)
         {
             _gameVariables = gameVariables;
+
             _gameVariables.IncreasedRoomIndex += OnRoomIndexIncreased;
             _gameVariables.SlimeCollected += OnSlimeCollected;
             _gameVariables.SlimeCollectedReset += OnSlimeCollectedReset;
@@ -52,8 +55,7 @@ namespace SlimeScience.Saves
 
             SetRoomNumber(_gameVariables.RoomIndex);
             SetSliderMaxValue(_gameVariables.SlimesGoal);
-            SetSliderValue(_gameVariables.CollectedSlimes);
-            SetPercent(_gameVariables.CollectedSlimes / _gameVariables.SlimesGoal * 100);
+            SetSmoothSliderValue(_gameVariables.CollectedSlimes);
         }
 
         private void SetSliderMaxValue(float value)
@@ -82,7 +84,7 @@ namespace SlimeScience.Saves
 
         private void OnSlimeCollectedReset()
         {
-            SetSmoothSliderValue(0);
+            SetSmoothSliderValue(_gameVariables.CollectedSlimes);
         }
 
         private void OnRoomIndexIncreased(int index)
@@ -92,11 +94,8 @@ namespace SlimeScience.Saves
 
         private void OnSlimeGoalChanged(int value)
         {
-            int minValue = 0;
-
-            SetPercent(minValue);
-            _slider.value = minValue;
             SetSliderMaxValue(value);
+            SetSmoothSliderValue(_gameVariables.CollectedSlimes);
         }
 
         private void SetSmoothSliderValue(float value)
@@ -141,6 +140,8 @@ namespace SlimeScience.Saves
             }
 
             _slider.value = endValue;
+
+            Debug.LogWarning($"Slider value: {_slider.value}, end value: {endValue}");
             SetPercent(endValue);
         }
     }

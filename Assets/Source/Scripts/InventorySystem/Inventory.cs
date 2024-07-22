@@ -70,6 +70,26 @@ namespace SlimeScience.InventorySystem
             Expanded?.Invoke();
         }
 
+        public void Fill(int count)
+        {
+            if (count < 0)
+            {
+                return;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                _items.Add(null);
+            }
+
+            Changed?.Invoke();
+
+            if (_items.Count >= MaxItems)
+            {
+                Filled?.Invoke();
+            }
+        }
+
         public T GetItem(int index)
         {
             if (index < 0 || index >= _items.Count)

@@ -83,9 +83,22 @@ namespace SlimeScience.Blocks
 
             OpenedNextBlock?.Invoke(_blocksConfig.BlocksData[_indexCurrentBlock], _indexCurrentBlock);
 
+            int slimesCount = _gameVariables.CollectedSlimes;
+
+            if (_inventory.MaxItems == 0)
+            {
+                for (int i = 0; i < _indexCurrentBlock; i++)
+                {
+                    _inventory.Expand(_blocksConfig.BlocksData[i].NeededAmountToOpen);
+                    slimesCount += _blocksConfig.BlocksData[i].NeededAmountToOpen;
+                }
+            }
+
             int openAmount = _blocksConfig.BlocksData[_indexCurrentBlock].NeededAmountToOpen;
             _inventory.Expand(openAmount);
-            
+
+            _inventory.Fill(slimesCount);
+
             _indexCurrentBlock++;
             _gameVariables.SetSlimesGoal(openAmount);
         }

@@ -20,6 +20,8 @@ namespace SlimeScience.Saves
         private Coroutine _smoothSlider;
         private GameVariables _gameVariables;
 
+        private float _slimePercent => _gameVariables.CollectedSlimes / _gameVariables.SlimesGoal * 100;
+
         private void OnEnable()
         {
             if (_gameVariables != null)
@@ -53,7 +55,7 @@ namespace SlimeScience.Saves
             SetRoomNumber(_gameVariables.RoomIndex);
             SetSliderMaxValue(_gameVariables.SlimesGoal);
             SetSliderValue(_gameVariables.CollectedSlimes);
-            SetPercent(_gameVariables.CollectedSlimes / _gameVariables.SlimesGoal * 100);
+            SetPercent(_slimePercent);
         }
 
         private void SetSliderMaxValue(float value)
@@ -82,7 +84,7 @@ namespace SlimeScience.Saves
 
         private void OnSlimeCollectedReset()
         {
-            SetSmoothSliderValue(0);
+            SetSmoothSliderValue(_gameVariables.CollectedSlimes);
         }
 
         private void OnRoomIndexIncreased(int index)
@@ -92,10 +94,8 @@ namespace SlimeScience.Saves
 
         private void OnSlimeGoalChanged(int value)
         {
-            int minValue = 0;
-
-            SetPercent(minValue);
-            _slider.value = minValue;
+            SetPercent(_slimePercent);
+            SetSmoothSliderValue(_gameVariables.CollectedSlimes);
             SetSliderMaxValue(value);
         }
 

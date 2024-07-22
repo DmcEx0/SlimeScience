@@ -151,6 +151,7 @@ namespace SlimeScience.Tutorial
         private void OnFinishTutorPopupClosed()
         {
             _gameVariables.ResetSave();
+            _gameVariables.SetTutorialPassed();
             PlayerPrefs.SetInt("Tutorial", 1);
             GoToGameScene();
         }

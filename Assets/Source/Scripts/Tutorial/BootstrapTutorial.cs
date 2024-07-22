@@ -85,6 +85,12 @@ namespace SlimeScience.Tutorial
             SoundsManager.PlayBgMusic();
         }
 
+        public void ResetSaves()
+        {
+            PlayerPrefs.DeleteAll();
+            _gameVariables.ResetSave();
+        }
+
         private void Init()
         {
             _gameVariables.Loaded -= Init;

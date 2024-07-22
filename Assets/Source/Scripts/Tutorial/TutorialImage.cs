@@ -51,14 +51,18 @@ namespace SlimeScience.Tutorial
             _readyButton.onClick.RemoveListener(Close);
         }
 
-        public void Show()
+        public void Show(Action action = null)
         {
             gameObject.SetActive(true);
             
             _openTweener?.Kill();
             _openTweener = transform
                 .DOScale(Vector3.one, OpenDuration)
-                .SetEase(Ease.OutBack);
+                .SetEase(Ease.OutBack).OnComplete(() =>
+                {
+                    if(action != null)
+                        action.Invoke();
+                });
         }
 
         private void Close()

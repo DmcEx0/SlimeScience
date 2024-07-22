@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using SlimeScience.Blocks;
 using SlimeScience.Characters;
@@ -17,6 +18,7 @@ namespace SlimeScience.Tutorial
         [SerializeField] private Image _fade;
         [SerializeField] private TutorialImage _welcomePopup;
         [SerializeField] private TutorialImage _trigger1Popup;
+        [SerializeField] private TutorialImage _trigger2Popup;
         [SerializeField] private TutorialImage _releaseSlimesPopup;
         [SerializeField] private TutorialImage _upgradePopup;
         [SerializeField] private TutorialImage _nextBlockOpen;
@@ -39,6 +41,7 @@ namespace SlimeScience.Tutorial
             _releaseSlimesPopup.PopupClosed += CloseFadeScreen;
             _upgradePopup.PopupClosed += CloseFadeScreen;
             _nextBlockOpen.PopupClosed += CloseFadeScreen;
+            _trigger2Popup.PopupClosed += OnFinishTutorPopupClosed;
         }
 
         private void OnDestroy()
@@ -48,6 +51,7 @@ namespace SlimeScience.Tutorial
             _releaseSlimesPopup.PopupClosed -= CloseFadeScreen;
             _upgradePopup.PopupClosed -= CloseFadeScreen;
             _nextBlockOpen.PopupClosed -= CloseFadeScreen;
+            _trigger2Popup.PopupClosed -= OnFinishTutorPopupClosed;
         }
 
         public void Init(Player player, GameVariables gameVariables)
@@ -66,6 +70,11 @@ namespace SlimeScience.Tutorial
             OpenFadeScreen();
             _trigger1Popup.Show();
             _trigger1.enabled = false;
+        }
+        public void ShowPopupForTrigger2()
+        {
+            OpenFadeScreen();
+            _trigger2Popup.Show();
         }
 
         public void GoToGameScene()
@@ -137,6 +146,14 @@ namespace SlimeScience.Tutorial
             }
             
             _player.Movement.Disable();
+        }
+        
+        private void OnFinishTutorPopupClosed()
+        {
+            PlayerPrefs.DeleteAll();
+            _gameVariables.ResetSave();
+            PlayerPrefs.SetInt("Tutorial", 1);
+            GoToGameScene();
         }
     }
 }

@@ -7,6 +7,7 @@ using SlimeScience.Util;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SlimeScience.Equipment.Guns
 {
@@ -112,8 +113,11 @@ namespace SlimeScience.Equipment.Guns
 
             if (collision.gameObject.TryGetComponent(out Slime slime))
             {
-                _slimeCatcher.Catch(slime, transform.position);
-                _effectRenderer.PlayCatchSlimeEffect();
+                if(slime.isActiveAndEnabled)
+                {
+                    _slimeCatcher.Catch(slime, transform.position);
+                    _effectRenderer.PlayCatchSlimeEffect();
+                }
             }
 
             if (collision.gameObject.TryGetComponent(out Bomb bomb))
@@ -234,10 +238,16 @@ namespace SlimeScience.Equipment.Guns
         {
             for (int i = _inventory.Amount - 1; i >= 0; i--)
             {
+                var randomDirectionX = Random.Range(-1f, 1f);
+                var randomDirectionZ = Random.Range(-1f, 1f);
+                var randomOffset = new Vector3(randomDirectionX, 0, randomDirectionZ);
+                var newPos = transform.position - randomOffset * SpreadDistance;
+                
                 Slime slime = _inventory.GetItem(i);
                 slime.SetActive(true);
-                slime.Enable();
-                slime.SetPosition(transform.position - transform.forward * SpreadDistance);
+                slime.ResetVelocity();
+                slime.SetPosition(newPos);
+
             }
         }
     }

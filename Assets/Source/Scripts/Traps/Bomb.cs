@@ -26,7 +26,7 @@ namespace SlimeScience.Traps
             _rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
 
             _rigidbody.AddForce(force);
-
+            
             if (_resetVelocityCoroutine != null)
             {
                 StopCoroutine(_resetVelocityCoroutine);
@@ -47,9 +47,8 @@ namespace SlimeScience.Traps
 
         public void ResetVelocity()
         {
-            _rigidbody.velocity = Vector3.zero;
-
             _rigidbody.interpolation = RigidbodyInterpolation.None;
+            _rigidbody.velocity = Vector3.zero;
         }
 
         private IEnumerator ResetVelocityCoroutine()

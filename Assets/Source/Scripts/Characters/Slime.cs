@@ -78,8 +78,8 @@ namespace SlimeScience.Characters
 
         public void ResetVelocity()
         {
-            _rigidbody.velocity = Vector3.zero;
             _rigidbody.interpolation = RigidbodyInterpolation.None;
+            _rigidbody.velocity = Vector3.zero;
             
             Enable();
         }

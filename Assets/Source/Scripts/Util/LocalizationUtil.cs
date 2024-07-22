@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Lean.Localization;
 
 namespace SlimeScience.Util
 {

@@ -9,7 +9,7 @@ namespace SlimeScience.Ad
     {
         private const string AdShowTimePhraseKey = "ad_show_time";
         private const int TimerTick = 1;
-        private const int TimerTicksCount = 3;
+        private const int TimerTicksCount = 2;
         private const int ResetTime = 70;
 
         [SerializeField] private TMP_Text _text;

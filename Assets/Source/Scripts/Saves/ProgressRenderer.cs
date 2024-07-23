@@ -141,7 +141,6 @@ namespace SlimeScience.Saves
 
             _slider.value = endValue;
 
-            Debug.LogWarning($"Slider value: {_slider.value}, end value: {endValue}");
             SetPercent(endValue);
         }
     }

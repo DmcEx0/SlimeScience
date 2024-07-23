@@ -133,6 +133,15 @@ MonoBehaviour:
   - Root: {fileID: 6438736655000423162, guid: eebf5420697f4b347a2036112af3fcdf, type: 3}
     sources:
     - {fileID: 3761834275615602097, guid: eebf5420697f4b347a2036112af3fcdf, type: 3}
+  - Root: {fileID: 1996598108393628012, guid: cd894d38e741f52479e91ba736d5f89f, type: 3}
+    sources:
+    - {fileID: 7017278277106066344, guid: cd894d38e741f52479e91ba736d5f89f, type: 3}
+  - Root: {fileID: 1996598108393628012, guid: b1f3393360a963e49892940737303423, type: 3}
+    sources:
+    - {fileID: 7017278277106066344, guid: b1f3393360a963e49892940737303423, type: 3}
+  - Root: {fileID: 1996598108393628012, guid: 8d44966fcbfb09d468e799b27c9890b7, type: 3}
+    sources:
+    - {fileID: 7017278277106066344, guid: 8d44966fcbfb09d468e799b27c9890b7, type: 3}
 --- !u!1001 &2899797273002076507
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12817,34 +12817,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Localization Object
       objectReference: {fileID: 0}
-    - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
-      propertyPath: currentLanguage
-      value: Russian
-      objectReference: {fileID: 0}
-    - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
-      propertyPath: prefabs.Array.size
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
-      propertyPath: prefabs.Array.data[19].Root
-      value: 
-      objectReference: {fileID: 718554876836589959, guid: e5994ee702665aa4a839a90ae571e4cf, type: 3}
-    - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
-      propertyPath: prefabs.Array.data[21].Root
-      value: 
-      objectReference: {fileID: 3141012646986142871, guid: 1c77535882728af4a8bd7f2c402fda62, type: 3}
-    - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
-      propertyPath: prefabs.Array.data[19].sources.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
-      propertyPath: prefabs.Array.data[19].sources.Array.data[0]
-      value: 
-      objectReference: {fileID: 3841750155881371725, guid: e5994ee702665aa4a839a90ae571e4cf, type: 3}
-    - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
-      propertyPath: prefabs.Array.data[21].sources.Array.data[0]
-      value: 
-      objectReference: {fileID: -2662860059206201860, guid: 1c77535882728af4a8bd7f2c402fda62, type: 3}
     - target: {fileID: 5637831348620218783, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

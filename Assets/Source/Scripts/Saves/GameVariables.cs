@@ -13,6 +13,8 @@ namespace SlimeScience.Saves
 
         private AbsorptionModel _absorptionModel = new AbsorptionModel();
         private ProgressModel _progressModel = new ProgressModel();
+        private ShipModel _shipModel = new ShipModel();
+
         private EffectsModel _effectsModel = new EffectsModel();
 
         public float AbsorptionForce => _absorptionModel.Force * _effectsModel.ForceModifier;
@@ -33,6 +35,10 @@ namespace SlimeScience.Saves
 
         public int SlimesGoal => _progressModel.SlimesGoal;
 
+        public float ShipCapacity => _shipModel.Capacity;
+
+        public float ShipSpeed => _shipModel.Speed;
+
         public bool TutorialPassed => _progressModel.TutorialPassed;
 
         public event Action Loaded;
@@ -52,6 +58,8 @@ namespace SlimeScience.Saves
         public event Action SlimeCollectedReset;
 
         public event Action<int> SlimeGoalChanged;
+
+        public event Action<float> UpgradedShipCapacity;
 
         public void Load(MonoBehaviour obj)
         {
@@ -118,9 +126,11 @@ namespace SlimeScience.Saves
             _progressModel = new ProgressModel();
             _absorptionModel = new AbsorptionModel();
             _effectsModel = new EffectsModel();
+            _shipModel = new ShipModel();
 
             Save();
         }
+
         public void AddMoney(int amount)
         {
             _progressModel.AddMoney(amount);
@@ -207,6 +217,17 @@ namespace SlimeScience.Saves
         public void SetTutorialPassed()
         {
             _progressModel.SetTutorialPassed();
+        }
+
+        public void UpgradeShipCapacity(float capacity)
+        {
+            _shipModel.SetCapacity(capacity);
+            UpgradedShipCapacity?.Invoke(capacity);
+        }
+
+        public void UpgradeShipSpeed(float speed)
+        {
+            _shipModel.SetSpeed(speed);
         }
 
         private IEnumerator SimulateInit()

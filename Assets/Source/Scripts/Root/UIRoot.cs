@@ -23,6 +23,7 @@ namespace SlimeScience.Root
         [SerializeField] private AudioChanger _audioChanger;
         [SerializeField] private ProgressRenderer _progressRenderer;
 
+        [SerializeField] private CallShip _callShip;
         [SerializeField] private Button _openUpgradesCanvas;
         [SerializeField] private Button _openLeaderboardCanvas;
 
@@ -102,7 +103,8 @@ namespace SlimeScience.Root
             Wallet wallet,
             GameVariables gameVariables,
             Advertisment advertisment,
-            PauseHandler adPause)
+            PauseHandler adPause,
+            Player player)
         {
             _gameVariables = gameVariables;
             _advertisment = advertisment;
@@ -113,6 +115,9 @@ namespace SlimeScience.Root
             _leaderbordCanvas.Init();
             _audioChanger.Init();
             _progressRenderer.Init(gameVariables);
+            
+            _ship.Init();
+            _callShip.Init(_ship, _advertisment, player);
         }
 
         public void ShowInterstitial()

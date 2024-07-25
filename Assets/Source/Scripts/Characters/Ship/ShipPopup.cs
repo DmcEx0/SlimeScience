@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SlimeScience
+namespace SlimeScience.Characters.Ship
 {
     public class ShipPopup : MonoBehaviour
     {

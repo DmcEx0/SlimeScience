@@ -5,6 +5,7 @@ using SlimeScience.Money;
 using SlimeScience.Saves;
 using System;
 using System.Collections.Generic;
+using SlimeScience.Characters.Ship;
 using SlimeScience.Util;
 using UnityEngine;
 
@@ -34,7 +35,7 @@ namespace SlimeScience.Blocks
                 
                 if(releaseSimes.Count != 0)
                 {
-                    if(seeker is Player)
+                    if(seeker is Player || seeker is Ship)
                     {
                         SoundsManager.PlayUnloadSlime();
                         PlayerReleased?.Invoke();

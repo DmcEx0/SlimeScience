@@ -39,7 +39,9 @@ namespace SlimeScience.Equipment.Guns
             {
                 return;
             }
-
+            
+            _inventoryRenderer.gameObject.SetActive(true);
+            
             if (_gameVariables != null)
             {
                 _gameVariables.CapacityUpgraded += OnCapacityUpgraded;
@@ -56,6 +58,8 @@ namespace SlimeScience.Equipment.Guns
 
         private void OnDisable()
         {
+            _inventoryRenderer.gameObject.SetActive(false);
+
             if (_gameVariables != null)
             {
                 _gameVariables.CapacityUpgraded -= OnCapacityUpgraded;
@@ -170,7 +174,7 @@ namespace SlimeScience.Equipment.Guns
 
             _effectSystem.EffectApplied += OnEffectChanged;
             _effectSystem.EffectEnded += OnEffectChanged;
-
+            
             _isInitialized = true;
         }
 

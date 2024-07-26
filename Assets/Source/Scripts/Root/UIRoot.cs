@@ -116,8 +116,8 @@ namespace SlimeScience.Root
             _audioChanger.Init();
             _progressRenderer.Init(gameVariables);
             
-            _ship.Init();
-            _callShip.Init(_ship, _advertisment, player);
+            // _ship.Init();
+            // _callShip.Init(_ship, _advertisment, player);
         }
 
         public void ShowInterstitial()

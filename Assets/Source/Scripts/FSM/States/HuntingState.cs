@@ -22,12 +22,6 @@ namespace SlimeScience.FSM.States
         {
             _vacuumingSupport.PullGun.Catched += OnSlimeCathed;
             _vacuumingSupport.Movement.SetMovementSpeed(_vacuumingSupport.DetectedSpeed);
-            
-            if(_vacuumingSupport.PullGun.InventoryIsFull)
-            {
-                _changeState?.Invoke(StatesType.Unloading);
-            }
-            
             Debug.Log("State = HUNTING");
         }
 
@@ -48,7 +42,10 @@ namespace SlimeScience.FSM.States
 
         private void OnSlimeCathed()
         {
-            _changeState?.Invoke(StatesType.Patrol);
+            if(_vacuumingSupport.PullGun.InventoryIsFull)
+            {
+                _changeState?.Invoke(StatesType.Unloading);
+            }
         }
     }
 }

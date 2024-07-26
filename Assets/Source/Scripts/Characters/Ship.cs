@@ -23,7 +23,7 @@ namespace SlimeScience.Characters
         private bool _isCanUsed;
         private Coroutine _coroutine;
 
-        private void Start()
+        public void Init()
         {
             SetParticlesState(false);
             _isCanUsed = true;
@@ -67,6 +67,15 @@ namespace SlimeScience.Characters
             _childShip.SetParent(_player.transform);
             SetParticlesState(true);
             _isEnabled = true;
+        }
+
+        public void Used(Player player)
+        {
+            _player = player;
+            transform.position = player.transform.position;
+            transform.rotation = player.transform.rotation;
+
+            Used();
         }
 
         private void SetParticlesState(bool state)

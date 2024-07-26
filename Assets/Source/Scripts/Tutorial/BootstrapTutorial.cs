@@ -114,7 +114,7 @@ namespace SlimeScience.Tutorial
 
             _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
 
-            _uIRoot.Init(_wallet, _gameVariables, null, _adPause);
+            _uIRoot.Init(_wallet, _gameVariables, null, _adPause, player);
 
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();

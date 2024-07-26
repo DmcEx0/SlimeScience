@@ -134,7 +134,7 @@ namespace SlimeScience.Root
             }
 
             _gameVariables.AssistantUpgraded += OnAssistantUpgraded;
-            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause);
+            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause, player);
 
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();

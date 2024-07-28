@@ -9,6 +9,7 @@ using SlimeScience.FSM.States;
 using SlimeScience.FSM.States.Slimes;
 using SlimeScience.Pool;
 using SlimeScience.Util;
+using SlimeScience.Configs.Slimes;
 
 namespace SlimeScience.Factory
 {

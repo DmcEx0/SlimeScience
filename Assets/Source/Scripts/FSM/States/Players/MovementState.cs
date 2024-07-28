@@ -34,7 +34,7 @@ namespace SlimeScience.FSM.States.Players
             {
                 _changeState.Invoke(StatesType.PlayerIdle);
             }
-            
+
             _player.Movement.Move();
         }
     }

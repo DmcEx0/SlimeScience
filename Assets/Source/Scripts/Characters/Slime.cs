@@ -2,6 +2,7 @@ using UnityEngine;
 using SlimeScience.Configs;
 using System.Collections;
 using SlimeScience.Equipment.Guns;
+using SlimeScience.Configs.Slimes;
 
 namespace SlimeScience.Characters
 {
@@ -9,6 +10,7 @@ namespace SlimeScience.Characters
     {
         private const float ResetVelocityTime = 0.1f;
 
+        [SerializeField] private SlimeType _type;
         [SerializeField] private Rigidbody _rigidbody;
         
         private Coroutine _resetVelocityCoroutine;

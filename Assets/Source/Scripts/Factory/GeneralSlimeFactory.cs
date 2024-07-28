@@ -1,4 +1,4 @@
-using SlimeScience.Configs;
+using SlimeScience.Configs.Slimes;
 using UnityEngine;
 
 namespace SlimeScience.Factory

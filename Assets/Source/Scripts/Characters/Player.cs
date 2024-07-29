@@ -15,6 +15,9 @@ namespace SlimeScience.Characters
 
         private float _rangeVacuum;
 
+        private float _defaultAcceleration;
+        private float _currentAcceleration;
+
         public PullGun PullGun => _pullGun;
 
         private void Update()
@@ -48,6 +51,18 @@ namespace SlimeScience.Characters
             SetMovementStats(_config);
         }
 
+        public void SetMovementModifiers(float accelerationMultiplier)
+        {
+            _currentAcceleration = _defaultAcceleration * accelerationMultiplier;
+            Movement.SetAcceleration(_currentAcceleration);
+        }
+
+        public void ResetMovementModifiers()
+        {
+            _currentAcceleration = _defaultAcceleration;
+            Movement.SetAcceleration(_defaultAcceleration);
+        }
+
         protected override void Init(MobileObjectConfig config)
         {
             if (config is not PlayerConfig playerConfig)
@@ -56,6 +71,9 @@ namespace SlimeScience.Characters
             _config = playerConfig;
 
             _rangeVacuum = _config.RangeVacuum;
+
+            _defaultAcceleration = config.Acceleration;
+            _currentAcceleration = _defaultAcceleration;
 
             SetRigidbodySetting(_rigidbody);
         }

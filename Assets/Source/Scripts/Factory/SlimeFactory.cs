@@ -9,6 +9,7 @@ using SlimeScience.FSM.States;
 using SlimeScience.FSM.States.Slimes;
 using SlimeScience.Pool;
 using SlimeScience.Util;
+using SlimeScience.Configs.Slimes;
 
 namespace SlimeScience.Factory
 {
@@ -43,6 +44,7 @@ namespace SlimeScience.Factory
             slime.Init(CreateStateMachine(slime, targetDetector), inputRouter, _config);
             slime.transform.position = position;
             slime.gameObject.SetActive(true);
+            slime.SetOriginPosition(position);
 
             return slime;
         }

@@ -20,9 +20,7 @@ MonoBehaviour:
     _fearSpeed: 3
     _buildData:
       _prefabs:
-      - {fileID: 6037890778631035633, guid: 6950d7a2d96876641a9bf7313048bee0, type: 3}
-      - {fileID: 7555953376310881813, guid: 7a5e760b7b6051945b691d220742228a, type: 3}
-      - {fileID: -6807647956982269471, guid: c4cda3624eff9c44fb29025714b43bff, type: 3}
+      - {fileID: 7555953376310881813, guid: 75b0a8b0c53f63542b609c37f465f608, type: 3}
       _hats: []
       _bodyMaterials:
       - {fileID: 2100000, guid: c6978f3e6aa302f4c8666c3c2e5ddbc5, type: 2}

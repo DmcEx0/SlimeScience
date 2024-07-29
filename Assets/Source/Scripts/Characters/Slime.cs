@@ -3,20 +3,28 @@ using SlimeScience.Configs;
 using System.Collections;
 using SlimeScience.Equipment.Guns;
 using SlimeScience.Configs.Slimes;
+using SlimeScience.Util;
 
 namespace SlimeScience.Characters
 {
     public class Slime : MobileObject, IPullable
     {
         private const float ResetVelocityTime = 0.1f;
+        private const float ResetTeleportTime = 20f;
 
         [SerializeField] private SlimeType _type;
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private ParticleSystem _teleportEffect;
         
         private Coroutine _resetVelocityCoroutine;
+        private Vector3 _originPos;
+
+
+        [field: SerializeField] public int Weight {  get; private set; }
         
         public float FearSpeed { get; private set; }
         public float BaseSpeed{ get; private set; }
+        public bool ÑanTeleport { get; private set; }
 
         public Vector3 Position => transform.position;
 
@@ -44,6 +52,8 @@ namespace SlimeScience.Characters
 
             BaseSpeed = slimeConfig.BaseSpeed;
             FearSpeed = slimeConfig.FearSpeed;
+
+            ÑanTeleport = _type == SlimeType.Teleport;
         }
 
         protected override void SetRigidbodySetting(Rigidbody rigidbody)
@@ -68,6 +78,11 @@ namespace SlimeScience.Characters
             _resetVelocityCoroutine = StartCoroutine(ResetVelocityCoroutine());
         }
 
+        public void SetOriginPosition(Vector3 position)
+        {
+            _originPos = position;
+        }
+
         public void SetPosition(Vector3 position)
         {
             transform.position = position;
@@ -84,6 +99,27 @@ namespace SlimeScience.Characters
             _rigidbody.velocity = Vector3.zero;
             
             Enable();
+        }
+
+        public void Teleport()
+        {
+            if (!ÑanTeleport)
+                return;
+
+            ÑanTeleport = false;
+
+            SetPosition(_originPos);
+            _teleportEffect.Play();
+            SoundsManager.PlayTeleport();
+
+            StartCoroutine(ResetTeleportCoroutine());
+        }
+
+        private IEnumerator ResetTeleportCoroutine()
+        {
+            yield return new WaitForSeconds(ResetTeleportTime);
+
+            ÑanTeleport = true;
         }
 
         private IEnumerator ResetVelocityCoroutine()

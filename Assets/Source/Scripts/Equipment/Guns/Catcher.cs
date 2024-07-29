@@ -1,4 +1,3 @@
-using SlimeScience.Characters;
 using System;
 using UnityEngine;
 

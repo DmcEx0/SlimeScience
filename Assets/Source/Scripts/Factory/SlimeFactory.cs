@@ -44,6 +44,7 @@ namespace SlimeScience.Factory
             slime.Init(CreateStateMachine(slime, targetDetector), inputRouter, _config);
             slime.transform.position = position;
             slime.gameObject.SetActive(true);
+            slime.SetOriginPosition(position);
 
             return slime;
         }

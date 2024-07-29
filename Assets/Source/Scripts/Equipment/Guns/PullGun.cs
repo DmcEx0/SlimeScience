@@ -113,7 +113,7 @@ namespace SlimeScience.Equipment.Guns
 
             if (collision.gameObject.TryGetComponent(out Slime slime))
             {
-                if (slime.ÑanTeleport)
+                if (slime.CanTeleport)
                 {
                     slime.Teleport();
                     return;

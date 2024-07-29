@@ -24,7 +24,7 @@ namespace SlimeScience.Characters
         
         public float FearSpeed { get; private set; }
         public float BaseSpeed{ get; private set; }
-        public bool ÑanTeleport { get; private set; }
+        public bool CanTeleport { get; private set; }
 
         public Vector3 Position => transform.position;
 
@@ -53,7 +53,7 @@ namespace SlimeScience.Characters
             BaseSpeed = slimeConfig.BaseSpeed;
             FearSpeed = slimeConfig.FearSpeed;
 
-            ÑanTeleport = _type == SlimeType.Teleport;
+            CanTeleport = _type == SlimeType.Teleport;
         }
 
         protected override void SetRigidbodySetting(Rigidbody rigidbody)
@@ -103,10 +103,10 @@ namespace SlimeScience.Characters
 
         public void Teleport()
         {
-            if (!ÑanTeleport)
+            if (!CanTeleport)
                 return;
 
-            ÑanTeleport = false;
+            CanTeleport = false;
 
             SetPosition(_originPos);
             _teleportEffect.Play();
@@ -119,7 +119,7 @@ namespace SlimeScience.Characters
         {
             yield return new WaitForSeconds(ResetTeleportTime);
 
-            ÑanTeleport = true;
+            CanTeleport = true;
         }
 
         private IEnumerator ResetVelocityCoroutine()

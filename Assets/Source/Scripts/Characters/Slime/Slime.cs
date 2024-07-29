@@ -12,19 +12,18 @@ namespace SlimeScience.Characters
         private const float ResetVelocityTime = 0.1f;
         private const float ResetTeleportTime = 20f;
 
-        [SerializeField] private SlimeType _type;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private ParticleSystem _teleportEffect;
         
         private Coroutine _resetVelocityCoroutine;
         private Vector3 _originPos;
-
+        private SlimeType _type;
 
         [field: SerializeField] public int Weight {  get; private set; }
         
         public float FearSpeed { get; private set; }
         public float BaseSpeed{ get; private set; }
-        public bool 補nTeleport { get; private set; }
+        public bool 小anTeleport { get; private set; }
 
         public Vector3 Position => transform.position;
 
@@ -43,17 +42,15 @@ namespace SlimeScience.Characters
 
         protected override void Init(MobileObjectConfig config)
         {
-            if (config is not SlimeConfig)
+            if (config is not SlimeConfig slimeConfig)
                 return;
 
             SetRigidbodySetting(_rigidbody);
 
-            SlimeConfig slimeConfig = config as SlimeConfig;
-
             BaseSpeed = slimeConfig.BaseSpeed;
             FearSpeed = slimeConfig.FearSpeed;
 
-            補nTeleport = _type == SlimeType.Teleport;
+            小anTeleport = _type == SlimeType.Teleport;
         }
 
         protected override void SetRigidbodySetting(Rigidbody rigidbody)
@@ -103,10 +100,10 @@ namespace SlimeScience.Characters
 
         public void Teleport()
         {
-            if (!補nTeleport)
+            if (!小anTeleport)
                 return;
 
-            補nTeleport = false;
+            小anTeleport = false;
 
             SetPosition(_originPos);
             _teleportEffect.Play();
@@ -119,7 +116,7 @@ namespace SlimeScience.Characters
         {
             yield return new WaitForSeconds(ResetTeleportTime);
 
-            補nTeleport = true;
+            小anTeleport = true;
         }
 
         private IEnumerator ResetVelocityCoroutine()

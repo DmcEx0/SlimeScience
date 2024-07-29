@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56fb7f7b910530e41a9a1b53380c8baa, type: 3}
   m_Name: GeneralSlimeFactory
   m_EditorClassIdentifier: 
+  _poolSize: 0
   _slimeConfig:
     _baseSpeed: 1
     _rotateSpeed: 200
@@ -33,3 +34,6 @@ MonoBehaviour:
       - {fileID: 2100000, guid: f2203f80845a66e4ab859ec6b767fcde, type: 2}
       - {fileID: 2100000, guid: 4d0ca150427ac2f41b5cd8b25e023e6d, type: 2}
       - {fileID: 2100000, guid: 5b87a972518a3154aa254612d431fa98, type: 2}
+    _normalWeight: 1
+    _bigWeight: 3
+    _teleportWeight: 1

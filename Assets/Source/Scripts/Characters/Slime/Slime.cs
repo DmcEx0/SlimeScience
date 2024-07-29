@@ -23,7 +23,7 @@ namespace SlimeScience.Characters
         
         public float FearSpeed { get; private set; }
         public float BaseSpeed{ get; private set; }
-        public bool СanTeleport { get; private set; }
+        public bool CanTeleport { get; private set; }
 
         public Vector3 Position => transform.position;
 
@@ -50,7 +50,9 @@ namespace SlimeScience.Characters
             BaseSpeed = slimeConfig.BaseSpeed;
             FearSpeed = slimeConfig.FearSpeed;
 
-            СanTeleport = _type == SlimeType.Teleport;
+            _type = slimeConfig.Type;
+            SetWeight(_type, slimeConfig);
+            CanTeleport = _type == SlimeType.Teleport;
         }
 
         protected override void SetRigidbodySetting(Rigidbody rigidbody)
@@ -100,10 +102,10 @@ namespace SlimeScience.Characters
 
         public void Teleport()
         {
-            if (!СanTeleport)
+            if (!CanTeleport)
                 return;
 
-            СanTeleport = false;
+            CanTeleport = false;
 
             SetPosition(_originPos);
             _teleportEffect.Play();
@@ -116,7 +118,7 @@ namespace SlimeScience.Characters
         {
             yield return new WaitForSeconds(ResetTeleportTime);
 
-            СanTeleport = true;
+            CanTeleport = true;
         }
 
         private IEnumerator ResetVelocityCoroutine()
@@ -124,6 +126,22 @@ namespace SlimeScience.Characters
             yield return new WaitForSeconds(ResetVelocityTime);
 
             ResetVelocity();
+        }
+        
+        private void SetWeight(SlimeType type, SlimeConfig config)
+        {
+            switch (type)
+            {
+                case SlimeType.Normal:
+                    Weight = config.NormalWeight;
+                    break;
+                case SlimeType.Big:
+                    Weight = config.BigWeight;
+                    break;
+                case SlimeType.Teleport:
+                    Weight = config.TeleportWeight;
+                    break;
+            }
         }
     }
 }

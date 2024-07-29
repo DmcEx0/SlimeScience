@@ -1,5 +1,4 @@
 using SlimeScience.Characters;
-using SlimeScience.Configs;
 using System;
 using System.Collections.Generic;
 using SlimeScience.Input;
@@ -15,6 +14,8 @@ namespace SlimeScience.Factory
 {
     public abstract class SlimeFactory : GameObjectFactory
     {
+        [SerializeField] private int _poolSize;
+        
         private ObjectPool<Slime> _pool;
         private SlimeConfig _config;
 
@@ -32,7 +33,7 @@ namespace SlimeScience.Factory
             }
         }
 
-        public MobileObject Get(Transform playerTransform, Vector3 position)
+        public MobileObject Get(SlimeType type, Transform playerTransform, Vector3 position)
         {
             var slime = _pool.GetAvailable();
             TargetDetector targetDetector = new TargetDetector(_config.DistanceFofFear);
@@ -45,6 +46,13 @@ namespace SlimeScience.Factory
             slime.transform.position = position;
             slime.gameObject.SetActive(true);
             slime.SetOriginPosition(position);
+            
+            _config.SetType(type);
+            
+            if(type == SlimeType.Big)
+            {
+                slime.transform.localScale = new Vector3(2f, 2f, 2f);
+            }
 
             return slime;
         }

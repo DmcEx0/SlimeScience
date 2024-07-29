@@ -6,11 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="55c8682e-9460-4605-89d8-b09e169f6c0d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Slime/Slime.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Slime/Slime.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Slime/SlimesType.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Slime/SlimesType.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/BlockData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/BlockData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/Slimes/SlimeConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/Slimes/SlimeConfig.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Equipment/Guns/PullGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Equipment/Guns/PullGun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/SlimeFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/SlimeFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Spawners/SlimeSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Spawners/SlimeSpawner.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +146,8 @@
       <workItem from="1721921115468" duration="4804000" />
       <workItem from="1722010438009" duration="3089000" />
       <workItem from="1722066184195" duration="7341000" />
-      <workItem from="1722268926386" duration="1656000" />
+      <workItem from="1722268926386" duration="2452000" />
+      <workItem from="1722272087078" duration="717000" />
     </task>
     <servers />
   </component>

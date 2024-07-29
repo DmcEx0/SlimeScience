@@ -18,5 +18,7 @@ namespace SlimeScience.Configs
         [field:SerializeField] public AudioClip LevelOpened { get; private set; }
 
         [field:SerializeField] public AudioClip Explode { get; private set; }
+     
+        [field:SerializeField] public AudioClip Teleport { get; private set; }
     }
 }

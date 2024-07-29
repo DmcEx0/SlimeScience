@@ -50,6 +50,8 @@ namespace SlimeScience.Util
 
         public static void PlayLevelOpened() => PlaySound(s_config.LevelOpened);
 
+        public static void PlayTeleport() => PlaySound(s_config.Teleport);
+
         public static void PlayBgMusic()
         {
             if (_isOn == false) 

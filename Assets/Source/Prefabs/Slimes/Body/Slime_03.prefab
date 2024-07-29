@@ -117,7 +117,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: -4592728850075097366}
   _animator: {fileID: 2043210892760018007}
+  _type: 0
   _rigidbody: {fileID: -4327851956750761188}
+  <Weight>k__BackingField: 1
 --- !u!54 &-4327851956750761188
 Rigidbody:
   m_ObjectHideFlags: 0

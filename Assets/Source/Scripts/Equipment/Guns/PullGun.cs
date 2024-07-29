@@ -120,7 +120,14 @@ namespace SlimeScience.Equipment.Guns
 
             if (collision.gameObject.TryGetComponent(out Slime slime))
             {
-                if (slime.isActiveAndEnabled)
+
+                if (slime.�anTeleport)
+                {
+                    slime.Teleport();
+                    return;
+                }
+
+                if (slime.isActiveAndEnabled && HasEnoughSpace(slime.Weight))
                 {
                     _slimeCatcher.Catch(slime, transform.position);
                     _effectRenderer.PlayCatchSlimeEffect();
@@ -223,7 +230,12 @@ namespace SlimeScience.Equipment.Guns
             Slime slime = pullable as Slime;
 
             slime.Disable();
-            _inventory.Add(slime);
+
+            for (int i = 0; i < slime.Weight; i++)
+            {
+                _inventory.Add(slime);
+            }
+
             Catched?.Invoke();
 
             SoundsManager.PlaySlimeCatch();
@@ -256,5 +268,7 @@ namespace SlimeScience.Equipment.Guns
                 slime.SetPosition(newPos);
             }
         }
+
+        private bool HasEnoughSpace(int weight) =>  _inventory.Amount + weight <= _inventory.MaxItems;
     }
 }

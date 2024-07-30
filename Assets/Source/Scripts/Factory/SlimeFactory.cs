@@ -44,37 +44,50 @@ namespace SlimeScience.Factory
             targetDetector.SetTargetTransform(playerTransform);
 
             var inputRouter = new SlimeInputRouter(targetDetector);
-            
+
             _config.SetType(typeConfig.Type);
             _config.SetWeight(typeConfig.Weight);
 
-            slime.Init(CreateStateMachine(slime, targetDetector), inputRouter, _config);
+            slime.Init(CreateStateMachine(type, slime, targetDetector), inputRouter, _config);
             slime.transform.position = position;
             slime.gameObject.SetActive(true);
             slime.SetOriginPosition(position);
 
             slime.transform.localScale = typeConfig.Scale;
 
-            if(type == SlimeType.Boss)
+            if (type == SlimeType.Boss)
             {
                 var hatPos = slime.GetComponentInChildren<HatPosition>();
                 var hatPrefab = _config.BuildData.GetRandomHat;
 
                 Instantiate(hatPrefab, hatPos.transform.position, Quaternion.identity, hatPos.transform);
             }
-            
+
             return slime;
         }
 
         protected abstract SlimeConfig GetConfig();
         protected abstract SlimeTypeValues GetTypeConfig(SlimeType type);
 
-        private StateMachine CreateStateMachine(Slime instance, IDetectable detector)
+        private StateMachine CreateStateMachine(SlimeType type, Slime instance, IDetectable detector)
         {
             StateMachine stateMachine = new StateMachine();
             Action<StatesType> changeStateAction = stateMachine.ChangeState;
+            Dictionary<StatesType, IState> states;
 
-            Dictionary<StatesType, IState> states = new Dictionary<StatesType, IState>()
+            if (type == SlimeType.Boss)
+            {
+                states = new Dictionary<StatesType, IState>()
+                {
+                    [StatesType.SlimeIdle] = new SlimeIdleState(changeStateAction, instance, detector)
+                };
+
+                stateMachine.SetStates(StatesType.SlimeIdle, states);
+
+                return stateMachine;
+            }
+
+            states = new Dictionary<StatesType, IState>()
             {
                 [StatesType.Patrol] = new PatrolState(changeStateAction, instance, detector),
                 [StatesType.Fear] = new FearState(changeStateAction, instance, detector),

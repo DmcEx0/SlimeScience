@@ -37,3 +37,4 @@ MonoBehaviour:
     _normalWeight: 1
     _bigWeight: 3
     _teleportWeight: 1
+    _bigSlimeScale: {x: 2.5, y: 2.5, z: 2.5}

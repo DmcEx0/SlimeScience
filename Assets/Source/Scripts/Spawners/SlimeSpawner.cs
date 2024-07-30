@@ -19,10 +19,10 @@ namespace SlimeScience.Spawners
             _gameVariables = gameVariables;
         }
 
-        public void Init(Transform playerTransform, Transform poolParent, int poolSize)
+        public void Init(Transform playerTransform, Transform poolParent)
         {
             _playerTransform = playerTransform;
-            _slimeFactory.CreatePool(poolSize, poolParent);
+            _slimeFactory.CreatePool(poolParent);
         }
 
         public void Spawn(BlockData blockData, Block block)

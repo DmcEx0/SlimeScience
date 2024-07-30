@@ -19,12 +19,12 @@ namespace SlimeScience.Factory
         private ObjectPool<Slime> _pool;
         private SlimeConfig _config;
 
-        public void CreatePool(int poolSize, Transform parent)
+        public void CreatePool(Transform parent)
         {
             _pool = new ObjectPool<Slime>(parent);
             _config = GetConfig();
 
-            for (int i = 0; i < poolSize; i++)
+            for (int i = 0; i < _poolSize; i++)
             {
                 var slime = CreateInstance(_config.BuildData.GetRandomPrefab, parent.transform.position);
                 BuildSlime(slime, _config.BuildData);
@@ -51,7 +51,7 @@ namespace SlimeScience.Factory
             
             if(type == SlimeType.Big)
             {
-                slime.transform.localScale = new Vector3(2f, 2f, 2f);
+                slime.transform.localScale = _config.BigSlimeScale;
             }
 
             return slime;

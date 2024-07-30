@@ -51,7 +51,7 @@ namespace SlimeScience.Characters
             FearSpeed = slimeConfig.FearSpeed;
 
             _type = slimeConfig.Type;
-            SetWeight(_type, slimeConfig);
+            Weight = slimeConfig.Weight;
             CanTeleport = _type == SlimeType.Teleport;
         }
 
@@ -126,22 +126,6 @@ namespace SlimeScience.Characters
             yield return new WaitForSeconds(ResetVelocityTime);
 
             ResetVelocity();
-        }
-        
-        private void SetWeight(SlimeType type, SlimeConfig config)
-        {
-            switch (type)
-            {
-                case SlimeType.Normal:
-                    Weight = config.NormalWeight;
-                    break;
-                case SlimeType.Big:
-                    Weight = config.BigWeight;
-                    break;
-                case SlimeType.Teleport:
-                    Weight = config.TeleportWeight;
-                    break;
-            }
         }
     }
 }

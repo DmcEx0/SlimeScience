@@ -214,6 +214,7 @@ Transform:
   m_Children:
   - {fileID: 4642142819671522292}
   - {fileID: 3705394322984543625}
+  - {fileID: 7292497216971227646}
   m_Father: {fileID: 2641089895352749477}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5956758790149950932
@@ -248,6 +249,50 @@ Transform:
   - {fileID: 2340058461210306597}
   m_Father: {fileID: 1917744097877681675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6058565978444385582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7292497216971227646}
+  - component: {fileID: 5403404022544465814}
+  m_Layer: 6
+  m_Name: HatPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7292497216971227646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6058565978444385582}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.058336616, y: 0.000000119006295, z: -0.000000006954288, w: 0.998297}
+  m_LocalPosition: {x: -0, y: 0.464, z: -0.003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1917744097877681675}
+  m_LocalEulerAnglesHint: {x: 6.689, y: 0, z: 0}
+--- !u!114 &5403404022544465814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6058565978444385582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e23a150766d3349a26a54a49ed95ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6634696804151833243
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,8 +346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: -6016411368270625345}
   _animator: {fileID: -4307594872806122792}
-  _type: 0
   _rigidbody: {fileID: -2680092504741794528}
+  _teleportEffect: {fileID: 0}
   <Weight>k__BackingField: 1
 --- !u!54 &-2680092504741794528
 Rigidbody:

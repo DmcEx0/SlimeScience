@@ -1922,6 +1922,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 3372511346069024103, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3703346665558332811, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_Name
       value: Canvases
@@ -1952,6 +1956,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6796677028162771844, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040770212757918710, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7585614469386392629, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}

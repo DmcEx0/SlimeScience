@@ -1,6 +1,7 @@
 using SlimeScience.Characters;
 using System;
 using System.Collections.Generic;
+using SlimeScience.Configs;
 using SlimeScience.Input;
 using UnityEngine;
 using SlimeScience.FSM;
@@ -15,9 +16,10 @@ namespace SlimeScience.Factory
     public abstract class SlimeFactory : GameObjectFactory
     {
         [SerializeField] private int _poolSize;
-        
+
         private ObjectPool<Slime> _pool;
         private SlimeConfig _config;
+        private SlimeTypeValues _slimeType;
 
         public void CreatePool(Transform parent)
         {
@@ -28,36 +30,44 @@ namespace SlimeScience.Factory
             {
                 var slime = CreateInstance(_config.BuildData.GetRandomPrefab, parent.transform.position);
                 BuildSlime(slime, _config.BuildData);
-                
+
                 _pool.InitializePool(slime);
             }
         }
 
         public MobileObject Get(SlimeType type, Transform playerTransform, Vector3 position)
         {
+            var typeConfig = GetTypeConfig(type);
             var slime = _pool.GetAvailable();
             TargetDetector targetDetector = new TargetDetector(_config.DistanceFofFear);
             targetDetector.SetParentTransforms(slime.transform);
             targetDetector.SetTargetTransform(playerTransform);
 
             var inputRouter = new SlimeInputRouter(targetDetector);
+            
+            _config.SetType(typeConfig.Type);
+            _config.SetWeight(typeConfig.Weight);
 
             slime.Init(CreateStateMachine(slime, targetDetector), inputRouter, _config);
             slime.transform.position = position;
             slime.gameObject.SetActive(true);
             slime.SetOriginPosition(position);
-            
-            _config.SetType(type);
-            
-            if(type == SlimeType.Big)
-            {
-                slime.transform.localScale = _config.BigSlimeScale;
-            }
 
+            slime.transform.localScale = typeConfig.Scale;
+
+            if(type == SlimeType.Boss)
+            {
+                var hatPos = slime.GetComponentInChildren<HatPosition>();
+                var hatPrefab = _config.BuildData.GetRandomHat;
+
+                Instantiate(hatPrefab, hatPos.transform.position, Quaternion.identity, hatPos.transform);
+            }
+            
             return slime;
         }
 
         protected abstract SlimeConfig GetConfig();
+        protected abstract SlimeTypeValues GetTypeConfig(SlimeType type);
 
         private StateMachine CreateStateMachine(Slime instance, IDetectable detector)
         {

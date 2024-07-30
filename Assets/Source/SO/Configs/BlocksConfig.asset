@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blocksData:
   - _bombAmount: 10
-    _slimeAmount: 130
-    _neededAmountToOpen: 130
+    _slimeAmount: 1
+    _neededAmountToOpen: 1
     _maxRangePosX: 25
     _maxRangePosZ: 25
-    _slimesType: 0
+    _slimesType: 3
   - _bombAmount: 10
     _slimeAmount: 100
     _neededAmountToOpen: 100

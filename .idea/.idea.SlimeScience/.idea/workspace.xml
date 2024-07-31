@@ -7,14 +7,10 @@
     <list default="true" id="55c8682e-9460-4605-89d8-b09e169f6c0d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Material/PullZoneShader.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Material/PullZoneShader.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Prefabs/Tutuorial/TutorialPopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Prefabs/Tutuorial/TutorialPopup.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Ship/Ship.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Ship/Ship.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/VacuumingSupportFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/VacuumingSupportFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Input/VacuumingSupportInputRouter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Input/VacuumingSupportInputRouter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Tutorial.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Tutorial.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Root/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Root/Bootstrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Util/SlimeObserver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Util/SlimeObserver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Util/TargetDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Util/TargetDetector.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +28,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b89873cb176e44a995a4781c7487d41046ac00/2c/d84f1d8f/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b89873cb176e44a995a4781c7487d41046ac00/85/7fb22b82/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e97d84204f8d4aef92b538c5bab948f1172800/51/b49df779/ObjectPool`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Blocks/OpenBlocksPopupsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Characters/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Characters/VacuumingSupport.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Configs/ShipConfig.cs" root0="FORCE_HIGHLIGHTING" />
@@ -149,7 +146,7 @@
       <workItem from="1722066184195" duration="7341000" />
       <workItem from="1722268926386" duration="2452000" />
       <workItem from="1722272087078" duration="2320000" />
-      <workItem from="1722441623611" duration="4070000" />
+      <workItem from="1722441623611" duration="6800000" />
     </task>
     <servers />
   </component>

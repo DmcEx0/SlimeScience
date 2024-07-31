@@ -23,6 +23,7 @@ namespace SlimeScience.Root
         [SerializeField] private UIRoot _uiRoot;
         [SerializeField] private PauseRoot _pauseRoot;
 
+        [SerializeField] private OpenBlocksPopupsManager _blocksPopupsManager;
         [SerializeField] private Ship _ship;
         [SerializeField] private CinemachineVirtualCamera _camera;
         [SerializeField] private ReleaseZone _releaseZone;
@@ -79,7 +80,7 @@ namespace SlimeScience.Root
             {
                 _gameVariables.AssistantUpgraded -= OnAssistantUpgraded;
             }
-            
+
             _releaseZone.PlayerReleased -= OnReleased;
         }
 
@@ -103,7 +104,7 @@ namespace SlimeScience.Root
             PlayerPrefs.DeleteAll();
             _gameVariables.ResetSave();
         }
-        
+
         private void Init()
         {
             _gameVariables.Loaded -= Init;
@@ -146,6 +147,11 @@ namespace SlimeScience.Root
 
         private void OnNextBlockOpened(BlockData blockData, int index)
         {
+            if (index != 0)
+            {
+                _blocksPopupsManager.ShowPopup(index);
+            }
+
             Block currentBlock = _blocks[index];
 
             for (int i = 0; i <= index; i++)

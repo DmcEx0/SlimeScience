@@ -1,3 +1,4 @@
+using SlimeScience.Characters;
 using System;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ namespace SlimeScience.Equipment.Guns
     public class Catcher
     {
         public Action<IPullable> Caught;
+        public Action<IPullable> Pulled;
 
         public void Absorb(IPullable pullable, Vector3 catchPoint, float force)
         {
@@ -20,6 +22,12 @@ namespace SlimeScience.Equipment.Guns
             Caught?.Invoke(pullable);
             pullable.SetActive(false);
             pullable.SetPosition(catchPoint);
+        }
+
+        public void Pull(Slime slime, int size)
+        {
+            slime.Pull(size);
+            Pulled?.Invoke(slime);
         }
     }
 }

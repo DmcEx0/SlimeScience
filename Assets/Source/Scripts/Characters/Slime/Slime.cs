@@ -4,11 +4,14 @@ using System.Collections;
 using SlimeScience.Equipment.Guns;
 using SlimeScience.Configs.Slimes;
 using SlimeScience.Util;
+using DG.Tweening;
 
 namespace SlimeScience.Characters
 {
     public class Slime : MobileObject, IPullable
     {
+        private const float MinScale = 1.5f;
+        private const float ScaleTime = 0.5f;
         private const float ResetVelocityTime = 0.1f;
         private const float ResetTeleportTime = 20f;
 
@@ -18,12 +21,21 @@ namespace SlimeScience.Characters
         private Coroutine _resetVelocityCoroutine;
         private Vector3 _originPos;
         private SlimeType _type;
+        private int _originWeight;
 
-        [field: SerializeField] public int Weight {  get; private set; }
+        private Vector3 _originScale;
+        
+        private Tweener _scaler;
+
+        public int Weight {  get; private set; }
         
         public float FearSpeed { get; private set; }
         public float BaseSpeed{ get; private set; }
         public bool CanTeleport { get; private set; }
+
+        public bool IsBoss => _type == SlimeType.Boss;
+
+        public SlimeType Type => _type;
 
         public Vector3 Position => transform.position;
 
@@ -52,6 +64,8 @@ namespace SlimeScience.Characters
 
             _type = slimeConfig.Type;
             Weight = slimeConfig.Weight;
+            _originWeight = Weight;
+
             CanTeleport = _type == SlimeType.Teleport;
         }
 
@@ -75,6 +89,35 @@ namespace SlimeScience.Characters
             }
 
             _resetVelocityCoroutine = StartCoroutine(ResetVelocityCoroutine());
+        }
+
+        public void Pull(int size)
+        {
+            if (size > Weight)
+            {
+                return;
+            }
+
+            Weight -= size;
+            float weightFactor = Weight / _originWeight;
+
+            Vector3 scale = _originScale * (Weight / (float)_originWeight);
+
+            scale.x = Mathf.Max(MinScale, scale.x);
+            scale.y = Mathf.Max(MinScale, scale.y);
+            scale.z = Mathf.Max(MinScale, scale.z);
+
+            if (_scaler != null)
+            {
+                _scaler.Kill();
+            }
+
+            _scaler = transform.DOScale(scale, ScaleTime);
+        }
+
+        public void SetOriginalScale(Vector3 scale)
+        {
+            _originScale = scale;
         }
 
         public void SetOriginPosition(Vector3 position)

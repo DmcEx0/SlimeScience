@@ -15,7 +15,7 @@ MonoBehaviour:
   _blocksData:
   - _bombAmount: 10
     _slimeAmount: 1
-    _neededAmountToOpen: 1
+    _neededAmountToOpen: 10
     _maxRangePosX: 25
     _maxRangePosZ: 25
     _slimesType: 3

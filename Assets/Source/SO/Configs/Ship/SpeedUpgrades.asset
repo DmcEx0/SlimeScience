@@ -15,15 +15,9 @@ MonoBehaviour:
   _values:
   - _cost: 0
     _value: 10
-  - _cost: 3
-    _value: 45
-  - _cost: 8
-    _value: 55
-  - _cost: 12
-    _value: 65
-  - _cost: 14
-    _value: 75
-  - _cost: 18
-    _value: 80
-  - _cost: 28
-    _value: 90
+  - _cost: 5
+    _value: 11
+  - _cost: 10
+    _value: 12
+  - _cost: 15
+    _value: 13

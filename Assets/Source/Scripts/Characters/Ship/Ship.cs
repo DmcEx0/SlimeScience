@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using SlimeScience.Configs;
@@ -63,7 +62,7 @@ namespace SlimeScience.Characters.Ship
                 _buttonsManager.HideUsedButton();
             }
         }
-        
+
         public List<Slime> ReleaseSlimes()
         {
             List<Slime> releasedSlimes = _inventory.Free();

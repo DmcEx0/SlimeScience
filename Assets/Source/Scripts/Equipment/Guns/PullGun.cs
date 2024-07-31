@@ -33,6 +33,8 @@ namespace SlimeScience.Equipment.Guns
 
         public bool InventoryIsFull => _inventory != null ? _inventory.IsFull : false;
 
+        private int AvailableSpace => _inventory.MaxItems - _inventory.Amount;
+
         private void OnEnable()
         {
             if (_isInitialized == false)
@@ -53,7 +55,11 @@ namespace SlimeScience.Equipment.Guns
                 _effectSystem.EffectEnded += OnEffectChanged;
             }
 
-            _slimeCatcher.Caught += OnCatch;
+            if (_slimeCatcher != null)
+            {
+                _slimeCatcher.Caught += OnCatch;
+                _slimeCatcher.Pulled += OnPulled;
+            }
         }
 
         private void OnDisable()
@@ -74,7 +80,11 @@ namespace SlimeScience.Equipment.Guns
                 _effectSystem.EffectEnded -= OnEffectChanged;
             }
 
-            _slimeCatcher.Caught -= OnCatch;
+            if (_slimeCatcher != null)
+            {
+                _slimeCatcher.Caught -= OnCatch;
+                _slimeCatcher.Pulled -= OnPulled;
+            }
         }
 
         private void FixedUpdate()
@@ -120,6 +130,11 @@ namespace SlimeScience.Equipment.Guns
 
             if (collision.gameObject.TryGetComponent(out Slime slime))
             {
+                if (slime.IsBoss && slime.Weight > AvailableSpace)
+                {
+                    _slimeCatcher.Pull(slime, AvailableSpace);
+                    return;
+                }
 
                 if (slime.CanTeleport)
                 {
@@ -177,6 +192,7 @@ namespace SlimeScience.Equipment.Guns
                 _gameVariables.AbsorptionAngle);
 
             _slimeCatcher.Caught += OnCatch;
+            _slimeCatcher.Pulled += OnPulled;
 
             _inventoryRenderer.Init(_inventory);
 
@@ -238,6 +254,13 @@ namespace SlimeScience.Equipment.Guns
 
             Catched?.Invoke();
 
+            SoundsManager.PlaySlimeCatch();
+        }
+
+        private void OnPulled(IPullable pullable)
+        {
+            _inventory.Fill(AvailableSpace);
+            Catched?.Invoke();
             SoundsManager.PlaySlimeCatch();
         }
 

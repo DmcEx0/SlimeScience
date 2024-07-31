@@ -18,7 +18,7 @@ namespace SlimeScience.InventorySystem
         private Coroutine _smoothUpdate;
 
         private void OnEnable()
-        {
+        { 
             if (_inventory != null)
             {
                 _inventory.Changed += OnInventoryChanged;

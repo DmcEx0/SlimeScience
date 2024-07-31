@@ -12,13 +12,12 @@ namespace SlimeScience.Characters
         private const float ResetVelocityTime = 0.1f;
         private const float ResetTeleportTime = 20f;
 
-        [SerializeField] private SlimeType _type;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private ParticleSystem _teleportEffect;
         
         private Coroutine _resetVelocityCoroutine;
         private Vector3 _originPos;
-
+        private SlimeType _type;
 
         [field: SerializeField] public int Weight {  get; private set; }
         
@@ -43,16 +42,16 @@ namespace SlimeScience.Characters
 
         protected override void Init(MobileObjectConfig config)
         {
-            if (config is not SlimeConfig)
+            if (config is not SlimeConfig slimeConfig)
                 return;
 
             SetRigidbodySetting(_rigidbody);
 
-            SlimeConfig slimeConfig = config as SlimeConfig;
-
             BaseSpeed = slimeConfig.BaseSpeed;
             FearSpeed = slimeConfig.FearSpeed;
 
+            _type = slimeConfig.Type;
+            Weight = slimeConfig.Weight;
             CanTeleport = _type == SlimeType.Teleport;
         }
 

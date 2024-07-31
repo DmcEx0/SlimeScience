@@ -8,6 +8,7 @@ namespace SlimeScience.Characters
 {
     public class Player : MobileObject, ISeekable
     {
+        [SerializeField] private Collider _collider;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private PullGun _pullGun;
 
@@ -41,6 +42,7 @@ namespace SlimeScience.Characters
         public void TranslateToShip(Transform shipPlaceForPlayer, ShipConfig shipConfig)
         {
             SetMovementStats(shipConfig);
+            _collider.enabled = false;
             
             transform.position = shipPlaceForPlayer.position;
             transform.rotation = shipPlaceForPlayer.rotation;
@@ -49,6 +51,7 @@ namespace SlimeScience.Characters
         public void LeaveShip()
         {
             SetMovementStats(_config);
+            _collider.enabled = true;
         }
 
         public void SetMovementModifiers(float accelerationMultiplier)

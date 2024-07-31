@@ -15,7 +15,6 @@ namespace SlimeScience.Root
 {
     public class UIRoot : MonoBehaviour
     {
-        [SerializeField] private Ship _ship;
         [SerializeField] private FloatingJoystick _floatingJoystick;
         [SerializeField] private WalletRenderer _walletRenderer;
         [SerializeField] private UpgradesCanvas _upgradesCanvas;
@@ -23,7 +22,6 @@ namespace SlimeScience.Root
         [SerializeField] private AdvertismentCanvas _advertismentCanvas;
         [SerializeField] private AudioChanger _audioChanger;
         [SerializeField] private ProgressRenderer _progressRenderer;
-        [SerializeField] private ShipPopup _shipPopup;
 
         [SerializeField] private CallShip _callShip;
         [SerializeField] private Button _openUpgradesCanvas;
@@ -66,11 +64,6 @@ namespace SlimeScience.Root
             {
                 _resetSave.onClick.AddListener(OnResetSaves);
             }
-
-            if (_shipPopup != null)
-            {
-                _shipPopup.AdShowing += OnShowReward;
-            }
         }
 
         private void OnDisable()
@@ -104,13 +97,6 @@ namespace SlimeScience.Root
             {
                 _resetSave.onClick.RemoveListener(OnResetSaves);
             }
-
-            if (_shipPopup != null)
-            {
-                _shipPopup.AdShowing -= OnShowReward;
-            }
-            
-            _advertisment.RewardClaimed -= OnRewardClaimed;
         }
 
         public void Init(
@@ -121,9 +107,7 @@ namespace SlimeScience.Root
             Player player)
         {
             _gameVariables = gameVariables;
-
             _advertisment = advertisment;
-            _advertisment.RewardClaimed += OnRewardClaimed;
             _adPause = adPause;
             _floatingJoystick.Init();
             _walletRenderer.Init(wallet);
@@ -132,8 +116,8 @@ namespace SlimeScience.Root
             _audioChanger.Init();
             _progressRenderer.Init(gameVariables);
             
-            _ship.Init();
-            _callShip.Init(_ship, _advertisment, player);
+            // _ship.Init();
+            // _callShip.Init(_ship, _advertisment, player);
         }
 
         public void ShowInterstitial()
@@ -186,11 +170,6 @@ namespace SlimeScience.Root
         private void OnResetSaves()
         {
             _gameVariables.ResetSave();
-        }
-
-        private void OnRewardClaimed()
-        {
-            _ship.Used();
         }
     }
 }

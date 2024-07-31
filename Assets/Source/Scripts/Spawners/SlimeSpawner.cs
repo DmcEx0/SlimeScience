@@ -19,10 +19,10 @@ namespace SlimeScience.Spawners
             _gameVariables = gameVariables;
         }
 
-        public void Init(Transform playerTransform, Transform poolParent, int poolSize)
+        public void Init(Transform playerTransform, Transform poolParent)
         {
             _playerTransform = playerTransform;
-            _slimeFactory.CreatePool(poolSize, poolParent);
+            _slimeFactory.CreatePool(poolParent);
         }
 
         public void Spawn(BlockData blockData, Block block)
@@ -36,7 +36,7 @@ namespace SlimeScience.Spawners
 
                 Vector3 newPos = new Vector3(randomPosX, 0, randomPosZ) + block.Centre.position;
 
-                _slimeFactory.Get(_playerTransform, newPos);
+                _slimeFactory.Get(blockData.SlimesType, _playerTransform, newPos);
             }
         }
     }

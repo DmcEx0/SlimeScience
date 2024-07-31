@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1386966155008753256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7320182392163691751}
+  - component: {fileID: 9066008642152114829}
+  m_Layer: 6
+  m_Name: HatPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7320182392163691751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386966155008753256}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 229609164530362251}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9066008642152114829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386966155008753256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e23a150766d3349a26a54a49ed95ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1625063694207227351
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,6 +202,7 @@ Transform:
   m_Children:
   - {fileID: 2667281522652205245}
   - {fileID: 356269670893322492}
+  - {fileID: 7320182392163691751}
   m_Father: {fileID: 2969310898445117208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5611832901700305305
@@ -333,8 +378,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 6934965462943481700}
   _animator: {fileID: -8723978110534301659}
-  _type: 0
   _rigidbody: {fileID: 4718904646260177647}
+  _teleportEffect: {fileID: 0}
   <Weight>k__BackingField: 1
 --- !u!54 &4718904646260177647
 Rigidbody:

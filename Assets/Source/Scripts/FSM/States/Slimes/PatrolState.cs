@@ -29,16 +29,18 @@ namespace SlimeScience.FSM.States.Slimes
 
             if (_mobileObject is VacuumingSupport support)
             {
-                if(support.PullGun.InventoryIsFull)
-                {
-                    _changeState?.Invoke(StatesType.Unloading);
-                }
                 Debug.Log("State = PATROL");
+                
+                support.PullGun.Catched += OnSlimeCathed;
             }
         }
 
         public void Exit()
         {
+            if(_mobileObject is VacuumingSupport vacuumingSupport)
+            {
+                vacuumingSupport.PullGun.Catched -= OnSlimeCathed;
+            }
         }
 
         public void Update()
@@ -85,6 +87,17 @@ namespace SlimeScience.FSM.States.Slimes
             }
 
             _mobileObject.Movement.Move();
+        }
+        
+        private void OnSlimeCathed()
+        {
+            if(_mobileObject is VacuumingSupport vacuumingSupport)
+            {
+                if(vacuumingSupport.PullGun.InventoryIsFull)
+                {
+                    _changeState?.Invoke(StatesType.Unloading);
+                }
+            }
         }
     }
 }

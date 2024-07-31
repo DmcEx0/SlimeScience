@@ -40,6 +40,8 @@ namespace SlimeScience.Equipment.Guns
                 return;
             }
 
+            _inventoryRenderer.gameObject.SetActive(true);
+
             if (_gameVariables != null)
             {
                 _gameVariables.CapacityUpgraded += OnCapacityUpgraded;
@@ -56,6 +58,11 @@ namespace SlimeScience.Equipment.Guns
 
         private void OnDisable()
         {
+            if (_inventoryRenderer != null)
+            {
+                _inventoryRenderer.gameObject.SetActive(false);
+            }
+
             if (_gameVariables != null)
             {
                 _gameVariables.CapacityUpgraded -= OnCapacityUpgraded;
@@ -113,6 +120,7 @@ namespace SlimeScience.Equipment.Guns
 
             if (collision.gameObject.TryGetComponent(out Slime slime))
             {
+
                 if (slime.CanTeleport)
                 {
                     slime.Teleport();
@@ -253,12 +261,11 @@ namespace SlimeScience.Equipment.Guns
                 var randomDirectionZ = Random.Range(-1f, 1f);
                 var randomOffset = new Vector3(randomDirectionX, 0, randomDirectionZ);
                 var newPos = transform.position - randomOffset * SpreadDistance;
-                
+
                 Slime slime = _inventory.GetItem(i);
                 slime.SetActive(true);
                 slime.ResetVelocity();
                 slime.SetPosition(newPos);
-
             }
         }
 

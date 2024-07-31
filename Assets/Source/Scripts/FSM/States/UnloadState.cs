@@ -34,10 +34,10 @@ namespace SlimeScience.FSM.States
         {
             _vacuumingSupport.Movement.Move(_vacuumingSupport.UnloadPosition);
 
-            float distanseForReleaseZone =
-                (_vacuumingSupport.transform.position - _vacuumingSupport.UnloadPosition).magnitude;
+            float distanceForReleaseZone =
+                (_vacuumingSupport.UnloadPosition - _vacuumingSupport.transform.position).magnitude;
             
-            if(distanseForReleaseZone <= MinDistanceForReleaseZone)
+            if(distanceForReleaseZone <= MinDistanceForReleaseZone)
             {
                 _changeState?.Invoke(StatesType.Patrol);
             }

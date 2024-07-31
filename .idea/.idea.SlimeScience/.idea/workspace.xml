@@ -6,12 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="55c8682e-9460-4605-89d8-b09e169f6c0d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MainSettings.lighting" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MainSettings.lighting" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Models/Kawaii Slimes/Materials/Hat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Models/Kawaii Slimes/Materials/Hat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Prefabs/Slimes/Body/Slime_01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Prefabs/Slimes/Body/Slime_01.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Prefabs/Slimes/Body/Slime_02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Prefabs/Slimes/Body/Slime_02.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Prefabs/Slimes/Body/Slime_03.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Prefabs/Slimes/Body/Slime_03.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/SO/Factories/GeneralSlimeFactory.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/SO/Factories/GeneralSlimeFactory.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Ad/Advertisment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Ad/Advertisment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Ship.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Ship.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Root/UIRoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Root/UIRoot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Saves/ProgressModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Saves/ProgressModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Tutorial.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Tutorial.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Slime/Slime.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Slime/Slime.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/Slimes/SlimeConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/Slimes/SlimeConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/Slimes/SlimeTypeValues.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/Slimes/SlimeTypeValues.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/Slimes/SlimeTypesConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/Slimes/SlimeTypesConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/GeneralSlimeFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/GeneralSlimeFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/SlimeFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Factory/SlimeFactory.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +40,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Characters/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Characters/VacuumingSupport.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Configs/ShipConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Configs/Slimes/HatPosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Configs/VacuumingSupportConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/FSM/States/HuntingState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Factory/GeneralVacuumingSupportFactory.cs" root0="FORCE_HIGHLIGHTING" />
@@ -40,7 +49,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Tutorial/Trigger1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Tutorial/TutorialManger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Util/AnimationHashNames.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Util/ShipPopup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Util/GameObjectLookAt.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@1.1.5/Runtime/NavMeshSurface.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -139,6 +148,12 @@
       <workItem from="1721628717772" duration="3479000" />
       <workItem from="1721640766885" duration="10943000" />
       <workItem from="1721671103549" duration="6160000" />
+      <workItem from="1721843381545" duration="6487000" />
+      <workItem from="1721921115468" duration="4804000" />
+      <workItem from="1722010438009" duration="3089000" />
+      <workItem from="1722066184195" duration="7341000" />
+      <workItem from="1722268926386" duration="2452000" />
+      <workItem from="1722272087078" duration="2320000" />
     </task>
     <servers />
   </component>

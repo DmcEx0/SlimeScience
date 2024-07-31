@@ -107,7 +107,7 @@ namespace SlimeScience.Tutorial
 
             _tutorialManger.Init(player, _gameVariables);
 
-            _slimeSpawner.Init(player.transform, transform, GetAllSlimesCount());
+            _slimeSpawner.Init(player.transform, transform);
 
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
             _releaseZone.Init(_wallet, _gameVariables, _blocksConfig);

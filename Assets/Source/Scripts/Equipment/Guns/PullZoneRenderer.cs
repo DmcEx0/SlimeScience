@@ -20,7 +20,7 @@ namespace SlimeScience.Equipment.Guns
         private GameVariables _gameVariables;
 
         private void OnEnable()
-        {
+        { 
             if (_inventory != null)
             {
                 _inventory.Filled += OnInventoryFilled;

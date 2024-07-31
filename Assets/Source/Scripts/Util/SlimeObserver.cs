@@ -7,12 +7,12 @@ namespace SlimeScience.Util
     public class SlimeObserver
     {
         private const int MaxNumberOfSlimes = 20;
-        private const float Radius = 500f;
+        private const float Radius = 1000f;
 
         private const int SlimeLayer = 6;
 
-        private Transform _vacuumingTransform;
-        private Collider[] _slimes;
+        private readonly Transform _vacuumingTransform;
+        private readonly Collider[] _slimes;
 
         public SlimeObserver(Transform vacuumingTransform)
         {
@@ -20,7 +20,7 @@ namespace SlimeScience.Util
             _slimes = new Collider[MaxNumberOfSlimes];
         }
 
-        public bool TryGetNewSlime(TargetDetector targetDetector)
+        public bool TryGetNewSlime(out Collider newSlime)
         {
             if (_slimes.Length != 0)
             {
@@ -29,15 +29,13 @@ namespace SlimeScience.Util
 
             int numberOfSlimes = Physics.OverlapSphereNonAlloc(_vacuumingTransform.position, Radius, _slimes, 1 << SlimeLayer);
 
-            Collider newSlime = _slimes[Random.Range(0, numberOfSlimes)];
+            newSlime = _slimes[Random.Range(0, numberOfSlimes)];
             
-            if(newSlime == null)
+            if (numberOfSlimes == 0)
             {
-                Debug.LogError("Slime not found!");
                 return false;
             }
             
-            targetDetector.SetTargetTransform(newSlime.transform);
             return true;
         }
     }

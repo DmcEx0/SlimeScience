@@ -11,7 +11,7 @@ namespace SlimeScience.Factory
 {
     public abstract class VacuumingSupportFactory : GameObjectFactory
     {
-        public VacuumingSupport Get(Vector3 position)
+        public VacuumingSupport Get(Vector3 position, Transform releaseZoneTransform)
         {
             var config = GetConfig();
             VacuumingSupport instance = CreateInstance(config.Prefab, position);
@@ -19,7 +19,7 @@ namespace SlimeScience.Factory
             var observer = new SlimeObserver(instance.transform);
             var targetDetector = new TargetDetector(config.DistanceFofIncreaseSpeed);
             targetDetector.SetParentTransforms(instance.transform);
-            var inputRouter = new VacuumingSupportInputRouter(targetDetector, observer);
+            var inputRouter = new VacuumingSupportInputRouter(targetDetector, observer, releaseZoneTransform);
 
             instance.Init(CreateStateMachine(instance, targetDetector), inputRouter, config);
 

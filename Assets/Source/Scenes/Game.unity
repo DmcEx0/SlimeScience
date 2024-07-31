@@ -10100,6 +10100,10 @@ PrefabInstance:
       value: Roots
       objectReference: {fileID: 0}
     - target: {fileID: 2891136989045097036, guid: b970c75631e996f4294776a59d9cc4fd, type: 3}
+      propertyPath: _ship
+      value: 
+      objectReference: {fileID: 3702111702076256728}
+    - target: {fileID: 2891136989045097036, guid: b970c75631e996f4294776a59d9cc4fd, type: 3}
       propertyPath: _camera
       value: 
       objectReference: {fileID: 1699604242}

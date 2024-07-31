@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SlimeScience.Configs;
 using SlimeScience.InventorySystem;
+using SlimeScience.Saves;
 using UnityEngine;
 
 namespace SlimeScience.Characters.Ship
@@ -17,22 +18,14 @@ namespace SlimeScience.Characters.Ship
         [SerializeField] private ParticleSystem _zoneParticle;
         [SerializeField] private int _timeToRepeat;
 
-        [Space]
-        [SerializeField] private ShipConfig _config;
+        [Space] [SerializeField] private ShipConfig _config;
 
+        private GameVariables _gameVariables;
         private Inventory<Slime> _inventory;
         private Player _player;
 
         private bool _isEnabled;
         private Coroutine _coroutine;
-
-        private void Awake()
-        {
-            _inventory = new Inventory<Slime>(10);
-
-            _buttonsManager.Used += Used;
-            _buttonsManager.Unused += Reset;
-        }
 
         private void OnDestroy()
         {
@@ -40,18 +33,20 @@ namespace SlimeScience.Characters.Ship
             _buttonsManager.Unused -= Reset;
         }
 
-        private void Start()
-        {
-            SetParticlesState(false);
-            _inventoryRenderer.Init(_inventory);
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Player player) && _isEnabled == false)
             {
-                _player = player;
-                ReleaseSlimes(_player.ReleaseSlimes());
+                if (_player == null)
+                {
+                    _player = player;
+                }
+
+                if (_inventory.IsFull == false)
+                {
+                    ReleaseSlimes(_player.ReleaseSlimes());
+                }
+
                 _buttonsManager.ShowUsedButton();
             }
         }
@@ -63,7 +58,18 @@ namespace SlimeScience.Characters.Ship
                 _buttonsManager.HideUsedButton();
             }
         }
-        
+
+        public void Init(float capacity)
+        {
+            _inventory = new Inventory<Slime>(capacity);
+
+            _buttonsManager.Used += Used;
+            _buttonsManager.Unused += Reset;
+
+            SetParticlesState(false);
+            _inventoryRenderer.Init(_inventory);
+        }
+
         public List<Slime> ReleaseSlimes()
         {
             List<Slime> releasedSlimes = _inventory.Free();

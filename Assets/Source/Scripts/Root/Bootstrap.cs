@@ -10,6 +10,7 @@ using SlimeScience.Saves;
 using SlimeScience.Spawners;
 using System.Collections;
 using System.Collections.Generic;
+using SlimeScience.Characters.Ship;
 using SlimeScience.Util;
 using UnityEngine;
 
@@ -22,6 +23,7 @@ namespace SlimeScience.Root
         [SerializeField] private UIRoot _uiRoot;
         [SerializeField] private PauseRoot _pauseRoot;
 
+        [SerializeField] private Ship _ship;
         [SerializeField] private CinemachineVirtualCamera _camera;
         [SerializeField] private ReleaseZone _releaseZone;
         [SerializeField] private GeneralPlayerFactory _playerFactory;
@@ -128,13 +130,14 @@ namespace SlimeScience.Root
 
             for (int i = 0; i < _gameVariables.AbsorptionAssistantCount; i++)
             {
-                var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero);
+                var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero, _releaseZone.transform);
                 vacuumingSupport.InitGun(_gameVariables);
                 vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
             }
 
             _gameVariables.AssistantUpgraded += OnAssistantUpgraded;
             _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause, player);
+            _ship.Init(_gameVariables.ShipCapacity);
 
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();
@@ -211,7 +214,7 @@ namespace SlimeScience.Root
 
         private void OnAssistantUpgraded(float count)
         {
-            var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero);
+            var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero, _releaseZone.transform);
             vacuumingSupport.InitGun(_gameVariables);
             vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
         }

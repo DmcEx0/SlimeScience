@@ -61,13 +61,11 @@ namespace SlimeScience.Util
         {
             if (_parentTransform == null)
             {
-                Debug.LogWarning("Has not parent transform");
                 return false;
             }
 
             if (_targetTransform == null || _targetTransform.gameObject.activeInHierarchy == false)
             {
-                Debug.LogWarning("Has not target transform");
                 return false;
             }
 

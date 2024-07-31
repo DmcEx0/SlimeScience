@@ -1,4 +1,3 @@
-
 using Agava.YandexGames;
 using SlimeScience.Effects;
 using System;

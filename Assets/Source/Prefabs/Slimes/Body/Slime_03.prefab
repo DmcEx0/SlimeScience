@@ -53,7 +53,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4938,7 +4938,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -9784,7 +9784,6 @@ MonoBehaviour:
   _animator: {fileID: 2043210892760018007}
   _rigidbody: {fileID: -4327851956750761188}
   _teleportEffect: {fileID: 8299170701740888880}
-  <Weight>k__BackingField: 1
 --- !u!54 &-4327851956750761188
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9940,7 +9939,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -14980,7 +14979,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

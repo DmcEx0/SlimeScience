@@ -15,15 +15,11 @@ MonoBehaviour:
   _values:
   - _cost: 0
     _value: 10
-  - _cost: 5
-    _value: 60
   - _cost: 10
-    _value: 70
+    _value: 15
   - _cost: 15
-    _value: 80
+    _value: 20
   - _cost: 20
-    _value: 85
-  - _cost: 25
-    _value: 90
-  - _cost: 30
-    _value: 100
+    _value: 25
+  - _cost: 40
+    _value: 40

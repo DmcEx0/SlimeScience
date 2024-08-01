@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace SlimeScience.InventorySystem
@@ -34,7 +35,7 @@ namespace SlimeScience.InventorySystem
         public bool IsFull => _items.Count >= MaxItems;
         
         public int AvailableSpace => MaxItems - Amount;
-        public T GetTypeInInventory => _items[0];
+        public T GetTypeInInventory => _items.Count !=0 ? _items[0] : null;
 
         public void Add(T item)
         {

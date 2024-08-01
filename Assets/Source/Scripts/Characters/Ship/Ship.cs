@@ -30,6 +30,8 @@ namespace SlimeScience.Characters.Ship
         {
             _buttonsManager.Used -= Used;
             _buttonsManager.Unused -= Reset;
+
+            _gameVariables.UpgradedShipCapacity -= OnCapacityUpgraded;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -40,10 +42,13 @@ namespace SlimeScience.Characters.Ship
                 {
                     _player = player;
                 }
-                
-                if (_inventory.IsFull == false && _inventory.AvailableSpace >= _player.PullGun.GetSlimeTypeInInventory.Weight)
+
+                if (_inventory.IsFull == false)
                 {
-                    ReleaseSlimes(_player.ReleaseSlimes());
+                    while (!_inventory.IsFull && _inventory.AvailableSpace >= _player.PullGun.GetSlimeWeightInInventory)
+                    {
+                        _inventory.Add(_player.PullGun.ReleaseSingleSlime());
+                    }
                 }
 
                 _buttonsManager.ShowUsedButton();
@@ -57,18 +62,21 @@ namespace SlimeScience.Characters.Ship
                 _buttonsManager.HideUsedButton();
             }
         }
-        
-        public void Init(float capacity)
+
+        public void Init(GameVariables gameVariables)
         {
-            _inventory = new Inventory<Slime>(capacity);
+            _gameVariables = gameVariables;
+            _inventory = new Inventory<Slime>(_gameVariables.ShipCapacity);
 
             _buttonsManager.Used += Used;
             _buttonsManager.Unused += Reset;
 
             SetParticlesState(false);
             _inventoryRenderer.Init(_inventory);
+
+            _gameVariables.UpgradedShipCapacity += OnCapacityUpgraded;
         }
-        
+
         public List<Slime> ReleaseSlimes()
         {
             List<Slime> releasedSlimes = _inventory.Free();
@@ -130,12 +138,14 @@ namespace SlimeScience.Characters.Ship
             _zoneParticle.Play();
         }
 
-        private void ReleaseSlimes(List<Slime> _slimes)
+        private void AddSlimeInInventory(Slime slime)
         {
-            foreach (var slime in _slimes)
-            {
-                _inventory.Add(slime);
-            }
+        }
+
+        private void OnCapacityUpgraded(float newCapacity)
+        {
+            _inventory.Expand((int)newCapacity - _inventory.MaxItems);
+            _inventoryRenderer.Render();
         }
     }
 }

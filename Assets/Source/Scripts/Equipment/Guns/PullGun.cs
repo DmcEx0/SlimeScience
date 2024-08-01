@@ -34,7 +34,8 @@ namespace SlimeScience.Equipment.Guns
         public bool InventoryIsFull => _inventory?.IsFull ?? false;
         public int AvailableSpace => _inventory.AvailableSpace;
         public int SlimesAmount => _inventory.Amount;
-        public Slime GetSlimeTypeInInventory => _inventory.GetTypeInInventory;
+        public int GetSlimeWeightInInventory => _inventory.GetTypeInInventory != null ?
+            _inventory.GetTypeInInventory.Weight : 0;
 
         private void OnEnable()
         {
@@ -227,6 +228,11 @@ namespace SlimeScience.Equipment.Guns
             List<Slime> currentSlimesInInventory = _inventory.Free();
 
             return currentSlimesInInventory;
+        }
+
+        public Slime ReleaseSingleSlime()
+        {
+            return _inventory.GetItem(0);
         }
 
         public void RenderInventory()

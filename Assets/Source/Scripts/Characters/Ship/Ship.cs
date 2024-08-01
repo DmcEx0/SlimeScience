@@ -45,7 +45,14 @@ namespace SlimeScience.Characters.Ship
 
                 if (_inventory.IsFull == false)
                 {
-                    while (!_inventory.IsFull && _inventory.AvailableSpace >= _player.PullGun.GetSlimeWeightInInventory)
+                    int neededAmount = 0;
+
+                    if (_player.PullGun.GetSlimeWeightInInventory != 0)
+                    {
+                        neededAmount = (_inventory.AvailableSpace / _player.PullGun.GetSlimeWeightInInventory) * _player.PullGun.GetSlimeWeightInInventory;
+                    }
+
+                    for (int i = 0; i < neededAmount; i++)
                     {
                         _inventory.Add(_player.PullGun.ReleaseSingleSlime());
                     }

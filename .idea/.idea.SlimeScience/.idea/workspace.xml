@@ -8,9 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Ship/Ship.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Ship/Ship.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Equipment/Guns/PullGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Equipment/Guns/PullGun.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/InventorySystem/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/InventorySystem/Inventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Root/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Root/Bootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/InventorySystem/SlimeInventoryRenderer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/InventorySystem/SlimeInventoryRenderer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,10 +102,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="32192">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="32192" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -149,7 +148,7 @@
       <workItem from="1722272087078" duration="2320000" />
       <workItem from="1722441623611" duration="6800000" />
       <workItem from="1722506998059" duration="1559000" />
-      <workItem from="1722529298614" duration="5904000" />
+      <workItem from="1722529298614" duration="8424000" />
     </task>
     <servers />
   </component>

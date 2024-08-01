@@ -31,9 +31,10 @@ namespace SlimeScience.Equipment.Guns
 
         public event Action Catched;
 
-        public bool InventoryIsFull => _inventory != null ? _inventory.IsFull : false;
-
-        private int AvailableSpace => _inventory.MaxItems - _inventory.Amount;
+        public bool InventoryIsFull => _inventory?.IsFull ?? false;
+        public int AvailableSpace => _inventory.AvailableSpace;
+        public int SlimesAmount => _inventory.Amount;
+        public Slime GetSlimeTypeInInventory => _inventory.GetTypeInInventory;
 
         private void OnEnable()
         {

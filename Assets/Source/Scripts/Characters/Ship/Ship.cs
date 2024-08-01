@@ -40,8 +40,8 @@ namespace SlimeScience.Characters.Ship
                 {
                     _player = player;
                 }
-
-                if (_inventory.IsFull == false)
+                
+                if (_inventory.IsFull == false && _inventory.AvailableSpace >= _player.PullGun.GetSlimeTypeInInventory.Weight)
                 {
                     ReleaseSlimes(_player.ReleaseSlimes());
                 }

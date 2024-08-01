@@ -30,8 +30,11 @@ namespace SlimeScience.InventorySystem
         public int MaxItems { get; private set; }
 
         public int Amount => _items.Count;
-
+        
         public bool IsFull => _items.Count >= MaxItems;
+        
+        public int AvailableSpace => MaxItems - Amount;
+        public T GetTypeInInventory => _items[0];
 
         public void Add(T item)
         {

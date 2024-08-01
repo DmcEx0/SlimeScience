@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55c8682e-9460-4605-89d8-b09e169f6c0d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Material/PullZoneShader.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Material/PullZoneShader.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Prefabs/Tutuorial/TutorialPopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Prefabs/Tutuorial/TutorialPopup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Prefabs/Slimes/Body/Slime_01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Prefabs/Slimes/Body/Slime_01.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Tutorial.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Tutorial.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Root/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Root/Bootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Game/NavMesh-Map 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Game/NavMesh-Map 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Game/NavMesh-Map 1.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Game/NavMesh-Map 1.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Game/NavMesh-Map 2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Game/NavMesh-Map 2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Game/NavMesh-Map 2.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Game/NavMesh-Map 2.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,6 +149,7 @@
       <workItem from="1722268926386" duration="2452000" />
       <workItem from="1722272087078" duration="2320000" />
       <workItem from="1722441623611" duration="6800000" />
+      <workItem from="1722506998059" duration="1559000" />
     </task>
     <servers />
   </component>

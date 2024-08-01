@@ -14901,7 +14901,7 @@ MonoBehaviour:
   _agent: {fileID: -6016411368270625345}
   _animator: {fileID: -4307594872806122792}
   _rigidbody: {fileID: -2680092504741794528}
-  _teleportEffect: {fileID: 0}
+  _teleportEffect: {fileID: 3816294387609813100}
 --- !u!54 &-2680092504741794528
 Rigidbody:
   m_ObjectHideFlags: 0

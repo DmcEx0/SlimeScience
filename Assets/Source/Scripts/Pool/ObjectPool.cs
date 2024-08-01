@@ -26,8 +26,6 @@ namespace SlimeScience.Pool
             _pool = new List<T>();
         }
 
-        public int ActiveCount => _pool.FindAll(x => x.gameObject.activeSelf).Count;
-
         public T GetAvailable()
         {
             foreach (var instance in _pool)

@@ -41,6 +41,7 @@ namespace SlimeScience.Characters
 
         public void TranslateToShip(Transform shipPlaceForPlayer, ShipConfig shipConfig)
         {
+            ChangeAgent(Util.AgentTypeIds.Ship);
             SetMovementStats(shipConfig);
             _collider.enabled = false;
             
@@ -50,6 +51,7 @@ namespace SlimeScience.Characters
 
         public void LeaveShip()
         {
+            ChangeAgent(Util.AgentTypeIds.Player);
             SetMovementStats(_config);
             _collider.enabled = true;
         }

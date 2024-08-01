@@ -54,6 +54,7 @@ namespace SlimeScience.Factory
             slime.SetOriginPosition(position);
 
             slime.transform.localScale = typeConfig.Scale;
+            slime.SetOriginalScale(typeConfig.Scale);
 
             if (type == SlimeType.Boss)
             {

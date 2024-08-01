@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using SlimeScience.Configs;
@@ -58,7 +57,7 @@ namespace SlimeScience.Characters.Ship
                 _buttonsManager.HideUsedButton();
             }
         }
-
+        
         public void Init(float capacity)
         {
             _inventory = new Inventory<Slime>(capacity);
@@ -69,7 +68,7 @@ namespace SlimeScience.Characters.Ship
             SetParticlesState(false);
             _inventoryRenderer.Init(_inventory);
         }
-
+        
         public List<Slime> ReleaseSlimes()
         {
             List<Slime> releasedSlimes = _inventory.Free();

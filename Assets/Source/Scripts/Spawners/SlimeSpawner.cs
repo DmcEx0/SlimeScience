@@ -1,4 +1,5 @@
 using SlimeScience.Blocks;
+using SlimeScience.Characters;
 using SlimeScience.Configs;
 using SlimeScience.Factory;
 using SlimeScience.Saves;

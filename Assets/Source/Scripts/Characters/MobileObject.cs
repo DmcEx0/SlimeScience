@@ -3,6 +3,7 @@ using UnityEngine.AI;
 using SlimeScience.FSM;
 using SlimeScience.Input;
 using SlimeScience.Configs;
+using SlimeScience.Util;
 
 namespace SlimeScience.Characters
 {
@@ -41,7 +42,17 @@ namespace SlimeScience.Characters
             Movement.Disable();
             _agent.enabled = false;
         }
-        
+
+        public void ChangeAgent(AgentTypeIds agentTypeId)
+        {
+            if (_agent.hasPath)
+            {
+                _agent.ResetPath();
+            }
+
+            _agent.agentTypeID = (int)agentTypeId;
+        }
+
         public void SetMovementStats(MobileObjectConfig config)
         {
             Movement.SetMovementSpeed(config.BaseSpeed);

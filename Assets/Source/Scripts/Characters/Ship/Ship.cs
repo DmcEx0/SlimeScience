@@ -49,11 +49,17 @@ namespace SlimeScience.Characters.Ship
 
                     if (_player.PullGun.GetSlimeWeightInInventory != 0)
                     {
-                        neededAmount = (_inventory.AvailableSpace / _player.PullGun.GetSlimeWeightInInventory) * _player.PullGun.GetSlimeWeightInInventory;
+                        neededAmount = _inventory.AvailableSpace / _player.PullGun.GetSlimeWeightInInventory;
+                        neededAmount *= _player.PullGun.GetSlimeWeightInInventory;
                     }
 
                     for (int i = 0; i < neededAmount; i++)
                     {
+                        if(_player.PullGun.SlimesAmount == 0)
+                        {
+                            break;
+                        }
+                        
                         _inventory.Add(_player.PullGun.ReleaseSingleSlime());
                     }
                 }

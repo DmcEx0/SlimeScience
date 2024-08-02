@@ -5,7 +5,7 @@ namespace SlimeScience.Input
 {
     public class VacuumingSupportInputRouter : IInputRouter
     {
-        private const float Step = 5f;
+        private const float Step = 3f;
 
         private readonly TargetDetector _targetDetector;
         private readonly SlimeObserver _slimeObserver;

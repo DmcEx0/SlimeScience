@@ -22,8 +22,8 @@ MonoBehaviour:
   - _bombAmount: 10
     _slimeAmount: 60
     _neededAmountToOpen: 180
-    _maxRangePosX: 25
-    _maxRangePosZ: 25
+    _maxRangePosX: 30
+    _maxRangePosZ: 30
     _slimesType: 1
   - _bombAmount: 6
     _slimeAmount: 120

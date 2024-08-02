@@ -26,6 +26,7 @@ namespace SlimeScience.Equipment.Guns
                 _inventory.Filled += OnInventoryFilled;
                 _inventory.Released += OnInventoryChanged;
                 _inventory.Expanded += OnInventoryChanged;
+                _inventory.Changed += OnInventoryChanged;
             }
 
             if (_gameVariables != null)
@@ -42,6 +43,7 @@ namespace SlimeScience.Equipment.Guns
                 _inventory.Filled -= OnInventoryFilled;
                 _inventory.Released -= OnInventoryChanged;
                 _inventory.Expanded -= OnInventoryChanged;
+                _inventory.Changed -= OnInventoryChanged;
             }
 
             if (_gameVariables != null)
@@ -64,6 +66,7 @@ namespace SlimeScience.Equipment.Guns
             _inventory.Filled += OnInventoryFilled;
             _inventory.Released += OnInventoryChanged;
             _inventory.Expanded += OnInventoryChanged;
+            _inventory.Changed += OnInventoryChanged;
 
             _gameVariables = gameVariables;
             _gameVariables.RadiusUpgraded += OnRadiusUpgraded;

@@ -57,6 +57,7 @@ namespace SlimeScience.Characters.Ship
                     {
                         if(_player.PullGun.SlimesAmount == 0)
                         {
+                            _player.PullGun.RenderInventory();
                             break;
                         }
                         

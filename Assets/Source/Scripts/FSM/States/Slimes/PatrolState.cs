@@ -31,7 +31,9 @@ namespace SlimeScience.FSM.States.Slimes
             {
                 Debug.Log("State = PATROL");
                 
-                support.PullGun.Catched += OnSlimeCathed;
+                _mobileObject.Movement.Move(false);
+                
+                support.PullGun.Catched += OnSlimeCatching;
             }
         }
 
@@ -39,7 +41,7 @@ namespace SlimeScience.FSM.States.Slimes
         {
             if(_mobileObject is VacuumingSupport vacuumingSupport)
             {
-                vacuumingSupport.PullGun.Catched -= OnSlimeCathed;
+                vacuumingSupport.PullGun.Catched -= OnSlimeCatching;
             }
         }
 
@@ -80,16 +82,15 @@ namespace SlimeScience.FSM.States.Slimes
 
         private void UpdateVacuumingSupport()
         {
+            _mobileObject.Movement.Move(false);
+
             if (_detector.GetTargetIsNearStatus())
             {
                 _changeState?.Invoke(StatesType.Hunting);
-                return;
             }
-
-            _mobileObject.Movement.Move();
         }
         
-        private void OnSlimeCathed()
+        private void OnSlimeCatching()
         {
             if(_mobileObject is VacuumingSupport vacuumingSupport)
             {

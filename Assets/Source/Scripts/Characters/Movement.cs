@@ -66,13 +66,22 @@ namespace SlimeScience.Characters
             _agent.angularSpeed = speed;
         }
 
-        public void Move()
+        public void Move(bool isDirectional = true)
         {
             Vector3 newDirection = _inputRouter.GetNewDirection();
             
-            if (_agent.isOnNavMesh)
+            if (_agent.isOnNavMesh == false)
+            {
+                return;
+            }
+
+            if (isDirectional)
             {
                 _agent.SetDestination(_agent.transform.position + newDirection);
+            }
+            else
+            {
+                _agent.SetDestination(newDirection);
             }
         }
 

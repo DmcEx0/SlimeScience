@@ -27,7 +27,7 @@ namespace SlimeScience.Input
             if (_isEnabled == false)
                 return Vector3.zero;
             
-            var targetDir = _targetDetector.GetDirectionFromToTarget(false) * Step;
+            var targetDir = _targetDetector.GetDirectionFromToTarget(false);
             
             if(targetDir == Vector3.zero)
             {

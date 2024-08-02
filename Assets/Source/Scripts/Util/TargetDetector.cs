@@ -54,7 +54,8 @@ namespace SlimeScience.Util
                 return (_parentTransform.position - _targetTransform.position).normalized;
             }
 
-            return (_targetTransform.position - _parentTransform.position).normalized;
+            // return (_targetTransform.position - _parentTransform.position).normalized;
+            return _targetTransform.position;
         }
 
         private bool HasTransforms()

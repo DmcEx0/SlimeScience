@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using SlimeScience.Configs;
 using SlimeScience.Equipment.Guns;
 using SlimeScience.Saves;
+using SlimeScience.Util;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace SlimeScience.Characters
 {
@@ -41,7 +43,8 @@ namespace SlimeScience.Characters
 
         public void TranslateToShip(Transform shipPlaceForPlayer, ShipConfig shipConfig)
         {
-            ChangeAgent(Util.AgentTypeIds.Ship);
+            int agentTypeId = NavMeshAgentUtil.GetAgentTypeID(AgentTypeIds.Ship);
+            ChangeAgent(agentTypeId);
             SetMovementStats(shipConfig);
             _collider.enabled = false;
             
@@ -51,7 +54,8 @@ namespace SlimeScience.Characters
 
         public void LeaveShip()
         {
-            ChangeAgent(Util.AgentTypeIds.Player);
+            int agentTypeId = NavMeshAgentUtil.GetAgentTypeID(AgentTypeIds.Player);
+            ChangeAgent(agentTypeId);
             SetMovementStats(_config);
             _collider.enabled = true;
         }

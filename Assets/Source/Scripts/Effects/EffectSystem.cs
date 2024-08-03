@@ -32,7 +32,6 @@ namespace SlimeScience.Effects
 
         public bool BuffActive => _buffs.Count > 0;
 
-
         public void ApplyEffect(EffectModifiers effect, float value, float duration)
         {
             _gameVariables.AddModifier(effect, value);
@@ -64,6 +63,8 @@ namespace SlimeScience.Effects
             {
                 RemoveEffect(effect.Effect, effect.IsBuff, effect.Value);
             }
+
+            _effectData.Clear();
         }
 
         private IEnumerator RemoveEffect(

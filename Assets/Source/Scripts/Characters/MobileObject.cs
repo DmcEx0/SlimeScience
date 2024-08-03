@@ -4,6 +4,7 @@ using SlimeScience.FSM;
 using SlimeScience.Input;
 using SlimeScience.Configs;
 using SlimeScience.Util;
+using static Codice.Client.Common.WebApi.WebApiEndpoints;
 
 namespace SlimeScience.Characters
 {
@@ -43,14 +44,14 @@ namespace SlimeScience.Characters
             _agent.enabled = false;
         }
 
-        public void ChangeAgent(AgentTypeIds agentTypeId)
+        public void ChangeAgent(int agentTypeId)
         {
             if (_agent.hasPath)
             {
                 _agent.ResetPath();
             }
 
-            _agent.agentTypeID = (int)agentTypeId;
+            _agent.agentTypeID = agentTypeId;
         }
 
         public void SetMovementStats(MobileObjectConfig config)

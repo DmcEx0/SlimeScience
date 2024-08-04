@@ -28,12 +28,14 @@ namespace SlimeScience.Tutorial
         [SerializeField] private GeneralPlayerFactory _playerFactory;
         [SerializeField] private GeneralSlimeFactory _slimeFactory;
         [SerializeField] private GeneralBombFactory _bombFactory;
+        [SerializeField] private GeneralTrapFactory _trapFactory;
         [SerializeField] private List<Block> _blocks;
         [SerializeField] private BlocksConfig _blocksConfig;
 
         [SerializeField] private SoundsConfig _soundsConfig;
         [SerializeField] private AudioSource _audioSource;
 
+        private TrapSpawner _trapSpawner;
         private SlimeSpawner _slimeSpawner;
         private BombSpawner _bombSpawner;
         private GameVariables _gameVariables;
@@ -97,6 +99,7 @@ namespace SlimeScience.Tutorial
 
             _slimeSpawner = new SlimeSpawner(_slimeFactory, _gameVariables);
             _bombSpawner = new BombSpawner(_bombFactory, transform, GetAllBombsCount());
+            _trapSpawner = new TrapSpawner(_trapFactory);
             _wallet = new Wallet(_gameVariables);
 
             var player = _playerFactory.Get();
@@ -128,6 +131,7 @@ namespace SlimeScience.Tutorial
             currentBlock.OpenDoor();
             _slimeSpawner.Spawn(blockData, currentBlock);
             _bombSpawner.Spawn(blockData, currentBlock);
+            _trapSpawner.Spawn(blockData, currentBlock);
         }
 
         private void OnBackgroundChange(bool isInBackground)

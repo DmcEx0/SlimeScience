@@ -13,13 +13,17 @@ MonoBehaviour:
   m_Name: TutorialBlocksConfig
   m_EditorClassIdentifier: 
   _blocksData:
-  - _bombAmount: 1
+  - _trapAmount: 3
+    _bombAmount: 1
     _slimeAmount: 5
     _neededAmountToOpen: 5
     _maxRangePosX: 10
     _maxRangePosZ: 10
-  - _bombAmount: 1
+    _slimesType: 0
+  - _trapAmount: 1
+    _bombAmount: 1
     _slimeAmount: 1
     _neededAmountToOpen: 5
     _maxRangePosX: 1
     _maxRangePosZ: 1
+    _slimesType: 0

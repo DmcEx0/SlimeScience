@@ -3,8 +3,6 @@ using UnityEngine.AI;
 using SlimeScience.FSM;
 using SlimeScience.Input;
 using SlimeScience.Configs;
-using SlimeScience.Util;
-using static Codice.Client.Common.WebApi.WebApiEndpoints;
 
 namespace SlimeScience.Characters
 {

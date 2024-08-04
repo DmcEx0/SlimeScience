@@ -31,12 +31,14 @@ namespace SlimeScience.Root
         [SerializeField] private GeneralSlimeFactory _slimeFactory;
         [SerializeField] private GeneralVacuumingSupportFactory _vacuumingSupportFactory;
         [SerializeField] private GeneralBombFactory _bombFactory;
+        [SerializeField] private GeneralTrapFactory _trapFactory;
         [SerializeField] private List<Block> _blocks;
         [SerializeField] private BlocksConfig _blocksConfig;
 
         [SerializeField] private SoundsConfig _soundsConfig;
         [SerializeField] private AudioSource _audioSource;
 
+        private TrapSpawner _trapSpawner;
         private SlimeSpawner _slimeSpawner;
         private BombSpawner _bombSpawner;
         private GameVariables _gameVariables;
@@ -112,6 +114,8 @@ namespace SlimeScience.Root
             _advertisment = new Advertisment(this, _adPause);
             _slimeSpawner = new SlimeSpawner(_slimeFactory, _gameVariables);
             _bombSpawner = new BombSpawner(_bombFactory, transform, GetAllBombsCount());
+            _trapSpawner = new TrapSpawner(_trapFactory);
+            
             _wallet = new Wallet(_gameVariables);
 
             var player = _playerFactory.Get();
@@ -164,6 +168,7 @@ namespace SlimeScience.Root
 
             _slimeSpawner.Spawn(blockData, currentBlock);
             _bombSpawner.Spawn(blockData, currentBlock);
+            _trapSpawner.Spawn(blockData, currentBlock);
         }
 
         private void OnBackgroundChange(bool isInBackground)
@@ -187,18 +192,6 @@ namespace SlimeScience.Root
                 yield return delay;
                 _gameVariables.Save();
             }
-        }
-
-        private int GetAllSlimesCount() //TODO: remove code dubbing
-        {
-            int count = 0;
-
-            foreach (var block in _blocksConfig.BlocksData)
-            {
-                count += block.SlimeAmount;
-            }
-
-            return count;
         }
 
         private int GetAllBombsCount() //TODO: remove code dubbing

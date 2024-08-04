@@ -7,6 +7,7 @@ namespace SlimeScience.Configs
     [Serializable]
     public class BlockData
     {
+        [SerializeField] private int _trapAmount;
         [SerializeField] private int _bombAmount;
         [SerializeField] private int _slimeAmount;
         [SerializeField] private int _neededAmountToOpen;
@@ -14,6 +15,7 @@ namespace SlimeScience.Configs
         [SerializeField] private float _maxRangePosZ;
         [SerializeField] private SlimeType _slimesType;
 
+        public int TrapAmount => _trapAmount;
         public int BombAmount => _bombAmount; 
         public int SlimeAmount => _slimeAmount;
         public int NeededAmountToOpen => _neededAmountToOpen;

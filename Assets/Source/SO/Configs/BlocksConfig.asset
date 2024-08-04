@@ -13,37 +13,43 @@ MonoBehaviour:
   m_Name: BlocksConfig
   m_EditorClassIdentifier: 
   _blocksData:
-  - _bombAmount: 10
+  - _trapAmount: 5
+    _bombAmount: 10
     _slimeAmount: 13
     _neededAmountToOpen: 13
     _maxRangePosX: 25
     _maxRangePosZ: 25
     _slimesType: 0
-  - _bombAmount: 10
+  - _trapAmount: 5
+    _bombAmount: 10
     _slimeAmount: 6
     _neededAmountToOpen: 18
     _maxRangePosX: 30
     _maxRangePosZ: 30
     _slimesType: 1
-  - _bombAmount: 6
+  - _trapAmount: 5
+    _bombAmount: 6
     _slimeAmount: 120
     _neededAmountToOpen: 120
     _maxRangePosX: 20
     _maxRangePosZ: 20
     _slimesType: 2
-  - _bombAmount: 8
+  - _trapAmount: 5
+    _bombAmount: 8
     _slimeAmount: 8
     _neededAmountToOpen: 8
     _maxRangePosX: 20
     _maxRangePosZ: 20
     _slimesType: 0
-  - _bombAmount: 8
+  - _trapAmount: 5
+    _bombAmount: 8
     _slimeAmount: 6
     _neededAmountToOpen: 6
     _maxRangePosX: 20
     _maxRangePosZ: 20
     _slimesType: 0
-  - _bombAmount: 7
+  - _trapAmount: 5
+    _bombAmount: 7
     _slimeAmount: 1
     _neededAmountToOpen: 200
     _maxRangePosX: 20

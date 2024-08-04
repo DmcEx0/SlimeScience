@@ -6,13 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="55c8682e-9460-4605-89d8-b09e169f6c0d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/SO/Configs/BlocksConfig.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Ship/Ship.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Ship/Ship.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/FSM/States/HuntingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/FSM/States/HuntingState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/FSM/States/Slimes/PatrolState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/FSM/States/Slimes/PatrolState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Input/IDetectable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Input/IDetectable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Input/VacuumingSupportInputRouter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Input/VacuumingSupportInputRouter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Util/TargetDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Util/TargetDetector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Blocks/Block.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Blocks/Block.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/BlockData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Configs/BlockData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Equipment/Guns/PullGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Equipment/Guns/PullGun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Root/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Root/Bootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Traps/Trap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Traps/Trap.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,15 +36,19 @@
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Characters/VacuumingSupport.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Configs/ShipConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Configs/Slimes/HatPosition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Configs/TrapConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Configs/VacuumingSupportConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/FSM/States/HuntingState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Factory/GeneralVacuumingSupportFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Factory/TrapFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Input/VacuumingSupportInputRouter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Spawners/TrapSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Tutorial/BootstrapTutorial.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Tutorial/Trigger1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Tutorial/TutorialManger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Util/AnimationHashNames.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Util/GameObjectLookAt.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Source/Scripts/Util/Shuffler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@1.1.5/Runtime/NavMeshSurface.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -154,7 +158,7 @@
       <workItem from="1722529298614" duration="12048000" />
       <workItem from="1722601659330" duration="3254000" />
       <workItem from="1722606682650" duration="1063000" />
-      <workItem from="1722759641026" duration="2641000" />
+      <workItem from="1722759641026" duration="7294000" />
     </task>
     <servers />
   </component>

@@ -31,7 +31,10 @@ namespace SlimeScience.Characters.Ship
             _buttonsManager.Used -= Used;
             _buttonsManager.Unused -= Reset;
 
-            _gameVariables.UpgradedShipCapacity -= OnCapacityUpgraded;
+            if (_gameVariables != null)
+            {
+                _gameVariables.UpgradedShipCapacity -= OnCapacityUpgraded;
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -55,12 +58,12 @@ namespace SlimeScience.Characters.Ship
 
                     for (int i = 0; i < neededAmount; i++)
                     {
-                        if(_player.PullGun.SlimesAmount == 0)
+                        if (_player.PullGun.SlimesAmount == 0)
                         {
                             _player.PullGun.RenderInventory();
                             break;
                         }
-                        
+
                         _inventory.Add(_player.PullGun.ReleaseSingleSlime());
                     }
                 }

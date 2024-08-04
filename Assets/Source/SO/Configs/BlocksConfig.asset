@@ -15,11 +15,11 @@ MonoBehaviour:
   _blocksData:
   - _trapAmount: 5
     _bombAmount: 10
-    _slimeAmount: 13
-    _neededAmountToOpen: 13
+    _slimeAmount: 1
+    _neededAmountToOpen: 1
     _maxRangePosX: 25
     _maxRangePosZ: 25
-    _slimesType: 0
+    _slimesType: 3
   - _trapAmount: 5
     _bombAmount: 10
     _slimeAmount: 6

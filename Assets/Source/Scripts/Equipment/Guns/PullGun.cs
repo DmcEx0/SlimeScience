@@ -219,6 +219,8 @@ namespace SlimeScience.Equipment.Guns
             _inventory = new Inventory<Slime>(inventoryCapacity);
 
             _slimeCatcher.Caught += OnCatch;
+            _slimeCatcher.Pulled += OnPulled;
+
             _gameVariables.CapacityUpgraded += OnCapacityUpgraded;
 
             _isInitialized = true;

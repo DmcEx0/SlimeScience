@@ -91,6 +91,10 @@ namespace SlimeScience.Saves
                     json.SlimesGoal,
                     json.TutorialPassed);
 
+                _shipModel = new ShipModel(
+                    json.ShipSpeed,
+                    json.ShipCapacity);
+
                 Loaded?.Invoke();
             });
 

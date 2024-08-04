@@ -35,7 +35,7 @@ namespace SlimeScience.InventorySystem
         
         public int AvailableSpace => MaxItems - Amount;
         public T GetTypeInInventory => _items.Count !=0 ? _items[0] : null;
-
+        
         public void Add(T item)
         {
             if (_items.Count >= MaxItems)
@@ -92,7 +92,7 @@ namespace SlimeScience.InventorySystem
                 Filled?.Invoke();
             }
         }
-
+        
         public T GetItem(int index)
         {
             if (index < 0 || index >= _items.Count)

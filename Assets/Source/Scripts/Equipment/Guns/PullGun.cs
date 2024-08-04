@@ -33,9 +33,8 @@ namespace SlimeScience.Equipment.Guns
 
         public bool InventoryIsFull => _inventory?.IsFull ?? false;
         public int AvailableSpace => _inventory.AvailableSpace;
+
         public int SlimesAmount => _inventory.Amount;
-        public int GetSlimeWeightInInventory => _inventory.GetTypeInInventory != null ?
-            _inventory.GetTypeInInventory.Weight : 0;
 
         private void OnEnable()
         {
@@ -220,9 +219,22 @@ namespace SlimeScience.Equipment.Guns
             _inventory = new Inventory<Slime>(inventoryCapacity);
 
             _slimeCatcher.Caught += OnCatch;
+            _slimeCatcher.Pulled += OnPulled;
+
             _gameVariables.CapacityUpgraded += OnCapacityUpgraded;
 
             _isInitialized = true;
+        }
+        
+        public int GetSlimeWeightInInventory()
+        {
+            var slime = _inventory.GetTypeInInventory;
+            if(slime == null || slime.IsBoss)
+            {
+                return 1;
+            }
+
+            return slime.Weight;
         }
 
         public List<Slime> ReleaseInventory()
@@ -301,6 +313,6 @@ namespace SlimeScience.Equipment.Guns
             }
         }
 
-        private bool HasEnoughSpace(int weight) =>  _inventory.Amount + weight <= _inventory.MaxItems;
+        private bool HasEnoughSpace(int weight) => _inventory.Amount + weight <= _inventory.MaxItems;
     }
 }

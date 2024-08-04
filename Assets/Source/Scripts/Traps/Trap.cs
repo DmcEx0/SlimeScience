@@ -1,5 +1,6 @@
+using System;
+using SlimeScience.Blocks;
 using SlimeScience.Configs;
-using SlimeScience.Effects;
 using UnityEngine;
 
 namespace SlimeScience.Traps
@@ -8,10 +9,29 @@ namespace SlimeScience.Traps
     public class Trap : MonoBehaviour
     {
         public TrapConfig Config { get; private set; }
+        private Block _block;
+        private Transform _point;
+        
+        public event Action<Trap, Block, Transform> Activated; 
         
         public void Init(TrapConfig config)
         {
             Config = config;
+        }
+
+        public void SetBlock(Block block)
+        {
+            _block = block;
+        }
+        
+        public void SetPoint(Transform point)
+        {
+            _point = point;
+        }
+
+        public void CallActivatedEvent()
+        {
+            Activated?.Invoke(this ,_block, _point);
         }
     }
 }

@@ -165,6 +165,7 @@ namespace SlimeScience.Equipment.Guns
         {
             if (other.TryGetComponent(out Trap trap))
             {
+                trap.CallActivatedEvent();
                 _effectSystem.ApplyEffect(
                     trap.Config.Modifier,
                     trap.Config.ModifierPercent,

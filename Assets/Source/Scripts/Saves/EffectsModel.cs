@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace SlimeScience.Effects
 {
@@ -22,12 +23,14 @@ namespace SlimeScience.Effects
 
         public void AddModifier(EffectModifiers effect, float percent)
         {
-            _effectModifiers[effect] += _effectModifiers[effect] * percent;
+            float value = _effectModifiers[effect];
+            _effectModifiers[effect] += value * percent;
         }
 
         public void RemoveModifier(EffectModifiers effect, float percent)
         {
-            _effectModifiers[effect] -= _effectModifiers[effect] * percent;
+            float value = _effectModifiers[effect];
+            _effectModifiers[effect] /= (DefaultModifierValue + percent);
         }
 
         public void ResetModifier(EffectModifiers effect)

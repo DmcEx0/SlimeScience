@@ -1,8 +1,8 @@
 namespace SlimeScience.Util
 {
-    public enum AgentTypeIds 
+    public enum AgentTypeIds
     {
         Player = 0,
-        Ship = -1
+        Ship = 1
     }
 }

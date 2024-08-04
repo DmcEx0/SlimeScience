@@ -78,6 +78,7 @@ namespace SlimeScience.Equipment.Guns
 
             if (_effectSystem != null)
             {
+                _effectSystem.Dispose();
                 _effectSystem.EffectApplied -= OnEffectChanged;
                 _effectSystem.EffectEnded -= OnEffectChanged;
             }

@@ -16,8 +16,9 @@ namespace SlimeScience.Saves
             float absorptionRadius,
             float absorptionAngle,
             float absorptionCapacity,
-            float assistantCount
-            )
+            float assistantCount,
+            float shipSpeed,
+            float shipCapacity)
         {
             Money = money;
             Slimes = slimes;
@@ -30,6 +31,8 @@ namespace SlimeScience.Saves
             AbsorptionAngle = absorptionAngle;
             AbsorptionCapacity = absorptionCapacity;
             AssistantCount = assistantCount;
+            ShipSpeed = shipSpeed;
+            ShipCapacity = shipCapacity;
         }
 
         public int Money;
@@ -53,5 +56,9 @@ namespace SlimeScience.Saves
         public float AbsorptionCapacity;
 
         public float AssistantCount;
+
+        public float ShipSpeed;
+
+        public float ShipCapacity;
     }
 }

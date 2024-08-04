@@ -15424,6 +15424,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1931243408}
     - target: {fileID: 6193253250133285950, guid: 1b2e41ee3b70b284f9537be6640474d0, type: 3}
+      propertyPath: _config._baseSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193253250133285950, guid: 1b2e41ee3b70b284f9537be6640474d0, type: 3}
       propertyPath: _inventoryRenderer
       value: 
       objectReference: {fileID: 1138576503}

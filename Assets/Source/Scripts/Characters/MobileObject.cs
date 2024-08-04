@@ -59,6 +59,11 @@ namespace SlimeScience.Characters
             Movement.SetAcceleration(config.Acceleration);
         }
 
+        public void SetMovementSpeed(float speed)
+        {
+            Movement.SetMovementSpeed(speed);
+        }
+
         protected void UpdateStateMachine()
         {
             _stateMachine?.Update();

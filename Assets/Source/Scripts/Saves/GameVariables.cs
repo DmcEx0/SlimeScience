@@ -91,6 +91,10 @@ namespace SlimeScience.Saves
                     json.SlimesGoal,
                     json.TutorialPassed);
 
+                _shipModel = new ShipModel(
+                    json.ShipCapacity,
+                    json.ShipSpeed);
+
                 Loaded?.Invoke();
             });
 
@@ -112,8 +116,9 @@ namespace SlimeScience.Saves
                 _absorptionModel.Radius,
                 _absorptionModel.Angle,
                 _absorptionModel.Capacity,
-                _absorptionModel.AssistantCount
-                );
+                _absorptionModel.AssistantCount,
+                _shipModel.Speed,
+                _shipModel.Capacity);
 
             Agava.YandexGames.PlayerAccount.SetCloudSaveData(JsonUtility.ToJson(saves));
             Agava.YandexGames.Leaderboard.SetScore(LeaderbordName, _progressModel.Slimes);

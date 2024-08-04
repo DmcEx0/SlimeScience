@@ -15,6 +15,7 @@ namespace SlimeScience.Characters
         [SerializeField] private PullGun _pullGun;
 
         private PlayerConfig _config;
+        private GameVariables _gameVariables;
 
         private float _rangeVacuum;
 
@@ -30,6 +31,8 @@ namespace SlimeScience.Characters
 
         public void InitGun(GameVariables gameVariables)
         {
+            _gameVariables = gameVariables;
+
             _pullGun.Init(gameVariables);
         }
 
@@ -46,6 +49,7 @@ namespace SlimeScience.Characters
             int agentTypeId = NavMeshAgentUtil.GetAgentTypeID(AgentTypeIds.Ship);
             ChangeAgent(agentTypeId);
             SetMovementStats(shipConfig);
+            SetMovementSpeed(_gameVariables.ShipSpeed);
             _collider.enabled = false;
             
             transform.position = shipPlaceForPlayer.position;

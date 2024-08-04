@@ -35,8 +35,6 @@ namespace SlimeScience.Characters
 
         public bool IsBoss => _type == SlimeType.Boss;
 
-        public SlimeType Type => _type;
-
         public Vector3 Position => transform.position;
 
         private void OnDisable()

@@ -44,7 +44,7 @@ namespace SlimeScience.Characters
             _isEnabled = false;
             _inputRouter.OnDisable();
 
-            if (_agent.enabled)
+            if (_agent.enabled && _agent.isOnNavMesh)
             {
                 _agent.isStopped = true;
                 _agent.updateRotation = false;

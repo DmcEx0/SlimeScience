@@ -152,10 +152,6 @@ namespace SlimeScience.Characters.Ship
             _zoneParticle.Play();
         }
 
-        private void AddSlimeInInventory(Slime slime)
-        {
-        }
-
         private void OnCapacityUpgraded(float newCapacity)
         {
             _inventory.Expand((int)newCapacity - _inventory.MaxItems);

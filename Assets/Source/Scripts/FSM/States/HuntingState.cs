@@ -38,6 +38,11 @@ namespace SlimeScience.FSM.States
         public void Update()
         {
             _vacuumingSupport.Movement.Move(false);
+            
+            if(_detector.HasTargetTransforms() == false)
+            {
+                _changeState.Invoke(StatesType.Patrol);
+            }
         }
 
         private void OnSlimeCathed()

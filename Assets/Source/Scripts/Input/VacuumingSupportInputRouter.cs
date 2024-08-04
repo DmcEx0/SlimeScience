@@ -5,13 +5,9 @@ namespace SlimeScience.Input
 {
     public class VacuumingSupportInputRouter : IInputRouter
     {
-        private const float Step = 3f;
-
         private readonly TargetDetector _targetDetector;
         private readonly SlimeObserver _slimeObserver;
         private readonly Transform _releaseZoneTransform;
-
-        private Vector3 _newDirection;
 
         private bool _isEnabled;
 
@@ -29,11 +25,6 @@ namespace SlimeScience.Input
             
             var targetDir = _targetDetector.GetDirectionFromToTarget(false);
             
-            if(targetDir == Vector3.zero)
-            {
-                OnEnable();
-            }
-
             return targetDir;
         }
 
@@ -45,17 +36,11 @@ namespace SlimeScience.Input
             {
                 _targetDetector.SetTargetTransform(newSlime.transform);
             }
-            else
-            {
-                _targetDetector.SetTargetTransform(_releaseZoneTransform);
-            }
         }
 
         public void OnDisable()
         {
             _isEnabled = false;
-
-            _newDirection = Vector3.zero;
         }
     }
 }

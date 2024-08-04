@@ -83,6 +83,11 @@ namespace SlimeScience.FSM.States.Slimes
         private void UpdateVacuumingSupport()
         {
             _mobileObject.Movement.Move(false);
+            
+            if(_detector.HasTargetTransforms() == false)
+            {
+                _changeState.Invoke(StatesType.Unloading);
+            }
 
             if (_detector.GetTargetIsNearStatus())
             {

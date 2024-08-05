@@ -47,12 +47,18 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: English
-    Text: Congratulations, you have completed the training!
+    Text: 'Congratulations, you have completed the training!
+
+      Now clear the
+      laboratory of slimes!'
     Object: {fileID: 0}
   - Language: Russian
     Text: "\u041F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u044F\u0435\u043C, \u0432\u044B
-      \u043F\u0440\u043E\u0448\u043B\u0438 \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435!"
+      \u043F\u0440\u043E\u0448\u043B\u0438 \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435!\n\u0422\u0435\u043F\u0435\u0440\u044C
+      \u043E\u0447\u0438\u0441\u0442\u0438\u0442\u0435 \u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u0438\u044E
+      \u043E\u0442 \u0441\u043B\u0430\u0439\u043C\u043E\u0432!"
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "Tebrikler, e\u011Fitimi tamamlad\u0131n\u0131z!"
+    Text: "Tebrikler, e\u011Fitiminizi tamamlad\u0131n\u0131z!\n\u015Eimdi laboratuvar\u0131
+      bal\xE7\u0131klardan temizleyin!"
     Object: {fileID: 0}

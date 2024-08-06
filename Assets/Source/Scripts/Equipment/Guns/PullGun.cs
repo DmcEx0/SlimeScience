@@ -61,6 +61,8 @@ namespace SlimeScience.Equipment.Guns
                 _slimeCatcher.Caught += OnCatch;
                 _slimeCatcher.Pulled += OnPulled;
             }
+
+            UpdateInventory();
         }
 
         private void OnDisable()
@@ -288,6 +290,16 @@ namespace SlimeScience.Equipment.Guns
         private void OnCapacityUpgraded(float newCapacity)
         {
             _inventory.Expand((int)newCapacity - _inventory.MaxItems);
+            RenderInventory();
+        }
+
+        private void UpdateInventory()
+        {
+            if (_gameVariables.AbsorptionCapacity != _inventory.MaxItems)
+            {
+                _inventory.Expand((int)_gameVariables.AbsorptionCapacity - _inventory.MaxItems);
+            }
+
             RenderInventory();
         }
 

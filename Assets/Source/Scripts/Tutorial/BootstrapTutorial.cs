@@ -74,6 +74,7 @@ namespace SlimeScience.Tutorial
 
         private void Awake()
         {
+            _uIRoot.ShowLoading();
             SoundsManager.Initialize(_soundsConfig, _audioSource);
         }
 
@@ -118,7 +119,7 @@ namespace SlimeScience.Tutorial
             _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
 
             _uIRoot.Init(_wallet, _gameVariables, null, _adPause, player);
-
+            _uIRoot.HideLoading();
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();
 #endif

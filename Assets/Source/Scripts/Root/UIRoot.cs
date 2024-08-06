@@ -3,6 +3,7 @@ using SlimeScience.Audio;
 using SlimeScience.Characters;
 using SlimeScience.Input;
 using SlimeScience.Leaderbords;
+using SlimeScience.Loading;
 using SlimeScience.Money;
 using SlimeScience.PauseSystem;
 using SlimeScience.Saves;
@@ -22,6 +23,7 @@ namespace SlimeScience.Root
         [SerializeField] private AdvertismentCanvas _advertismentCanvas;
         [SerializeField] private AudioChanger _audioChanger;
         [SerializeField] private ProgressRenderer _progressRenderer;
+        [SerializeField] private Loader _loader;
 
         [SerializeField] private CallShip _callShip;
         [SerializeField] private Button _openUpgradesCanvas;
@@ -115,7 +117,7 @@ namespace SlimeScience.Root
             _leaderbordCanvas.Init();
             _audioChanger.Init();
             _progressRenderer.Init(gameVariables);
-            
+
             // _ship.Init();
             // _callShip.Init(_ship, _advertisment, player);
         }
@@ -129,6 +131,16 @@ namespace SlimeScience.Root
 
             _adPause.Pause();
             _advertismentCanvas.ShowPopup();
+        }
+
+        public void ShowLoading()
+        {
+            _loader.Enable();
+        }
+
+        public void HideLoading()
+        {
+            _loader.Disable();
         }
 
         private void OnOpenUpgradesClicked()

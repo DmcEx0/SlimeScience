@@ -1,10 +1,10 @@
-using UnityEngine;
-using SlimeScience.Configs;
-using System.Collections;
-using SlimeScience.Equipment.Guns;
-using SlimeScience.Configs.Slimes;
-using SlimeScience.Util;
 using DG.Tweening;
+using SlimeScience.Configs;
+using SlimeScience.Configs.Slimes;
+using SlimeScience.Equipment.Guns;
+using SlimeScience.Util;
+using System.Collections;
+using UnityEngine;
 
 namespace SlimeScience.Characters
 {
@@ -17,25 +17,34 @@ namespace SlimeScience.Characters
 
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private ParticleSystem _teleportEffect;
-        
+        [SerializeField] private ParticleSystem _readyTeleport;
+
         private Coroutine _resetVelocityCoroutine;
         private Vector3 _originPos;
         private SlimeType _type;
         private int _originWeight;
 
         private Vector3 _originScale;
-        
+
         private Tweener _scaler;
 
-        public int Weight {  get; private set; }
-        
+        public int Weight { get; private set; }
+
         public float FearSpeed { get; private set; }
-        public float BaseSpeed{ get; private set; }
+        public float BaseSpeed { get; private set; }
         public bool CanTeleport { get; private set; }
 
         public bool IsBoss => _type == SlimeType.Boss;
 
         public Vector3 Position => transform.position;
+
+        private void OnEnable()
+        {
+            if (CanTeleport)
+            {
+                _readyTeleport.Play();
+            }
+        }
 
         private void OnDisable()
         {
@@ -127,7 +136,7 @@ namespace SlimeScience.Characters
         {
             transform.position = position;
         }
-        
+
         public void SetActive(bool active)
         {
             gameObject.SetActive(active);
@@ -137,7 +146,7 @@ namespace SlimeScience.Characters
         {
             _rigidbody.interpolation = RigidbodyInterpolation.None;
             _rigidbody.velocity = Vector3.zero;
-            
+
             Enable();
         }
 
@@ -148,6 +157,7 @@ namespace SlimeScience.Characters
 
             CanTeleport = false;
 
+            _readyTeleport.Stop();
             SetPosition(_originPos);
             _teleportEffect.Play();
             SoundsManager.PlayTeleport();
@@ -160,6 +170,8 @@ namespace SlimeScience.Characters
             yield return new WaitForSeconds(ResetTeleportTime);
 
             CanTeleport = true;
+
+            _readyTeleport.Play();
         }
 
         private IEnumerator ResetVelocityCoroutine()

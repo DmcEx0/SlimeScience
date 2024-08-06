@@ -88,6 +88,7 @@ namespace SlimeScience.Root
 
         private void Awake()
         {
+            _uiRoot.ShowLoading();
             SoundsManager.Initialize(_soundsConfig, _audioSource);
         }
 
@@ -141,9 +142,10 @@ namespace SlimeScience.Root
             }
 
             _gameVariables.AssistantUpgraded += OnAssistantUpgraded;
-            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause, player);
             _ship.Init(_gameVariables);
+            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause, player);
 
+            _uiRoot.HideLoading();
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();
 #endif

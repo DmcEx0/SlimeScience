@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,8 @@ namespace SlimeScience.Blocks
         private Tweener _openTweener;
         private Tweener _closeTweener;
 
+        private Action _closed;
+
         private void OnEnable()
         {
             _close.onClick.AddListener(Close);
@@ -24,8 +27,13 @@ namespace SlimeScience.Blocks
             _close.onClick.RemoveListener(Close);
         }
 
-        public void Show()
+        public void Show(Action onClosed = null)
         {
+            if(onClosed != null)
+            {
+                _closed = onClosed;
+            }
+            
             gameObject.SetActive(true);
             
             _openTweener?.Kill();
@@ -44,6 +52,7 @@ namespace SlimeScience.Blocks
                 .OnComplete(() =>
                 {
                     gameObject.SetActive(false);
+                    _closed?.Invoke();
                 });
         }
     }

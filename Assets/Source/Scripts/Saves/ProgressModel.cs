@@ -47,6 +47,15 @@ namespace SlimeScience.Saves
 
         public bool TutorialPassed { get; private set; }
 
+        public void ResetSave()
+        {
+            Money = DefaultMoney;
+            RoomIndex = DefaultRoomIndex;
+            CollectedSlimes = DefaultCollectedSlimes;
+            SlimesGoal = DefaultSlimesGoal;
+            TutorialPassed = DefaultTutorialPassed;
+        }
+
         public void AddMoney(int amount)
         {
             if (amount < 0)

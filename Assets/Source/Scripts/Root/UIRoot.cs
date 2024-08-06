@@ -1,5 +1,6 @@
 using SlimeScience.Ad;
 using SlimeScience.Audio;
+using SlimeScience.Blocks;
 using SlimeScience.Characters;
 using SlimeScience.Input;
 using SlimeScience.Leaderbords;
@@ -16,6 +17,7 @@ namespace SlimeScience.Root
 {
     public class UIRoot : MonoBehaviour
     {
+        [SerializeField] private OpenBlocksPopupsManager _blocksPopupsManager;
         [SerializeField] private FloatingJoystick _floatingJoystick;
         [SerializeField] private WalletRenderer _walletRenderer;
         [SerializeField] private UpgradesCanvas _upgradesCanvas;
@@ -34,6 +36,8 @@ namespace SlimeScience.Root
         private Advertisment _advertisment;
         private PauseHandler _adPause;
         private GameVariables _gameVariables;
+
+        public OpenBlocksPopupsManager BlocksPopupsManager => _blocksPopupsManager;
 
         private void OnEnable()
         {

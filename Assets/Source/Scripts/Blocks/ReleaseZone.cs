@@ -24,6 +24,7 @@ namespace SlimeScience.Blocks
 
         public event Action<BlockData, int> OpenedNextBlock;
         public event Action PlayerReleased;
+        public event Action LastBlockClosed;
 
         public Collider Collider => _collider;
 
@@ -74,6 +75,7 @@ namespace SlimeScience.Blocks
         { 
             if(_indexCurrentBlock > _blocksConfig.BlocksData.Count - 1)
             {
+                LastBlockClosed?.Invoke();
                 return;
             }
             

@@ -1,3 +1,4 @@
+using System;
 using Agava.WebUtility;
 using Cinemachine;
 using SlimeScience.Ad;
@@ -13,17 +14,18 @@ using System.Collections.Generic;
 using SlimeScience.Characters.Ship;
 using SlimeScience.Util;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SlimeScience.Root
 {
     public class Bootstrap : MonoBehaviour
     {
         private const float IntervalSaveTime = 30f;
+        private const string GameSceneName = "Game";
 
         [SerializeField] private UIRoot _uiRoot;
         [SerializeField] private PauseRoot _pauseRoot;
 
-        [SerializeField] private OpenBlocksPopupsManager _blocksPopupsManager;
         [SerializeField] private Ship _ship;
         [SerializeField] private CinemachineVirtualCamera _camera;
         [SerializeField] private ReleaseZone _releaseZone;
@@ -72,6 +74,7 @@ namespace SlimeScience.Root
             WebApplication.InBackgroundChangeEvent -= OnBackgroundChange;
 
             _releaseZone.OpenedNextBlock -= OnNextBlockOpened;
+            _releaseZone.LastBlockClosed -= OnLastBlockClosed;
 
             if (_intervalSave != null)
             {
@@ -107,7 +110,13 @@ namespace SlimeScience.Root
             PlayerPrefs.DeleteAll();
             _gameVariables.ResetSave();
         }
-
+        
+        private void ResetSaveOnFinishGame()
+        {
+            PlayerPrefs.DeleteAll();
+            _gameVariables.ResetSaveOnFinishGame();
+        }
+        
         private void Init()
         {
             _gameVariables.Loaded -= Init;
@@ -128,6 +137,7 @@ namespace SlimeScience.Root
             _slimeSpawner.Init(player.transform, transform);
 
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
+            _releaseZone.LastBlockClosed += OnLastBlockClosed;
             _releaseZone.Init(_wallet, _gameVariables, _blocksConfig);
 
             _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
@@ -155,7 +165,7 @@ namespace SlimeScience.Root
         {
             if (index != 0)
             {
-                _blocksPopupsManager.ShowPopup(index);
+                _uiRoot.BlocksPopupsManager.ShowPopup(index);
             }
 
             Block currentBlock = _blocks[index];
@@ -196,7 +206,7 @@ namespace SlimeScience.Root
             }
         }
 
-        private int GetAllBombsCount() //TODO: remove code dubbing
+        private int GetAllBombsCount()
         {
             int count = 0;
 
@@ -206,6 +216,17 @@ namespace SlimeScience.Root
             }
 
             return count;
+        }
+
+        private void OnLastBlockClosed()
+        {
+            _uiRoot.BlocksPopupsManager.ShowEndGamePopup(ResetGame);
+        }
+
+        private void ResetGame()
+        {
+            ResetSaveOnFinishGame();
+            SceneManager.LoadScene(GameSceneName);
         }
 
         private void OnReleased()

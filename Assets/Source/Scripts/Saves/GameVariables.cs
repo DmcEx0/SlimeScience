@@ -134,6 +134,16 @@ namespace SlimeScience.Saves
 
             Save();
         }
+        
+        public void ResetSaveOnFinishGame()
+        {
+            _progressModel.ResetSave();
+            _absorptionModel = new AbsorptionModel();
+            _effectsModel = new EffectsModel();
+            _shipModel = new ShipModel();
+
+            Save();
+        }
 
         public void AddMoney(int amount)
         {
@@ -187,7 +197,7 @@ namespace SlimeScience.Saves
         public void ResetModifier(EffectModifiers effect)
         {
             _effectsModel.ResetModifier(effect);
-        }   
+        }
 
         public void RemoveModifier(EffectModifiers effect, float percent)
         {
@@ -217,7 +227,7 @@ namespace SlimeScience.Saves
             _progressModel.SetSlimesGoal(goal);
             SlimeGoalChanged?.Invoke(goal);
         }
-        
+
         public void SetTutorialPassed()
         {
             _progressModel.SetTutorialPassed();

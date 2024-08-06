@@ -19,7 +19,7 @@ MonoBehaviour:
     _neededAmountToOpen: 13
     _maxRangePosX: 25
     _maxRangePosZ: 25
-    _slimesType: 0
+    _slimesType: 2
   - _trapAmount: 5
     _bombAmount: 10
     _slimeAmount: 6

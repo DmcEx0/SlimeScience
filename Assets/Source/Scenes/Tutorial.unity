@@ -1942,6 +1942,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 197445055908383352, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1489
+      objectReference: {fileID: 0}
     - target: {fileID: 791139270211663476, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1950,6 +1954,10 @@ PrefabInstance:
       propertyPath: _resetSave
       value: 
       objectReference: {fileID: 458468521}
+    - target: {fileID: 2510468952093522671, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3341304201846811597, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_SizeDelta.y
       value: 250
@@ -1972,7 +1980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3974119958387944999, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_text
-      value: 'Room: {0}'
+      value: "\u041A\u043E\u043C\u043D\u0430\u0442\u0430: {0}"
       objectReference: {fileID: 0}
     - target: {fileID: 4052343684524104584, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1980,7 +1988,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4646942491058632166, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_text
-      value: TEXT
+      value: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430\u0447\u043D\u0435\u0442\u0441\u044F
+        \u0447\u0435\u0440\u0435\u0437 {0} \u0441\u0435\u043A\u0443\u043D\u0434"
       objectReference: {fileID: 0}
     - target: {fileID: 6312527605926370991, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_SizeDelta.y
@@ -3206,6 +3215,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336691920}
   m_Mesh: {fileID: 4300000, guid: 47af90048b492c64984a2c0991958192, type: 3}
+--- !u!114 &341697303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7788277925064952022, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+  m_PrefabInstance: {fileID: 195352596}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cf70b590f5e5f419d2fcfe43502234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &343987958
 GameObject:
   m_ObjectHideFlags: 0
@@ -13243,6 +13263,7 @@ MonoBehaviour:
   _releaseSlimesPopup: {fileID: 249951014}
   _upgradePopup: {fileID: 473860475}
   _nextBlockOpen: {fileID: 1745756661}
+  _loader: {fileID: 341697303}
   _trigger1: {fileID: 116517928}
 --- !u!1 &1416770318
 GameObject:
@@ -16523,7 +16544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.2823383, y: 0.2836476}
   m_AnchorMax: {x: 0.71767664, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 154.00003, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1862738278

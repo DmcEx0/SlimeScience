@@ -3,6 +3,7 @@ using DG.Tweening;
 using SlimeScience.Blocks;
 using SlimeScience.Characters;
 using SlimeScience.Configs;
+using SlimeScience.Loading;
 using SlimeScience.Saves;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,8 @@ namespace SlimeScience.Tutorial
         [SerializeField] private TutorialImage _releaseSlimesPopup;
         [SerializeField] private TutorialImage _upgradePopup;
         [SerializeField] private TutorialImage _nextBlockOpen;
+
+        [SerializeField] private Loader _loader;
 
         [Space, Header("Triggers")]
         [SerializeField] private Collider _trigger1;
@@ -79,8 +82,9 @@ namespace SlimeScience.Tutorial
 
         public void GoToGameScene()
         {
+            _loader.Enable();
             _gameVariables.Save();
-            SceneManager.LoadScene(GameSceneName);
+            SceneManager.LoadSceneAsync(GameSceneName);
         }
         
         private void ShowReleasePopup()

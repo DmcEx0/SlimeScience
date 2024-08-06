@@ -38,6 +38,14 @@ namespace SlimeScience.Characters
 
         public Vector3 Position => transform.position;
 
+        private void OnEnable()
+        {
+            if (CanTeleport)
+            {
+                _readyTeleport.Play();
+            }
+        }
+
         private void OnDisable()
         {
             if (_resetVelocityCoroutine != null)
@@ -66,11 +74,6 @@ namespace SlimeScience.Characters
             _originWeight = Weight;
 
             CanTeleport = _type == SlimeType.Teleport;
-
-            if (CanTeleport)
-            {
-                _readyTeleport.Play();
-            }
         }
 
         protected override void SetRigidbodySetting(Rigidbody rigidbody)

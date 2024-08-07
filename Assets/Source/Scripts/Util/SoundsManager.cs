@@ -6,8 +6,8 @@ namespace SlimeScience.Util
 {
     public static class SoundsManager
     {
-        private const string Background = "Background";
-        private const string Sfx = "SFX";
+        public const string BackgroundKey = "Background";
+        public const string SfxKey = "SFX";
         private const int TurnOnBoolean = 1;
 
         private static SoundsConfig s_config;
@@ -23,8 +23,8 @@ namespace SlimeScience.Util
             s_backgroundAudioSource = bgAudioSource;
             s_sfxAudioSource = sfxAudioSource;
 
-            _backgroundIsOn = PlayerPrefs.GetInt(Background) == TurnOnBoolean;
-            _sfxIsOn = PlayerPrefs.GetInt(Sfx) == TurnOnBoolean;
+            _backgroundIsOn = PlayerPrefs.GetInt(BackgroundKey) == TurnOnBoolean;
+            _sfxIsOn = PlayerPrefs.GetInt(SfxKey) == TurnOnBoolean;
         }
         
         public static void TurnOn(SoundType type)
@@ -51,7 +51,6 @@ namespace SlimeScience.Util
                     SwitchSfx(false);
                     break;
             }
-            
         }
 
         private static void SwitchBg(bool isOn)

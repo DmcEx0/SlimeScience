@@ -8335,6 +8335,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277001859}
   m_CullTransparentMesh: 1
+--- !u!114 &293477194 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 932008569720570085, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+  m_PrefabInstance: {fileID: 1621661992}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a4d40c6be11774380e418a84072002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &296156535
 GameObject:
   m_ObjectHideFlags: 0
@@ -13659,6 +13670,14 @@ PrefabInstance:
       propertyPath: _shipPopup
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2153394832599835207, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: _bgAudioChanger
+      value: 
+      objectReference: {fileID: 664410380}
+    - target: {fileID: 2153394832599835207, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: _sfxAudioChanger
+      value: 
+      objectReference: {fileID: 293477194}
     - target: {fileID: 2153394832599835207, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: _blocksPopupsManager
       value: 

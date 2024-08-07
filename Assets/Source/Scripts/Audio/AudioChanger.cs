@@ -6,7 +6,6 @@ namespace SlimeScience.Audio
 {
     public class AudioChanger : MonoBehaviour
     {
-        private const string Audio = "Audio";
         private const int TurnOn = 1;
         private const int TurnOff = 0;
 
@@ -32,9 +31,10 @@ namespace SlimeScience.Audio
 
         public void Init()
         {
-            _isOn = PlayerPrefs.GetInt(Audio) == TurnOn;
+            _isOn = PlayerPrefs.GetInt(GetSoundKey(_type)) == TurnOn;
             _image.sprite = _isOn ? _turnOn : _turnOff;
 
+            Debug.Log(_isOn + " + " + _type);
             if (_isOn)
             {
                 SoundsManager.TurnOn(_type);
@@ -61,20 +61,33 @@ namespace SlimeScience.Audio
         private void Enable()
         {
             _image.sprite = _turnOn;
-            PlayerPrefs.SetInt(Audio, TurnOn);
+            PlayerPrefs.SetInt(GetSoundKey(_type), TurnOn);
             SoundsManager.TurnOn(_type);
         }
 
         private void Disable()
         {
             _image.sprite = _turnOff;
-            PlayerPrefs.SetInt(Audio, TurnOff);
+            PlayerPrefs.SetInt(GetSoundKey(_type), TurnOff);
             SoundsManager.TurnOff(_type);
         }
 
         private void OnChangeClicked()
         {
             Change();
+        }
+        
+        private string GetSoundKey(SoundType type)
+        {
+            switch (type)
+            {
+                case SoundType.Background:
+                    return SoundsManager.BackgroundKey;
+                case SoundType.Sfx:
+                    return SoundsManager.SfxKey;
+            }
+
+            return null;
         }
     }
 }

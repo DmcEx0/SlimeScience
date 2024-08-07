@@ -11,6 +11,7 @@ using SlimeScience.Saves;
 using SlimeScience.Upgrades;
 using SlimeScience.Util;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace SlimeScience.Root
@@ -23,7 +24,8 @@ namespace SlimeScience.Root
         [SerializeField] private UpgradesCanvas _upgradesCanvas;
         [SerializeField] private LeaderbordCanvas _leaderbordCanvas;
         [SerializeField] private AdvertismentCanvas _advertismentCanvas;
-        [SerializeField] private AudioChanger _audioChanger;
+        [SerializeField] private AudioChanger _sfxAudioChanger;
+        [SerializeField] private AudioChanger _bgAudioChanger;
         [SerializeField] private ProgressRenderer _progressRenderer;
         [SerializeField] private Loader _loader;
 
@@ -119,7 +121,8 @@ namespace SlimeScience.Root
             _walletRenderer.Init(wallet);
             _upgradesCanvas.Init(wallet, gameVariables);
             _leaderbordCanvas.Init();
-            _audioChanger.Init();
+            _sfxAudioChanger.Init();
+            _bgAudioChanger.Init();
             _progressRenderer.Init(gameVariables);
 
             // _ship.Init();

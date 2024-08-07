@@ -1958,6 +1958,14 @@ PrefabInstance:
       propertyPath: _resetSave
       value: 
       objectReference: {fileID: 458468521}
+    - target: {fileID: 2153394832599835207, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: _bgAudioChanger
+      value: 
+      objectReference: {fileID: 1336737801}
+    - target: {fileID: 2153394832599835207, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: _sfxAudioChanger
+      value: 
+      objectReference: {fileID: 195352598}
     - target: {fileID: 2510468952093522671, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -2039,6 +2047,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9186971372676971414, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
   m_PrefabInstance: {fileID: 195352596}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &195352598 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 932008569720570085, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+  m_PrefabInstance: {fileID: 195352596}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a4d40c6be11774380e418a84072002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &207084177
 GameObject:
   m_ObjectHideFlags: 0

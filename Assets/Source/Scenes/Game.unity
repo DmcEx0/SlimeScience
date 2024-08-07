@@ -11386,17 +11386,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029763780}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1469275497}
-  m_Father: {fileID: 1559522424}
+  m_Father: {fileID: 1962133689}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 26, y: -75}
+  m_AnchoredPosition: {x: 26, y: -74.99994}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1029763782
@@ -13590,6 +13590,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 197445055908383352, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 549242237234019336, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -13825,12 +13829,12 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2055614445304481964, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1029763781}
     - targetCorrespondingSourceObject: {fileID: 9186971372676971414, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       insertIndex: 6
       addedObject: {fileID: 664410379}
-    - targetCorrespondingSourceObject: {fileID: 9186971372676971414, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
-      insertIndex: 8
-      addedObject: {fileID: 1029763781}
     - targetCorrespondingSourceObject: {fileID: 9186971372676971414, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1416912255}
@@ -15305,6 +15309,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1375819490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1962133689 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2055614445304481964, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+  m_PrefabInstance: {fileID: 1621661992}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1991208133 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2251316098614751568, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
@@ -16770,6 +16779,10 @@ PrefabInstance:
       propertyPath: _backGroundAudioSource
       value: 
       objectReference: {fileID: 7893844280636713205}
+    - target: {fileID: 7573736818505075670, guid: b970c75631e996f4294776a59d9cc4fd, type: 3}
+      propertyPath: m_Volume
+      value: 0.17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

@@ -51,7 +51,7 @@ MonoBehaviour:
   - _trapAmount: 5
     _bombAmount: 7
     _slimeAmount: 1
-    _neededAmountToOpen: 200
+    _neededAmountToOpen: 95
     _maxRangePosX: 20
     _maxRangePosZ: 20
     _slimesType: 3

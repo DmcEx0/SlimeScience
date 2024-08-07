@@ -8236,7 +8236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationName: close
+  translationName: restart_game
   FallbackText: Close
 --- !u!114 &277001862
 MonoBehaviour:
@@ -8258,7 +8258,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"
+  m_text: "\u041D\u0430\u0447\u0430\u0442\u044C \u0441\u043D\u0430\u0447\u0430\u043B\u0430"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 646bf4940d4a36945bcd082d75b2c322, type: 2}
   m_sharedMaterial: {fileID: -7692767154032471040, guid: 646bf4940d4a36945bcd082d75b2c322, type: 2}
@@ -12424,7 +12424,7 @@ RectTransform:
   m_GameObject: {fileID: 1291460982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2144028961}
@@ -15127,7 +15127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
       propertyPath: prefabs.Array.size
-      value: 39
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
       propertyPath: prefabs.Array.data[30].Root
@@ -15165,6 +15165,10 @@ PrefabInstance:
       propertyPath: prefabs.Array.data[38].Root
       value: 
       objectReference: {fileID: 6438736655000423162, guid: 4583ba701b8b0a54c8b96eb42d6c7f17, type: 3}
+    - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
+      propertyPath: prefabs.Array.data[39].Root
+      value: 
+      objectReference: {fileID: 1996598108393628012, guid: 2e52f51cb42cc3d44b208baf9c6f6bae, type: 3}
     - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
       propertyPath: prefabs.Array.data[30].sources.Array.size
       value: 1
@@ -15233,6 +15237,10 @@ PrefabInstance:
       propertyPath: prefabs.Array.data[38].sources.Array.data[0]
       value: 
       objectReference: {fileID: 3761834275615602097, guid: 4583ba701b8b0a54c8b96eb42d6c7f17, type: 3}
+    - target: {fileID: 1726317657161543979, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
+      propertyPath: prefabs.Array.data[39].sources.Array.data[0]
+      value: 
+      objectReference: {fileID: 7017278277106066344, guid: 2e52f51cb42cc3d44b208baf9c6f6bae, type: 3}
     - target: {fileID: 5637831348620218783, guid: 15c8dacb7affb604db09c8ad5cc99c97, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

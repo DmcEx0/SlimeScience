@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55c8682e-9460-4605-89d8-b09e169f6c0d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/SO/Configs/SoundsConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/SO/Configs/SoundsConfig.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Tutorial.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Tutorial.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Root/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Root/Bootstrap.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +156,7 @@
       <workItem from="1722606682650" duration="1063000" />
       <workItem from="1722759641026" duration="21395000" />
       <workItem from="1722975257140" duration="3952000" />
-      <workItem from="1723012048336" duration="14914000" />
+      <workItem from="1723012048336" duration="17225000" />
     </task>
     <servers />
   </component>

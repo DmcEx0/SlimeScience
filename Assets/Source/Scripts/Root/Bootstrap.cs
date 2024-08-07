@@ -115,7 +115,6 @@ namespace SlimeScience.Root
         
         private void ResetSaveOnFinishGame()
         {
-            PlayerPrefs.DeleteAll();
             _gameVariables.ResetSaveOnFinishGame();
         }
         

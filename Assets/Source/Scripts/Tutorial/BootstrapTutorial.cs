@@ -34,6 +34,7 @@ namespace SlimeScience.Tutorial
 
         [SerializeField] private SoundsConfig _soundsConfig;
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioSource _sfxAudioSource;
 
         private TrapSpawner _trapSpawner;
         private SlimeSpawner _slimeSpawner;
@@ -75,7 +76,7 @@ namespace SlimeScience.Tutorial
         private void Awake()
         {
             _uIRoot.ShowLoading();
-            SoundsManager.Initialize(_soundsConfig, _audioSource);
+            SoundsManager.Initialize(_soundsConfig, _audioSource, _sfxAudioSource);
         }
 
         private void Start()

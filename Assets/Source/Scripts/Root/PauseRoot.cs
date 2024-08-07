@@ -52,7 +52,7 @@ namespace SlimeScience.Root
                 if (pause.IsPaused)
                 {
                     Time.timeScale = PauseTimeScale;
-                    SoundsManager.PauseAll();
+                    SoundsManager.PauseBG();
                     return;
                 }
             }
@@ -69,7 +69,7 @@ namespace SlimeScience.Root
             }
 
             Time.timeScale = UnpauseTimeScale;
-            SoundsManager.UnpauseAll();
+            SoundsManager.UnpauseBG();
         }
 
         private void OnPauseChanged(bool isPaused)

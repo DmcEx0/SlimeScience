@@ -1,3 +1,4 @@
+using SlimeScience.Audio;
 using SlimeScience.Configs;
 using UnityEngine;
 
@@ -5,37 +6,75 @@ namespace SlimeScience.Util
 {
     public static class SoundsManager
     {
-        private const string Audio = "Audio";
+        private const string Background = "Background";
+        private const string Sfx = "SFX";
         private const int TurnOnBoolean = 1;
 
         private static SoundsConfig s_config;
-        private static AudioSource s_audioSource;
+        private static AudioSource s_backgroundAudioSource;
+        private static AudioSource s_sfxAudioSource;
 
-        private static bool _isOn = true;
+        private static bool _backgroundIsOn = true;
+        private static bool _sfxIsOn = true;
 
-        public static void Initialize(SoundsConfig config, AudioSource audioSource)
+        public static void Initialize(SoundsConfig config, AudioSource bgAudioSource, AudioSource sfxAudioSource)
         {
             s_config = config;
-            s_audioSource = audioSource;
+            s_backgroundAudioSource = bgAudioSource;
+            s_sfxAudioSource = sfxAudioSource;
 
-            _isOn = PlayerPrefs.GetInt(Audio) == TurnOnBoolean;
+            _backgroundIsOn = PlayerPrefs.GetInt(Background) == TurnOnBoolean;
+            _sfxIsOn = PlayerPrefs.GetInt(Sfx) == TurnOnBoolean;
+        }
+        
+        public static void TurnOn(SoundType type)
+        {
+            switch (type)
+            {
+                case SoundType.Background:
+                    SwitchBg(true);
+                    break;
+                case SoundType.Sfx:
+                    SwitchSfx(true);
+                    break;
+            }
         }
 
-        public static void TurnOn()
+        public static void TurnOff(SoundType type)
         {
-            _isOn = true;
-            UnpauseAll();
+            switch (type)
+            {
+                case SoundType.Background:
+                    SwitchBg(false);
+                    break;
+                case SoundType.Sfx:
+                    SwitchSfx(false);
+                    break;
+            }
+            
+        }
 
-            if (s_audioSource.isPlaying == false)
+        private static void SwitchBg(bool isOn)
+        {
+            _backgroundIsOn = isOn;
+            
+            if(_backgroundIsOn == false)
+            {
+                PauseBG();
+                return;
+            }
+            
+            UnpauseBG();
+
+            if (s_backgroundAudioSource.isPlaying == false)
             {
                 PlayBgMusic();
             }
         }
 
-        public static void TurnOff()
+        private static void SwitchSfx(bool isOn)
         {
-            _isOn = false;
-            PauseAll();
+            _sfxIsOn = isOn;
         }
 
         public static void PlayTapUI() => PlaySound(s_config.TapUIClickSound);
@@ -54,41 +93,36 @@ namespace SlimeScience.Util
 
         public static void PlayBgMusic()
         {
-            if (_isOn == false) 
+            if (_backgroundIsOn == false) 
             {
                 return;
             }
 
-            s_audioSource.clip = s_config.BackgroundMusic;
-            s_audioSource.loop = true;
-            s_audioSource.Play();
+            s_backgroundAudioSource.clip = s_config.BackgroundMusic;
+            s_backgroundAudioSource.loop = true;
+            s_backgroundAudioSource.Play();
         }
 
-        public static void PauseBgMusic()
+        public static void PauseBG()
         {
-            s_audioSource.Pause();
+            s_backgroundAudioSource.Pause();
         }
 
-        public static void PauseAll()
+        public static void UnpauseBG()
         {
-            s_audioSource.Pause();
-        }
-
-        public static void UnpauseAll()
-        {
-            if (_isOn == false)
+            if (_backgroundIsOn == false)
             {
                 return;
             }
 
-            s_audioSource.UnPause();
+            s_backgroundAudioSource.UnPause();
         }
 
         private static void PlaySound(AudioClip clip)
         {
-            if (_isOn && clip != null)
+            if (_sfxIsOn && clip != null)
             {
-                s_audioSource.PlayOneShot(clip);
+                s_sfxAudioSource.PlayOneShot(clip);
             }
         }
     }

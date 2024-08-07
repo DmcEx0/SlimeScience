@@ -10,6 +10,9 @@ namespace SlimeScience.Audio
         private const int TurnOn = 1;
         private const int TurnOff = 0;
 
+        [SerializeField] private SoundType _type;
+        
+        [Space]
         [SerializeField] private Image _image;
         [SerializeField] private Sprite _turnOn;
         [SerializeField] private Sprite _turnOff;
@@ -34,11 +37,11 @@ namespace SlimeScience.Audio
 
             if (_isOn)
             {
-                SoundsManager.TurnOn();
+                SoundsManager.TurnOn(_type);
                 return;
             }
 
-            SoundsManager.TurnOff();
+            SoundsManager.TurnOff(_type);
         }
 
         public void Change()
@@ -59,14 +62,14 @@ namespace SlimeScience.Audio
         {
             _image.sprite = _turnOn;
             PlayerPrefs.SetInt(Audio, TurnOn);
-            SoundsManager.TurnOn();
+            SoundsManager.TurnOn(_type);
         }
 
         private void Disable()
         {
             _image.sprite = _turnOff;
             PlayerPrefs.SetInt(Audio, TurnOff);
-            SoundsManager.TurnOff();
+            SoundsManager.TurnOff(_type);
         }
 
         private void OnChangeClicked()

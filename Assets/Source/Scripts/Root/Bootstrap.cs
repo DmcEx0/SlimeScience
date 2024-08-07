@@ -15,6 +15,7 @@ using SlimeScience.Characters.Ship;
 using SlimeScience.Util;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace SlimeScience.Root
 {
@@ -38,7 +39,8 @@ namespace SlimeScience.Root
         [SerializeField] private BlocksConfig _blocksConfig;
 
         [SerializeField] private SoundsConfig _soundsConfig;
-        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioSource _backGroundAudioSource;
+        [SerializeField] private AudioSource _sfxAudioSource;
 
         private TrapSpawner _trapSpawner;
         private SlimeSpawner _slimeSpawner;
@@ -92,7 +94,7 @@ namespace SlimeScience.Root
         private void Awake()
         {
             _uiRoot.ShowLoading();
-            SoundsManager.Initialize(_soundsConfig, _audioSource);
+            SoundsManager.Initialize(_soundsConfig, _backGroundAudioSource, _sfxAudioSource);
         }
 
         private void Start()

@@ -124,6 +124,7 @@ namespace SlimeScience.Root
             _sfxAudioChanger.Init();
             _bgAudioChanger.Init();
             _progressRenderer.Init(gameVariables);
+            _blocksPopupsManager.Init(player);
 
             // _ship.Init();
             // _callShip.Init(_ship, _advertisment, player);

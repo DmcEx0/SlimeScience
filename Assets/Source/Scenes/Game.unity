@@ -13770,6 +13770,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u0412\u0441\u0430\u0441\u044B\u0432\u0430\u043D\u0438\u0435"
       objectReference: {fileID: 0}
+    - target: {fileID: 4753468690012033007, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_margin.x
+      value: 23.764252
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753468690012033007, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_margin.z
+      value: 19.239975
+      objectReference: {fileID: 0}
     - target: {fileID: 4762528372884390240, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -13781,6 +13789,14 @@ PrefabInstance:
     - target: {fileID: 5838218113446656965, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_SizeDelta.y
       value: 875
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008958798489565400, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_margin.x
+      value: 23.764862
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008958798489565400, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
+      propertyPath: m_margin.z
+      value: 17.110413
       objectReference: {fileID: 0}
     - target: {fileID: 6306663466618970241, guid: 3d7f6effb5eab47439777f006c846ae4, type: 3}
       propertyPath: m_IsActive

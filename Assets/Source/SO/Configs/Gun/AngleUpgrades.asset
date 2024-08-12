@@ -15,15 +15,15 @@ MonoBehaviour:
   _values:
   - _cost: 0
     _value: 35
-  - _cost: 3
+  - _cost: 4
     _value: 45
-  - _cost: 8
+  - _cost: 9
     _value: 55
-  - _cost: 12
+  - _cost: 13
     _value: 65
-  - _cost: 14
+  - _cost: 19
     _value: 75
-  - _cost: 18
+  - _cost: 24
     _value: 80
-  - _cost: 28
+  - _cost: 30
     _value: 90

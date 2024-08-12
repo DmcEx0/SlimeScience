@@ -15,23 +15,23 @@ MonoBehaviour:
   _values:
   - _cost: 0
     _value: 1
-  - _cost: 2
+  - _cost: 4
     _value: 2
-  - _cost: 5
+  - _cost: 8
     _value: 3
-  - _cost: 7
+  - _cost: 11
     _value: 4
-  - _cost: 10
+  - _cost: 14
     _value: 5
-  - _cost: 13
-    _value: 6
-  - _cost: 15
-    _value: 7
   - _cost: 18
-    _value: 8
+    _value: 6
   - _cost: 23
+    _value: 7
+  - _cost: 27
+    _value: 8
+  - _cost: 34
     _value: 9
-  - _cost: 28
+  - _cost: 40
     _value: 10
-  - _cost: 30
+  - _cost: 50
     _value: 15

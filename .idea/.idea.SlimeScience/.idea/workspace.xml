@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55c8682e-9460-4605-89d8-b09e169f6c0d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Material/PullZoneShader.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Material/PullZoneShader.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scenes/Tutorial.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scenes/Tutorial.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Upgrades/PlayerViewport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Upgrades/PlayerViewport.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Saves/ProgressModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Saves/ProgressModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,6 +159,7 @@
       <workItem from="1723364418450" duration="4399000" />
       <workItem from="1723448480294" duration="620000" />
       <workItem from="1723457076595" duration="1403000" />
+      <workItem from="1723470714026" duration="750000" />
     </task>
     <servers />
   </component>
@@ -177,5 +175,24 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Source/Scripts/Upgrades/UpgradeViewport.cs</url>
+          <line>43</line>
+          <properties documentPath="D:\Programms\Unity\Repository\SlimeScience\Assets\Source\Scripts\Upgrades\UpgradeViewport.cs" containingFunctionPresentation="Method 'MakeUpgradeAccessible'">
+            <startOffsets>
+              <option value="1194" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1242" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

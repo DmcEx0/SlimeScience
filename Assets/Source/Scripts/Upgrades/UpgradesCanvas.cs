@@ -99,6 +99,7 @@ namespace SlimeScience.Upgrades
         private void UpdateUI()
         {
             _playerUpgrades.UpdateUI();
+            _shipUpgrades.UpdateUI();
         }
 
         public void Show()

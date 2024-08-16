@@ -124,7 +124,11 @@ namespace SlimeScience.Root
             _sfxAudioChanger.Init();
             _bgAudioChanger.Init();
             _progressRenderer.Init(gameVariables);
-            _blocksPopupsManager.Init(player);
+
+            if (_blocksPopupsManager != null)
+            {
+                _blocksPopupsManager.Init(player);
+            }
 
             // _ship.Init();
             // _callShip.Init(_ship, _advertisment, player);
@@ -181,7 +185,7 @@ namespace SlimeScience.Root
         {
             _advertisment.Show();
         }
-        
+
         private void OnShowReward()
         {
             _advertisment.ShowReward();

@@ -32,7 +32,6 @@ namespace SlimeScience.Root
         [SerializeField] private ReleaseZone _releaseZone;
         [SerializeField] private GeneralPlayerFactory _playerFactory;
         [SerializeField] private GeneralSlimeFactory _slimeFactory;
-        [SerializeField] private GeneralVacuumingSupportFactory _vacuumingSupportFactory;
         [SerializeField] private GeneralBombFactory _bombFactory;
         [SerializeField] private GeneralTrapFactory _trapFactory;
         [SerializeField] private List<Block> _blocks;
@@ -65,7 +64,6 @@ namespace SlimeScience.Root
             if (_gameVariables != null)
             {
                 _intervalSave = StartCoroutine(IntervalSave());
-                _gameVariables.AssistantUpgraded += OnAssistantUpgraded;
             }
 
             _releaseZone.PlayerReleased += OnReleased;
@@ -81,11 +79,6 @@ namespace SlimeScience.Root
             if (_intervalSave != null)
             {
                 StopCoroutine(_intervalSave);
-            }
-
-            if (_gameVariables != null)
-            {
-                _gameVariables.AssistantUpgraded -= OnAssistantUpgraded;
             }
 
             _releaseZone.PlayerReleased -= OnReleased;
@@ -145,14 +138,6 @@ namespace SlimeScience.Root
 
             _intervalSave = StartCoroutine(IntervalSave());
 
-            for (int i = 0; i < _gameVariables.AbsorptionAssistantCount; i++)
-            {
-                var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero, _releaseZone.transform);
-                vacuumingSupport.InitGun(_gameVariables);
-                vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
-            }
-
-            _gameVariables.AssistantUpgraded += OnAssistantUpgraded;
             _ship.Init(_gameVariables);
             _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause, player);
 
@@ -233,13 +218,6 @@ namespace SlimeScience.Root
         private void OnReleased()
         {
             _uiRoot.ShowInterstitial();
-        }
-
-        private void OnAssistantUpgraded(float count)
-        {
-            var vacuumingSupport = _vacuumingSupportFactory.Get(Vector3.zero, _releaseZone.transform);
-            vacuumingSupport.InitGun(_gameVariables);
-            vacuumingSupport.SetUnloadPosition(_releaseZone.transform.position);
         }
     }
 }

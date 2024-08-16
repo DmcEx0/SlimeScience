@@ -32,6 +32,7 @@ namespace SlimeScience.Audio
         public void Init()
         {
             _isOn = PlayerPrefs.GetInt(GetSoundKey(_type)) == TurnOn;
+            _isOn = true;
             _image.sprite = _isOn ? _turnOn : _turnOff;
 
             Debug.Log(_isOn + " + " + _type);

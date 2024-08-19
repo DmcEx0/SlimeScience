@@ -33,7 +33,7 @@ namespace SlimeScience.Spawners
         {
             int collectedSlimes = _gameVariables.CollectedSlimes;
             int slimeAmount = blockData.SlimeAmount;
-            int slimesToSpawn = 0;
+            int slimesToSpawn = slimeAmount - collectedSlimes;
 
             if (blockData.SlimesType == SlimeType.Big)
             {

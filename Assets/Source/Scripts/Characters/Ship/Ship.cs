@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SlimeScience.Configs;
 using SlimeScience.InventorySystem;
 using SlimeScience.Saves;
+using SlimeScience.Util;
 using UnityEngine;
 
 namespace SlimeScience.Characters.Ship
@@ -61,6 +62,8 @@ namespace SlimeScience.Characters.Ship
 
                         _inventory.Add(_player.PullGun.ReleaseSingleSlime());
                     }
+                    
+                    SoundsManager.PlayUnloadSlime();
                 }
 
                 _buttonsManager.ShowUsedButton();

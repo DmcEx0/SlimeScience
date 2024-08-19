@@ -570,18 +570,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7695801088110337055, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_text
-      value: "\u0412\u044B\u0433\u0440\u0443\u0437\u0438 \u043F\u043E\u0439\u043C\u0430\u043D\u043D\u044B\u0445
-        \u0441\u043B\u0430\u0439\u043C\u043E\u0432 \u0432 \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u044C\u043D\u043E\u0439
-        \u043E\u0431\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u043D\u043E\u0439
-        \u0437\u043E\u043D\u0435"
+      value: "\u0412\u044B\u043F\u0443\u0441\u0442\u0438\u0442\u0435 \u043F\u043E\u0439\u043C\u0430\u043D\u043D\u044B\u0445
+        \u0441\u043B\u0438\u0437\u043D\u0435\u0439 \u0432 \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u044C\u043D\u043E
+        \u043E\u0442\u0432\u0435\u0434\u0435\u043D\u043D\u043E\u043C \u043C\u0435\u0441\u0442\u0435"
       objectReference: {fileID: 0}
     - target: {fileID: 7695801088110337055, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 32.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695801088110337055, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
+      propertyPath: m_margin.w
+      value: -1.9031525
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695801088110337055, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
+      propertyPath: m_margin.y
+      value: -9.506699
       objectReference: {fileID: 0}
     - target: {fileID: 7695801088110337055, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
       propertyPath: m_fontSizeMin
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695801088110337055, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 44.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695801088110337055, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695801088110337055, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2618697372439298236, guid: 49c764dfcb99c424ca1e207b02f1cb33, type: 3}

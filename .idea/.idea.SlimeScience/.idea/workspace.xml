@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="55c8682e-9460-4605-89d8-b09e169f6c0d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeScience/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Root/UIRoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Root/UIRoot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Ship/Ship.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Characters/Ship/Ship.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +161,7 @@
       <workItem from="1723448480294" duration="620000" />
       <workItem from="1723457076595" duration="1403000" />
       <workItem from="1723470714026" duration="750000" />
-      <workItem from="1723820566230" duration="802000" />
+      <workItem from="1723820566230" duration="2553000" />
     </task>
     <servers />
   </component>

@@ -119,7 +119,7 @@ namespace SlimeScience.Root
             _slimeSpawner = new SlimeSpawner(_slimeFactory, _gameVariables);
             _bombSpawner = new BombSpawner(_bombFactory, transform, GetAllBombsCount());
             _trapSpawner = new TrapSpawner(_trapFactory);
-            
+
             _wallet = new Wallet(_gameVariables);
 
             var player = _playerFactory.Get();
@@ -130,16 +130,16 @@ namespace SlimeScience.Root
 
             _slimeSpawner.Init(player.transform, transform);
 
+            _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
+            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause, player);
+
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
             _releaseZone.LastBlockClosed += OnLastBlockClosed;
             _releaseZone.Init(_wallet, _gameVariables, _blocksConfig);
 
-            _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
-
             _intervalSave = StartCoroutine(IntervalSave());
 
             _ship.Init(_gameVariables);
-            _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause, player);
 
             _uiRoot.HideLoading();
 #if UNITY_EDITOR == false

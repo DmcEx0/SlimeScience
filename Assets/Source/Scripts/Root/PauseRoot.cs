@@ -10,7 +10,6 @@ namespace SlimeScience.Root
         private const float UnpauseTimeScale = 1;
 
         private PauseHandler[] _pauseSources;
-        private PauseHandler _systemPause;
 
         private void OnEnable()
         {
@@ -37,7 +36,6 @@ namespace SlimeScience.Root
         public void Init(PauseHandler[] pauses)
         {
             _pauseSources = pauses;
-            _systemPause = new PauseHandler();
 
             foreach (var pause in _pauseSources)
             {

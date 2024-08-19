@@ -9,6 +9,9 @@ namespace SlimeScience.Spawners
 {
     public class SlimeSpawner
     {
+        private const int BigModifier = 3;
+        private const int TeleportModifier = 2;
+
         private readonly GeneralSlimeFactory _slimeFactory;
 
         private Transform _playerTransform;
@@ -28,7 +31,20 @@ namespace SlimeScience.Spawners
 
         public void Spawn(BlockData blockData, Block block)
         {
-            int slimesToSpawn = blockData.SlimeAmount - _gameVariables.CollectedSlimes;
+            int collectedSlimes = _gameVariables.CollectedSlimes;
+            int slimeAmount = blockData.SlimeAmount;
+            int slimesToSpawn = 0;
+
+            if (blockData.SlimesType == SlimeType.Big)
+            {
+                slimesToSpawn = slimeAmount * BigModifier - collectedSlimes;
+                slimesToSpawn /= BigModifier;
+            }
+            else if (blockData.SlimesType == SlimeType.Teleport)
+            {
+                slimesToSpawn = slimeAmount * TeleportModifier - collectedSlimes;
+                slimesToSpawn /= TeleportModifier;
+            }
 
             for (int i = 0; i < slimesToSpawn; i++)
             {

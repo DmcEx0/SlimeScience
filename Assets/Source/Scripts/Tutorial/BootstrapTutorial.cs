@@ -114,13 +114,20 @@ namespace SlimeScience.Tutorial
 
             _slimeSpawner.Init(player.transform, transform);
 
+            _uIRoot.Init(_wallet, _gameVariables, null, _adPause, player);
+            _uIRoot.LoaderHidden += OnLoaderHidden;
+
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
             _releaseZone.Init(_wallet, _gameVariables, _blocksConfig);
 
             _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
 
-            _uIRoot.Init(_wallet, _gameVariables, null, _adPause, player);
             _uIRoot.HideLoading();
+        }
+
+        private void OnLoaderHidden()
+        {
+            _uIRoot.LoaderHidden -= OnLoaderHidden;
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();
 #endif

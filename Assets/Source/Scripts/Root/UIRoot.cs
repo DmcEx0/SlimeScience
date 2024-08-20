@@ -1,3 +1,4 @@
+using System;
 using SlimeScience.Ad;
 using SlimeScience.Audio;
 using SlimeScience.Blocks;
@@ -41,6 +42,8 @@ namespace SlimeScience.Root
 
         public OpenBlocksPopupsManager BlocksPopupsManager => _blocksPopupsManager;
 
+        public event Action LoaderHidden;
+
         private void OnEnable()
         {
             if (_openUpgradesCanvas != null)
@@ -71,6 +74,11 @@ namespace SlimeScience.Root
             if (_resetSave != null)
             {
                 _resetSave.onClick.AddListener(OnResetSaves);
+            }
+
+            if (_loader != null)
+            {
+                _loader.Hidden += OnHidden;
             }
         }
 
@@ -104,6 +112,11 @@ namespace SlimeScience.Root
             if (_resetSave != null)
             {
                 _resetSave.onClick.RemoveListener(OnResetSaves);
+            }
+
+            if (_loader != null)
+            {
+                _loader.Hidden -= OnHidden;
             }
         }
 
@@ -194,6 +207,11 @@ namespace SlimeScience.Root
         private void OnResetSaves()
         {
             _gameVariables.ResetSave();
+        }
+
+        private void OnHidden()
+        {
+            LoaderHidden?.Invoke();
         }
     }
 }

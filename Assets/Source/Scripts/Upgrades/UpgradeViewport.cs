@@ -33,6 +33,7 @@ namespace SlimeScience.Upgrades
                 Wallet.Spend(cost);
                 upgradeButton.Upgrade();
                 upgradeCallback?.Invoke(upgradeButton.Value);
+                Variables.Save();
             }
 
             UpdateUI();

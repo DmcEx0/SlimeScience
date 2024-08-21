@@ -49,6 +49,11 @@ namespace SlimeScience.Characters.Ship
 
                 if (_inventory.IsFull == false)
                 {
+                    if(_player.PullGun.SlimesAmount >0)
+                    {
+                        SoundsManager.PlayUnloadSlime();
+                    }
+                    
                     int neededAmount = _inventory.AvailableSpace / _player.PullGun.GetSlimeWeightInInventory();
                     neededAmount *= _player.PullGun.GetSlimeWeightInInventory();
 
@@ -59,11 +64,9 @@ namespace SlimeScience.Characters.Ship
                             _player.PullGun.RenderInventory();
                             break;
                         }
-
+                        
                         _inventory.Add(_player.PullGun.ReleaseSingleSlime());
                     }
-                    
-                    SoundsManager.PlayUnloadSlime();
                 }
 
                 _buttonsManager.ShowUsedButton();

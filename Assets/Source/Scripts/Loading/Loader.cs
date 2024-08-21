@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,8 @@ namespace SlimeScience.Loading
         private Tweener _disableTweener;
         private Vector3 _rotation = new Vector3(0, 0, -360);
         private Vector3 _originalScale;
+
+        public event Action Hidden;
 
         private void Awake()
         {
@@ -68,7 +71,10 @@ namespace SlimeScience.Loading
                 _disableTweener = transform
                     .DOScale(Vector3.zero, ScaleTime)
                     .SetEase(Ease.InBack)
-                    .OnComplete(() => gameObject.SetActive(false));
+                    .OnComplete(() => {
+                        gameObject.SetActive(false);
+                        Hidden?.Invoke();
+                    });
             }
         }
     }

@@ -132,6 +132,7 @@ namespace SlimeScience.Root
 
             _pauseRoot.Init(new PauseHandler[] { _adPause, _systemPause });
             _uiRoot.Init(_wallet, _gameVariables, _advertisment, _adPause, player);
+            _uiRoot.LoaderHidden += OnLoaderHidden;
 
             _releaseZone.OpenedNextBlock += OnNextBlockOpened;
             _releaseZone.LastBlockClosed += OnLastBlockClosed;
@@ -142,6 +143,11 @@ namespace SlimeScience.Root
             _ship.Init(_gameVariables);
 
             _uiRoot.HideLoading();
+        }
+
+        private void OnLoaderHidden()
+        {
+            _uiRoot.LoaderHidden -= OnLoaderHidden;
 #if UNITY_EDITOR == false
             Agava.YandexGames.YandexGamesSdk.GameReady();
 #endif
@@ -167,6 +173,7 @@ namespace SlimeScience.Root
             _slimeSpawner.Spawn(blockData, currentBlock);
             _bombSpawner.Spawn(blockData, currentBlock);
             _trapSpawner.Spawn(blockData, currentBlock);
+            _gameVariables.Save();
         }
 
         private void OnBackgroundChange(bool isInBackground)

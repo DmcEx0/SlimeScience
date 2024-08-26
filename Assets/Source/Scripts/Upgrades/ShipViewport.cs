@@ -1,7 +1,6 @@
 using SlimeScience.Money;
 using SlimeScience.Saves;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace SlimeScience.Upgrades
 {

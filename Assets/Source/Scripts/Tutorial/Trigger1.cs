@@ -7,9 +7,10 @@ namespace SlimeScience.Tutorial
     public class Trigger1 : MonoBehaviour
     {
         [SerializeField] private TutorialManger _tutorial;
+
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent(out Player player))
+            if (other.TryGetComponent(out Player player))
             {
                 _tutorial.ShowPopupForTrigger1();
             }

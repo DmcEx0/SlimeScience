@@ -1,5 +1,5 @@
-using SlimeScience.Traps;
 using System;
+using SlimeScience.Traps;
 using UnityEngine;
 
 namespace SlimeScience.Configs

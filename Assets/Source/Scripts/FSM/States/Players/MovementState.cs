@@ -7,9 +7,8 @@ namespace SlimeScience.FSM.States.Players
     public class MovementState : IState
     {
         private readonly Player _player;
-        
-        private Action<StatesType> _changeState;
 
+        private Action<StatesType> _changeState;
 
         public MovementState(Action<StatesType> changeState, Player player)
         {
@@ -23,7 +22,6 @@ namespace SlimeScience.FSM.States.Players
 
         public void Exit()
         {
-            // _player.Movement.Disable();
         }
 
         public void Update()

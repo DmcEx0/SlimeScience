@@ -9,9 +9,9 @@ namespace SlimeScience.Blocks
     {
         private const float OpenDuration = 0.35f;
         private const float CloseDuration = 0.35f;
-        
+
         [SerializeField] private Button _close;
-        
+
         private Tweener _openTweener;
         private Tweener _closeTweener;
 
@@ -29,13 +29,13 @@ namespace SlimeScience.Blocks
 
         public void Show(Action onClosed = null)
         {
-            if(onClosed != null)
+            if (onClosed != null)
             {
                 _closed = onClosed;
             }
-            
+
             gameObject.SetActive(true);
-            
+
             _openTweener?.Kill();
             _openTweener = transform
                 .DOScale(Vector3.one, OpenDuration)

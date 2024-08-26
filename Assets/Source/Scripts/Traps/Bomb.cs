@@ -1,5 +1,5 @@
-using SlimeScience.Equipment.Guns;
 using System.Collections;
+using SlimeScience.Equipment.Guns;
 using UnityEngine;
 
 namespace SlimeScience.Traps
@@ -15,7 +15,6 @@ namespace SlimeScience.Traps
 
         public Vector3 Position => transform.position;
 
-
         public void Explode()
         {
             gameObject.SetActive(false);
@@ -26,7 +25,7 @@ namespace SlimeScience.Traps
             _rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
 
             _rigidbody.AddForce(force);
-            
+
             if (_resetVelocityCoroutine != null)
             {
                 StopCoroutine(_resetVelocityCoroutine);

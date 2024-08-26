@@ -22,20 +22,21 @@ namespace SlimeScience.InventorySystem
         public event Action Filled;
 
         public event Action Changed;
-        
+
         public event Action Released;
-        
+
         public event Action Expanded;
 
         public int MaxItems { get; private set; }
 
         public int Amount => _items.Count;
-        
+
         public bool IsFull => _items.Count >= MaxItems;
-        
+
         public int AvailableSpace => MaxItems - Amount;
-        public T GetTypeInInventory => _items.Count !=0 ? _items[0] : null;
-        
+
+        public T GetTypeInInventory => _items.Count != 0 ? _items[0] : null;
+
         public void Add(T item)
         {
             if (_items.Count >= MaxItems)
@@ -92,7 +93,7 @@ namespace SlimeScience.InventorySystem
                 Filled?.Invoke();
             }
         }
-        
+
         public T GetItem(int index)
         {
             if (index < 0 || index >= _items.Count)
@@ -101,7 +102,7 @@ namespace SlimeScience.InventorySystem
             }
 
             var item = _items[index];
-            
+
             _items.RemoveAt(index);
             Changed?.Invoke();
 

@@ -21,18 +21,20 @@ namespace SlimeScience.Input
         public Vector3 GetNewDirection()
         {
             if (_isEnabled == false)
+            {
                 return Vector3.zero;
-            
+            }
+
             var targetDir = _targetDetector.GetDirectionFromToTarget(false);
-            
+
             return targetDir;
         }
 
         public void OnEnable()
         {
             _isEnabled = true;
-            
-            if(_slimeObserver.TryGetNewSlime(out Collider newSlime))
+
+            if (_slimeObserver.TryGetNewSlime(out Collider newSlime))
             {
                 _targetDetector.SetTargetTransform(newSlime.transform);
             }

@@ -71,7 +71,8 @@ namespace SlimeScience.Loading
                 _disableTweener = transform
                     .DOScale(Vector3.zero, ScaleTime)
                     .SetEase(Ease.InBack)
-                    .OnComplete(() => {
+                    .OnComplete(() =>
+                    {
                         gameObject.SetActive(false);
                         Hidden?.Invoke();
                     });

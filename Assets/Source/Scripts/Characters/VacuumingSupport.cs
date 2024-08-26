@@ -11,16 +11,18 @@ namespace SlimeScience
     {
         [SerializeField] private PullGun _pullGun;
         [SerializeField] private Rigidbody _rigidbody;
-        
+
         private Coroutine _resetVelocityCoroutine;
         private int _inventoryCapacity;
         private Vector3 _unloadPosition;
 
         public Vector3 UnloadPosition => _unloadPosition;
+
         public PullGun PullGun => _pullGun;
-        
+
         public float DetectedSpeed { get; private set; }
-        public float BaseSpeed{ get; private set; }
+
+        public float BaseSpeed { get; private set; }
 
         private void OnDisable()
         {
@@ -34,7 +36,7 @@ namespace SlimeScience
         {
             UpdateStateMachine();
         }
-        
+
         public List<Slime> ReleaseSlimes()
         {
             return _pullGun.ReleaseInventory();
@@ -53,7 +55,9 @@ namespace SlimeScience
         protected override void Init(MobileObjectConfig config)
         {
             if (config is not VacuumingSupportConfig)
+            {
                 return;
+            }
 
             SetRigidbodySetting(_rigidbody);
 

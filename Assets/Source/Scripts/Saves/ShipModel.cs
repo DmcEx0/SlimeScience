@@ -2,8 +2,8 @@ namespace SlimeScience.Saves
 {
     public class ShipModel
     {
-        const float DefaultCapacity = 10;
-        const float DefaultSpeed = 10;
+        private const float DefaultCapacity = 10;
+        private const float DefaultSpeed = 10;
 
         public ShipModel()
         {

@@ -1,7 +1,7 @@
-using SlimeScience.Saves;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SlimeScience.Saves;
 using UnityEngine;
 
 namespace SlimeScience.Effects
@@ -17,16 +17,15 @@ namespace SlimeScience.Effects
         private MonoBehaviour _owner;
         private Coroutine _coroutine;
 
-        public event Action EffectApplied;
-        public event Action EffectEnded;
-
-        public EffectSystem(
-            MonoBehaviour owner, 
-            GameVariables gameVariables)
+        public EffectSystem(MonoBehaviour owner, GameVariables gameVariables)
         {
             _owner = owner;
             _gameVariables = gameVariables;
         }
+
+        public event Action EffectApplied;
+
+        public event Action EffectEnded;
 
         public bool DebuffActive => _debuffs.Count > 0;
 

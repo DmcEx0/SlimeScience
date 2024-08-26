@@ -1,9 +1,9 @@
 namespace SlimeScience.Effects
 {
-    public enum EffectModifiers 
+    public enum EffectModifiers
     {
         Force,
         Radius,
-        Angle
+        Angle,
     }
 }

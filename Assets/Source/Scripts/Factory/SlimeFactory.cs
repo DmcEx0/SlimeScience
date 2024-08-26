@@ -1,15 +1,15 @@
-using SlimeScience.Characters;
 using System;
 using System.Collections.Generic;
+using SlimeScience.Characters;
 using SlimeScience.Configs;
-using SlimeScience.Input;
-using UnityEngine;
+using SlimeScience.Configs.Slimes;
 using SlimeScience.FSM;
 using SlimeScience.FSM.States;
 using SlimeScience.FSM.States.Slimes;
+using SlimeScience.Input;
 using SlimeScience.Pool;
 using SlimeScience.Util;
-using SlimeScience.Configs.Slimes;
+using UnityEngine;
 
 namespace SlimeScience.Factory
 {
@@ -68,6 +68,7 @@ namespace SlimeScience.Factory
         }
 
         protected abstract SlimeConfig GetConfig();
+
         protected abstract SlimeTypeValues GetTypeConfig(SlimeType type);
 
         private StateMachine CreateStateMachine(SlimeType type, Slime instance, IDetectable detector)
@@ -80,7 +81,7 @@ namespace SlimeScience.Factory
             {
                 states = new Dictionary<StatesType, IState>()
                 {
-                    [StatesType.SlimeIdle] = new SlimeIdleState(changeStateAction, instance, detector)
+                    [StatesType.SlimeIdle] = new SlimeIdleState(changeStateAction, instance, detector),
                 };
 
                 stateMachine.SetStates(StatesType.SlimeIdle, states);
@@ -92,7 +93,7 @@ namespace SlimeScience.Factory
             {
                 [StatesType.Patrol] = new PatrolState(changeStateAction, instance, detector),
                 [StatesType.Fear] = new FearState(changeStateAction, instance, detector),
-                [StatesType.SlimeIdle] = new SlimeIdleState(changeStateAction, instance, detector)
+                [StatesType.SlimeIdle] = new SlimeIdleState(changeStateAction, instance, detector),
             };
 
             stateMachine.SetStates(StatesType.Patrol, states);

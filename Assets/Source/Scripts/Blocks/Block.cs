@@ -9,6 +9,7 @@ namespace SlimeScience.Blocks
         [SerializeField] private Transform _trapsParent;
 
         public Transform Centre => _centre;
+
         public Transform TrapsParent => _trapsParent;
 
         public bool IsOpened { get; private set; }

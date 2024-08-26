@@ -4,7 +4,7 @@ using UnityEngine;
 namespace SlimeScience.Util
 {
     public class Shuffler
-    {      
+    {
         public static void Shuffle<T>(ref List<T> collection)
         {
             for (int i = collection.Count - 1; i >= 1; i--)

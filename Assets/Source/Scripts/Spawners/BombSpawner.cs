@@ -1,8 +1,6 @@
 using SlimeScience.Blocks;
 using SlimeScience.Configs;
 using SlimeScience.Factory;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SlimeScience

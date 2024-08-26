@@ -1,7 +1,7 @@
-using Agava.YandexGames;
-using SlimeScience.Effects;
 using System;
 using System.Collections;
+using Agava.YandexGames;
+using SlimeScience.Effects;
 using UnityEngine;
 
 namespace SlimeScience.Saves
@@ -15,6 +15,26 @@ namespace SlimeScience.Saves
         private ShipModel _shipModel = new ShipModel();
 
         private EffectsModel _effectsModel = new EffectsModel();
+
+        public event Action Loaded;
+
+        public event Action<float> RadiusUpgraded;
+
+        public event Action<float> AngleUpgraded;
+
+        public event Action<float> CapacityUpgraded;
+
+        public event Action<float> AssistantUpgraded;
+
+        public event Action<int> IncreasedRoomIndex;
+
+        public event Action<int> SlimeCollected;
+
+        public event Action SlimeCollectedReset;
+
+        public event Action<int> SlimeGoalChanged;
+
+        public event Action<float> UpgradedShipCapacity;
 
         public float AbsorptionForce => _absorptionModel.Force * _effectsModel.ForceModifier;
 
@@ -39,26 +59,6 @@ namespace SlimeScience.Saves
         public float ShipSpeed => _shipModel.Speed;
 
         public bool TutorialPassed => _progressModel.TutorialPassed;
-
-        public event Action Loaded;
-
-        public event Action<float> RadiusUpgraded;
-
-        public event Action<float> AngleUpgraded;
-
-        public event Action<float> CapacityUpgraded;
-
-        public event Action<float> AssistantUpgraded;
-
-        public event Action<int> IncreasedRoomIndex;
-
-        public event Action<int> SlimeCollected;
-
-        public event Action SlimeCollectedReset;
-
-        public event Action<int> SlimeGoalChanged;
-
-        public event Action<float> UpgradedShipCapacity;
 
         public void Load(MonoBehaviour obj)
         {
@@ -134,7 +134,7 @@ namespace SlimeScience.Saves
 
             Save();
         }
-        
+
         public void ResetSaveOnFinishGame()
         {
             _progressModel.ResetSave();

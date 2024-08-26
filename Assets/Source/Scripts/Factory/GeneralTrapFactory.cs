@@ -20,10 +20,10 @@ namespace SlimeScience.Factory
                 _currentIndex = 0;
                 _currentConfigs.Clear();
                 _currentConfigs.AddRange(_configs);
-                
+
                 Shuffler.Shuffle(ref _currentConfigs);
             }
-            
+
             return _currentConfigs[_currentIndex++];
         }
     }

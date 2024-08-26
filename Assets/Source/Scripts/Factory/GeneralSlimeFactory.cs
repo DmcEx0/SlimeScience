@@ -22,7 +22,7 @@ namespace SlimeScience.Factory
         {
             foreach (var slimeType in _slimeTypesConfig.SlimeTypeValues)
             {
-                if(slimeType.Type == type)
+                if (slimeType.Type == type)
                 {
                     return slimeType;
                 }

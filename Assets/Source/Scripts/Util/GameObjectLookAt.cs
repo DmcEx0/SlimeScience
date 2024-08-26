@@ -5,6 +5,7 @@ namespace SlimeScience.Util
     public class GameObjectLookAt : MonoBehaviour
     {
         private Camera _camera;
+
         private void Start()
         {
             _camera = Camera.main;

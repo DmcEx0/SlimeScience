@@ -13,8 +13,11 @@ namespace SlimeScience
         [SerializeField] private int _inventoryCapacity;
 
         public VacuumingSupport Prefab => _prefab;
+
         public float DistanceFofIncreaseSpeed => _distanceFofIncreaseSpeed;
+
         public float DetectedSpeed => _detectedSpeed;
+
         public int InventoryCapacity => _inventoryCapacity;
     }
 }

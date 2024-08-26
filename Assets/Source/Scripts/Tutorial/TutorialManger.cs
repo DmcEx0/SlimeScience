@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using SlimeScience.Blocks;
 using SlimeScience.Characters;
@@ -15,7 +14,7 @@ namespace SlimeScience.Tutorial
     {
         private const string GameSceneName = "Game";
         [SerializeField] private ReleaseZone _releaseZone;
-        
+
         [SerializeField] private Image _fade;
         [SerializeField] private TutorialImage _welcomePopup;
         [SerializeField] private TutorialImage _trigger1Popup;
@@ -26,11 +25,12 @@ namespace SlimeScience.Tutorial
 
         [SerializeField] private Loader _loader;
 
-        [Space, Header("Triggers")]
+        [Space]
+        [Header("Triggers")]
         [SerializeField] private Collider _trigger1;
 
         private Tweener _fadeTweener;
-        
+
         private GameVariables _gameVariables;
         private Player _player;
         private int _currentSlimesAmount;
@@ -38,7 +38,7 @@ namespace SlimeScience.Tutorial
         private void Start()
         {
             _releaseZone.Collider.enabled = false;
-            
+
             _welcomePopup.PopupClosed += CloseFadeScreen;
             _trigger1Popup.PopupClosed += CloseFadeScreen;
             _releaseSlimesPopup.PopupClosed += CloseFadeScreen;
@@ -63,7 +63,7 @@ namespace SlimeScience.Tutorial
             _player = player;
             _player.PullGun.Catched += ShowReleasePopup;
             _releaseZone.PlayerReleased += ShowUpgradePopup;
-            
+
             OpenFadeScreen();
             _welcomePopup.Show();
         }
@@ -74,6 +74,7 @@ namespace SlimeScience.Tutorial
             _trigger1Popup.Show();
             _trigger1.enabled = false;
         }
+
         public void ShowPopupForTrigger2()
         {
             OpenFadeScreen();
@@ -86,18 +87,18 @@ namespace SlimeScience.Tutorial
             _gameVariables.Save();
             SceneManager.LoadSceneAsync(GameSceneName);
         }
-        
+
         private void ShowReleasePopup()
         {
             _currentSlimesAmount++;
-            
-            if(_currentSlimesAmount == (int)_gameVariables.AbsorptionCapacity)
+
+            if (_currentSlimesAmount == (int)_gameVariables.AbsorptionCapacity)
             {
                 OpenFadeScreen();
                 _releaseSlimesPopup.Show();
-                
+
                 _releaseZone.Collider.enabled = true;
-                
+
                 _player.PullGun.Catched -= ShowReleasePopup;
             }
         }
@@ -106,7 +107,7 @@ namespace SlimeScience.Tutorial
         {
             OpenFadeScreen();
             _upgradePopup.Show();
-            
+
             _releaseZone.PlayerReleased -= ShowUpgradePopup;
             _releaseZone.OpenedNextBlock += ShowOpenNextBlockPopup;
         }
@@ -115,20 +116,13 @@ namespace SlimeScience.Tutorial
         {
             OpenFadeScreen();
             _nextBlockOpen.Show();
-            
+
             _releaseZone.OpenedNextBlock -= ShowOpenNextBlockPopup;
         }
 
         private void CloseFadeScreen()
         {
             SetPlayerMovementState(true);
-            // _fadeTweener?.Kill();
-            // _fade.material.DOFade(0f, 0.3f).SetEase(Ease.Linear)
-            //     .OnComplete(() =>
-            //     {
-            //         _fade.gameObject.SetActive(false);
-            //     });
-            
             _fade.gameObject.SetActive(false);
         }
 
@@ -136,22 +130,19 @@ namespace SlimeScience.Tutorial
         {
             SetPlayerMovementState(false);
             _fade.gameObject.SetActive(true);
-
-            // _fadeTweener?.Kill();
-            // _fade.material.DOFade(1f, 0.3f).SetEase(Ease.Linear);
         }
-        
+
         private void SetPlayerMovementState(bool state)
         {
-            if(state)
+            if (state)
             {
                 _player.Movement.Enable();
                 return;
             }
-            
+
             _player.Movement.Disable();
         }
-        
+
         private void OnFinishTutorPopupClosed()
         {
             _gameVariables.ResetSave();

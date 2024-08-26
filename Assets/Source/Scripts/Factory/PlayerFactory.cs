@@ -30,15 +30,15 @@ namespace SlimeScience.Factory
         {
             StateMachine stateMachine = new StateMachine();
             Action<StatesType> changeStateAction = stateMachine.ChangeState;
-            
+
             Dictionary<StatesType, IState> states = new Dictionary<StatesType, IState>()
             {
                 [StatesType.PlayerIdle] = new PlayerIdleState(changeStateAction, instance),
-                [StatesType.Movement] = new MovementState(changeStateAction, instance)
+                [StatesType.Movement] = new MovementState(changeStateAction, instance),
             };
 
-            stateMachine.SetStates(StatesType.PlayerIdle ,states);
-            
+            stateMachine.SetStates(StatesType.PlayerIdle, states);
+
             return stateMachine;
         }
     }

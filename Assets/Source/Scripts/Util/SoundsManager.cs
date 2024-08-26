@@ -26,7 +26,7 @@ namespace SlimeScience.Util
             _backgroundIsOn = PlayerPrefs.GetInt(BackgroundKey) == TurnOnBoolean;
             _sfxIsOn = PlayerPrefs.GetInt(SfxKey) == TurnOnBoolean;
         }
-        
+
         public static void TurnOn(SoundType type)
         {
             switch (type)
@@ -53,29 +53,6 @@ namespace SlimeScience.Util
             }
         }
 
-        private static void SwitchBg(bool isOn)
-        {
-            _backgroundIsOn = isOn;
-            
-            if(_backgroundIsOn == false)
-            {
-                PauseBG();
-                return;
-            }
-            
-            UnpauseBG();
-
-            if (s_backgroundAudioSource.isPlaying == false)
-            {
-                PlayBgMusic();
-            }
-        }
-
-        private static void SwitchSfx(bool isOn)
-        {
-            _sfxIsOn = isOn;
-        }
-
         public static void PlayTapUI() => PlaySound(s_config.TapUIClickSound);
 
         public static void PlaySlimeCatch() => PlaySound(s_config.SlimesCatchSound);
@@ -92,7 +69,7 @@ namespace SlimeScience.Util
 
         public static void PlayBgMusic()
         {
-            if (_backgroundIsOn == false) 
+            if (_backgroundIsOn == false)
             {
                 return;
             }
@@ -115,6 +92,29 @@ namespace SlimeScience.Util
             }
 
             s_backgroundAudioSource.UnPause();
+        }
+
+        private static void SwitchSfx(bool isOn)
+        {
+            _sfxIsOn = isOn;
+        }
+
+        private static void SwitchBg(bool isOn)
+        {
+            _backgroundIsOn = isOn;
+
+            if (_backgroundIsOn == false)
+            {
+                PauseBG();
+                return;
+            }
+
+            UnpauseBG();
+
+            if (s_backgroundAudioSource.isPlaying == false)
+            {
+                PlayBgMusic();
+            }
         }
 
         private static void PlaySound(AudioClip clip)

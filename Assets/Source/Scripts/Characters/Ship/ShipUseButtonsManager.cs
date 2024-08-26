@@ -13,8 +13,9 @@ namespace SlimeScience.Characters.Ship
         [SerializeField] private Button _unused;
 
         private Vector3 _defaultPos;
-        
+
         public event Action Used;
+
         public event Action Unused;
 
         private void Start()
@@ -33,7 +34,7 @@ namespace SlimeScience.Characters.Ship
         {
             ShowButton(_used);
         }
-        
+
         public void ShowUnusedButton()
         {
             ShowButton(_unused);
@@ -43,7 +44,7 @@ namespace SlimeScience.Characters.Ship
         {
             HideButton(_used);
         }
-        
+
         private void HideUnusedButton()
         {
             HideButton(_unused);

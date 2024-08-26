@@ -36,7 +36,8 @@ namespace SlimeScience.Upgrades
             _upgradeButton.onClick.RemoveListener(OnButtonClickedHandler);
         }
 
-        public void Init(float value) {
+        public void Init(float value)
+        {
             _currentIndex = _upgrade.GetLevel(value);
             _nextIndex = _currentIndex + 1;
         }

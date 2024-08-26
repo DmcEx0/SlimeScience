@@ -6,7 +6,7 @@ namespace SlimeScience.FSM
     public class StateMachine
     {
         private Dictionary<StatesType, IState> _states;
-        
+
         private IState _currentState;
         private StatesType _startState;
 
@@ -16,7 +16,7 @@ namespace SlimeScience.FSM
         {
             _states = states;
             _startState = startState;
-            
+
             _currentState = _states[_startState];
         }
 
@@ -34,11 +34,11 @@ namespace SlimeScience.FSM
 
         public void Update()
         {
-            if(_isStoped)
+            if (_isStoped)
             {
                 return;
             }
-            
+
             _currentState?.Update();
         }
 

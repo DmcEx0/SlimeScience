@@ -1,8 +1,6 @@
 using SlimeScience.Money;
 using SlimeScience.Saves;
-using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace SlimeScience.Upgrades
 {
@@ -12,7 +10,6 @@ namespace SlimeScience.Upgrades
         [SerializeField] private UpgradeButton _radius;
         [SerializeField] private UpgradeButton _angle;
         [SerializeField] private UpgradeButton _capacity;
-        // [SerializeField] private UpgradeButton _assistant;
 
         private void OnEnable()
         {
@@ -35,11 +32,6 @@ namespace SlimeScience.Upgrades
             {
                 _capacity.Clicked += OnCapacityUpgraded;
             }
-
-            // if (_assistant != null)
-            // {
-            //     _assistant.Clicked += OnAssistantUpgraded;
-            // }
         }
 
         private void OnDisable()
@@ -63,11 +55,6 @@ namespace SlimeScience.Upgrades
             {
                 _capacity.Clicked -= OnCapacityUpgraded;
             }
-
-            // if (_assistant != null)
-            // {
-            //     _assistant.Clicked -= OnAssistantUpgraded;
-            // }
         }
 
         public override void Init(Wallet wallet, GameVariables gameVariables)
@@ -78,7 +65,6 @@ namespace SlimeScience.Upgrades
             _radius.Init(Variables.AbsorptionRadius);
             _angle.Init(Variables.AbsorptionAngle);
             _capacity.Init(Variables.AbsorptionCapacity);
-            // _assistant.Init(Variables.AbsorptionAssistantCount);
 
             UpdateUI();
         }
@@ -89,13 +75,11 @@ namespace SlimeScience.Upgrades
             _radius.Render();
             _angle.Render();
             _capacity.Render();
-            // _assistant.Render();
 
             MakeUpgradeAccessible(_force, _force.Cost);
             MakeUpgradeAccessible(_radius, _radius.Cost);
             MakeUpgradeAccessible(_angle, _angle.Cost);
             MakeUpgradeAccessible(_capacity, _capacity.Cost);
-            // MakeUpgradeAccessible(_assistant, _assistant.Cost);
         }
 
         private void OnForceUpgraded(UpgradeButton upgradeButton, int cost)

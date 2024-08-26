@@ -10,14 +10,11 @@ namespace SlimeScience.Characters
         private Vector3 _velocity;
         private Vector3 _desiredVelocity;
 
-
         private IInputRouter _inputRouter;
 
         private bool _isEnabled;
 
         private float _defaultAcceleration;
-
-        public float AgentSpeed => _agent.velocity.magnitude;
 
         public Movement(NavMeshAgent agent, IInputRouter inputRouter)
         {
@@ -26,6 +23,8 @@ namespace SlimeScience.Characters
 
             _defaultAcceleration = _agent.acceleration;
         }
+
+        public float AgentSpeed => _agent.velocity.magnitude;
 
         public void Enable()
         {
@@ -69,7 +68,7 @@ namespace SlimeScience.Characters
         public void Move(bool isDirectional = true)
         {
             Vector3 newDirection = _inputRouter.GetNewDirection();
-            
+
             if (_agent.isOnNavMesh == false)
             {
                 return;

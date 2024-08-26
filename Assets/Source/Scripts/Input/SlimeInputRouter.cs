@@ -23,7 +23,9 @@ namespace SlimeScience.Input
         public Vector3 GetNewDirection()
         {
             if (_isEnabled == false)
+            {
                 return Vector3.zero;
+            }
 
             if (_detector.GetTargetIsNearStatus())
             {

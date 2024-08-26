@@ -11,7 +11,7 @@ namespace SlimeScience.FSM.States.Slimes
         private IDetectable _detector;
 
         private Action<StatesType> _changeState;
-        
+
         public FearState(Action<StatesType> changeState, Slime slime, IDetectable detector)
         {
             _changeState = changeState;
@@ -34,12 +34,12 @@ namespace SlimeScience.FSM.States.Slimes
         {
             _slime.ChangeAnimationState(AnimationHashNames.Speed, _slime.Movement.AgentSpeed);
 
-            if(_detector.GetTargetIsNearStatus() == false)
+            if (_detector.GetTargetIsNearStatus() == false)
             {
                 _changeState?.Invoke(StatesType.SlimeIdle);
             }
-            
-            if( _slime.Movement.IsEnabled())
+
+            if (_slime.Movement.IsEnabled())
             {
                 _slime.Movement.Move();
             }

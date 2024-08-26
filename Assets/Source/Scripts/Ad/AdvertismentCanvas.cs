@@ -13,18 +13,19 @@ namespace SlimeScience.Ad
         private const int ResetTime = 70;
 
         [SerializeField] private TMP_Text _text;
-        [SerializeField] private Canvas canvas;
+        [SerializeField] private Canvas _canvas;
 
         private bool _available = true;
         private Coroutine _showPopup;
         private Coroutine _reset;
 
         public event Action Ended;
+
         public bool Available => _available;
 
         private void OnEnable()
         {
-            canvas.enabled = false;
+            _canvas.enabled = false;
         }
 
         private void OnDisable()
@@ -43,7 +44,7 @@ namespace SlimeScience.Ad
         public void ShowPopup()
         {
             _available = false;
-            canvas.enabled = true;
+            _canvas.enabled = true;
 
             if (_showPopup != null)
             {
@@ -67,7 +68,7 @@ namespace SlimeScience.Ad
             }
 
             Ended?.Invoke();
-            canvas.enabled = false;
+            _canvas.enabled = false;
         }
 
         private IEnumerator ResetAvailable()

@@ -12,7 +12,6 @@ using SlimeScience.Saves;
 using SlimeScience.Upgrades;
 using SlimeScience.Util;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace SlimeScience.Root
@@ -40,9 +39,9 @@ namespace SlimeScience.Root
         private PauseHandler _adPause;
         private GameVariables _gameVariables;
 
-        public OpenBlocksPopupsManager BlocksPopupsManager => _blocksPopupsManager;
-
         public event Action LoaderHidden;
+
+        public OpenBlocksPopupsManager BlocksPopupsManager => _blocksPopupsManager;
 
         private void OnEnable()
         {
@@ -142,9 +141,6 @@ namespace SlimeScience.Root
             {
                 _blocksPopupsManager.Init(player);
             }
-
-            // _ship.Init();
-            // _callShip.Init(_ship, _advertisment, player);
         }
 
         public void ShowInterstitial()

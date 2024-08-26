@@ -16,11 +16,17 @@ namespace SlimeScience.Configs
         [SerializeField] private SlimeType _slimesType;
 
         public int TrapAmount => _trapAmount;
-        public int BombAmount => _bombAmount; 
+
+        public int BombAmount => _bombAmount;
+
         public int SlimeAmount => _slimeAmount;
+
         public int NeededAmountToOpen => _neededAmountToOpen;
+
         public float MaxRangePosX => _maxRangePosX;
+
         public float MaxRangePosZ => _maxRangePosZ;
+
         public SlimeType SlimesType => _slimesType;
     }
 }

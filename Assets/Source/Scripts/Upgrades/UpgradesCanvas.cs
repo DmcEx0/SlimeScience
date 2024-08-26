@@ -81,8 +81,8 @@ namespace SlimeScience.Upgrades
 
             _viewports = new ViewportMap[]
             {
-                new(_playerButton, _playerUpgrades),
-                new(_shipButton, _shipUpgrades)
+                new (_playerButton, _playerUpgrades),
+                new (_shipButton, _shipUpgrades),
             };
 
             foreach (var viewport in _viewports)
@@ -94,12 +94,6 @@ namespace SlimeScience.Upgrades
 
             _currentViewport = _viewports[0];
             UpdateUI();
-        }
-
-        private void UpdateUI()
-        {
-            _playerUpgrades.UpdateUI();
-            _shipUpgrades.UpdateUI();
         }
 
         public void Show()
@@ -121,6 +115,12 @@ namespace SlimeScience.Upgrades
                 .SetEase(Ease.OutBack);
         }
 
+        private void UpdateUI()
+        {
+            _playerUpgrades.UpdateUI();
+            _shipUpgrades.UpdateUI();
+        }
+
         private void OnCloseClicked()
         {
             _closeTweener?.Kill();
@@ -133,7 +133,7 @@ namespace SlimeScience.Upgrades
                     _upgradesView.gameObject.SetActive(false);
                     Closed?.Invoke();
                 });
-            
+
             SoundsManager.PlayTapUI();
         }
 

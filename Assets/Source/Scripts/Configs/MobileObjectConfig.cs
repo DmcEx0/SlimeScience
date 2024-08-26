@@ -9,7 +9,9 @@ namespace SlimeScience.Configs
         [SerializeField] private float _acceleration;
 
         public float BaseSpeed => _baseSpeed;
+
         public float AngularSpeed => _rotateSpeed;
+
         public float Acceleration => _acceleration;
     }
 }

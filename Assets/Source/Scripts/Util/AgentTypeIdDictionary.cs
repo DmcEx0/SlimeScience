@@ -4,10 +4,11 @@ namespace SlimeScience.Util
 {
     internal class AgentTypeIdDictionary
     {
-        private static IReadOnlyDictionary<AgentTypeIds, string> AgentTypeNamesDictionary = new Dictionary<AgentTypeIds, string>
+        private static readonly IReadOnlyDictionary<AgentTypeIds, string> AgentTypeNamesDictionary
+            = new Dictionary<AgentTypeIds, string>
         {
-            {AgentTypeIds.Player, "Humanoid"},
-            {AgentTypeIds.Ship, "Ship"}
+            { AgentTypeIds.Player, "Humanoid" },
+            { AgentTypeIds.Ship, "Ship" },
         };
 
         public static string GetAgentTypeId(AgentTypeIds agentType)

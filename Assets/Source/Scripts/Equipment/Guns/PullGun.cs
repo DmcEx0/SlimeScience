@@ -1,11 +1,11 @@
+using System;
+using System.Collections.Generic;
 using SlimeScience.Characters;
 using SlimeScience.Effects;
 using SlimeScience.InventorySystem;
 using SlimeScience.Saves;
 using SlimeScience.Traps;
 using SlimeScience.Util;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -32,6 +32,7 @@ namespace SlimeScience.Equipment.Guns
         public event Action Catched;
 
         public bool InventoryIsFull => _inventory?.IsFull ?? false;
+
         public int AvailableSpace => _inventory.AvailableSpace;
 
         public int SlimesAmount => _inventory.Amount;
@@ -227,11 +228,12 @@ namespace SlimeScience.Equipment.Guns
 
             _isInitialized = true;
         }
-        
+
         public int GetSlimeWeightInInventory()
         {
             var slime = _inventory.GetTypeInInventory;
-            if(slime == null || slime.IsBoss)
+
+            if (slime == null || slime.IsBoss)
             {
                 return 1;
             }
@@ -316,7 +318,7 @@ namespace SlimeScience.Equipment.Guns
                 var randomDirectionX = Random.Range(-1f, 1f);
                 var randomDirectionZ = Random.Range(-1f, 1f);
                 var randomOffset = new Vector3(randomDirectionX, 0, randomDirectionZ);
-                var newPos = transform.position - randomOffset * SpreadDistance;
+                var newPos = transform.position - (randomOffset * SpreadDistance);
 
                 Slime slime = _inventory.GetItem(i);
                 slime.SetActive(true);

@@ -10,11 +10,11 @@ namespace SlimeScience.Tutorial
         private const float OpenDuration = 0.35f;
         private const float CloseDuration = 0.35f;
         private const int MinCurrentNumber = 0;
-        
+
         [SerializeField] private Button _nextTutorialButton;
         [SerializeField] private Button _previousTutorialButton;
         [SerializeField] private Button _readyButton;
-        
+
         [SerializeField] private Image[] _tutorials;
 
         private Tweener _openTweener;
@@ -23,7 +23,7 @@ namespace SlimeScience.Tutorial
         private Image _currentTutorial;
         private int _currentImageNumber = 0;
 
-        public event Action PopupClosed; 
+        public event Action PopupClosed;
 
         private void OnEnable()
         {
@@ -38,7 +38,7 @@ namespace SlimeScience.Tutorial
             _currentTutorial.gameObject.SetActive(true);
 
             ActivateButton(_currentImageNumber);
-            
+
             _nextTutorialButton.onClick.AddListener(ShowNextTutorial);
             _previousTutorialButton.onClick.AddListener(ShowPreviousTutorial);
             _readyButton.onClick.AddListener(Close);
@@ -54,14 +54,13 @@ namespace SlimeScience.Tutorial
         public void Show(Action action = null)
         {
             gameObject.SetActive(true);
-            
+
             _openTweener?.Kill();
             _openTweener = transform
                 .DOScale(Vector3.one, OpenDuration)
                 .SetEase(Ease.OutBack).OnComplete(() =>
                 {
-                    if(action != null)
-                        action.Invoke();
+                    action?.Invoke();
                 });
         }
 
@@ -78,7 +77,7 @@ namespace SlimeScience.Tutorial
                     PopupClosed?.Invoke();
                 });
         }
-        
+
         private void ShowNextTutorial()
         {
             int positiveIndex = 1;
@@ -90,7 +89,7 @@ namespace SlimeScience.Tutorial
             int negativeIndex = -1;
             EnableTutorial(negativeIndex);
         }
-        
+
         private void EnableTutorial(int index)
         {
             _currentImageNumber = Mathf.Clamp(_currentImageNumber + index, MinCurrentNumber, _tutorials.Length - 1);
@@ -101,7 +100,7 @@ namespace SlimeScience.Tutorial
             _currentTutorial = _tutorials[_currentImageNumber];
             _currentTutorial.gameObject.SetActive(true);
         }
-        
+
         private void ActivateButton(int currentNumber)
         {
             _readyButton.gameObject.SetActive(false);

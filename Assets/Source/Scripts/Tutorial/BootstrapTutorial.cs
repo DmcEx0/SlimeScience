@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Agava.WebUtility;
 using Cinemachine;
 using SlimeScience.Blocks;
@@ -9,8 +11,6 @@ using SlimeScience.Root;
 using SlimeScience.Saves;
 using SlimeScience.Spawners;
 using SlimeScience.Util;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SlimeScience.Tutorial
@@ -166,7 +166,7 @@ namespace SlimeScience.Tutorial
             }
         }
 
-        private int GetAllSlimesCount() //TODO: remove code dubbing
+        private int GetAllSlimesCount()
         {
             int count = 0;
 
@@ -178,7 +178,7 @@ namespace SlimeScience.Tutorial
             return count;
         }
 
-        private int GetAllBombsCount() //TODO: remove code dubbing
+        private int GetAllBombsCount()
         {
             int count = 0;
 

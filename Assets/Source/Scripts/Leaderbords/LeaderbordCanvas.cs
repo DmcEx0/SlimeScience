@@ -93,7 +93,7 @@ namespace SlimeScience.Leaderbords
                         activeView.gameObject.SetActive(false);
                         Closed?.Invoke();
                     });
-            
+
             SoundsManager.PlayTapUI();
         }
 
@@ -108,7 +108,6 @@ namespace SlimeScience.Leaderbords
 
            Leaderboard.GetEntries(LeaderbordName, (result) =>
            {
-              Debug.Log("Leaderboard.GetEntries: " + result);
               int length = result.entries.Length > PlayersCount ? PlayersCount : result.entries.Length;
 
               if (length == 0)

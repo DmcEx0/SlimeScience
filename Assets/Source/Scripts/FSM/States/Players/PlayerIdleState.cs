@@ -18,7 +18,6 @@ namespace SlimeScience.FSM.States.Players
 
         public void Enter()
         {
-            // _player.Movement.Enable(); 
         }
 
         public void Exit()
@@ -30,8 +29,8 @@ namespace SlimeScience.FSM.States.Players
             _player.ChangeAnimationState(AnimationHashNames.Speed, 0f);
 
             _player.Movement.Move();
-            
-            if(_player.Movement.IsMoving())
+
+            if (_player.Movement.IsMoving())
             {
                 _changeState?.Invoke(StatesType.Movement);
             }

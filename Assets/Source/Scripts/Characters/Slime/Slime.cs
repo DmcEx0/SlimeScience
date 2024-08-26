@@ -1,9 +1,9 @@
+using System.Collections;
 using DG.Tweening;
 using SlimeScience.Configs;
 using SlimeScience.Configs.Slimes;
 using SlimeScience.Equipment.Guns;
 using SlimeScience.Util;
-using System.Collections;
 using UnityEngine;
 
 namespace SlimeScience.Characters
@@ -31,7 +31,9 @@ namespace SlimeScience.Characters
         public int Weight { get; private set; }
 
         public float FearSpeed { get; private set; }
+
         public float BaseSpeed { get; private set; }
+
         public bool CanTeleport { get; private set; }
 
         public bool IsBoss => _type == SlimeType.Boss;
@@ -57,30 +59,6 @@ namespace SlimeScience.Characters
         private void Update()
         {
             UpdateStateMachine();
-        }
-
-        protected override void Init(MobileObjectConfig config)
-        {
-            if (config is not SlimeConfig slimeConfig)
-                return;
-
-            SetRigidbodySetting(_rigidbody);
-
-            BaseSpeed = slimeConfig.BaseSpeed;
-            FearSpeed = slimeConfig.FearSpeed;
-
-            _type = slimeConfig.Type;
-            Weight = slimeConfig.Weight;
-            _originWeight = Weight;
-
-            CanTeleport = _type == SlimeType.Teleport;
-        }
-
-        protected override void SetRigidbodySetting(Rigidbody rigidbody)
-        {
-            base.SetRigidbodySetting(rigidbody);
-
-            rigidbody.isKinematic = false;
         }
 
         public void AddForce(Vector3 force)
@@ -153,7 +131,9 @@ namespace SlimeScience.Characters
         public void Teleport()
         {
             if (!CanTeleport)
+            {
                 return;
+            }
 
             CanTeleport = false;
 
@@ -163,6 +143,32 @@ namespace SlimeScience.Characters
             SoundsManager.PlayTeleport();
 
             StartCoroutine(ResetTeleportCoroutine());
+        }
+
+        protected override void Init(MobileObjectConfig config)
+        {
+            if (config is not SlimeConfig slimeConfig)
+            {
+                return;
+            }
+
+            SetRigidbodySetting(_rigidbody);
+
+            BaseSpeed = slimeConfig.BaseSpeed;
+            FearSpeed = slimeConfig.FearSpeed;
+
+            _type = slimeConfig.Type;
+            Weight = slimeConfig.Weight;
+            _originWeight = Weight;
+
+            CanTeleport = _type == SlimeType.Teleport;
+        }
+
+        protected override void SetRigidbodySetting(Rigidbody rigidbody)
+        {
+            base.SetRigidbodySetting(rigidbody);
+
+            rigidbody.isKinematic = false;
         }
 
         private IEnumerator ResetTeleportCoroutine()

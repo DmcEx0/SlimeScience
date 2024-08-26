@@ -20,7 +20,7 @@ namespace SlimeScience.Equipment.Guns
         private GameVariables _gameVariables;
 
         private void OnEnable()
-        { 
+        {
             if (_inventory != null)
             {
                 _inventory.Filled += OnInventoryFilled;
@@ -80,7 +80,7 @@ namespace SlimeScience.Equipment.Guns
             _material.SetFloat("_Angle", _gameVariables.AbsorptionAngle);
             _meshRenderer.gameObject.transform.localScale = new Vector3(
                 _gameVariables.AbsorptionRadius,
-                _gameVariables.AbsorptionRadius, 
+                _gameVariables.AbsorptionRadius,
                 _gameVariables.AbsorptionRadius) * ScaleCoof;
         }
 
@@ -88,8 +88,8 @@ namespace SlimeScience.Equipment.Guns
         {
             _material.SetFloat("_Angle", newAngle);
             _meshRenderer.gameObject.transform.localScale = new Vector3(
-                newRadius, 
-                newRadius, 
+                newRadius,
+                newRadius,
                 newRadius) * ScaleCoof;
 
             _radius = newRadius;

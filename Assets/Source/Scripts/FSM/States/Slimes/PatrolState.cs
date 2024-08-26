@@ -29,17 +29,15 @@ namespace SlimeScience.FSM.States.Slimes
 
             if (_mobileObject is VacuumingSupport support)
             {
-                Debug.Log("State = PATROL");
-                
                 _mobileObject.Movement.Move(false);
-                
+
                 support.PullGun.Catched += OnSlimeCatching;
             }
         }
 
         public void Exit()
         {
-            if(_mobileObject is VacuumingSupport vacuumingSupport)
+            if (_mobileObject is VacuumingSupport vacuumingSupport)
             {
                 vacuumingSupport.PullGun.Catched -= OnSlimeCatching;
             }
@@ -59,7 +57,8 @@ namespace SlimeScience.FSM.States.Slimes
 
         private void UpdateSlime()
         {
-            _mobileObject.ChangeAnimationState(AnimationHashNames.Speed,
+            _mobileObject.ChangeAnimationState(
+                AnimationHashNames.Speed,
                 _mobileObject.Movement.AgentSpeed);
 
             if (_detector.GetTargetIsNearStatus())
@@ -73,8 +72,8 @@ namespace SlimeScience.FSM.States.Slimes
                 _changeState?.Invoke(StatesType.SlimeIdle);
                 return;
             }
-            
-            if(_mobileObject.Movement.IsMoving() == false)
+
+            if (_mobileObject.Movement.IsMoving() == false)
             {
                 _changeState?.Invoke(StatesType.SlimeIdle);
             }
@@ -83,8 +82,8 @@ namespace SlimeScience.FSM.States.Slimes
         private void UpdateVacuumingSupport()
         {
             _mobileObject.Movement.Move(false);
-            
-            if(_detector.HasTargetTransforms() == false)
+
+            if (_detector.HasTargetTransforms() == false)
             {
                 _changeState.Invoke(StatesType.Unloading);
             }
@@ -94,12 +93,12 @@ namespace SlimeScience.FSM.States.Slimes
                 _changeState?.Invoke(StatesType.Hunting);
             }
         }
-        
+
         private void OnSlimeCatching()
         {
-            if(_mobileObject is VacuumingSupport vacuumingSupport)
+            if (_mobileObject is VacuumingSupport vacuumingSupport)
             {
-                if(vacuumingSupport.PullGun.InventoryIsFull)
+                if (vacuumingSupport.PullGun.InventoryIsFull)
                 {
                     _changeState?.Invoke(StatesType.Unloading);
                 }

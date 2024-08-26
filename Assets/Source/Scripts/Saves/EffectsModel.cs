@@ -11,7 +11,7 @@ namespace SlimeScience.Effects
         {
             { EffectModifiers.Force, DefaultModifierValue },
             { EffectModifiers.Radius, DefaultModifierValue },
-            { EffectModifiers.Angle, DefaultModifierValue }
+            { EffectModifiers.Angle, DefaultModifierValue },
         };
 
         public float ForceModifier => _effectModifiers[EffectModifiers.Force];
@@ -19,7 +19,6 @@ namespace SlimeScience.Effects
         public float RadiusModifier => _effectModifiers[EffectModifiers.Radius];
 
         public float AngleModifier => _effectModifiers[EffectModifiers.Angle];
-
 
         public void AddModifier(EffectModifiers effect, float percent)
         {
@@ -30,7 +29,7 @@ namespace SlimeScience.Effects
         public void RemoveModifier(EffectModifiers effect, float percent)
         {
             float value = _effectModifiers[effect];
-            _effectModifiers[effect] /= (DefaultModifierValue + percent);
+            _effectModifiers[effect] /= DefaultModifierValue + percent;
         }
 
         public void ResetModifier(EffectModifiers effect)

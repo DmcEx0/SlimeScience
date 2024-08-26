@@ -9,7 +9,7 @@ namespace SlimeScience.Effects
         [SerializeField] private ParticleSystem _vacuum;
         [SerializeField] private ParticleSystem _catchSlime;
         [SerializeField] private ParticleSystem _explode;
-         
+
         private EffectSystem _effectSystem;
         private bool _isVacuumActive;
 
@@ -67,9 +67,8 @@ namespace SlimeScience.Effects
 
         public void TurnOffStatuses()
         {
-
             _debuff.Stop();
-           _buff.Stop();
+            _buff.Stop();
         }
 
         private void RenderBuff()

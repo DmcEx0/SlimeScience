@@ -18,7 +18,7 @@ namespace SlimeScience.Blocks
         {
             _fadeScreen.gameObject.SetActive(false);
         }
-        
+
         public void Init(Player player)
         {
             _player = player;
@@ -30,13 +30,13 @@ namespace SlimeScience.Blocks
             _popups[index - 1].Show(DisableFadeScreen);
             _fadeScreen.gameObject.SetActive(true);
         }
-        
+
         public void ShowEndGamePopup(Action onClosed)
         {
             _finishGamePopup.Show(onClosed);
             _fadeScreen.gameObject.SetActive(true);
         }
-        
+
         private void DisableFadeScreen()
         {
             _player.Movement.Enable();

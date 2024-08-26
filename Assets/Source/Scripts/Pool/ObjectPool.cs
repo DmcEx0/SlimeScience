@@ -48,7 +48,7 @@ namespace SlimeScience.Pool
                 instance.gameObject.SetActive(false);
             }
         }
-        
+
         public void InitializePool(T gameObject)
         {
             gameObject.transform.parent = _parent;

@@ -15,7 +15,7 @@ namespace SlimeScience.Factory
         {
             var config = GetConfig();
             VacuumingSupport instance = CreateInstance(config.Prefab, position);
-            
+
             var observer = new SlimeObserver(instance.transform);
             var targetDetector = new TargetDetector(config.DistanceFofIncreaseSpeed);
             targetDetector.SetParentTransforms(instance.transform);
@@ -32,16 +32,16 @@ namespace SlimeScience.Factory
         {
             StateMachine stateMachine = new StateMachine();
             Action<StatesType> changeStateAction = stateMachine.ChangeState;
-            
+
             Dictionary<StatesType, IState> states = new Dictionary<StatesType, IState>()
             {
                 [StatesType.Patrol] = new PatrolState(changeStateAction, instance, detector),
                 [StatesType.Hunting] = new HuntingState(changeStateAction, instance, detector),
-                [StatesType.Unloading] = new UnloadState(changeStateAction, instance, detector)
+                [StatesType.Unloading] = new UnloadState(changeStateAction, instance, detector),
             };
-            
+
             stateMachine.SetStates(StatesType.Patrol, states);
-            
+
             return stateMachine;
         }
     }

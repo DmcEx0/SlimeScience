@@ -1,21 +1,19 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using Agava.WebUtility;
 using Cinemachine;
 using SlimeScience.Ad;
 using SlimeScience.Blocks;
+using SlimeScience.Characters.Ship;
 using SlimeScience.Configs;
 using SlimeScience.Factory;
 using SlimeScience.Money;
 using SlimeScience.PauseSystem;
 using SlimeScience.Saves;
 using SlimeScience.Spawners;
-using System.Collections;
-using System.Collections.Generic;
-using SlimeScience.Characters.Ship;
 using SlimeScience.Util;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace SlimeScience.Root
 {
@@ -105,12 +103,12 @@ namespace SlimeScience.Root
             PlayerPrefs.DeleteAll();
             _gameVariables.ResetSave();
         }
-        
+
         private void ResetSaveOnFinishGame()
         {
             _gameVariables.ResetSaveOnFinishGame();
         }
-        
+
         private void Init()
         {
             _gameVariables.Loaded -= Init;

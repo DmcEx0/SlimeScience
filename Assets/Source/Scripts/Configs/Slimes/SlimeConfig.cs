@@ -12,16 +12,20 @@ namespace SlimeScience.Configs.Slimes
         [SerializeField] private SlimeBuildData _buildData;
 
         public float DistanceFofFear => _distanceFofFear;
+
         public float FearSpeed => _fearSpeed;
+
         public SlimeBuildData BuildData => _buildData;
+
         public int Weight { get; private set; }
-       public SlimeType Type { get; private set; }
-        
+
+        public SlimeType Type { get; private set; }
+
         public void SetType(SlimeType type)
         {
             Type = type;
         }
-        
+
         public void SetWeight(int weight)
         {
             Weight = weight;

@@ -1,8 +1,8 @@
-using UnityEngine;
-using UnityEngine.AI;
+using SlimeScience.Configs;
 using SlimeScience.FSM;
 using SlimeScience.Input;
-using SlimeScience.Configs;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace SlimeScience.Characters
 {
@@ -10,7 +10,7 @@ namespace SlimeScience.Characters
     {
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private Animator _animator;
-        
+
         private StateMachine _stateMachine;
 
         public Movement Movement { get; private set; }
@@ -21,7 +21,7 @@ namespace SlimeScience.Characters
 
             Init(config);
 
-            Movement = new(_agent, inputRouter);
+            Movement = new (_agent, inputRouter);
 
             SetMovementStats(config);
 
@@ -64,21 +64,6 @@ namespace SlimeScience.Characters
             Movement.SetMovementSpeed(speed);
         }
 
-        protected void UpdateStateMachine()
-        {
-            _stateMachine?.Update();
-        }
-
-        protected abstract void Init(MobileObjectConfig config);
-
-        protected virtual void SetRigidbodySetting(Rigidbody rigidbody)
-        {
-            rigidbody.interpolation = RigidbodyInterpolation.None;
-            rigidbody.useGravity = false;
-
-            rigidbody.freezeRotation = true;
-        }
-        
         public void ChangeAnimationState<T>(int hashName, T value)
         {
             switch (value)
@@ -93,6 +78,21 @@ namespace SlimeScience.Characters
                     _animator.SetBool(hashName, b);
                     break;
             }
+        }
+
+        protected abstract void Init(MobileObjectConfig config);
+
+        protected void UpdateStateMachine()
+        {
+            _stateMachine?.Update();
+        }
+
+        protected virtual void SetRigidbodySetting(Rigidbody rigidbody)
+        {
+            rigidbody.interpolation = RigidbodyInterpolation.None;
+            rigidbody.useGravity = false;
+
+            rigidbody.freezeRotation = true;
         }
     }
 }

@@ -10,7 +10,6 @@ namespace SlimeScience.Audio
         private const int TurnOff = 0;
 
         [SerializeField] private SoundType _type;
-        
         [Space]
         [SerializeField] private Image _image;
         [SerializeField] private Sprite _turnOn;
@@ -32,10 +31,9 @@ namespace SlimeScience.Audio
         public void Init()
         {
             _isOn = PlayerPrefs.GetInt(GetSoundKey(_type), TurnOn) == TurnOn;
-            
+
             _image.sprite = _isOn ? _turnOn : _turnOff;
 
-            Debug.Log(_isOn + " + " + _type);
             if (_isOn)
             {
                 SoundsManager.TurnOn(_type);
@@ -77,7 +75,7 @@ namespace SlimeScience.Audio
         {
             Change();
         }
-        
+
         private string GetSoundKey(SoundType type)
         {
             switch (type)

@@ -1,6 +1,5 @@
-using SlimeScience.Saves;
 using System;
-using UnityEngine;
+using SlimeScience.Saves;
 
 namespace SlimeScience.Money
 {

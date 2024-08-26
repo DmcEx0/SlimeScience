@@ -9,9 +9,9 @@ namespace SlimeScience.FSM.States
         private const float MinDistanceForReleaseZone = 1f;
         private readonly VacuumingSupport _vacuumingSupport;
         private readonly IDetectable _detector;
-        
+
         private readonly Action<StatesType> _changeState;
-        
+
         public UnloadState(Action<StatesType> changeState, VacuumingSupport vacuumingSupport, IDetectable detector)
         {
             _changeState = changeState;
@@ -22,8 +22,6 @@ namespace SlimeScience.FSM.States
         public void Enter()
         {
             _vacuumingSupport.Movement.SetMovementSpeed(_vacuumingSupport.BaseSpeed);
-            
-            Debug.Log("State = UNLOAD");
         }
 
         public void Exit()
@@ -36,8 +34,8 @@ namespace SlimeScience.FSM.States
 
             float distanceForReleaseZone =
                 (_vacuumingSupport.UnloadPosition - _vacuumingSupport.transform.position).magnitude;
-            
-            if(distanceForReleaseZone <= MinDistanceForReleaseZone)
+
+            if (distanceForReleaseZone <= MinDistanceForReleaseZone)
             {
                 _changeState?.Invoke(StatesType.Patrol);
             }

@@ -9,6 +9,6 @@ namespace SlimeScience.Configs.Slimes
     {
         [SerializeField] private List<SlimeTypeValues> _slimeTypeValues;
 
-        public IReadOnlyList<SlimeTypeValues> SlimeTypeValues  => _slimeTypeValues;
+        public IReadOnlyList<SlimeTypeValues> SlimeTypeValues => _slimeTypeValues;
     }
 }

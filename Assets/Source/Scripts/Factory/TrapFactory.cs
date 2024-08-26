@@ -10,7 +10,7 @@ namespace SlimeScience.Factory
         {
             var config = GetNextConfig();
             var instance = CreateInstance(config.Prefab, position);
-            
+
             instance.Init(config);
 
             return instance;

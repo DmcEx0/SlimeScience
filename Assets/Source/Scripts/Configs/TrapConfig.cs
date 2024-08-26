@@ -9,9 +9,11 @@ namespace SlimeScience.Configs
     public class TrapConfig
     {
         [field: SerializeField] public Trap Prefab;
+
         [field: SerializeField] public EffectModifiers Modifier { get; private set; }
 
-        [field: SerializeField, Range(-1, 0)] public float ModifierPercent { get; private set; }
+        [field: SerializeField]
+        [field: Range(-1, 0)] public float ModifierPercent { get; private set; }
 
         [field: SerializeField] public float DurationInSeconds { get; private set; }
     }

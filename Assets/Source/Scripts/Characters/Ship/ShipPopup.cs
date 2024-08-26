@@ -9,14 +9,14 @@ namespace SlimeScience.Characters.Ship
     {
         private const float OpenDuration = 0.35f;
         private const float CloseDuration = 0.35f;
-        
+
         [SerializeField] private Button _exit;
         [SerializeField] private Button _showAd;
-        
+
         private Tweener _openTweener;
         private Tweener _closeTweener;
 
-        public event Action AdShowing; 
+        public event Action AdShowing;
 
         private void OnEnable()
         {
@@ -33,7 +33,7 @@ namespace SlimeScience.Characters.Ship
         public void Show()
         {
             gameObject.SetActive(true);
-            
+
             _openTweener?.Kill();
             _openTweener = transform
                 .DOScale(Vector3.one, OpenDuration)

@@ -12,7 +12,7 @@ namespace SlimeScience.Input
 
         public PlayerInputRouter()
         {
-            _gameInput = new();
+            _gameInput = new ();
         }
 
         public void OnEnable()
@@ -31,6 +31,5 @@ namespace SlimeScience.Input
 
             return new Vector3(inputDirection.x, 0, inputDirection.y) * Step;
         }
-
     }
 }

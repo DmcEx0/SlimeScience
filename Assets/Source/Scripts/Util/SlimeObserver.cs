@@ -30,12 +30,12 @@ namespace SlimeScience.Util
             int numberOfSlimes = Physics.OverlapSphereNonAlloc(_vacuumingTransform.position, Radius, _slimes, 1 << SlimeLayer);
 
             newSlime = _slimes[Random.Range(0, numberOfSlimes)];
-            
+
             if (numberOfSlimes == 0)
             {
                 return false;
             }
-            
+
             return true;
         }
     }

@@ -8,9 +8,10 @@ namespace SlimeScience.Tutorial
         private const string TutorialCompleted = "Tutorial";
 
         [SerializeField] private TutorialManger _tutorial;
+
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent(out Player player))
+            if (other.TryGetComponent(out Player player))
             {
                 _tutorial.ShowPopupForTrigger2();
             }

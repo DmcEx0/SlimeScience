@@ -37,12 +37,12 @@ namespace SlimeScience.Spawners
 
             if (blockData.SlimesType == SlimeType.Big)
             {
-                slimesToSpawn = slimeAmount * BigModifier - collectedSlimes;
+                slimesToSpawn = (slimeAmount * BigModifier) - collectedSlimes;
                 slimesToSpawn /= BigModifier;
             }
             else if (blockData.SlimesType == SlimeType.Teleport)
             {
-                slimesToSpawn = slimeAmount * TeleportModifier - collectedSlimes;
+                slimesToSpawn = (slimeAmount * TeleportModifier) - collectedSlimes;
                 slimesToSpawn /= TeleportModifier;
             }
 

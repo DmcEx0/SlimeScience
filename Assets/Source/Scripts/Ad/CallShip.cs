@@ -1,5 +1,5 @@
-using SlimeScience.Characters;
 using System.Collections;
+using SlimeScience.Characters;
 using SlimeScience.Characters.Ship;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,7 +40,6 @@ namespace SlimeScience.Ad
         private void OnClicked()
         {
             _advertisment.ShowReward();
-            // _ship.Used(_player);
 
             if (_reloadCoroutine != null)
             {

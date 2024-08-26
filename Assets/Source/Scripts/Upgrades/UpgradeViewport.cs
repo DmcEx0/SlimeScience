@@ -1,8 +1,8 @@
+using System;
 using DG.Tweening;
 using SlimeScience.Money;
 using SlimeScience.Saves;
 using SlimeScience.Util;
-using System;
 using UnityEngine;
 
 namespace SlimeScience.Upgrades
@@ -25,6 +25,24 @@ namespace SlimeScience.Upgrades
         }
 
         public abstract void UpdateUI();
+
+        public void Hide()
+        {
+            KillTweeners();
+
+            _hideTweener = _viewport.DOAnchorPosY(-_viewport.rect.height, 0.5f).OnComplete(() =>
+            {
+                gameObject.SetActive(false);
+            });
+        }
+
+        public void Show()
+        {
+            KillTweeners();
+
+            gameObject.SetActive(true);
+            _showTweener = _viewport.DOAnchorPosY(0, 0.5f);
+        }
 
         protected void UpgradeClick(Action<float> upgradeCallback, UpgradeButton upgradeButton, int cost)
         {
@@ -52,24 +70,6 @@ namespace SlimeScience.Upgrades
             {
                 upgradeButton.SetNotInteractable();
             }
-        }
-
-        public void Hide()
-        {
-            KillTweeners();
-
-            _hideTweener = _viewport.DOAnchorPosY(-_viewport.rect.height, 0.5f).OnComplete(() =>
-            {
-                gameObject.SetActive(false);
-            });
-        }
-
-        public void Show()
-        {
-            KillTweeners();
-
-            gameObject.SetActive(true);
-            _showTweener = _viewport.DOAnchorPosY(0, 0.5f);
         }
 
         private void KillTweeners()

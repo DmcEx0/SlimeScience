@@ -6,13 +6,8 @@ namespace SlimeScience.Ad
 {
     public class Advertisment
     {
-        private Coroutine _schedule;
         private PauseHandler _systemPause;
         private MonoBehaviour _coroutineObject;
-
-        private bool _isActive = false;
-
-        public event Action RewardClaimed;
 
         public Advertisment(
             MonoBehaviour coroutineObject,
@@ -21,6 +16,8 @@ namespace SlimeScience.Ad
             _systemPause = systemPause;
             _coroutineObject = coroutineObject;
         }
+
+        public event Action RewardClaimed;
 
         public void ShowReward()
         {
@@ -51,11 +48,6 @@ namespace SlimeScience.Ad
         private void OnOpenedCallback()
         {
             _systemPause.Pause();
-        }
-
-        private void OnClosedCallback(bool isClosed)
-        {
-            _systemPause.Unpause();
         }
 
         private void OnClosedCallback()

@@ -4,7 +4,6 @@ using SlimeScience.Equipment.Guns;
 using SlimeScience.Saves;
 using SlimeScience.Util;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace SlimeScience.Characters
 {
@@ -38,7 +37,7 @@ namespace SlimeScience.Characters
 
         public List<Slime> ReleaseSlimes()
         {
-            List<Slime> releaseSlimes =  new List<Slime>(_pullGun.ReleaseInventory());
+            List<Slime> releaseSlimes = new List<Slime>(_pullGun.ReleaseInventory());
             _pullGun.RenderInventory();
 
             return releaseSlimes;
@@ -51,7 +50,7 @@ namespace SlimeScience.Characters
             SetMovementStats(shipConfig);
             SetMovementSpeed(_gameVariables.ShipSpeed);
             _collider.enabled = false;
-            
+
             transform.position = shipPlaceForPlayer.position;
             transform.rotation = shipPlaceForPlayer.rotation;
         }
@@ -79,7 +78,9 @@ namespace SlimeScience.Characters
         protected override void Init(MobileObjectConfig config)
         {
             if (config is not PlayerConfig playerConfig)
+            {
                 return;
+            }
 
             _config = playerConfig;
 

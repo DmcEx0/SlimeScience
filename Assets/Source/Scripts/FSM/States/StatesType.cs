@@ -9,6 +9,6 @@ namespace SlimeScience.FSM.States
         Patrol = 4,
         Fear = 5,
         Hunting = 6,
-        Unloading = 7
+        Unloading = 7,
     }
 }

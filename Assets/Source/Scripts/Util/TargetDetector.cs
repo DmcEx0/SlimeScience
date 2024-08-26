@@ -27,11 +27,11 @@ namespace SlimeScience.Util
 
         public bool GetTargetIsNearStatus()
         {
-            if(HasTargetTransforms() == false)
+            if (HasTargetTransforms() == false)
             {
                 return false;
             }
-            
+
             float distance = (_targetTransform.position - _parentTransform.position).magnitude;
 
             if (distance < _distanceForActivate)
@@ -44,11 +44,11 @@ namespace SlimeScience.Util
 
         public Vector3 GetDirectionFromToTarget(bool isFromTarget)
         {
-            if(HasTargetTransforms() == false)
+            if (HasTargetTransforms() == false)
             {
                 return Vector3.zero;
             }
-            
+
             if (isFromTarget)
             {
                 return (_parentTransform.position - _targetTransform.position).normalized;

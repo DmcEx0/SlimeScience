@@ -8,7 +8,7 @@ namespace SlimeScience.Saves
         private const int DefaultCollectedSlimes = 0;
         private const int DefaultSlimesGoal = 1;
         private const bool DefaultTutorialPassed = false;
-        
+
         public ProgressModel()
         {
             Money = DefaultMoney;

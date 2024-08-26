@@ -20,7 +20,7 @@ namespace SlimeScience.Saves
         private Coroutine _smoothSlider;
         private GameVariables _gameVariables;
 
-        private float _slimePercent => _gameVariables.CollectedSlimes / _gameVariables.SlimesGoal * 100;
+        private float SlimePercent => _gameVariables.CollectedSlimes / _gameVariables.SlimesGoal * 100;
 
         private void OnEnable()
         {
@@ -69,7 +69,6 @@ namespace SlimeScience.Saves
 
             if (number == -1)
             {
-
                 _roomNumber.text = string.Format(text, LeanLocalization.GetTranslationText(LastRoomPharseKey));
                 return;
             }

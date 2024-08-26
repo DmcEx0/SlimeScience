@@ -1,6 +1,6 @@
+using System;
 using SlimeScience.Money;
 using SlimeScience.Saves;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,13 +14,13 @@ namespace SlimeScience.Upgrades
         private Button _button;
         private UpgradeViewport _viewport;
 
-        public event Action<ViewportMap> Clicked;
-
         public ViewportMap(Button button, UpgradeViewport viewport)
         {
             _button = button;
             _viewport = viewport;
         }
+
+        public event Action<ViewportMap> Clicked;
 
         public void Init(Wallet wallet, GameVariables gameVariables)
         {

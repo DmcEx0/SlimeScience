@@ -7,7 +7,7 @@ namespace SlimeScience.Factory
     public class GeneralVacuumingSupportFactory : VacuumingSupportFactory
     {
         [SerializeField] private VacuumingSupportConfig _config;
-        
+
         protected override VacuumingSupportConfig GetConfig()
         {
             return _config;

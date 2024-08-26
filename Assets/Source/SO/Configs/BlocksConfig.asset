@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d96e863d97d51d48a28badfabdbb707, type: 3}
+  m_Name: BlocksConfig
+  m_EditorClassIdentifier: 
+  _blocksData:
+  - _trapAmount: 5
+    _bombAmount: 10
+    _slimeAmount: 130
+    _neededAmountToOpen: 130
+    _maxRangePosX: 25
+    _maxRangePosZ: 25
+    _slimesType: 0
+  - _trapAmount: 5
+    _bombAmount: 10
+    _slimeAmount: 60
+    _neededAmountToOpen: 180
+    _maxRangePosX: 30
+    _maxRangePosZ: 30
+    _slimesType: 1
+  - _trapAmount: 5
+    _bombAmount: 6
+    _slimeAmount: 60
+    _neededAmountToOpen: 120
+    _maxRangePosX: 20
+    _maxRangePosZ: 20
+    _slimesType: 2
+  - _trapAmount: 5
+    _bombAmount: 8
+    _slimeAmount: 80
+    _neededAmountToOpen: 80
+    _maxRangePosX: 20
+    _maxRangePosZ: 20
+    _slimesType: 0
+  - _trapAmount: 5
+    _bombAmount: 8
+    _slimeAmount: 120
+    _neededAmountToOpen: 120
+    _maxRangePosX: 20
+    _maxRangePosZ: 20
+    _slimesType: 0
+  - _trapAmount: 5
+    _bombAmount: 7
+    _slimeAmount: 1
+    _neededAmountToOpen: 200
+    _maxRangePosX: 20
+    _maxRangePosZ: 20
+    _slimesType: 3

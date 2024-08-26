@@ -50,6 +50,11 @@ namespace SlimeScience.Ad
             _systemPause.Pause();
         }
 
+        private void OnClosedCallback(bool isClosed)
+        {
+            _systemPause.Unpause();
+        }
+        
         private void OnClosedCallback()
         {
             _systemPause.Unpause();

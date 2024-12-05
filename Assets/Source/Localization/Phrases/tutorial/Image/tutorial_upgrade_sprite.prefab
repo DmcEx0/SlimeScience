@@ -51,7 +51,7 @@ MonoBehaviour:
     Object: {fileID: 21300000, guid: b2850e47a5823a3418a307786bd1376a, type: 3}
   - Language: Russian
     Text: 
-    Object: {fileID: 21300000, guid: 9322002b50b155542b20be085e9e7db8, type: 3}
+    Object: {fileID: 21300000, guid: 8a866876d5f02a74a9cc3746a042afc8, type: 3}
   - Language: Turkish
     Text: 
     Object: {fileID: 21300000, guid: 3287aa3dc722d4f40bcb33ee60996983, type: 3}
